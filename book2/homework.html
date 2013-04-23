@@ -3,7 +3,7 @@
 
 <link rel="stylesheet" type="text/css" href="css/widget110.css" media="all">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"><title>
-  Lessons
+	Lessons
 </title><meta name="description"><meta name="keywords">
 
 <link rel="shortcut icon"><link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Josefin+Sans+Std+Light">
@@ -191,14 +191,16 @@
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 <script type="text/javascript">
 $(document).ready(function () {
+
 	$("#next").click(function() {
+		$("#previous").show();
 		var testar = true;
 	
 		if(testar && $("#p1").css('display') == 'block'){
 			$("#p1").hide();
 			document.getElementById('mmm').pause();
-			$("#mmm").attr('src','http://ingleson1.dominiotemporario.com/mp3/add.mp3');
-			// document.getElementById('mmm').play();
+			$("#mmm").attr('src','b2u11h1.mp3');
+			document.getElementById('mmm').play();
 			$("#p2").show();
 			testar = false;
 		}
@@ -206,8 +208,8 @@ $(document).ready(function () {
 		if(testar && $("#p2").css('display') == 'block'){
 			$("#p2").hide();
 			document.getElementById('mmm').pause();
-			$("#mmm").attr('src','b2u11h1.mp3');
-			// document.getElementById('mmm').play();
+			$("#mmm").attr('src','b2u11h3.mp3');
+			document.getElementById('mmm').play();
 			$("#p3").show();
 			testar = false;
 		}
@@ -215,39 +217,33 @@ $(document).ready(function () {
 		if(testar && $("#p3").css('display') == 'block'){
 			$("#p3").hide();
 			document.getElementById('mmm').pause();
-			$("#mmm").attr('src','b2u11h1.mp3');
-			// document.getElementById('mmm').play();
+			$("#mmm").attr('src','b2u11h4.mp3');
+			document.getElementById('mmm').play();
 			$("#p4").show();
+			$("#next").hide();
 			testar = false;
 		}
 	});
 	
 	$("#previous").click(function() {
+		$("#next").show();
 		var testar = true;
-	
-		if(testar && $("#p1").css('display') == 'block'){
-			$("#p1").hide();
-			document.getElementById('mmm').pause();
-			$("#mmm").attr('src','http://ingleson1.dominiotemporario.com/mp3/add.mp3');
-			// document.getElementById('mmm').play();
-			$("#p2").show();
-			testar = false;
-		}
 		
 		if(testar && $("#p2").css('display') == 'block'){
 			$("#p2").hide();
 			document.getElementById('mmm').pause();
 			$("#mmm").attr('src','b2u11h1.mp3');
-			// document.getElementById('mmm').play();
+			document.getElementById('mmm').play();
 			$("#p1").show();
+			$("#previous").hide();
 			testar = false;
 		}
 		
 		if(testar && $("#p3").css('display') == 'block'){
 			$("#p3").hide();
 			document.getElementById('mmm').pause();
-			$("#mmm").attr('src','b2u11h1.mp3');
-			// document.getElementById('mmm').play();
+			$("#mmm").attr('src','b2u11h2.mp3');
+			document.getElementById('mmm').play();
 			$("#p2").show();
 			testar = false;
 		}
@@ -255,8 +251,8 @@ $(document).ready(function () {
 		if(testar && $("#p4").css('display') == 'block'){
 			$("#p4").hide();
 			document.getElementById('mmm').pause();
-			$("#mmm").attr('src','b2u11h1.mp3');
-			// document.getElementById('mmm').play();
+			$("#mmm").attr('src','b2u11h3.mp3');
+			document.getElementById('mmm').play();
 			$("#p3").show();
 			testar = false;
 		}

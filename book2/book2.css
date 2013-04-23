@@ -1,0 +1,327 @@
+body
+{
+    margin: 0;
+	background: #f6f6f6;
+    padding: 0;
+}
+
+table {
+	line-height: 17px;
+	font-size: 16px;
+}
+
+table input {
+	width: 220px;
+}
+
+.section-header {
+	width:960px;
+	margin: 0 auto;
+}
+.section-header h1 {
+	color: #f6f6f6;
+	font: normal 64px/1.75em 'Josefin Sans Std Light' , Helvetica, Arial, sans-serif;
+	float: left;
+	padding-left: 10px;
+	text-transform: uppercase;
+	padding: 0;
+	margin:0;
+	border: 0;
+	outline: 0;
+	background: transparent;
+}
+
+.wrap-section-header {
+	background: url('images/back.jpg');
+	background-position: center center;
+	height: 100px;
+	margin: 1px 0;
+}
+
+#class_content .class_container {
+	border: 1px solid #CCC;
+	width: 770px;
+	height: 570px;
+	margin: 0 auto;
+}
+
+#myDiv
+{
+    width: 770px;
+    height: 570px;
+    font-family: Times New Roman;
+    font-size: 20px;
+    position: relative;
+}
+
+.pagina
+{
+    display: none;
+}
+
+.titulo
+{
+    text-transform: uppercase;
+    color: #003366;
+    font-weight: bold;
+}
+
+.bold
+{
+    font-weight: bold;
+}
+
+#paginaAtual
+{
+    position: absolute;
+    bottom: 0;
+    text-align: center;
+    width: 100%;
+    font-size: 11px;
+    color: #fff;
+}
+#pager
+{
+    position: relative;
+}
+#previous
+{
+    width: 28px;
+    height: 26px;
+    background-image: url('images/previous.png');
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    cursor: pointer;
+}
+
+#matheus
+{
+    width: 28px;
+    height: 26px;
+    background-image: url('images/next.png');
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    cursor: pointer;
+}
+
+#next
+{
+    width: 28px;
+    height: 26px;
+    background-image: url('images/next.png');
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    cursor: pointer;
+}
+
+input
+{
+    width: 50px;
+    border: none;
+    border-bottom: 1px solid #CCC;
+    background: transparent;
+    text-transform: lowercase;
+    margin-left: 7px;
+    margin-right: 7px;
+    text-align: center;
+}
+
+input.frase
+{
+    width: 350px;
+    border: none;
+    border-bottom: 1px solid #CCC;
+    background: transparent;
+    text-transform: lowercase;
+    margin-left: 7px;
+    margin-right: 7px;
+    text-align: center;
+}
+
+.btn
+{
+    padding-top: 10px;
+    text-align: right;
+}
+
+.btn input
+{
+    border: 1px solid #999;
+    width: 90px;
+    height: 40px;
+}
+
+
+.e1
+{
+    display: inline-block;
+    width: 70px;
+    text-align: center;
+}
+
+.e2
+{
+    display: inline-block;
+    width: 90px;
+    text-align: center;
+}
+
+.e3
+{
+    display: inline-block;
+    width: 110px;
+    text-align: center;
+}
+
+.e4
+{
+    display: inline-block;
+    width: 130px;
+    text-align: center;
+}
+
+.e5
+{
+    display: inline-block;
+    width: 150px;
+    text-align: center;
+}
+
+.e6
+{
+    display: inline-block;
+    width: 200px;
+    text-align: center;
+}
+
+.e7
+{
+    display: inline-block;
+    width: 250px;
+    text-align: center;
+}
+
+
+.e1 span
+{
+    display: none;
+    text-align: center;
+    color: Red;
+}
+
+.e2 span
+{
+    display: none;
+    text-align: center;
+    color: Red;
+}
+
+.e3 span
+{
+    display: none;
+    text-align: center;
+    color: Red;
+}
+
+.e4 span
+{
+    display: none;
+    text-align: center;
+    color: Red;
+}
+
+.e5 span
+{
+    display: none;
+    text-align: center;
+    color: Red;
+}
+
+.e6 span
+{
+    display: none;
+    text-align: center;
+    color: Red;
+}
+
+.e7 span
+{
+    display: none;
+    text-align: center;
+    color: Red;
+}
+
+.theLabel
+{
+    float: right;
+    width: 14px;
+    height: 14px;
+    margin-left: 5px;
+    font-size: 11px;
+}
+
+.red
+{
+    float: right;
+    width: 14px;
+    height: 14px;
+    background: red;
+    margin-left: 5px;
+    cursor: pointer;
+}
+
+.yellow
+{
+    float: right;
+    width: 14px;
+    height: 14px;
+    background: yellow;
+    margin-left: 5px;
+    cursor: pointer;
+    display: none;
+}
+
+.green
+{
+    float: right;
+    width: 14px;
+    height: 14px;
+    background: green;
+    cursor: pointer;
+    margin-left: 5px;
+    display: none;
+}
+
+span.e1
+{
+    border-bottom: 1px solid #777;
+}
+
+span.e2
+{
+    border-bottom: 1px solid #777;
+}
+
+span.e3
+{
+    border-bottom: 1px solid #777;
+}
+
+span.e4
+{
+    border-bottom: 1px solid #777;
+}
+
+span.e5
+{
+    border-bottom: 1px solid #777;
+}
+
+span.e7
+{
+    border-bottom: 1px solid #777;
+}
+
