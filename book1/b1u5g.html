@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<head>
+<title>11</title>
+<link href="book2.css" rel="stylesheet" type="text/css">
+
+<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Josefin+Sans+Std+Light">
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function () {
+
+	$("#next").click(function() {
+		$("#previous").show();
+		var testar = true;
+	
+		if(testar && $("#p1").css('display') == 'block'){
+			$("#p1").hide();
+			document.getElementById('mmm').pause();
+			$("#mmm").attr('src','b2u11h2.mp3');
+			document.getElementById('mmm').play();
+			$("#p2").show();
+			testar = false;
+		}
+		
+		if(testar && $("#p2").css('display') == 'block'){
+			$("#p2").hide();
+			document.getElementById('mmm').pause();
+			$("#mmm").attr('src','b2u11h3.mp3');
+			document.getElementById('mmm').play();
+			$("#p3").show();
+			testar = false;
+		}
+		
+		if(testar && $("#p3").css('display') == 'block'){
+			$("#p3").hide();
+			document.getElementById('mmm').pause();
+			$("#mmm").attr('src','b2u11h4.mp3');
+			document.getElementById('mmm').play();
+			$("#p4").show();
+			$("#next").hide();
+			testar = false;
+		}
+	});
+	
+	$("#previous").click(function() {
+		$("#next").show();
+		var testar = true;
+		
+		if(testar && $("#p2").css('display') == 'block'){
+			$("#p2").hide();
+			document.getElementById('mmm').pause();
+			$("#mmm").attr('src','b2u11h1.mp3');
+			document.getElementById('mmm').play();
+			$("#p1").show();
+			$("#previous").hide();
+			testar = false;
+		}
+		
+		if(testar && $("#p3").css('display') == 'block'){
+			$("#p3").hide();
+			document.getElementById('mmm').pause();
+			$("#mmm").attr('src','b2u11h2.mp3');
+			document.getElementById('mmm').play();
+			$("#p2").show();
+			testar = false;
+		}
+		
+		if(testar && $("#p4").css('display') == 'block'){
+			$("#p4").hide();
+			document.getElementById('mmm').pause();
+			$("#mmm").attr('src','b2u11h3.mp3');
+			document.getElementById('mmm').play();
+			$("#p3").show();
+			testar = false;
+		}
+	});
+
+});
+</script>
+
+<style type="text/css">
+	table
+	{
+		border-width: 0 0 1px 1px;
+		border-spacing: 0;
+		border-collapse: collapse;
+		border-style: solid;
+		font-size: 20px;
+	}
+
+	td, th
+	{
+		margin: 0;
+		padding: 4px;
+		border-width: 1px 1px 0 0;
+		border-style: solid;
+	}
+	
+	p {
+		margin:0px;
+	}
+</style>
+<body>
+
+	<!-- header -->
+<div id="class" class="wrap-section-header" style="display: block;">
+
+        <div class="section-header">
+            <h1>Unit Eleven - Homework</h1>
+        </div>
+    </div>
+	<!-- #END header -->
+<div class="wrap-section-body" id="classBody" style="display: block;">
+	<div id="class_content"><div class="class_container">
+
+
+	
+	
+    <form name="form1" method="post" action="Book2homework11.aspx" id="form1">
+    <div id="myDiv" style="background-image: url('images/qback11.jpg')">
+        <div id="pager">
+            <div id="previous" style="display: none;">
+            </div>
+            <div id="next" style="display: block;">
+            </div>
+        </div>
+
+        <div id="paginaAtual">
+		<audio id="mmm" controls src="b1u1g1.mp3"> 
+			Your browser does not support the audio element.
+		</audio></div>
+        <div style="padding: 30px;">
+            <div style="height: 500px;">
+                <div id="p1" class="pagina" style="display: block;">
+
+                    <span class="titulo">Grammar - An Interesting Weekend</span><br /><br />
+                    <p class="bold">
+                        1. SIMPLE PRESENT.
+                    </p>
+                    <p>
+                        We use the simple present form when want to refer about routines. It's formed by:
+                    </p><br />
+					
+					<p class="bold">
+						SUBJECT + MAIN VERD + COMPLEMENT (affirmative)<br />
+						
+						<table border="1">
+							<tr>
+								<td>I</td>
+								<td></td>
+								<td></td>
+							</tr>
+							<tr>
+								<td>YOU</td>
+								<td>WORK</td>
+								<td>IN SP.</td>
+							</tr>
+							
+							<tr>
+								<td>WE</td>
+								<td>WATCH</td>
+								<td>TV EVERY NIGHT.</td>
+							</tr>
+							
+							<tr>
+								<td>YOU</td>
+								<td>STUDY</td>
+								<td>ENGLISH AT WELBE PRIVATE CLASS.</td>
+							</tr>
+							
+							<tr>
+								<td>THEY</td>
+								<td></td>
+								<td></td>
+							</tr>
+						</table>
+					</p>
+					<br />
+					<p>
+						But when we refer to HE / SHE / IT the rule is:<br />
+						<strong>SUBJECT + MAIN VERD + S (ES / IES) + COMPLEMENT (affirmative)</strong><br />
+						We normally add S to the verd, but verbs ended by: S / SS / SH / CH / X / O / Z we add<br />
+						ES and verbs ended by: consonant + Y we change to consonant + IES.
+					</p>
+					<br />
+					<div style="display:block; width:70%; margin:auto;">
+						<table border="1">
+								<tr>
+									<td>HE</td>
+									<td>WORKS</td>
+									<td>IN SP.</td>
+								</tr>
+								<tr>
+									<td>SHE</td>
+									<td>WATCHES</td>
+									<td>TV EVERY NIGHT.</td>
+								</tr>
+								<tr>
+									<td>IT</td>
+									<td>STUDIES</td>
+									<td>ENGLISH AT WELBE PRIVATE CLASS</td>
+								</tr>
+						</table>
+					</div>
+                </div>
+                <div id="p2" class="pagina" style="display: none;">
+                    <p>
+						Notice: Attention with the verb TO HAVE. I have a car. He has a car.<br />
+						And not: He haves a car.
+					</p>
+					<br />
+					<p>
+						<strong>In interrogative the rule is:</strong> DO + SUBJECT + MAINVERB + COMPLEMENT
+					</p>
+					<br />
+					
+					<div style="display:block; width:90%; margin:auto;">
+						<table style="width:100%">
+							<tr>
+								<td></td>
+								<td>I</td>
+								<td></td>
+								<td></td>
+							</tr>
+							<tr>
+								<td></td>
+								<td>YOU</td>
+								<td>WORK</td>
+								<td>IN SP?</td>
+							</tr>
+							<tr>
+								<td>DO</td>
+								<td>WE</td>
+								<td>WATCH</td>
+								<td>TV EVERY NIGHT?</td>
+							</tr>
+							<tr>
+								<td></td>
+								<td>YOU</td>
+								<td>STUDY</td>
+								<td>ENGLISH AT WELBE PRIVATE CLASS?</td>
+							</tr>
+							<tr>
+								<td></td>
+								<td>THEY</td>
+								<td></td>
+								<td></td>
+							</tr>
+						</table>
+					</div>
+					
+					<br /><br />
+					<p>
+					And for HE / SHE / IT the rule is: DOES + SUBJECT + MAIN VERD + COMPLEMENT 
+					</p>
+					<br />
+					<div style="display:block; width:85%; margin:auto;">
+						<table style="width:100%">
+							<tr>
+								<td></td>
+								<td>HE</td>
+								<td>WORK</td>
+								<td>IN SP?</td>
+							</tr>
+							<tr>
+								<td>DOES</td>
+								<td>SHE</td>
+								<td>WATCH</td>
+								<td>TV EVERY NIGHT?</td>
+							</tr>
+							<tr>
+								<td></td>
+								<td>IT</td>
+								<td>STUDY</td>
+								<td>ENGLISH AT WELBE PRIVATE CLASS?</td>
+							</tr>
+						</table>
+					</div>
+                </div>
+                <div id="p3" class="pagina" style="display: none;">
+                    <p>
+						In negative: SUBJECT + DO + NOT (DON'T) + MAIN VERD + COMPLEMENT
+					</p>
+					<br />
+					
+					<div style="display:block; width:90%; margin:auto;">
+						<table style="width:100%">
+							<tr>
+								<td>I</td>
+								<td></td>
+								<td></td>
+								<td></td>
+							</tr>
+							<tr>
+								<td>YOU</td>
+								<td></td>
+								<td>WORK</td>
+								<td>IN SP.</td>
+							</tr>
+							<tr>
+								<td>WE</td>
+								<td>DON'T</td>
+								<td>WATCH</td>
+								<td>TV EVERY NIGHT.</td>
+							</tr>
+							<tr>
+								<td>YOU</td>
+								<td></td>
+								<td>STUDY</td>
+								<td>ENGLISH AT WELBE PRIVATE CLASS.</td>
+							</tr>
+						</table>
+					</div>
+					
+					<br /><br />
+					<p>
+					And for HE / SHE / IT: SUBJECT + DOES + NO (DOESN'T) + MAIN VERB + COMPLEMENT
+					</p>
+					<br />
+					<div style="display:block; width:85%; margin:auto;">
+						<table style="width:100%">
+							<tr>
+								<td>HE</td>
+								<td></td>
+								<td>WORK</td>
+								<td>IN SP.</td>
+							</tr>
+							<tr>
+								<td>SHE</td>
+								<td>DOESN'T</td>
+								<td>WATCH</td>
+								<td>TV EVERY NIGHT.</td>
+							</tr>
+							<tr>
+								<td>IT</td>
+								<td></td>
+								<td>STUDY</td>
+								<td>ENGLISH AT WELBE PRIVATE CLASS.</td>
+							</tr>
+						</table>
+					</div>
+					<br />
+					<p>
+					NOTICE: Pay attentation to the verb when the auxiliary DOES is used, because the verb <br />
+					needs to lose the S, ES or IES.
+					</p>
+                </div>
+                <div id="p4" class="pagina" style="display: none;">
+                    <span class="bold">2. AMERICAN AND BRITISH ENGLISH </span>
+                    <br />
+					<p>
+					American: favorive / color / program / to realize / favor.<br />
+					British: favourite / colour / programme / to realise / favour.
+					</p>
+					<br />
+					<br />
+					<span class="bold">3. COMPOSITION </span>
+					<p style="font-weight:strong;">
+					Describe your daily routine using the Simple Present form.
+					</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    </form>
+
+</div>
+</div>
+</body></html>
+				

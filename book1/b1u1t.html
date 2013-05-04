@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<head>
+<title>11</title>
+<link href="book2.css" rel="stylesheet" type="text/css">
+
+<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Josefin+Sans+Std+Light">
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script src="http://file.urin.take-uma.net/jquery.balloon.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function () {
+	$('.balloon').balloon({
+		tipSize: 24,
+		css: {
+
+			opacity: '1'
+			
+		}
+  });
+	$('strong').balloon();
+
+	var musicSrc = 'b1u1t';
+	var langDefault = 'pt';
+
+	$("#next").click(function() {
+		$("#previous").show();
+		var testar = true;
+	
+		if(testar && $("#p1").css('display') == 'block'){
+			$("#p1").hide();
+			document.getElementById('mmm').pause();
+			$("#mmm").attr('src',musicSrc+ '2' +langDefault+'.mp3');
+			document.getElementById('mmm').play();
+			$("#p2").show();
+			$("#next").hide();
+			testar = false;
+		}
+	});
+	
+	$("#ptbr").click(function() {
+		document.getElementById('mmm').pause();
+		var a = $("#mmm").attr('src');
+		a = a.substring(0, a.length-6);
+		a += "pt.mp3";
+		$("#mmm").attr('src',a);
+		document.getElementById('mmm').play();
+	});
+	$("#enus").click(function() {
+		document.getElementById('mmm').pause();
+		var a = $("#mmm").attr('src');
+		a = a.substring(0, a.length-6);
+		a += "en.mp3";
+		$("#mmm").attr('src',a);
+		document.getElementById('mmm').play();
+	});
+	
+	$("#previous").click(function() {
+		$("#next").show();
+		var testar = true;
+		
+		if(testar && $("#p2").css('display') == 'block'){
+			$("#p2").hide();
+			document.getElementById('mmm').pause();
+			$("#mmm").attr('src','b2u11h1.mp3');
+			document.getElementById('mmm').play();
+			$("#p1").show();
+			$("#previous").hide();
+			testar = false;
+		}
+	});
+
+});
+</script>
+
+<style type="text/css">
+	table
+	{
+		border-width: 0 0 1px 1px;
+		border-spacing: 0;
+		border-collapse: collapse;
+		border-style: solid;
+		font-size: 20px;
+	}
+
+	td, th
+	{
+		margin: 0;
+		padding: 4px;
+		border-width: 1px 1px 0 0;
+		border-style: solid;
+	}
+	
+	p {
+		margin:0px;
+	}
+</style>
+<body>
+
+	<!-- header -->
+<div id="class" class="wrap-section-header" style="display: block;">
+
+        <div class="section-header">
+            <h1>Unit Eleven - Homework</h1>
+        </div>
+    </div>
+	<!-- #END header -->
+<div class="wrap-section-body" id="classBody" style="display: block;">
+	<div id="class_content"><div class="class_container">
+
+
+	
+	
+    <form name="form1" method="post" action="Book2homework11.aspx" id="form1">
+    <div id="myDiv" style="background-image: url('images/qback1.jpg')">
+        <div id="pager">
+            <div id="previous" style="display: none;">
+            </div>
+            <div id="next" style="display: block;">
+            </div>
+        </div>
+
+        <div id="paginaAtual">
+			<img id="enus" src="http://www.webrazuca.com/v4/images/dc_icon_usa.png" width="30" height="30">
+			
+				<audio id="mmm" controls src="b1u1g1pt.mp3"> 
+					Your browser does not support the audio element.
+				</audio>
+			
+			<img id="ptbr" src="http://icongal.com/gallery/image/32079/brasil_br_kr_brazil.png" width="30" height="30">
+		</div>
+        <div style="padding: 25px;">
+            <div style="height: 500px;">
+                <div id="p1" class="pagina" style="display: block;">
+					<strong>Introduction</strong><br />
+					
+					- Hello guys, I'm Marc your English teacher today. I am 36 years old and have four children, Gabi, Henry, Pete and Arthur. Gabi is 14, Henry is 8 years old, Pete <span title="está completando" class="balloon">is turning</span> 4 and Arthur is just a baby.
+					I am <span title="casado" class="balloon">married</span>. My wife's name is Marie. She is 29 years old.
+					- Now, you guys introduce yourselves.
+					- James, tell the other students where you are from, how old you are and what you do in your country.
+					- Ok teacher. Well, I am from Mexico. I am 20 years old and I am an <span title="Estudante de engenharia" class="balloon">engineering student</span> in Mexico.
+					- Perfect James. Now Julia it is <span title="sua vez" class="balloon">your turn</span> to tell the other students your nationality, <span title="casado" class="balloon">age</span> and your <span title="Descrição do seu trabalho" class="balloon">job description</span>.
+					- Well people, I am from Korea. I am 32 years old and I am a <span title="advogada" class="balloon">lawyer</span> <span title="lá / ali / aí" class="balloon">there</span>.
+                </div>
+                <div id="p2" class="pagina" style="display: none;">
+					- Good job Julia! Now Manuel, <span title="responda" class="balloon">answer</span> these 3 questions, please. Where are you from? How old are you? What is your job description?
+					- <span title="certo" class="balloon">All right</span>, I'm from Portugal, I am 25 and I am a taxi driver there.
+					- <span title="perfeito" class="balloon">Terrific</span>! Now Manuel, only to train. introduce Julia to us, please.
+					- Ok this is Julia, she is a 32 year-old-lawyer and she is from Korea.
+					- Ok Manuel, very good job. Now Julia, you introduce James to us, please.
+					- All right, that is James from Mexico. He is 20 years old and he is an engineering student there.
+					- <span title="ótimo" class="balloon">That's great</span> Julia, thank you. Now James, you introduce your new friend Manuel <span title="para nós" class="balloon">to us</span>, please.
+					- That's ok teacher. That is Manuel. He is a Portuguese taxi driver. He is 25 years old.
+					- <span title="bom trabalho / bem feito" class="balloon">Well done</span> James. Now you <span title="leitor" class="balloon">reader</span> introduce yourself, ok?
+                </div>
+            </div>
+        </div>
+    </div>
+    </form>
+
+</div>
+</div>
+</body></html>
+				

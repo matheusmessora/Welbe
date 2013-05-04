@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<head>
+<title>11</title>
+<link href="book2.css" rel="stylesheet" type="text/css">
+
+<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Josefin+Sans+Std+Light">
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function () {
+	var musicSrc = 'b1u1g';
+	var langDefault = 'pt';
+
+	$("#next").click(function() {
+		$("#previous").show();
+		var testar = true;
+	
+		if(testar && $("#p1").css('display') == 'block'){
+			$("#p1").hide();
+			document.getElementById('mmm').pause();
+			$("#mmm").attr('src',musicSrc+ '2' +langDefault+'.mp3');
+			document.getElementById('mmm').play();
+			$("#p2").show();
+			testar = false;
+		}
+		
+		if(testar && $("#p2").css('display') == 'block'){
+			$("#p2").hide();
+			document.getElementById('mmm').pause();
+			$("#mmm").attr('src',musicSrc+'3' +langDefault+'.mp3');
+			document.getElementById('mmm').play();
+			$("#p3").show();
+			testar = false;
+		}
+		
+		if(testar && $("#p3").css('display') == 'block'){
+			$("#p3").hide();
+			document.getElementById('mmm').pause();
+			$("#mmm").attr('src',musicSrc+'4' +langDefault+'.mp3');
+			document.getElementById('mmm').play();
+			$("#p4").show();
+			testar = false;
+		}
+		
+		if(testar && $("#p4").css('display') == 'block'){
+			$("#p4").hide();
+			document.getElementById('mmm').pause();
+			$("#mmm").attr('src',musicSrc+'5' +langDefault+'.mp3');
+			document.getElementById('mmm').play();
+			$("#p5").show();
+			testar = false;
+		}
+		if(testar && $("#p5").css('display') == 'block'){
+			$("#p5").hide();
+			document.getElementById('mmm').pause();
+			$("#mmm").attr('src',musicSrc+'6' +langDefault+'.mp3');
+			document.getElementById('mmm').play();
+			$("#p6").show();
+			$("#next").hide();
+			testar = false;
+		}
+	});
+	$("#ptbr").click(function() {
+		document.getElementById('mmm').pause();
+		var a = $("#mmm").attr('src');
+		a = a.substring(0, a.length-6);
+		a += "pt.mp3";
+		$("#mmm").attr('src',a);
+		document.getElementById('mmm').play();
+	});
+	$("#enus").click(function() {
+		document.getElementById('mmm').pause();
+		var a = $("#mmm").attr('src');
+		a = a.substring(0, a.length-6);
+		a += "en.mp3";
+		$("#mmm").attr('src',a);
+		document.getElementById('mmm').play();
+	});
+	
+	$("#previous").click(function() {
+		$("#next").show();
+		var testar = true;
+		
+		if(testar && $("#p2").css('display') == 'block'){
+			$("#p2").hide();
+			document.getElementById('mmm').pause();
+			$("#mmm").attr('src','b2u11h1.mp3');
+			document.getElementById('mmm').play();
+			$("#p1").show();
+			$("#previous").hide();
+			testar = false;
+		}
+		
+		if(testar && $("#p3").css('display') == 'block'){
+			$("#p3").hide();
+			document.getElementById('mmm').pause();
+			$("#mmm").attr('src','b2u11h2.mp3');
+			document.getElementById('mmm').play();
+			$("#p2").show();
+			testar = false;
+		}
+		
+		if(testar && $("#p4").css('display') == 'block'){
+			$("#p4").hide();
+			document.getElementById('mmm').pause();
+			$("#mmm").attr('src','b2u11h3.mp3');
+			document.getElementById('mmm').play();
+			$("#p3").show();
+			testar = false;
+		}
+		if(testar && $("#p5").css('display') == 'block'){
+			$("#p5").hide();
+			document.getElementById('mmm').pause();
+			$("#mmm").attr('src','b2u11h3.mp3');
+			document.getElementById('mmm').play();
+			$("#p4").show();
+			testar = false;
+		}
+		if(testar && $("#p6").css('display') == 'block'){
+			$("#p6").hide();
+			document.getElementById('mmm').pause();
+			$("#mmm").attr('src','b2u11h3.mp3');
+			document.getElementById('mmm').play();
+			$("#p5").show();
+			testar = false;
+		}
+	});
+
+});
+</script>
+
+<style type="text/css">
+	table
+	{
+		border-width: 0 0 1px 1px;
+		border-spacing: 0;
+		border-collapse: collapse;
+		border-style: solid;
+		font-size: 20px;
+	}
+
+	td, th
+	{
+		margin: 0;
+		padding: 4px;
+		border-width: 1px 1px 0 0;
+		border-style: solid;
+	}
+	
+	p {
+		margin:0px;
+	}
+</style>
+<body>
+
+	<!-- header -->
+<div id="class" class="wrap-section-header" style="display: block;">
+
+        <div class="section-header">
+            <h1>Unit Eleven - Homework</h1>
+        </div>
+    </div>
+	<!-- #END header -->
+<div class="wrap-section-body" id="classBody" style="display: block;">
+	<div id="class_content"><div class="class_container">
+
+
+	
+	
+    <form name="form1" method="post" action="Book2homework11.aspx" id="form1">
+    <div id="myDiv" style="background-image: url('images/qback1.jpg')">
+        <div id="pager">
+            <div id="previous" style="display: none;">
+            </div>
+            <div id="next" style="display: block;">
+            </div>
+        </div>
+
+        <div id="paginaAtual">
+			<img id="enus" src="http://www.webrazuca.com/v4/images/dc_icon_usa.png" width="30" height="30">
+			
+				<audio id="mmm" controls src="b1u1g1pt.mp3"> 
+					Your browser does not support the audio element.
+				</audio>
+			
+			<img id="ptbr" src="http://icongal.com/gallery/image/32079/brasil_br_kr_brazil.png" width="30" height="30">
+		</div>
+        <div style="padding: 25px;">
+            <div style="height: 500px;">
+                <div id="p1" class="pagina" style="display: block;">
+
+                    <span class="titulo">Grammar - INTRODUCTION</span><br /><br />
+                    <p class="bold">
+                        1. ALPHABET
+                    </p><br />
+                    <p>
+                        A___,B___,C___,D___,E___,F___,G___,H___,I___,J___,K___,L___,<br />
+						M___,N___,O___,P___,Q___,R___,S___,T___,U___,V___,W___,X___,<br />
+						Y___,Z___,___.
+                    </p><br />
+					
+					<p class="bold">
+						2. NUMBERS
+					</p><br />
+					
+					<div style="display:block; width:75%; margin:auto;">
+						<table border="1" style="width:100%;">
+							<tr>
+								<td>1 one (first)</td>
+								<td>11 eleven</td>
+								<td>21 twenty-one</td>
+							</tr>
+							<tr>
+								<td>2 two (second)</td>
+								<td>12 twelve</td>
+								<td>30 thirty</td>
+							</tr>
+							<tr>
+								<td>3 three (third)</td>
+								<td>13 Thirteen</td>
+								<td>40 forty</td>
+							</tr>
+							<tr>
+								<td>4 four (fourth)</td>
+								<td>14 fourteen</td>
+								<td>50 fifty</td>
+							</tr>
+							<tr>
+								<td>5 five (fifth)</td>
+								<td>15 fifteen</td>
+								<td>60 sixty</td>
+							</tr>
+							<tr>
+								<td>6 six (sixth)</td>
+								<td>16 sixteen</td>
+								<td>70 seventy</td>
+							</tr>
+							<tr>
+								<td>7 seven (seventh)</td>
+								<td>17 seventeen</td>
+								<td>80 eighty</td>
+							</tr>
+							<tr>
+								<td>8 eight (eighth)</td>
+								<td>18 eighteen</td>
+								<td>90 ninety</td>
+							</tr>
+							<tr>
+								<td>9 nine (ninth)</td>
+								<td>19 nineteen</td>
+								<td>100 one hundred</td>
+							</tr>
+							<tr>
+								<td>10 ten (tenth)</td>
+								<td>20 twenty</td>
+								<td>1000 one thousand</td>
+							</tr>
+						</table>
+					</div>
+                </div>
+                <div id="p2" class="pagina" style="display: none;">
+                    <strong>3. VERB TO BE</strong>
+					<br /><br />
+					
+					<div style="display:block; width:100%; margin:auto;">
+						<table style="width:100%">
+							<tr>
+								<td><strong>PERSONAL PRONOUNS</strong></td>
+								<td><strong>AFFIRMATIVE</strong></td>
+								<td><strong>NEGATIVE</strong></td>
+								<td><strong>INTERROGATIVE</strong></td>
+							</tr>
+							<tr>
+								<td>I</td>
+								<td>AM (I'm)</td>
+								<td>AM NOT</td>
+								<td>AM I?</td>
+							</tr>
+							<tr>
+								<td>YOU</td>
+								<td>ARE (you're)</td>
+								<td>ARE NOT (aren't)</td>
+								<td>ARE YOU?</td>
+							</tr>
+							<tr>
+								<td>HE</td>
+								<td>IS (he's)</td>
+								<td>IS NOT</td>
+								<td>IS HE?</td>
+							</tr>
+							<tr>
+								<td>SHE</td>
+								<td>IS (she's)</td>
+								<td>IS NOT (isn't)</td>
+								<td>IS SHE?</td>
+							</tr>
+							<tr>
+								<td>IT</td>
+								<td>IS (it's)</td>
+								<td>IS NOT</td>
+								<td>IS IT?</td>
+							</tr>
+							<tr>
+								<td>WE</td>
+								<td>ARE (we're)</td>
+								<td>ARE NOT</td>
+								<td>ARE WE?</td>
+							</tr>
+							<tr>
+								<td>YOU</td>
+								<td>ARE (you're)</td>
+								<td>ARE NOT</td>
+								<td>ARE YOU?</td>
+							</tr>
+							<tr>
+								<td>THEY</td>
+								<td>ARE (they're)</td>
+								<td>ARE NOT</td>
+								<td>ARE THEY?</td>
+							</tr>
+						</table>
+					</div>
+					
+					<br /><br />
+					<strong>Examples:<br /></strong>
+					<ul>
+						<li>I am a teacher.</li>
+						<li>You aren't the president.</li>
+						<li>Is she your sister?</li>
+					</ul>
+                </div>
+                <div id="p3" class="pagina" style="display: none;">
+                    <strong>4. DEMONSTRATIVE PRONOUNS</strong>
+					<br /><br />
+					
+					<div style="display:block; width:80%; margin:auto;">
+						<table style="width:100%">
+							<tr>
+								<td></td>
+								<td><strong>Near</strong></td>
+								<td><strong>Far</strong></td>
+							</tr>
+							<tr>
+								<td><strong>Singular</strong></td>
+								<td>THIS</td>
+								<td>THAT</td>
+							</tr>
+							<tr>
+								<td><strong>PLural</strong></td>
+								<td>THESE</td>
+								<td>THOSE</td>
+							</tr>
+						</table>
+					</div>
+					<br /><br />
+					
+					<strong>Examples:</strong> Is this your pen? That is my car. These pencils are mine. Those are not my pens.
+					<br /><br />
+					
+					<strong>5. ARTICLES</strong><br />
+					
+					<div style="display:block; width:45%; margin:auto;">
+						<table style="width:100%">
+							<tr>
+								<td><strong>Definite article</strong></td>
+								<td><strong>Indefinite articles</strong></td>
+							</tr>
+							<tr>
+								<td>THE</td>
+								<td>A</td>
+							</tr>
+							<tr>
+								<td></td>
+								<td>AN</td>
+							</tr>
+						</table>
+					</div>
+					<br /><br />
+					
+					Use <strong>THE</strong> before nouns and never before names. <strong>The</strong> car is red. <strong>The</strong> teacher is in the classrom.
+					<br />
+					Use <strong>A</strong> before words with sound of consonant. This is <strong>a</strong> red car. That is <strong>a</strong> beautiful girl.
+					<br />
+					Use <strong>AN</strong> before words with sound of vowel. This is <strong>an</strong> orange car. That is <strong>an</strong> ugly girl.
+                </div>
+                <div id="p4" class="pagina" style="display: none;">
+                    <strong>6. PREPOSITIONS</strong>
+                    <br />
+					<strong>FROM</strong>
+					<br />
+					
+					We use <strong>FROM</strong> to indicate origin.
+					<br />
+					
+					Examples: The boys are from Canada. Where are you from?
+					<br />
+					
+					IN<br />
+					We use IN to indicate inclusion into a space or periods of time.
+					<br />
+					
+					Examples:<br />
+					<ul>
+						<li>The students are in the classroom.</li>
+						<li>In the morning; in the afternoon; in the evening.</li>
+						<li>In January; in 1987.</li>
+						<li>In the spring; in the summer; in the fall; in the winter.</li>
+					</ul>
+					<br />
+					<strong>NOTICE:</strong> When we refer to the night, the preposition used is AT; at night.
+					<br />
+					
+					ON<br />
+					We use ON when something is in contact with something, before weekdays and specific date.<br />
+					Examples: The picture is on the wall; My next class is on Monday; On July 7.
+                </div>
+				<div id="p5" class="pagina" style="display: none;">
+					<strong>7. INTERROGATIVE PRONOUNS</strong>
+					<br />
+					
+					<div style="display:block; width:100%; margin:auto;">
+						<table style="width:100%; border:0px">
+							<tr>
+								<td><strong>WHAT</strong></td>
+								<td>It's about things.</td>
+								<td>What's this? / What is her mom's name? / What time is it?</td>
+							</tr>
+							<tr>
+								<td><strong>WHERE</strong></td>
+								<td>It's about places.</td>
+								<td>Where is your house? / Where are you from?</td>
+							</tr>
+							<tr>
+								<td><strong>WHICH</strong></td>
+								<td>When we have options.</td>
+								<td>Which car is yours, they black or the red one?</td>
+							</tr>
+							<tr>
+								<td><strong>HOW</strong></td>
+								<td>It's about state.</td>
+								<td>How are you? / How beautiful she is!</td>
+							</tr>
+							<tr>
+								<td><strong>WHEN</strong></td>
+								<td>It's about time.</td>
+								<td>When is the party? It is tomorrow.</td>
+							</tr>
+						</table>
+					</div>
+					<br />
+					
+					<strong>8. PLURAL</strong><br />
+					
+					We normally add S to the noun.<br />
+					Car / cards;&nbsp;&nbsp;&nbsp;&nbsp; pen / pens;&nbsp;&nbsp;&nbsp;&nbsp;computer/computers.
+					<br />
+					<br />
+					We add ES when the words end by: S / SS / SH / CH / X / O / Z<br />
+					Bus / buses; &nbsp;&nbsp;&nbsp;&nbsp; box / boxes; &nbsp;&nbsp;&nbsp;&nbsp; hero / heroes.
+				</div>
+				
+				<div id="p6" class="pagina" style="display: none;">
+					Words ended by consonant + Y: remove Y and add IES.<br />
+					University / universities; &nbsp;&nbsp;&nbsp;baby / babies
+					<br /><br />
+					
+					Words ended by F or FE: remove F or FE and add VES.<br />
+					Life / lives; &nbsp;&nbsp;&nbsp; wolf / wolves<br />
+					NOTICE: Some words do not follow a standard, then just add S.<br />
+					Example: Dwarf / dwarfs
+					<br /><br />
+					
+					Some words are never put into the plural.<br />
+					one information / two information; one fish / two fish; one Japanese / two Japanese;<br />
+					one aircraft / two aircraft; one hundred / two hundred;
+					<br /><br />
+					
+					There are some nouns which have irregular plural.<br />
+					one man / two men; one woman / two women; one child / two children;<br />
+					one tooth / two teeth; one person / two people or two persons (formal);<br />
+					one foot / two feet;
+					
+				</div>
+            </div>
+        </div>
+    </div>
+    </form>
+
+</div>
+</div>
+</body></html>
+				

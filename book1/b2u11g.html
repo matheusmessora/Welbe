@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<head>
+<title>11</title>
+<link href="book2.css" rel="stylesheet" type="text/css">
+
+<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Josefin+Sans+Std+Light">
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function () {
+
+	$("#next").click(function() {
+		$("#previous").show();
+		var testar = true;
+	
+		if(testar && $("#p1").css('display') == 'block'){
+			$("#p1").hide();
+			document.getElementById('mmm').pause();
+			$("#mmm").attr('src','b2u11gp2.mp3');
+			document.getElementById('mmm').play();
+			$("#p2").show();
+			testar = false;
+		}
+		
+		if(testar && $("#p2").css('display') == 'block'){
+			$("#p2").hide();
+			document.getElementById('mmm').pause();
+			$("#mmm").attr('src','b2u11gp3.mp3');
+			document.getElementById('mmm').play();
+			$("#p3").show();
+			testar = false;
+		}
+		
+		if(testar && $("#p3").css('display') == 'block'){
+			$("#p3").hide();
+			document.getElementById('mmm').pause();
+			$("#mmm").attr('src','b2u11gp4.mp3');
+			document.getElementById('mmm').play();
+			$("#p4").show();
+			$("#next").hide();
+			testar = false;
+		}
+	});
+	
+	$("#previous").click(function() {
+		$("#next").show();
+		var testar = true;
+		
+		if(testar && $("#p2").css('display') == 'block'){
+			$("#p2").hide();
+			document.getElementById('mmm').pause();
+			$("#mmm").attr('src','b2u11gp1.mp3');
+			document.getElementById('mmm').play();
+			$("#p1").show();
+			$("#previous").hide();
+			testar = false;
+		}
+		
+		if(testar && $("#p3").css('display') == 'block'){
+			$("#p3").hide();
+			document.getElementById('mmm').pause();
+			$("#mmm").attr('src','b2u11gp2.mp3');
+			document.getElementById('mmm').play();
+			$("#p2").show();
+			testar = false;
+		}
+		
+		if(testar && $("#p4").css('display') == 'block'){
+			$("#p4").hide();
+			document.getElementById('mmm').pause();
+			$("#mmm").attr('src','b2u11gp3.mp3');
+			document.getElementById('mmm').play();
+			$("#p3").show();
+			testar = false;
+		}
+	});
+});
+
+function showCorrect(campo){
+	campo.html('Correct');
+	campo.css('color', 'green');
+}
+function player(mp3){
+	document.getElementById('mmm').pause();
+	$("#mmm").attr('src',mp3 + '.mp3');
+	document.getElementById('mmm').play();
+}
+
+function teste(campo){
+	var retorno = true;
+	var rel = $(campo).attr("rel").toLowerCase();
+	
+	if ($(campo).attr("rel").indexOf("|") == -1) {
+		var valor = $(campo).val().toLowerCase();
+		if(valor == rel){
+			$(campo).css("color","green");
+		}else {
+			$(campo).css("color","red");
+			retorno = false;
+		}
+	}else {
+		var ar = $(campo).attr("rel").toLowerCase().split("|");
+		for (i = 0; i < ar.length; i++) {
+			if (ar[i] == $(campo).val().toLowerCase()) {
+				$(campo).css('color', 'green');
+				break;
+			} else {
+				$(campo).css('color', 'red');
+				retorno = false;
+			}
+		}
+	}
+	
+	return retorno;
+}
+</script>
+
+<body>
+
+	<!-- header -->
+<div id="class" class="wrap-section-header" style="display: block;">
+
+        <div class="section-header">
+            <h1>Unit Eleven - Homework</h1>
+        </div>
+    </div>
+	<!-- #END header -->
+<div class="wrap-section-body" id="classBody" style="display: block;">
+	<div id="class_content"><div class="class_container">
+
+
+	
+	
+    <form name="form1" method="post" action="Book2homework11.aspx" id="form1">
+    <div id="myDiv" style="background-image: url('images/qback11.jpg')">
+        <div id="pager">
+            <div id="previous" style="display: block;">
+            </div>
+            <div id="next" style="display: block;">
+            </div>
+        </div>
+
+        <div id="paginaAtual">
+		<audio id="mmm" controls src="b2u11gp1.mp3"> 
+			Your browser does not support the audio element.
+		</audio></div>
+        <div style="padding: 30px;">
+            <div style="height: 500px;">
+                <div id="p1" class="pagina" style="display: block;">
+                    <p class="titulo">
+                        GRAMMAR - THE DESSERT</p>
+                    <p class="bold">
+                        1. COUNTABLE AND UNCOUNTABLE NOUNS</p>
+                    <p>
+                        When we talk about countable and uncountable things, we’d better imagine singular
+                        and plural, because most of the times we need to use adjectives like: <span class="bold">
+                            <br>
+                            <br>
+                            MUCH / MANY / LITTLE / FEW / A LITTLE / A FEW</span></p>
+                    <p>
+                        • Much is the opposite of little and expresses a great quantity. It is used in singular.
+                        <span class="bold">Example:</span> I do not drink much water. I drink little water.</p>
+                    <p>
+                        • Many is the opposite of few and expresses a great quantity. It is used in plural.</p>
+                    <p>
+                        <span class="bold">Example:</span> I do not have many friends. I have few friends.</p>
+                    <p>
+                        • A lot / lots of: They are informally used to replace many or much.</p>
+                    <p>
+                        <span class="bold">Example:</span> I have a lot of friends. I drink lots of water.</p>
+                </div>
+				
+                <div id="p2" class="pagina" style="display: none;">
+                    <p>
+                        • A little or a few are used when we mean that we do not have a great quantity of
+                        something, however it is enough.</p>
+                    <p>
+                        <span class="bold">Example:</span> Do you speak English Michel? I speak a little.
+                        So, we can talk a bit. (In this sentence the person means that his English is not
+                        excellent, but possible to communicate)</p>
+                    <p>
+                        You have a few minutes to finish the test. (Not many minutes, but enough to finish
+                        it)
+                    </p>
+                    <p>
+                        • Very is an adverb and is used before adjectives.
+                        <br>
+                        <span class="bold">Example:</span> She is a very beautiful girl. (Not much beautiful)</p>
+                    <p class="bold">
+                        2. SOME: It is an adjective and used most of the times with plural nouns or uncountable
+                        nouns.</p>
+                    <p>
+                        <span class="bold">Example:</span> I have some friends. I would like some water,
+                        please.</p>
+                    <p>
+                        We quite often use some to form a new word like: somebody, someone or something.
+                        It is very important to remember that they are considered 3rd person of the singular
+                        and are mostly used in affirmative or interrogative sentences (expecting YES in
+                        the answer).</p>
+                </div>
+				<div id="p3" class="pagina" style="display: none;">
+                    <br>
+                    <br>
+                    <p>
+                        <span class="bold">Example:</span> I think there is somebody at the door. Does someone
+                        here want to get a free ticket to Paris?</p>
+                    <p class="bold">
+                        3. ANY: It is an adjective and used mostly in the way of: “it does not matter which.”
+                        Or one or more without specification or identification.</p>
+                    <p>
+                        <span class="bold">Example:</span> You can get any bus, because they all go downtown.<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;If
+                        you have any witnesses, produce them.</p>
+                    <p>
+                        We usually use any to form a new word like: anybody, anyone and anything. They are
+                        also considered 3rd person of the singular and require special attention. They are
+                        often used in interrogative and negative forms, but sometimes used in affirmative
+                        one.</p>
+                    <p>
+                        <span class="bold">Example:</span> Does anybody know where Loraine is?<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;There
+                        is not anything to be done over here.<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;If
+                        there is anything I can do for you, please just let me know.</p>
+                </div>
+				
+                <div id="p4" class="pagina" style="display: none;">
+                    <p class="bold">
+                        4. NO ONE, NOBODY AND NOTHING</p>
+                    <p>
+                        They are used in affirmative sentences with negative meanings.</p>
+                    <p>
+                        <span class="bold">Example:</span> I know nothing about John. = I do not know anything
+                        about John.
+                        <br>
+                        There is nobody here better than me. = There is not anybody here better than me.</p>
+                    <p class="bold">
+                        5. Write a composition trying to use all the topics learnt in this lesson. (100
+                        words)</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    </form>
+
+</div>
+</div>
+</body></html>
+				

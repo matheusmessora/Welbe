@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<head>
+<title>11</title>
+<link href="book2.css" rel="stylesheet" type="text/css">
+
+<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Josefin+Sans+Std+Light">
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function () {
+
+	$("#next").click(function() {
+		$("#previous").show();
+		var testar = true;
+	
+		if(testar && $("#p1").css('display') == 'block'){
+			$("#p1").hide();
+			document.getElementById('mmm').pause();
+			$("#mmm").attr('src','b2u11gt2.mp3');
+			document.getElementById('mmm').play();
+			$("#p2").show();
+			$("#next").hide();
+			testar = false;
+		}
+	});
+	
+	$("#previous").click(function() {
+		$("#next").show();
+		var testar = true;
+		
+		if(testar && $("#p2").css('display') == 'block'){
+			$("#p2").hide();
+			document.getElementById('mmm').pause();
+			$("#mmm").attr('src','b2u11gt1.mp3');
+			document.getElementById('mmm').play();
+			$("#p1").show();
+			$("#previous").hide();
+			testar = false;
+		}
+	});
+});
+
+
+function player(mp3){
+	document.getElementById('mmm').pause();
+	$("#mmm").attr('src',mp3 + '.mp3');
+	document.getElementById('mmm').play();
+}
+
+</script>
+
+<body>
+
+	<!-- header -->
+<div id="class" class="wrap-section-header" style="display: block;">
+
+        <div class="section-header">
+            <h1>Unit Eleven - Homework</h1>
+        </div>
+    </div>
+	<!-- #END header -->
+<div class="wrap-section-body" id="classBody" style="display: block;">
+	<div id="class_content"><div class="class_container">
+
+
+	
+	
+    <form name="form1" method="post" action="Book2homework11.aspx" id="form1">
+    <div id="myDiv" style="background-image: url('images/qback11.jpg')">
+        <div id="pager">
+            <div id="previous" style="display: block;">
+            </div>
+            <div id="next" style="display: block;">
+            </div>
+        </div>
+
+        <div id="paginaAtual">
+		<audio id="mmm" controls src="b2u11gp1.mp3"> 
+			Your browser does not support the audio element.
+		</audio></div>
+        <div style="padding: 30px;">
+            <div style="height: 500px;">
+               <div id="p1" class="pagina" style="display: block;">
+                    <p class="titulo">
+                        The exchange student
+                    </p>
+                    <div style="float: left; margin-right: 20px;">
+                        <img src="book2/text/text1A.jpg">
+                    </div>
+                    <p>
+                        After a couple of years studying English, you finally decide to face the challenge
+                        of travelling to a country where English is the first language. It appears to be
+                        simply great and it is, but you have got to take lots of decisions before going.
+                        <br>
+                        The first decision is to choose the country. There are many possibilities; however
+                        you need to take just one. To make it easier, you should think about the pros and
+                        cons each country has. Consider the weather to make your choice easier. Some countries
+                        such as the USA and Canada seem to be perfect because of the distance from Brazil
+                        and the time zone, however from November to April, depending on the city you choose,
+                        you will freeze. So, think carefully when you are going.</p>
+                </div>
+				
+                <div id="p2" class="pagina" style="background-image: url(book2/text/text1B.jpg); display: none; background-position: 100% 100%; background-repeat: no-repeat no-repeat;">
+					<p> </p>
+                    <p>
+                        Australia and New Zealand are simply wonderful, though the time zone may be one
+                        problem to some people; eleven and thirteen hours forward respectively. It seems
+                        to be nothing, but when you travel to one of these countries, your sensation is
+                        like two days travelling. South Africa is a paradise. It has beautiful and exotic
+                        beaches and places. Their currency is named Rand and it is worth about one seventh<br>
+                        of one American dollar. It looks perfect, but take care<br>
+                        with the language spoken there. It is English, but<br>
+                        the accent is very strong and commercially<br>
+                        speaking, I don’t think it’s so attractive.
+                        <br>
+                        Europe is amazing and you have got many<br>
+                        options. England is the first one in many students’
+                        <br>
+                        minds; however you have Scotland, Wales and Ireland.
+                        <br>
+                        Well my friend, if your choice is one of these countries, I’ll have
+                        <br>
+                        to say: Welcome to the euro zone. England uses both pound and euro,<br>
+                        but all the prices will be in pound and it’s about fifteen percent
+                        <br>
+                        more expensive than euro. In Ireland you will be very lucky if you see<br> a sunny day.
+                        It rains about three hundred days per year.
+                        <br>
+                        So, if you wanna be an exchange student, you must pay attention to all <br>details and
+                        then after you think about packing your luggage.
+                        <br>
+                        <br>
+                        <br>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    </form>
+
+</div>
+</div>
+</body></html>
+				
