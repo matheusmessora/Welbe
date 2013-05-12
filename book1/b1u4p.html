@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<head>
+<title>11</title>
+<link href="book2.css" rel="stylesheet" type="text/css">
+
+<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Josefin+Sans+Std+Light">
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script src="http://file.urin.take-uma.net/jquery.balloon.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function () {
+	var langDefault = 'pt';
+    var soundMain = "b1u4t";
+    var totalPages = 2;
+    var pageId = "#p";
+
+
+    $("#next").click(function() {
+        $("#previous").show();
+        var testar = true;
+
+        for (var i = 1; i <= totalPages; i++) {
+            if(testar && $(pageId + i).css('display') == 'block'){
+                $(pageId + i).hide();
+                document.getElementById('mmm').pause();
+                $("#mmm").attr('src', soundMain + '6' + langDefault + '.mp3');
+//                document.getElementById('mmm').play();
+                $(pageId + (i + 1)).show();
+                testar = false;
+
+                if((i+1) == totalPages) {
+                    $("#next").hide();
+                }
+            }
+        }
+    });
+
+    $("#previous").click(function() {
+        $("#next").show();
+        var testar = true;
+
+        for (var i = totalPages; i >= 1; i--) {
+            if(testar && $(pageId + i).css('display') == 'block'){
+                $(pageId + i).hide();
+                document.getElementById('mmm').pause();
+                $("#mmm").attr('src','b2u11h2.mp3');
+//                document.getElementById('mmm').play();
+                $(pageId + (i - 1)).show();
+                testar = false;
+
+                if((i-1) == 1) {
+                    $("#previous").hide();
+                }
+            }
+        }
+    });
+	$("#ptbr").click(function() {
+		document.getElementById('mmm').pause();
+		var a = $("#mmm").attr('src');
+		a = a.substring(0, a.length-6);
+		a += "pt.mp3";
+		$("#mmm").attr('src',a);
+		document.getElementById('mmm').play();
+	});
+
+    $("#enus").click(function() {
+		document.getElementById('mmm').pause();
+		var a = $("#mmm").attr('src');
+		a = a.substring(0, a.length-6);
+		a += "en.mp3";
+		$("#mmm").attr('src',a);
+		document.getElementById('mmm').play();
+	});
+
+    <!-- SHOW ANSWERS -->
+    $(".p_question").click(function() {
+        $(this).next().show();
+    });
+
+});
+</script>
+
+<style type="text/css">
+	table
+	{
+		border-width: 0 0 1px 1px;
+		border-spacing: 0;
+		border-collapse: collapse;
+		border-style: solid;
+		font-size: 20px;
+	}
+
+	td, th
+	{
+		margin: 0;
+		padding: 4px;
+		border-width: 1px 1px 0 0;
+		border-style: solid;
+	}
+
+	p {
+		margin:0px;
+	}
+</style>
+<body>
+
+	<!-- header -->
+<div id="class" class="wrap-section-header" style="display: block;">
+
+        <div class="section-header">
+            <h1>Unit Eleven - Homework</h1>
+        </div>
+    </div>
+	<!-- #END header -->
+<div class="wrap-section-body" id="classBody" style="display: block;">
+	<div id="class_content"><div class="class_container">
+
+
+
+
+    <form name="form1" method="post" action="Book2homework11.aspx" id="form1">
+    <div id="myDiv" style="background-image: url('images/qback1.jpg')">
+        <div id="pager">
+            <div id="previous" style="display: none;">
+            </div>
+            <div id="next" style="display: block;">
+            </div>
+        </div>
+
+        <div id="paginaAtual">
+			<img id="enus" src="http://www.webrazuca.com/v4/images/dc_icon_usa.png" width="30" height="30">
+
+				<audio id="mmm" controls src="b1u1g1pt.mp3">
+					Your browser does not support the audio element.
+				</audio>
+
+			<img id="ptbr" src="http://icongal.com/gallery/image/32079/brasil_br_kr_brazil.png" width="30" height="30">
+		</div>
+        <div style="padding: 25px;">
+            <div style="height: 500px;">
+                <div id="p1" class="pagina" style="display: block;">
+					<strong>Practice - TO HAVE FUN X MONEY</strong><br />
+
+                    <strong>1. Make like the example</strong><br />
+
+                    <strong>Example 1:</strong>John is playing soccer.<br />
+                    Is John playing soccer? John is not playing soccer
+
+                    <span class="p_question">A) Peter is watching TV</span>
+                    <span class="p_answer">Is Peter watching TV? Peter is not watching TV.</span>
+
+                    <span class="p_question">B) Jessica is studying English.</span>
+                    <span class="p_answer">Is Jessica studying English? Jessica is not studying English.</span>
+
+                    <span class="p_question">C) Linda and Donna are eating ice-creams.</span>
+                    <span class="p_answer">Are Linda and Donna eating ice-creams? Linda and Donna aren't eating ice-creams.</span>
+
+                    <span class="p_question">D) Daniel is teaching the lesson</span>
+                    <span class="p_answer">Is Daniel teaching the lesson? Daniel isn't teaching the lesson.</span>
+
+                    <span class="p_question">E) Dianne is driving a car.</span>
+                    <span class="p_answer">Is Dianne driving a car? Dianne isn't driving a car.</span>
+
+                    <span class="p_question">F) Belinda is waiting for her husband.</span>
+                    <span class="p_answer">Is Belinda waiting for her husband? Belinda isn't waiting for her husband.</span>
+
+                    <span class="p_question">G) Marc is writing a book.</span>
+                    <span class="p_answer">Is Marc writing a book? Marc isn't writing a book.</span>
+
+                    <span class="p_question">H) The kids are using the computer.</span>
+                    <span class="p_answer">Are the kids using the computer? The kids aren't using the computer.</span>
+
+                </div>
+
+                <div id="p2" class="pagina" style="display: none;">
+                    <strong>2. Make like the example</strong><br />
+
+                    <strong>Example:</strong> John / play soccer.<br />
+                    What is John doing? He is playing soccer.
+
+                    <span class="p_question">A) Peter / watch TV.</span>
+                    <span class="p_answer">What is Peter doing? He is watching TV</span>
+
+                    <span class="p_question">B) Jessica / study English</span>
+                    <span class="p_answer">What is Jessica doing? She is studying English.</span>
+
+                    <span class="p_question">C) Linda and Donna / eat ice-creams</span>
+                    <span class="p_answer">What are Linda and Donna doing? They are eating ice-creams.</span>
+
+                    <span class="p_question">D) Daniel / teach lesson</span>
+                    <span class="p_answer">What is Daniel doing? He is teaching the lsson.</span>
+
+                    <span class="p_question">E) Dianne / drive a car</span>
+                    <span class="p_answer">What is Dianne doing? She is driving a car,</span>
+
+                    <span class="p_question">F) Belinda / wait for her husband</span>
+                    <span class="p_answer">What is Belinda doing? She is waiting for her husband.</span>
+
+                    <span class="p_question">G) Marc / write a book</span>
+                    <span class="p_answer">What is Marc doing? He is writing a book.</span>
+
+                    <span class="p_question">H) The kids / use the computer</span>
+                    <span class="p_answer">What are the kids doing? THey are using the computer.</span>
+
+
+                </div>
+                <div id="p3" class="pagina" style="display: none;">
+                    <strong>3. Complete with prepositions.</strong><br />
+
+                    <span class="p_question">A) She is not <span class="p_answer">at</span> home.</span>
+
+                    <span class="p_question">B) My next class is <span class="p_answer">on</span> monday <span class="p_answer">in</span> afternoon.</span>
+
+                    <span class="p_question">C) Where is your house? It is <span class="p_answer">at</span> 1000 Jane Avenue.</span>
+
+                    <span class="p_question">D) Look <span class="p_answer">at</span> those girls! Which ones? Those ones, <span class="p_answer">in/inside</span> the car.</span>
+
+                    <span class="p_question">E) My friend <span class="p_answer">from/in</span> Australia is <span class="p_answer">in/from</span> Toronto.</span>
+
+                    <span class="p_question">F) I am studying <span class="p_answer">in</span> the morning and my brother <span class="p_answer">at</span> night.</span>
+
+                    <span class="p_question">G) My father's birthday is <span class="p_answer">in</span> May and my mom's birthday is <span class="p_answer">on</span> September 11th.</span>
+
+                    <span class="p_question">H) There's girl <span class="p_answer">with</span> Pete watching TV <span class="p_answer">in</span> the living room. </span>
+
+                </div>
+                <div id="p4" class="pagina" style="display: none;">
+                    <strong>4. Answer the questions according to the text with complete answers.</strong>
+
+                    <span class="p_question">A) Are Molly and Steve talking about things that involve no money?</span>
+                    <span class="p_answer">Yes, they are talking about things that involve no money.</span>
+
+                    <span class="p_question">B) Where is MOlly living now?</span>
+                    <span class="p_answer">She is living on the beach.</span>
+
+                    <span class="p_question">C) Who is showing something to the girl?</span>
+                    <span class="p_answer">The boy is showing something to the girl.</span>
+
+                    <span class="p_question">D) What involves no money according to the kids?</span>
+                    <span class="p_answer">Parks, a ride in a shopping mall, museum and a nice conversation.</span>
+
+                    <span class="p_question">E) Is a good conversation a way to have fun in their opinion?</span>
+                    <span class="p_answer">Yes, it is a good way to have fun in their opinion.</span>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    </form>
+
+</div>
+</div>
+</div>
+</body></html>
+

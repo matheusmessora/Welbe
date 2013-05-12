@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<head>
+    <title>11</title>
+    <link href="book2.css" rel="stylesheet" type="text/css">
+
+    <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Josefin+Sans+Std+Light">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var langDefault = 'pt';
+
+
+            var soundMain = "b1u4g";
+            var totalPages = 5;
+            var pageId = "#p";
+
+            $("#next").click(function() {
+                $("#previous").show();
+                var testar = true;
+
+                for (var i = 1; i <= totalPages; i++) {
+                    if(testar && $(pageId + i).css('display') == 'block'){
+                        $(pageId + i).hide();
+                        document.getElementById('mmm').pause();
+                        $("#mmm").attr('src', soundMain + '6' + langDefault + '.mp3');
+//                document.getElementById('mmm').play();
+                        $(pageId + (i + 1)).show();
+                        testar = false;
+
+                        if((i+1) == totalPages) {
+                            $("#next").hide();
+                        }
+                    }
+                }
+            });
+
+            $("#previous").click(function() {
+                $("#next").show();
+                var testar = true;
+
+                for (var i = totalPages; i >= 1; i--) {
+                    if(testar && $(pageId + i).css('display') == 'block'){
+                        $(pageId + i).hide();
+                        document.getElementById('mmm').pause();
+                        $("#mmm").attr('src','b2u11h2.mp3');
+//                document.getElementById('mmm').play();
+                        $(pageId + (i - 1)).show();
+                        testar = false;
+
+                        if((i-1) == 1) {
+                            $("#previous").hide();
+                        }
+                    }
+                }
+            });
+
+
+            $("#ptbr").click(function () {
+                document.getElementById('mmm').pause();
+                var a = $("#mmm").attr('src');
+                a = a.substring(0, a.length - 6);
+                a += "pt.mp3";
+                $("#mmm").attr('src', a);
+                document.getElementById('mmm').play();
+            });
+            $("#enus").click(function () {
+                document.getElementById('mmm').pause();
+                var a = $("#mmm").attr('src');
+                a = a.substring(0, a.length - 6);
+                a += "en.mp3";
+                $("#mmm").attr('src', a);
+                document.getElementById('mmm').play();
+            });
+        });
+    </script>
+
+    <style type="text/css">
+        table {
+            border-width: 0 0 1px 1px;
+            border-spacing: 0;
+            border-collapse: collapse;
+            border-style: solid;
+            font-size: 20px;
+        }
+
+        td, th {
+            margin: 0;
+            padding: 4px;
+            border-width: 1px 1px 0 0;
+            border-style: solid;
+        }
+
+        p {
+            margin: 0px;
+        }
+    </style>
+<body>
+
+<!-- header -->
+<div id="class" class="wrap-section-header" style="display: block;">
+
+    <div class="section-header">
+        <h1>Unit Eleven - Homework</h1>
+    </div>
+</div>
+<!-- #END header -->
+<div class="wrap-section-body" id="classBody" style="display: block;">
+<div id="class_content">
+<div class="class_container">
+
+
+<form name="form1" method="post" action="Book2homework11.aspx" id="form1">
+<div id="myDiv" style="background-image: url('images/qback1.jpg')">
+<div id="pager">
+    <div id="previous" style="display: none;">
+    </div>
+    <div id="next" style="display: block;">
+    </div>
+</div>
+
+<div id="paginaAtual">
+    <img id="enus" src="http://www.webrazuca.com/v4/images/dc_icon_usa.png" width="30" height="30">
+
+    <audio id="mmm" controls src="b1u1g1pt.mp3">
+        Your browser does not support the audio element.
+    </audio>
+
+    <img id="ptbr" src="http://icongal.com/gallery/image/32079/brasil_br_kr_brazil.png" width="30" height="30">
+</div>
+<div style="padding: 25px;">
+<div style="height: 500px;">
+<div id="p1" class="pagina" style="display: block;">
+
+    <span class="titulo">GRAMMAR - TO HAVE FUN X MONEY</span><br/><br/>
+
+    <p class="bold">
+        1. PRESENT CONTINUOUS OR PROGRESSIVE.
+    </p><br/>
+
+    We us the present continuous form when the action is in this moment, or in the future.<br />
+    It's formed by:  <br />
+
+    <strong>SUBJECT + TO BE + MAIN VERB  + ING + COMPLEMENT</strong> <br />
+
+    <strong>Examples:</strong> Pete is studying with his girlfriend. <br/>
+    What are you doing on Saturday at 6pm? At 6pm I am working.<br />
+    They are not eating their food. <br />
+
+    NOTICE: We have to pay attention to some terminations of the verbs <br />
+
+    <div style="display:block; width:75%; margin:auto;">
+        <table border="1" style="width:100%;">
+            <tr>
+                <td>TO SMOKE</td>
+                <td>SMOKING</td>
+            </tr>
+            <tr>
+                <td>TO SEE</td>
+                <td>SEEING</td>
+            </tr>
+            <tr>
+                <td>TO LIE</td>
+                <td>LYING</td>
+            </tr>
+            <tr>
+                <td>TO RUN</td>
+                <td>RUNNING</td>
+            </tr>
+            <tr>
+                <td>TO PLAY</td>
+                <td>PLAYING</td>
+            </tr>
+            <tr>
+                <td>TO SHOW</td>
+                <td>SHOWING</td>
+            </tr>
+                <td>TO FIX</td>
+                <td>FIXING</td>
+            </tr>
+        </table>
+    </div>
+
+
+</div>
+<div id="p2" class="pagina" style="display: none;">
+    <p class="bold">
+        2. INTERROGATIVE PRONOUNS
+    </p><br/>
+
+    <div style="display:block; width:75%; margin:auto;">
+        <table border="1" style="width:100%;">
+            <tr>
+                <td>WHAT</td>
+                <td>It's about things.</td>
+            </tr>
+            <tr>
+                <td>WHERE</td>
+                <td>It's about place.</td>
+            </tr>
+            <tr>
+                <td>WHICH</td>
+                <td>It's used when we have options.</td>
+            </tr>
+            <tr>
+                <td>HOW</td>
+                <td>It;s about state or condition.</td>
+            </tr>
+            <tr>
+                <td>WHEN</td>
+                <td>It's about time.</td>
+            </tr>
+            <tr>
+                <td>WHOSE</td>
+                <td>It's used to ask the owner of something.</td>
+            </tr>
+            <tr>
+                <td>WHO</td>
+                <td>It's about person.</td>
+            </tr>
+        </table>
+    </div>
+
+    NOTICE: Special attention when you use WHAT / WHICH / WHO. They have the same translation in some cases, but must be used in different situations.<br />
+    What: It is used with the same translation of the others in questions and exclamation.<br /><br />
+    Examples: What time is it? / What a beautiful day! <br /><br />
+    Which: It is used with the same translation of the others adding information for animals or objects. Example: The company, which Mike works, is moving to Paris.<br /><br />
+    Who: It is used with the same translation of the others adding information for people. Example: Mike, who works in London, is moving to Paris.
+
+</div>
+<div id="p3" class="pagina" style="display: none;">
+    <strong>4. Study hard these verbs below.</strong>
+    <br/><br/>
+
+    <div style="display:block; width:75%; margin:auto;">
+        <table border="1" style="width:100%;">
+            <tr>
+                <td>TO ARRIVE</td>
+                <td>TO DRIVE</td>
+                <td>TO OPEN</td>
+            </tr>
+            <tr>
+                <td>TO ASK</td>
+                <td>TO EAT</td>
+                <td>TO PLAY</td>
+            </tr>
+            <tr>
+                <td>TO ANSWER </td>
+                <td>TO FALL</td>
+                <td>TO SAY</td>
+            </tr>
+            <tr>
+                <td>TO BRING</td>
+                <td>TO GET</td>
+                <td>TO SEE</td>
+            </tr>
+            <tr>
+                <td>TO BUY</td>
+                <td>TO HAVE</td>
+                <td>TO SLEEP</td>
+            </tr>
+            <tr>
+                <td>TO CALL</td>
+                <td>TO HAVE A SHOWER</td>
+                <td>TO SPEAK</td>
+            </tr>
+            <tr>
+                <td>TO CLOSE</td>
+                <td>TO HAVE BREAKFAST</td>
+                <td>TO STUDY</td>
+            </tr>
+            <tr>
+                <td>TO COME</td>
+                <td>TO HAVE DINNER</td>
+                <td>TO TALK</td>
+            </tr>
+            <tr>
+                <td>TO DO</td>
+                <td>TO HAVE LUNCH</td>
+                <td>TO TELL</td>
+            </tr>
+            <tr>
+                <td>TO DRINK</td>
+                <td>TO LEARN</td>
+                <td>TO WAKE UP</td>
+            </tr>
+        </table>
+    </div>
+           <br />
+    <strong>5. COMPOSITION.</strong><br/>
+    <strong>Suppose that there are many friends in your house. What are they doing?</strong>
+
+</div>
+
+</div></div></div></form>
+</form>
+
+</div>
+</div>
+</div>
+
+</body></html>
+				

@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<head>
+<title>11</title>
+<link href="book2.css" rel="stylesheet" type="text/css">
+
+<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Josefin+Sans+Std+Light">
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script src="http://file.urin.take-uma.net/jquery.balloon.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function () {
+	var musicSrc = 'b1u1p';
+	var langDefault = 'pt';
+
+    $("#next").click(function() {
+        $("#previous").show();
+        var testar = true;
+
+        if(testar && $("#p1").css('display') == 'block'){
+            $("#p1").hide();
+            document.getElementById('mmm').pause();
+            $("#mmm").attr('src',musicSrc+ '2' +langDefault+'.mp3');
+            document.getElementById('mmm').play();
+            $("#p2").show();
+            testar = false;
+        }
+
+        if(testar && $("#p2").css('display') == 'block'){
+            $("#p2").hide();
+            document.getElementById('mmm').pause();
+            $("#mmm").attr('src',musicSrc+ '3' +langDefault+'.mp3');
+            document.getElementById('mmm').play();
+            $("#p3").show();
+            testar = false;
+        }
+
+        if(testar && $("#p3").css('display') == 'block'){
+            $("#p3").hide();
+            document.getElementById('mmm').pause();
+            $("#mmm").attr('src',musicSrc+ '4' +langDefault+'.mp3');
+            document.getElementById('mmm').play();
+            $("#p4").show();
+            testar = false;
+        }
+
+        if(testar && $("#p4").css('display') == 'block'){
+            $("#p4").hide();
+            document.getElementById('mmm').pause();
+            $("#mmm").attr('src',musicSrc+ '5' +langDefault+'.mp3');
+            document.getElementById('mmm').play();
+            $("#p5").show();
+            $("#next").hide();
+            testar = false;
+        }
+    });
+
+    $("#previous").click(function() {
+        $("#next").show();
+        var testar = true;
+
+        if(testar && $("#p2").css('display') == 'block'){
+            $("#p2").hide();
+            document.getElementById('mmm').pause();
+            $("#mmm").attr('src','b2u11h1.mp3');
+            document.getElementById('mmm').play();
+            $("#p1").show();
+            $("#previous").hide();
+            testar = false;
+        }
+
+        if(testar && $("#p3").css('display') == 'block'){
+            $("#p3").hide();
+            document.getElementById('mmm').pause();
+            $("#mmm").attr('src','b2u11h2.mp3');
+            document.getElementById('mmm').play();
+            $("#p2").show();
+            testar = false;
+        }
+
+        if(testar && $("#p4").css('display') == 'block'){
+            $("#p4").hide();
+            document.getElementById('mmm').pause();
+            $("#mmm").attr('src','b2u11h3.mp3');
+            document.getElementById('mmm').play();
+            $("#p3").show();
+            testar = false;
+        }
+
+        if(testar && $("#p5").css('display') == 'block'){
+            $("#p5").hide();
+            document.getElementById('mmm').pause();
+            $("#mmm").attr('src','b2u11h4.mp3');
+            document.getElementById('mmm').play();
+            $("#p4").show();
+            testar = false;
+        }
+    });
+
+	$("#ptbr").click(function() {
+		document.getElementById('mmm').pause();
+		var a = $("#mmm").attr('src');
+		a = a.substring(0, a.length-6);
+		a += "pt.mp3";
+		$("#mmm").attr('src',a);
+		document.getElementById('mmm').play();
+	});
+
+    $("#enus").click(function() {
+		document.getElementById('mmm').pause();
+		var a = $("#mmm").attr('src');
+		a = a.substring(0, a.length-6);
+		a += "en.mp3";
+		$("#mmm").attr('src',a);
+		document.getElementById('mmm').play();
+	});
+
+    <!-- SHOW ANSWERS -->
+
+    $(".p_question").click(function() {
+        $(this).next().show();
+    });
+
+});
+</script>
+
+<style type="text/css">
+	table
+	{
+		border-width: 0 0 1px 1px;
+		border-spacing: 0;
+		border-collapse: collapse;
+		border-style: solid;
+		font-size: 20px;
+	}
+
+	td, th
+	{
+		margin: 0;
+		padding: 4px;
+		border-width: 1px 1px 0 0;
+		border-style: solid;
+	}
+
+	p {
+		margin:0px;
+	}
+</style>
+<body>
+
+	<!-- header -->
+<div id="class" class="wrap-section-header" style="display: block;">
+
+        <div class="section-header">
+            <h1>Unit Eleven - Homework</h1>
+        </div>
+    </div>
+	<!-- #END header -->
+<div class="wrap-section-body" id="classBody" style="display: block;">
+	<div id="class_content"><div class="class_container">
+
+
+
+
+    <form name="form1" method="post" action="Book2homework11.aspx" id="form1">
+    <div id="myDiv" style="background-image: url('images/qback1.jpg')">
+        <div id="pager">
+            <div id="previous" style="display: none;">
+            </div>
+            <div id="next" style="display: block;">
+            </div>
+        </div>
+
+        <div id="paginaAtual">
+			<img id="enus" src="http://www.webrazuca.com/v4/images/dc_icon_usa.png" width="30" height="30">
+
+				<audio id="mmm" controls src="b1u1g1pt.mp3">
+					Your browser does not support the audio element.
+				</audio>
+
+			<img id="ptbr" src="http://icongal.com/gallery/image/32079/brasil_br_kr_brazil.png" width="30" height="30">
+		</div>
+        <div style="padding: 25px;">
+            <div style="height: 500px;">
+                <div id="p1" class="pagina" style="display: block;">
+					<strong>PRACTICE - A DAY IN THE PARK</strong><br />
+
+                    <strong>1. Make like the example</strong><br />
+
+                    <strong>Example 1:</strong>This car is mine. (he) That one is hers.<br />
+                    <strong>Example 2:</strong>These keys are yours. (they) Those ones are theirs.<br />
+
+                    <span class="p_question">A) This computer is Mary's. (Julie)</span>
+                    <span class="p_answer">That one is Julie's</span>
+
+                    <span class="p_question">B) This ball is his. (we)</span>
+                    <span class="p_answer">That one is ours.</span>
+
+                    <span class="p_question">C_ These glasses are Julie's (he)</span>
+                    <span class="p_answer">Those ones are his.</span>
+
+                    <span class="p_question">D) This toy is the boy's. (I)</span>
+                    <span class="p_answer">That one is mine.</span>
+
+                    <span class="p_question">E) These socks are Marco's. (Bruce)</span>
+                    <span class="p_answer">Those ones are Bruce's.</span>
+
+                    <span class="p_question">F) This motorcycle is hers. (you)</span>
+                    <span class="p_answer">That one is yours.</span>
+
+                    <span class="p_question">G) These jeans are the girl's. (they)</span>
+                    <span class="p_answer">Those ones are theirs.</span>
+
+                </div>
+                <div id="p2" class="pagina" style="display: none;">
+                    <strong>2. Answer the questions about the text with complete answers</strong><br />
+
+                    <span class="p_question">A) Are the Stewarts on the beach?</span>
+                    <span class="p_answer">No, they are not on the beach.</span>
+
+                    <span class="p_question">B) Is it a rainy day?</span>
+                    <span class="p_answer">No, it is not a rainy day.</span>
+
+                    <span class="p_question">C) What is the daughter's name?</span>
+                    <span class="p_answer">Her name is Jane. / It is Jane.</span>
+
+                    <span class="p_question">D) What are the sons' names?</span>
+                    <span class="p_answer">Their names are John and Mike. / They are John and Mike.</span>
+
+                    <span class="p_question">E) Where are the Stewarts?</span>
+                    <span class="p_answer">They are in the park</span>
+
+                    <span class="p_question">F) Is the dog with the family?</span>
+                    <span class="p_answer">No, the dog is not with the family. / No, it is not with the family.</span>
+
+
+                </div>
+                <div id="p3" class="pagina" style="display: none;">
+                    <strong>3. Complete with the verb THERE TO BE and the prepositions</strong><br />
+
+                    <span class="p_question">A) Is there a black dog in the house?</span>
+                    <span class="p_question">B) THere are many people at Paul's restaurant.</span>
+                    <span class="p_question">C) There are two cats under / on / near / beside the table.</span>
+                    <span class="p_question">D) What is there in / inside the drawer?</span>
+                    <span class="p_question">E) There are not jeans inside / in the closed.</span>
+
+                    <strong>4. Make like the example:</strong>
+                    Example: Marc / Englang / Canada<br>
+                    Is Marc from England? No, he is not. He is from Canada.
+
+
+                    <span class="p_question">A) Henry / Germany / Australia</span>
+                    <span class="p_answer">Is Henry from Germany? No, he is not. He is from Australia.</span>
+
+                    <span class="p_question">B) Marcos and Charles / New Zealand / Brazil</span>
+                    <span class="p_answer">Are Marcos and Charles from New Zealand? No, they are not. They are from Brazil.</span>
+
+                    <span class="p_question">C) Julie / USA / France</span>
+                    <span class="p_answer">Is Julie from the USA? NO, she is not. She is from France.</span>
+
+                </div>
+                <div id="p4" class="pagina" style="display: none;">
+                    <span class="p_question">D) Gabi / Australia / Italy</span>
+                    <span class="p_answer">Is Gabi from Australia? No she is not. She is from Italy</span>
+
+                    <span class="p_question">E) Joe and Judd / South africa / Canada</span>
+                    <span class="p_answer">Are Joe and Judd from South Africa? No, they are not. They are from Canada</span>
+
+                    <span class="p_question">F) Pete / Spain / Scotland</span>
+                    <span class="p_answer">Is Pete from Spain? No, he is not. He is from Scotland.</span>
+
+                    <span class="p_question">G) Marie / Brazil  USA</span>
+                    <span class="p_answer">Is Marie from Brazil? No, she is not. she is from the USA.</span>
+
+                    <span class="p_question">H) James and Lauren / France / Ireland</span>
+                    <span class="p_answer">Are James and Lauren from France? No, they are not. They are from Ireland.</span>
+
+                </div>
+                <div id="p5" class="pagina" style="display: none;">
+                    <strong>5. Speak these numbers</strong>
+
+                    <span class="p_question">A) 11</span>
+                    <span class="p_answer">Eleven</span>
+
+                    <span class="p_question">B) 32nd</span>
+                    <span class="p_answer">Thirty second</span>
+
+                    <span class="p_question">C) 4940</span>
+                    <span class="p_answer">Four thousand nine hundred and forty</span>
+
+                    <span class="p_question">D) 98</span>
+                    <span class="p_answer">Ninety-eight</span>
+
+                    <span class="p_question">E) 168</span>
+                    <span class="p_answer">One hundred and sixty-eight</span>
+
+                    <span class="p_question">F) 271st</span>
+                    <span class="p_answer">Two hundred seventy first</span>
+
+                    <span class="p_question">G) 1256</span>
+                    <span class="p_answer">One thousand two hundred and fifty-six</span>
+
+                    <span class="p_question">H) 53rd</span>
+                    <span class="p_answer">Fifty third</span>
+
+                    <span class="p_question">I) 230.000</span>
+                    <span class="p_answer">Two hundred thirty thousand</span>
+
+                    <span class="p_question">J) 100.000</span>
+                    <span class="p_answer">One hundred thousand</span>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    </form>
+
+</div>
+</div>
+</div>
+</body></html>
+

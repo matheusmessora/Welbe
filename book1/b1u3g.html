@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<head>
+    <title>11</title>
+    <link href="book2.css" rel="stylesheet" type="text/css">
+
+    <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Josefin+Sans+Std+Light">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var musicSrc = 'b1u1g';
+            var langDefault = 'pt';
+
+            $("#next").click(function () {
+                $("#previous").show();
+                var testar = true;
+
+                if (testar && $("#p1").css('display') == 'block') {
+                    $("#p1").hide();
+                    document.getElementById('mmm').pause();
+                    $("#mmm").attr('src', musicSrc + '2' + langDefault + '.mp3');
+                    document.getElementById('mmm').play();
+                    $("#p2").show();
+                    testar = false;
+                }
+
+                if (testar && $("#p2").css('display') == 'block') {
+                    $("#p2").hide();
+                    document.getElementById('mmm').pause();
+                    $("#mmm").attr('src', musicSrc + '3' + langDefault + '.mp3');
+                    document.getElementById('mmm').play();
+                    $("#p3").show();
+                    testar = false;
+                }
+
+                if (testar && $("#p3").css('display') == 'block') {
+                    $("#p3").hide();
+                    document.getElementById('mmm').pause();
+                    $("#mmm").attr('src', musicSrc + '4' + langDefault + '.mp3');
+                    document.getElementById('mmm').play();
+                    $("#p4").show();
+                    testar = false;
+                }
+
+                if (testar && $("#p4").css('display') == 'block') {
+                    $("#p4").hide();
+                    document.getElementById('mmm').pause();
+                    $("#mmm").attr('src', musicSrc + '5' + langDefault + '.mp3');
+                    document.getElementById('mmm').play();
+                    $("#p5").show();
+                    testar = false;
+                }
+                if (testar && $("#p5").css('display') == 'block') {
+                    $("#p5").hide();
+                    document.getElementById('mmm').pause();
+                    $("#mmm").attr('src', musicSrc + '6' + langDefault + '.mp3');
+                    document.getElementById('mmm').play();
+                    $("#p6").show();
+                    $("#next").hide();
+                    testar = false;
+                }
+            });
+            $("#ptbr").click(function () {
+                document.getElementById('mmm').pause();
+                var a = $("#mmm").attr('src');
+                a = a.substring(0, a.length - 6);
+                a += "pt.mp3";
+                $("#mmm").attr('src', a);
+                document.getElementById('mmm').play();
+            });
+            $("#enus").click(function () {
+                document.getElementById('mmm').pause();
+                var a = $("#mmm").attr('src');
+                a = a.substring(0, a.length - 6);
+                a += "en.mp3";
+                $("#mmm").attr('src', a);
+                document.getElementById('mmm').play();
+            });
+
+            $("#previous").click(function () {
+                $("#next").show();
+                var testar = true;
+
+                if (testar && $("#p2").css('display') == 'block') {
+                    $("#p2").hide();
+                    document.getElementById('mmm').pause();
+                    $("#mmm").attr('src', 'b2u11h1.mp3');
+                    document.getElementById('mmm').play();
+                    $("#p1").show();
+                    $("#previous").hide();
+                    testar = false;
+                }
+
+                if (testar && $("#p3").css('display') == 'block') {
+                    $("#p3").hide();
+                    document.getElementById('mmm').pause();
+                    $("#mmm").attr('src', 'b2u11h2.mp3');
+                    document.getElementById('mmm').play();
+                    $("#p2").show();
+                    testar = false;
+                }
+
+                if (testar && $("#p4").css('display') == 'block') {
+                    $("#p4").hide();
+                    document.getElementById('mmm').pause();
+                    $("#mmm").attr('src', 'b2u11h3.mp3');
+                    document.getElementById('mmm').play();
+                    $("#p3").show();
+                    testar = false;
+                }
+                if (testar && $("#p5").css('display') == 'block') {
+                    $("#p5").hide();
+                    document.getElementById('mmm').pause();
+                    $("#mmm").attr('src', 'b2u11h3.mp3');
+                    document.getElementById('mmm').play();
+                    $("#p4").show();
+                    testar = false;
+                }
+                if (testar && $("#p6").css('display') == 'block') {
+                    $("#p6").hide();
+                    document.getElementById('mmm').pause();
+                    $("#mmm").attr('src', 'b2u11h3.mp3');
+                    document.getElementById('mmm').play();
+                    $("#p5").show();
+                    testar = false;
+                }
+            });
+
+        });
+    </script>
+
+    <style type="text/css">
+        table {
+            border-width: 0 0 1px 1px;
+            border-spacing: 0;
+            border-collapse: collapse;
+            border-style: solid;
+            font-size: 20px;
+        }
+
+        td, th {
+            margin: 0;
+            padding: 4px;
+            border-width: 1px 1px 0 0;
+            border-style: solid;
+        }
+
+        p {
+            margin: 0px;
+        }
+    </style>
+<body>
+
+<!-- header -->
+<div id="class" class="wrap-section-header" style="display: block;">
+
+    <div class="section-header">
+        <h1>Unit Eleven - Homework</h1>
+    </div>
+</div>
+<!-- #END header -->
+<div class="wrap-section-body" id="classBody" style="display: block;">
+<div id="class_content">
+<div class="class_container">
+
+
+<form name="form1" method="post" action="Book2homework11.aspx" id="form1">
+<div id="myDiv" style="background-image: url('images/qback1.jpg')">
+<div id="pager">
+    <div id="previous" style="display: none;">
+    </div>
+    <div id="next" style="display: block;">
+    </div>
+</div>
+
+<div id="paginaAtual">
+    <img id="enus" src="http://www.webrazuca.com/v4/images/dc_icon_usa.png" width="30" height="30">
+
+    <audio id="mmm" controls src="b1u1g1pt.mp3">
+        Your browser does not support the audio element.
+    </audio>
+
+    <img id="ptbr" src="http://icongal.com/gallery/image/32079/brasil_br_kr_brazil.png" width="30" height="30">
+</div>
+<div style="padding: 25px;">
+<div style="height: 500px;">
+<div id="p1" class="pagina" style="display: block;">
+
+    <span class="titulo">GRAMMAR - IN THE LIBRARY</span><br/><br/>
+
+    <p class="bold">
+        1. VERB THERE TO BE
+    </p><br/>
+
+    WHen we see the adverb THERE, we have to imagine opposed to HERE.<br/>
+    When we see the verb THERE TO BE conjugated in the present we see THERE IS in the
+    singular, or THERE ARE in the plural. They are used to say that exists something somewhere.<br/>
+
+    Examples:
+    Gabi's doll is over there.
+    There is a good film on TV tonight.
+    Are there many people in the house?
+    What is there in the refrigerator?
+    There isn't any book inside the drawer.
+
+
+
+</div>
+<div id="p2" class="pagina" style="display: none;">
+    <p class="bold">
+        2. INTERROGATIVE PRONOUNS
+    </p><br/>
+
+    <div style="display:block; width:75%; margin:auto;">
+        <table border="1" style="width:100%;">
+            <tr>
+                <td>WHAT</td>
+                <td>It's about things.</td>
+            </tr>
+            <tr>
+                <td>WHERE</td>
+                <td>It's about place.</td>
+            </tr>
+            <tr>
+                <td>WHICH</td>
+                <td>It's used when we have options.</td>
+            </tr>
+            <tr>
+                <td>WHEN</td>
+                <td>It's about time.</td>
+            </tr>
+            <tr>
+                <td>HOW</td>
+                <td>It;s about state or condition.</td>
+            </tr>
+            <tr>
+                <td>WHOSE</td>
+                <td>It's used to ask the owner of something.</td>
+            </tr>
+        </table>
+    </div>
+
+    Examples: Whose book is this? / Henry, whose father is a businessman, is on the beach.
+
+    <p class="bold">
+        3- PRONOUNS
+    </p><br/>
+
+    ONE <br/>
+    It's used to substitute a noun said previously and said in the singular.<br/>
+    Example: The red car is more beautiful than the black one. (black car)
+
+    <br/><br/>
+    ONES <br/>
+    It's used to substitute a noun said previously and said in the plural.<br/>
+    Example: I prefer the blue pens to the black ons. (black pens)
+</div>
+<div id="p3" class="pagina" style="display: none;">
+    <strong>4. COMPOSITION</strong>
+    <br/><br/>
+
+    <p class="bold">Where are you personal things? (use the prepositions and the pronouns)</p>
+</div>
+
+</div></div></div></form>
+</form>
+
+</div>
+</div>
+</body></html>
+				

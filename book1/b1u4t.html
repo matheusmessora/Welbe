@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<head xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html">
+<title>11</title>
+<link href="book2.css" rel="stylesheet" type="text/css">
+
+<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Josefin+Sans+Std+Light">
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script src="http://file.urin.take-uma.net/jquery.balloon.min.js"></script>
+<script src="book2.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function () {
+    $('.balloon').balloon({
+        tipSize: 24,
+        css: {
+
+            opacity: '1'
+
+        }
+    });
+	$('strong').balloon();
+	var langDefault = 'pt';
+
+    var soundMain = "b1u4t";
+    var totalPages = 2;
+    var pageId = "#p";
+
+    $("#next").click(function() {
+        $("#previous").show();
+        var testar = true;
+
+        for (var i = 1; i <= totalPages; i++) {
+            if(testar && $(pageId + i).css('display') == 'block'){
+                $(pageId + i).hide();
+                document.getElementById('mmm').pause();
+                $("#mmm").attr('src', soundMain + '6' + langDefault + '.mp3');
+//                document.getElementById('mmm').play();
+                $(pageId + (i + 1)).show();
+                testar = false;
+
+                if((i+1) == totalPages) {
+                    $("#next").hide();
+                }
+            }
+        }
+    });
+
+    $("#previous").click(function() {
+        $("#next").show();
+        var testar = true;
+
+        for (var i = totalPages; i >= 1; i--) {
+            if(testar && $(pageId + i).css('display') == 'block'){
+                $(pageId + i).hide();
+                document.getElementById('mmm').pause();
+                $("#mmm").attr('src','b2u11h2.mp3');
+//                document.getElementById('mmm').play();
+                $(pageId + (i - 1)).show();
+                testar = false;
+
+                if((i-1) == 1) {
+                    $("#previous").hide();
+                }
+            }
+        }
+    });
+
+
+	$("#ptbr").click(function() {
+		document.getElementById('mmm').pause();
+		var a = $("#mmm").attr('src');
+		a = a.substring(0, a.length-6);
+		a += "pt.mp3";
+		$("#mmm").attr('src',a);
+		document.getElementById('mmm').play();
+	});
+	$("#enus").click(function() {
+		document.getElementById('mmm').pause();
+		var a = $("#mmm").attr('src');
+		a = a.substring(0, a.length-6);
+		a += "en.mp3";
+		$("#mmm").attr('src',a);
+		document.getElementById('mmm').play();
+	});
+	
+});
+</script>
+
+<style type="text/css">
+	table
+	{
+		border-width: 0 0 1px 1px;
+		border-spacing: 0;
+		border-collapse: collapse;
+		border-style: solid;
+		font-size: 20px;
+	}
+
+	td, th
+	{
+		margin: 0;
+		padding: 4px;
+		border-width: 1px 1px 0 0;
+		border-style: solid;
+	}
+	
+	p {
+		margin:0px;
+	}
+</style>
+<body>
+
+	<!-- header -->
+<div id="class" class="wrap-section-header" style="display: block;">
+
+        <div class="section-header">
+            <h1>Unit Eleven - Homework</h1>
+        </div>
+    </div>
+	<!-- #END header -->
+<div class="wrap-section-body" id="classBody" style="display: block;">
+<div id="class_content"><div class="class_container">
+
+
+	
+	
+<form name="form1" method="post" action="Book2homework11.aspx" id="form1">
+<div id="myDiv" style="background-image: url('images/qback1.jpg')">
+<div id="pager">
+    <div id="previous" style="display: none;">
+    </div>
+    <div id="next" style="display: block;">
+    </div>
+</div>
+
+<div id="paginaAtual">
+    <img id="enus" src="http://www.webrazuca.com/v4/images/dc_icon_usa.png" width="30" height="30">
+
+        <audio id="mmm" controls src="b1u1g1pt.mp3">
+            Your browser does not support the audio element.
+        </audio>
+
+    <img id="ptbr" src="http://icongal.com/gallery/image/32079/brasil_br_kr_brazil.png" width="30" height="30">
+</div>
+<div style="padding: 25px;">
+<div style="height: 500px;">
+
+
+    <div id="p1" class="pagina" style="display: block;">
+        <strong>To have fun X money</strong><br />
+
+        - Hi Steve, <span title="e aí" class="balloon">what's up</span>. <br />
+        - Hello Judd, I'm <span title="tentandon descobrir" class="balloon">trying to find out </span> what that <span title="casal" class="balloon">couple</span> is doing. The boy is showing her something and they are <span title="rindo" class="balloon">laughing</span> very much.<br />
+        - Isn't that girl Molly? <br />
+        - No, she's living on the beach now. <br />
+        - But maybe, she is spending some days here. I think they are looking at some photos. <br />
+        - <span title="é realmente legal aproveitar o tempo" class="balloon">It's really good to enjoy the time</span> doing things that make us happy, isn it Judd? <br />
+        - Yes Steve, and in my opinion, there are many things that we can do spending very little money, or baybe no money.
+    </div>
+
+
+    <div id="p2" class="pagina" style="display: none;">
+        - <span title="sim" class="balloon">Absolutely</span>, we can list many things that involve no money, or things that are almost <span title="de graça" class="balloon">free of charge</span>. For example, parks, a <span title="passeio" class="balloon">ride</span> in a shopping mall, museum or <span title="simplesmente" class="balloon">simply</span> to have a nice conversation with a good friend.<br />
+        - And speaking of a good conversation, I think it's exactly what they are doing. They are having a good conversation. <br />
+        - And you reader, what is possible to do with short money in your opinion?
+
+    </div>
+</div>
+</div>
+</div>
+</form>
+
+</div>
+</div>
+</div>
+</body></html>
+
+				
