@@ -11,6 +11,16 @@
 $(document).ready(function () {
 	var musicSrc = 'b1u1p';
 	var langDefault = 'pt';
+    var showLanguage = false;
+
+    // Initialize Sound
+    $("#mmm").attr('src',musicSrc + '1.mp3');
+
+    // Initialize Languages
+    if(!showLanguage){
+        $("#enus").hide();
+        $("#ptbr").hide();
+    }
 
     $("#next").click(function() {
         $("#previous").show();
@@ -19,7 +29,7 @@ $(document).ready(function () {
         if(testar && $("#p1").css('display') == 'block'){
             $("#p1").hide();
             document.getElementById('mmm').pause();
-            $("#mmm").attr('src',musicSrc+ '2' +langDefault+'.mp3');
+            $("#mmm").attr('src',musicSrc+ '2.mp3');
             document.getElementById('mmm').play();
             $("#p2").show();
             testar = false;
@@ -28,7 +38,7 @@ $(document).ready(function () {
         if(testar && $("#p2").css('display') == 'block'){
             $("#p2").hide();
             document.getElementById('mmm').pause();
-            $("#mmm").attr('src',musicSrc+ '3' +langDefault+'.mp3');
+            $("#mmm").attr('src',musicSrc+ '3.mp3');
             document.getElementById('mmm').play();
             $("#p3").show();
             testar = false;
@@ -37,7 +47,7 @@ $(document).ready(function () {
         if(testar && $("#p3").css('display') == 'block'){
             $("#p3").hide();
             document.getElementById('mmm').pause();
-            $("#mmm").attr('src',musicSrc+ '4' +langDefault+'.mp3');
+            $("#mmm").attr('src',musicSrc+ '4.mp3');
             document.getElementById('mmm').play();
             $("#p4").show();
             testar = false;
@@ -46,7 +56,7 @@ $(document).ready(function () {
         if(testar && $("#p4").css('display') == 'block'){
             $("#p4").hide();
             document.getElementById('mmm').pause();
-            $("#mmm").attr('src',musicSrc+ '5' +langDefault+'.mp3');
+            $("#mmm").attr('src',musicSrc+ '5.mp3');
             document.getElementById('mmm').play();
             $("#p5").show();
             $("#next").hide();
@@ -115,7 +125,6 @@ $(document).ready(function () {
 	});
 
     <!-- SHOW ANSWERS -->
-
     $(".p_question").click(function() {
         $(this).next().show();
     });
@@ -184,143 +193,143 @@ $(document).ready(function () {
                 <div id="p1" class="pagina" style="display: block;">
 					<strong>PRACTICE - INTRODUCTION</strong><br />
 
-                    <strong>1. Follow the example</strong><br />
+                    <strong>1. Follow the example</strong><br /><br />
 
                     <strong>Example 1:</strong>Marc / English teacher / (near). This is Marc. He is an English teacher.<br />
-                    <strong>Example 2:</strong>Marc/  English teacher / (far). That is Marc. He is an English teacher.<br />
+                    <strong>Example 2:</strong>Marc/  English teacher / (far). That is Marc. He is an English teacher.<br /><br />
 
                     <span class="p_question">A) James / engineering student / (far)</span>
-                    <span class="p_answer">That's James. He is an engineering student.</span>
+                    <span class="p_answer">That's James. He is an engineering student.</span><br />
 
                     <span class="p_question">B) Julie / lawyer / (near)</span>
-                    <span class="p_answer">This is Julie. She is a lawyer.</span>
+                    <span class="p_answer">This is Julie. She is a lawyer.</span><br />
 
                     <span class="p_question">C) Pete and Harry / boys / (far)</span>
-                    <span class="p_answer">Those are Pete and Henry. They are boys.</span>
+                    <span class="p_answer">Those are Pete and Henry. They are boys.</span> <br />
 
                     <span class="p_question">D) Gabi and Marie / girs / (near)</span>
-                    <span class="p_answer">These are Gabi and Marie. They are girls.</span>
+                    <span class="p_answer">These are Gabi and Marie. They are girls.</span> <br />
 
                     <span class="p_question">E) Manuel / taxi driver / (far)</span>
-                    <span class="p_answer">That is Manuel. He is a taxi driver.</span>
+                    <span class="p_answer">That is Manuel. He is a taxi driver.</span>      <br />
 
                     <span class="p_question">F) Julie and James / students / (near)</span>
-                    <span class="p_answer">These are Julie and James. They are students.</span><br>
+                    <span class="p_answer">These are Julie and James. They are students.</span><br>  <br />
 
                 </div>
                 <div id="p2" class="pagina" style="display: none;">
-                    <strong>2. Follow the example</strong><br />
+                    <strong>2. Follow the example</strong><br /><br />
 
                     <strong>Example:</strong>
                     Manuel / taxi driver / Portugal.<br>
-                    Where is Manuel from? He is a taxi driver from Portugal.<br>
+                    Where is Manuel from? He is a taxi driver from Portugal.<br> <br />
 
                     <span class="p_question">A) Julie / lawyer / Korea</span>
-                    <span class="p_answer">Where is Julie from? She is a lawyer from Korea.</span>
+                    <span class="p_answer">Where is Julie from? She is a lawyer from Korea.</span>  <br />
 
                     <span class="p_question">B) James / engineering student / Mexico</span>
-                    <span class="p_answer">Where is James from? He is an engineering student from Mexico.</span>
+                    <span class="p_answer">Where is James from? He is an engineering student from Mexico.</span>  <br />
 
                     <span class="p_question">C) Henry and Pete / boys / Brazil</span>
-                    <span class="p_answer">Where are Henry and Pete from? They are boys from Brazil.</span>
+                    <span class="p_answer">Where are Henry and Pete from? They are boys from Brazil.</span>    <br />
 
                     <span class="p_question">D) Marie and Gabi / girls / Sao Paulo</span>
-                    <span class="p_answer">Where are Marie and Gabi from? They are girls from Sao Paulo.</span>
+                    <span class="p_answer">Where are Marie and Gabi from? They are girls from Sao Paulo.</span>  <br />
 
                     <span class="p_question">E) Kangaroos / animals / Australia</span>
-                    <span class="p_answer">Where are the Kangaroos from? They are animals from Australia.</span>
+                    <span class="p_answer">Where are the Kangaroos from? They are animals from Australia.</span> <br />
 
                     <span class="p_question">F) Marc / English teacher / Canada</span>
-                    <span class="p_answer">Where is Marc form? He is an English teacher from Canada.</span>
+                    <span class="p_answer">Where is Marc form? He is an English teacher from Canada.</span>  <br />
 
 
                 </div>
                 <div id="p3" class="pagina" style="display: none;">
-                    <strong>3. Put into interrogative and negative</strong><br />
+                    <strong>3. Put into interrogative and negative</strong><br />  <br />
 
                     <span class="p_question">A) He is a taxi driver from Portugal.</span>
-                    <span class="p_answer">Is he a taxi driver from Portugal? He is not a taxi driver from Portugal.</span>
+                    <span class="p_answer">Is he a taxi driver from Portugal? He is not a taxi driver from Portugal.</span>  <br />
 
                     <span class="p_question">B) This is James.</span>
-                    <span class="p_answer">Is this James? This is not James.</span>
+                    <span class="p_answer">Is this James? This is not James.</span>  <br />
 
                     <span class="p_question">C) Julia is a lawyer</span>
-                    <span class="p_answer">Is Julia a lawyer? Julia is not a lawyer</span>
+                    <span class="p_answer">Is Julia a lawyer? Julia is not a lawyer</span>   <br />
 
                     <span class="p_question">D) The engineering student is from Mexico.</span>
-                    <span class="p_answer">Is the engineering student from Mexico? THe engineering student fis not from Mexico.</span>
+                    <span class="p_answer">Is the engineering student from Mexico? THe engineering student fis not from Mexico.</span> <br />
 
                     <span class="p_question">E) Marie is the wife.</span>
-                    <span class="p_answer">Is Marie the wife? Marie is not the wife.</span>
+                    <span class="p_answer">Is Marie the wife? Marie is not the wife.</span>    <br />
 
                     <span class="p_question">F) Gabi, Henty and Pete are the kids.</span>
-                    <span class="p_answer">Are Gabi, Henry and Pete the kids? Gabi, Henry and Pete are not the kids</span>
+                    <span class="p_answer">Are Gabi, Henry and Pete the kids? Gabi, Henry and Pete are not the kids</span>  <br />
 
                     <span class="p_question">G) Marci is married.</span>
-                    <span class="p_answer">Is Marc married? Marc is not married.</span>
+                    <span class="p_answer">Is Marc married? Marc is not married.</span>     <br />
 
                     <span class="p_question">H) I am the teacher today.</span>
-                    <span class="p_answer">Am I the teacher today? I am not the teacher today.</span>
+                    <span class="p_answer">Am I the teacher today? I am not the teacher today.</span>   <br />
 
 
                 </div>
                 <div id="p4" class="pagina" style="display: none;">
-                    <strong>4. Follow the example:</strong><br />
+                    <strong>4. Follow the example:</strong><br /> <br />
 
-                    <strong>Example: Judd / fat / thin. Judd is not fat. She is thin.</strong>
+                    <strong>Example: Judd / fat / thin. Judd is not fat. She is thin.</strong>    <br />
 
                     <span class="p_question">A) James / tall / short.</span>
-                    <span class="p_answer">James is not tall. He is short.</span>
+                    <span class="p_answer">James is not tall. He is short.</span>   <br />
 
                     <span class="p_question">B) Julie / ugly / beautiful.</span>
-                    <span class="p_answer">Julie is not ugle. She is beautiful.</span>
+                    <span class="p_answer">Julie is not ugle. She is beautiful.</span>  <br />
 
                     <span class="p_question">C) Manuel / lawyer / taxi driver.</span>
-                    <span class="p_answer">Manuel is not a lawyer. He is a taxi driver.</span>
+                    <span class="p_answer">Manuel is not a lawyer. He is a taxi driver.</span>   <br />
 
                     <span class="p_question">D) Marc / single / married.</span>
-                    <span class="p_answer">Marc is not single. He is married.</span>
+                    <span class="p_answer">Marc is not single. He is married.</span>  <br />
 
                     <span class="p_question">E) Pete / 8 years old / 3 years old.</span>
-                    <span class="p_answer">Pete is not 8 years old. He is 3 years old.</span>
+                    <span class="p_answer">Pete is not 8 years old. He is 3 years old.</span>    <br />
 
                     <span class="p_question">F) Marie / Canadian / Brazilian.</span>
-                    <span class="p_answer">Marie is not Canadian. She is Brazilian.</span>
+                    <span class="p_answer">Marie is not Canadian. She is Brazilian.</span>  <br />
 
                     <span class="p_question">G) Gabi / boy / girl.</span>
-                    <span class="p_answer">Gabi is not a boy. She is a girl</span>
+                    <span class="p_answer">Gabi is not a boy. She is a girl</span>     <br />
 
                 </div>
                 <div id="p5" class="pagina" style="display: none;">
                     <span class="p_question">H) Henry / teacher / student.</span>
-                    <span class="p_answer">Henry is not a teacher. He is a student.</span>
+                    <span class="p_answer">Henry is not a teacher. He is a student.</span>  <br />
 
                     <span class="p_question">I) Julie and James / doctors / students</span>
-                    <span class="p_answer">Julie and James are not doctors. They are students.</span>
+                    <span class="p_answer">Julie and James are not doctors. They are students.</span>     <br />
 
                     <span class="p_question">J) The sun / blue / yellow</span>
-                    <span class="p_answer">The sun is not blue. It is yellow</span>
+                    <span class="p_answer">The sun is not blue. It is yellow</span>  <br />
 
                     <span class="p_question">K) THe book / big small.</span>
-                    <span class="p_answer">THe book is not big. It is small</span>
+                    <span class="p_answer">THe book is not big. It is small</span>    <br />
 
                     <span class="p_question">L) The womem / dumb / intelligent</span>
-                    <span class="p_answer">The womem are not dumb. They are intelligent.</span>
+                    <span class="p_answer">The womem are not dumb. They are intelligent.</span>   <br />
 
                     <span class="p_question">M) Santa Claus / young / old.</span>
-                    <span class="p_answer">Santa Claus is not young. He is old.</span>
+                    <span class="p_answer">Santa Claus is not young. He is old.</span>   <br />
 
                     <span class="p_question">N) The computer / new / old</span>
-                    <span class="p_answer">The computer is not new. It is old.
+                    <span class="p_answer">The computer is not new. It is old.</span> <br />
 
                     <span class="p_question">O) She and He / enemies / friends.</span>
-                    <span class="p_answer">She and he are not enemies. They are friends.</span>
+                    <span class="p_answer">She and he are not enemies. They are friends.</span>   <br />
 
                     <span class="p_question">P) The pillow / hard / soft.</span>
-                    <span class="p_answer">THe pillow is not hard. It is sof.</span>
+                    <span class="p_answer">THe pillow is not hard. It is sof.</span>   <br />
 
                     <span class="p_question">Q) The men / weak / strong</span>
-                    <span class="p_answer">The men are not weak. They are strong.</span>
+                    <span class="p_answer">The men are not weak. They are strong.</span>   <br />
 
                 </div>
             </div>

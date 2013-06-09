@@ -12,16 +12,45 @@ $(document).ready(function () {
 	$('.balloon').balloon({
 		tipSize: 24,
 		css: {
-
 			opacity: '1'
-			
 		}
   });
+
 	$('strong').balloon();
 
-	var musicSrc = 'b1u1t';
-	var langDefault = 'pt';
 
+	var musicSrc = 'b1u1t';
+    var showLanguage = false;
+
+    // Initialize Sound
+    $("#mmm").attr('src',musicSrc + '1.mp3');
+
+    // Initialize Languages
+    if(!showLanguage){
+        $("#enus").hide();
+        $("#ptbr").hide();
+    }
+
+    // Language clicks
+    $("#ptbr").click(function() {
+        document.getElementById('mmm').pause();
+        var a = $("#mmm").attr('src');
+        a = a.substring(0, a.length-6);
+        a += "pt.mp3";
+        $("#mmm").attr('src',a);
+        document.getElementById('mmm').play();
+    });
+    $("#enus").click(function() {
+        document.getElementById('mmm').pause();
+        var a = $("#mmm").attr('src');
+        a = a.substring(0, a.length-6);
+        a += "en.mp3";
+        $("#mmm").attr('src',a);
+        document.getElementById('mmm').play();
+    });
+
+
+    // Next pages clicks
 	$("#next").click(function() {
 		$("#previous").show();
 		var testar = true;
@@ -29,29 +58,12 @@ $(document).ready(function () {
 		if(testar && $("#p1").css('display') == 'block'){
 			$("#p1").hide();
 			document.getElementById('mmm').pause();
-			$("#mmm").attr('src',musicSrc+ '2' +langDefault+'.mp3');
+			$("#mmm").attr('src',musicSrc+ '2' + '.mp3');
 			document.getElementById('mmm').play();
 			$("#p2").show();
 			$("#next").hide();
 			testar = false;
 		}
-	});
-	
-	$("#ptbr").click(function() {
-		document.getElementById('mmm').pause();
-		var a = $("#mmm").attr('src');
-		a = a.substring(0, a.length-6);
-		a += "pt.mp3";
-		$("#mmm").attr('src',a);
-		document.getElementById('mmm').play();
-	});
-	$("#enus").click(function() {
-		document.getElementById('mmm').pause();
-		var a = $("#mmm").attr('src');
-		a = a.substring(0, a.length-6);
-		a += "en.mp3";
-		$("#mmm").attr('src',a);
-		document.getElementById('mmm').play();
 	});
 	
 	$("#previous").click(function() {
@@ -61,7 +73,7 @@ $(document).ready(function () {
 		if(testar && $("#p2").css('display') == 'block'){
 			$("#p2").hide();
 			document.getElementById('mmm').pause();
-			$("#mmm").attr('src','b2u11h1.mp3');
+			$("#mmm").attr('src',musicSrc+ '1' +'.mp3');
 			document.getElementById('mmm').play();
 			$("#p1").show();
 			$("#previous").hide();
@@ -142,6 +154,7 @@ $(document).ready(function () {
 					- Well people, I am from Korea. I am 32 years old and I am a <span title="advogada" class="balloon">lawyer</span> <span title="lá / ali / aí" class="balloon">there</span>.
                 </div>
                 <div id="p2" class="pagina" style="display: none;">
+                    <br />
 					- Good job Julia! Now Manuel, <span title="responda" class="balloon">answer</span> these 3 questions, please. Where are you from? How old are you? What is your job description?
 					- <span title="certo" class="balloon">All right</span>, I'm from Portugal, I am 25 and I am a taxi driver there.
 					- <span title="perfeito" class="balloon">Terrific</span>! Now Manuel, only to train. introduce Julia to us, please.
