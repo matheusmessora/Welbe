@@ -19,8 +19,22 @@ $(document).ready(function () {
   });
 	$('strong').balloon();
 
-	var musicSrc = 'b1u1t';
-	var langDefault = 'pt';
+    var musicSrc = 'b1u3t';
+    var showLanguage = false;
+    var backgroundImage = 'url("images/qback3.jpg")';
+
+
+    // Initialize background
+    $("#myDiv").css('background-image', backgroundImage);
+
+    // Initialize Sound
+    $("#mmm").attr('src',musicSrc + '1.mp3');
+
+    // Initialize Languages
+    if(!showLanguage){
+        $("#enus").hide();
+        $("#ptbr").hide();
+    }
 
 	$("#next").click(function() {
 		$("#previous").show();
@@ -111,7 +125,7 @@ $(document).ready(function () {
 	
 	
     <form name="form1" method="post" action="Book2homework11.aspx" id="form1">
-    <div id="myDiv" style="background-image: url('images/qback1.jpg')">
+    <div id="myDiv">
         <div id="pager">
             <div id="previous" style="display: none;">
             </div>

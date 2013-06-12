@@ -7,58 +7,68 @@
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     <script type="text/javascript">
         $(document).ready(function () {
-            var musicSrc = 'b1u1g';
-            var langDefault = 'pt';
+            var musicSrc = 'b1u3g';
+            var showLanguage = false;
 
-            $("#next").click(function () {
+            // Initialize Sound
+            $("#mmm").attr('src',musicSrc + '1.mp3');
+
+            // Initialize Languages
+            if(!showLanguage){
+                $("#enus").hide();
+                $("#ptbr").hide();
+            }
+
+            // Next pages clicks
+            $("#next").click(function() {
                 $("#previous").show();
                 var testar = true;
 
-                if (testar && $("#p1").css('display') == 'block') {
+                if(testar && $("#p1").css('display') == 'block'){
                     $("#p1").hide();
                     document.getElementById('mmm').pause();
-                    $("#mmm").attr('src', musicSrc + '2' + langDefault + '.mp3');
+                    $("#mmm").attr('src',musicSrc+ '2' + '.mp3');
                     document.getElementById('mmm').play();
                     $("#p2").show();
                     testar = false;
                 }
 
-                if (testar && $("#p2").css('display') == 'block') {
+                if(testar && $("#p2").css('display') == 'block'){
                     $("#p2").hide();
                     document.getElementById('mmm').pause();
-                    $("#mmm").attr('src', musicSrc + '3' + langDefault + '.mp3');
+                    $("#mmm").attr('src',musicSrc+ '3' + '.mp3');
                     document.getElementById('mmm').play();
                     $("#p3").show();
-                    testar = false;
-                }
-
-                if (testar && $("#p3").css('display') == 'block') {
-                    $("#p3").hide();
-                    document.getElementById('mmm').pause();
-                    $("#mmm").attr('src', musicSrc + '4' + langDefault + '.mp3');
-                    document.getElementById('mmm').play();
-                    $("#p4").show();
-                    testar = false;
-                }
-
-                if (testar && $("#p4").css('display') == 'block') {
-                    $("#p4").hide();
-                    document.getElementById('mmm').pause();
-                    $("#mmm").attr('src', musicSrc + '5' + langDefault + '.mp3');
-                    document.getElementById('mmm').play();
-                    $("#p5").show();
-                    testar = false;
-                }
-                if (testar && $("#p5").css('display') == 'block') {
-                    $("#p5").hide();
-                    document.getElementById('mmm').pause();
-                    $("#mmm").attr('src', musicSrc + '6' + langDefault + '.mp3');
-                    document.getElementById('mmm').play();
-                    $("#p6").show();
                     $("#next").hide();
                     testar = false;
                 }
             });
+
+            $("#previous").click(function() {
+                $("#next").show();
+                var testar = true;
+
+                if(testar && $("#p3").css('display') == 'block'){
+                    $("#p3").hide();
+                    document.getElementById('mmm').pause();
+                    $("#mmm").attr('src',musicSrc+ '2' +'.mp3');
+                    document.getElementById('mmm').play();
+                    $("#p2").show();
+                    testar = false;
+                }
+                if(testar && $("#p2").css('display') == 'block'){
+                    $("#p2").hide();
+                    document.getElementById('mmm').pause();
+                    $("#mmm").attr('src',musicSrc+ '1' +'.mp3');
+                    document.getElementById('mmm').play();
+                    $("#p1").show();
+                    $("#previous").hide();
+                    testar = false;
+                }
+            });
+
+
+
             $("#ptbr").click(function () {
                 document.getElementById('mmm').pause();
                 var a = $("#mmm").attr('src');
@@ -74,55 +84,6 @@
                 a += "en.mp3";
                 $("#mmm").attr('src', a);
                 document.getElementById('mmm').play();
-            });
-
-            $("#previous").click(function () {
-                $("#next").show();
-                var testar = true;
-
-                if (testar && $("#p2").css('display') == 'block') {
-                    $("#p2").hide();
-                    document.getElementById('mmm').pause();
-                    $("#mmm").attr('src', 'b2u11h1.mp3');
-                    document.getElementById('mmm').play();
-                    $("#p1").show();
-                    $("#previous").hide();
-                    testar = false;
-                }
-
-                if (testar && $("#p3").css('display') == 'block') {
-                    $("#p3").hide();
-                    document.getElementById('mmm').pause();
-                    $("#mmm").attr('src', 'b2u11h2.mp3');
-                    document.getElementById('mmm').play();
-                    $("#p2").show();
-                    testar = false;
-                }
-
-                if (testar && $("#p4").css('display') == 'block') {
-                    $("#p4").hide();
-                    document.getElementById('mmm').pause();
-                    $("#mmm").attr('src', 'b2u11h3.mp3');
-                    document.getElementById('mmm').play();
-                    $("#p3").show();
-                    testar = false;
-                }
-                if (testar && $("#p5").css('display') == 'block') {
-                    $("#p5").hide();
-                    document.getElementById('mmm').pause();
-                    $("#mmm").attr('src', 'b2u11h3.mp3');
-                    document.getElementById('mmm').play();
-                    $("#p4").show();
-                    testar = false;
-                }
-                if (testar && $("#p6").css('display') == 'block') {
-                    $("#p6").hide();
-                    document.getElementById('mmm').pause();
-                    $("#mmm").attr('src', 'b2u11h3.mp3');
-                    document.getElementById('mmm').play();
-                    $("#p5").show();
-                    testar = false;
-                }
             });
 
         });
@@ -164,7 +125,7 @@
 
 
 <form name="form1" method="post" action="Book2homework11.aspx" id="form1">
-<div id="myDiv" style="background-image: url('images/qback1.jpg')">
+<div id="myDiv" style="background-image: url('images/qback3.jpg')">
 <div id="pager">
     <div id="previous" style="display: none;">
     </div>
@@ -191,16 +152,17 @@
         1. VERB THERE TO BE
     </p><br/>
 
-    WHen we see the adverb THERE, we have to imagine opposed to HERE.<br/>
-    When we see the verb THERE TO BE conjugated in the present we see THERE IS in the
-    singular, or THERE ARE in the plural. They are used to say that exists something somewhere.<br/>
+    <ul>
+    <li>When we see the adverb THERE, we have to imagine opposed to HERE.<br/><br/></li>
+    <li>When we see the verb THERE TO BE conjugated in the present we see THERE IS in the singular, or THERE ARE in the plural. They are used to say that exists something somewhere.<br/><br/></li>
+    </ul>
 
-    Examples:
-    Gabi's doll is over there.
-    There is a good film on TV tonight.
-    Are there many people in the house?
-    What is there in the refrigerator?
-    There isn't any book inside the drawer.
+    <strong>Examples:</strong><br/>
+    Gabi's doll is over there.<br/>
+    There is a good film on TV tonight.<br/>
+    Are there many people in the house?<br/>
+    What is there in the refrigerator?      <br/>
+    There isn't any book inside the drawer.      <br/>
 
 
 
@@ -245,12 +207,12 @@
         3- PRONOUNS
     </p><br/>
 
-    ONE <br/>
+    <strong>ONE</strong> <br/>
     It's used to substitute a noun said previously and said in the singular.<br/>
     Example: The red car is more beautiful than the black one. (black car)
 
     <br/><br/>
-    ONES <br/>
+    <strong>ONES</strong> <br/>
     It's used to substitute a noun said previously and said in the plural.<br/>
     Example: I prefer the blue pens to the black ons. (black pens)
 </div>
