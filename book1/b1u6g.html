@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<head>
+<title>11</title>
+<link href="book2.css" rel="stylesheet" type="text/css">
+
+<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Josefin+Sans+Std+Light">
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            var musicSrc = 'b1u6g';
+            var langDefault = 'pt';
+            var showLanguage = true;
+            var backgroundImage = 'url("images/qback6.jpg")';
+
+
+            // Initialize background
+            $("#myDiv").css('background-image', backgroundImage);
+
+            // Initialize Sound
+            $("#mmm").attr('src',musicSrc + '1.mp3');
+
+            // Initialize Languages
+            if(!showLanguage){
+                $("#enus").hide();
+                $("#ptbr").hide();
+            }
+
+            $("#ptbr").click(function() {
+                document.getElementById('mmm').pause();
+                var a = $("#mmm").attr('src');
+                a = a.substring(0, 6);
+                a += "pt.mp3";
+                $("#mmm").attr('src',a);
+                document.getElementById('mmm').play();
+            });
+            $("#enus").click(function() {
+                document.getElementById('mmm').pause();
+                var a = $("#mmm").attr('src');
+                a = a.substring(0, 6);
+                a += "en.mp3";
+                $("#mmm").attr('src',a);
+                document.getElementById('mmm').play();
+            });
+
+            $("#next").click(function() {
+                $("#previous").show();
+                var testar = true;
+
+                if(testar && $("#p1").css('display') == 'block'){
+                    $("#p1").hide();
+                    document.getElementById('mmm').pause();
+                    $("#mmm").attr('src',musicSrc+ '2' +'.mp3');
+                    document.getElementById('mmm').play();
+                    $("#p2").show();
+                    testar = false;
+                }
+
+                if(testar && $("#p2").css('display') == 'block'){
+                    $("#p2").hide();
+                    document.getElementById('mmm').pause();
+                    $("#mmm").attr('src',musicSrc+ '3' +'.mp3');
+                    document.getElementById('mmm').play();
+                    $("#p3").show();
+                    testar = false;
+                }
+
+                if(testar && $("#p3").css('display') == 'block'){
+                    $("#p3").hide();
+                    document.getElementById('mmm').pause();
+                    $("#mmm").attr('src',musicSrc+ '4' +'.mp3');
+                    document.getElementById('mmm').play();
+                    $("#p4").show();
+                    $("#next").hide();
+                    testar = false;
+                }
+            });
+
+            $("#previous").click(function() {
+                $("#next").show();
+                var testar = true;
+
+                if(testar && $("#p2").css('display') == 'block'){
+                    $("#p2").hide();
+                    document.getElementById('mmm').pause();
+                    $("#mmm").attr('src',musicSrc+ '1' +'.mp3');
+                    document.getElementById('mmm').play();
+                    $("#p1").show();
+                    $("#previous").hide();
+                    testar = false;
+                }
+
+                if(testar && $("#p3").css('display') == 'block'){
+                    $("#p3").hide();
+                    document.getElementById('mmm').pause();
+                    $("#mmm").attr('src',musicSrc+ '2' +'.mp3');
+                    document.getElementById('mmm').play();
+                    $("#p2").show();
+                    testar = false;
+                }
+
+                if(testar && $("#p4").css('display') == 'block'){
+                    $("#p4").hide();
+                    document.getElementById('mmm').pause();
+                    $("#mmm").attr('src',musicSrc+ '3' +'.mp3');
+                    document.getElementById('mmm').play();
+                    $("#p3").show();
+                    testar = false;
+                }
+            });
+
+        });
+    </script>
+
+<style type="text/css">
+	table
+	{
+		border-width: 0 0 1px 1px;
+		border-spacing: 0;
+		border-collapse: collapse;
+		border-style: solid;
+		font-size: 20px;
+	}
+
+	td, th
+	{
+		margin: 0;
+		padding: 4px;
+		border-width: 1px 1px 0 0;
+		border-style: solid;
+	}
+	
+	p {
+		margin:0px;
+	}
+</style>
+<body>
+
+	<!-- header -->
+<div id="class" class="wrap-section-header" style="display: block;">
+
+        <div class="section-header">
+            <h1>Unit Eleven - Homework</h1>
+        </div>
+    </div>
+	<!-- #END header -->
+<div class="wrap-section-body" id="classBody" style="display: block;">
+	<div id="class_content"><div class="class_container">
+
+
+	
+	
+    <form name="form1" method="post" action="Book2homework11.aspx" id="form1">
+    <div id="myDiv" style="background-image: url('images/qback11.jpg')">
+        <div id="pager">
+            <div id="previous" style="display: none;">
+            </div>
+            <div id="next" style="display: block;">
+            </div>
+        </div>
+
+        <div id="paginaAtual">
+            <img id="enus" src="http://www.webrazuca.com/v4/images/dc_icon_usa.png" width="30" height="30">
+
+            <audio id="mmm" controls src="b1u1g1pt.mp3">
+                Your browser does not support the audio element.
+            </audio>
+
+            <img id="ptbr" src="http://icongal.com/gallery/image/32079/brasil_br_kr_brazil.png" width="30" height="30">
+        </div>
+        <div style="padding: 30px;">
+            <div style="height: 500px;">
+                <div id="p1" class="pagina" style="display: block;">
+
+                    <span class="titulo">Grammar - A Phone Call</span><br /><br />
+                    <p class="bold">
+                        1. PRONOUNS
+                    </p>
+
+					<p class="bold">
+						SUBJECT + MAIN VERB + COMPLEMENT (affirmative)<br />
+
+                    <table border="1">
+                        <tr>
+                            <td> PERSONAL </td>
+                            <td> POSS. ADJETIVE </td>
+                            <td> POSSESSIVE </td>
+                            <td> OBJECTIVE </td>
+                        </tr>
+                        <tr>
+                            <td> I </td>
+                            <td> MY </td>
+                            <td> MINE </td>
+                            <td> ME </td>
+                        </tr>
+                        <tr>
+                            <td> YOU </td>
+                            <td> YOUR </td>
+                            <td> YOURS </td>
+                            <td> YOU </td>
+                        </tr>
+                        <tr>
+                            <td> HE </td>
+                            <td> HIS </td>
+                            <td> HIS </td>
+                            <td> HIM </td>
+                        </tr>
+                        <tr>
+                            <td> SHE </td>
+                            <td> HER </td>
+                            <td> HERS </td>
+                            <td> HER </td>
+                        </tr>
+                        <tr>
+                            <td> IT </td>
+                            <td> ITS </td>
+                            <td> ITS </td>
+                            <td> IT </td>
+                        </tr>
+                        <tr>
+                            <td> WE </td>
+                            <td> OUR </td>
+                            <td> OURS </td>
+                            <td> US </td>
+                        </tr>
+                        <tr>
+                            <td> YOU </td>
+                            <td> YOUR </td>
+                            <td> YOURS </td>
+                            <td> YOU </td>
+                        </tr>
+                        <tr>
+                            <td> THEY </td>
+                            <td> THEIR </td>
+                            <td> THEIRS </td>
+                            <td> THEM </td>
+                        </tr>
+                    </table>
+					<br />
+					<p>
+                        The personal pronouns commit the actions and they are before the verb. <br />
+                        The possessive adjective pronouns are used to indicate that someone has something and are used before the noun. <br />
+                        The possessive pronouns are used to indicate that someone has something and are used after the object. <br />
+                        The objective pronouns receive the actions and they are after the verb. <br />
+
+                        <strong>Examples:</strong> That is her car. That car is hers.<br />
+                        Those are my books. Those books are mine.         <br />
+                        I need to talk to her. (not I need to talk to she.)     <br />
+					</p>
+                </div>
+                <div id="p2" class="pagina" style="display: none;">
+                    <p><strong>2.MODAL VERBS</strong></p>
+					<br />
+					<p>
+                        These verbs are special becaus: They work like auxiliaries; they have no different conjugation; we never put TO after the modal verb despite of having another verb after.
+					</p>
+					<br />
+
+                    <strong>CAN</strong>                                                <br />
+                    It's used to show ability.                                    <br /><br />
+
+                    <strong>Examples:</strong> He can do his homework alone.<br />
+                    Can you help me, please? He can not (cannot / can't) go there alone.<br /><br />
+
+                    <strong>COULD</strong><br />
+                    It's used to express conditional possibility or ability and also works as past of CAN or a polite way of asking something.<br /> <br />
+
+                    <strong>EXAMPLES:</strong>Could you lend me your pen, please?<br />
+                    He could buy a new car if he had money.<br />
+                    He could buy a new car last week.<br />
+                    I could not (couldn't) talk to her, yet.<br />
+
+
+                </div>
+                <div id="p3" class="pagina" style="display: none;">
+
+                    <strong>WOULD</strong>    <br />
+                    It doesn't have translation and only modifies the verbs for a future condition. <br /><br />
+
+                    <strong>EXAMPLES:</strong> They would buy a new car if they had money.                <br />
+                    What would you do if you had US$1.000.000 in the bank?                                      <br />
+                    I would not (wouldn't) be here if I had this money in the bank.                                   <br /><br />
+
+                    <strong>NOTICE:</strong> When we used the modal verb WOULD with the verb LIKE, it expresses a polite form of asking or ordering something. <br /><br />
+
+                    <strong>Examples:</strong> What would you lite to eat for dinner? <br />
+                    I'd Like to have more free time.
+
+
+                </div>
+                <div id="p4" class="pagina" style="display: none;">
+                    <strong>3. TOO / EITHER</strong> <br />
+
+                    I like Rock. I am happy. I can do it alone. <br/>
+                    I like Rock, too. I am happy, too. I can do it alone, too.<br/>
+                    I do, too. I am, too. I can, too.                              <br/>
+                    So do I. So am I. So can I.                                         <br/>
+                    Me, too. Me, too. Me, too.                                               <br/><br/>
+
+                    I don't like Rock. I am not Happy. I can't do it alone.                            <br/>
+                    I don't like Rock, either. I am not happy, either. I can't do it alone, either.         <br/>
+                    I don't, either. I am not, either. I can't, either.                                          <br/>
+                    Neither do I. Neither am I. Neither can I.                                                        <br/>
+                    Me, neither. Me, neither, Me neither.                                                                  <br/>    <br />
+
+                    <strong>4. COMPOSITION</strong><br/>
+                    What would you like to change in your country?
+                </div>
+            </div>
+        </div>
+    </div>
+    </form>
+
+</div>
+</div>
+</body></html>
+				

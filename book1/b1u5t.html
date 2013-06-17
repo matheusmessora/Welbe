@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<head>
+<title>11</title>
+<link href="book2.css" rel="stylesheet" type="text/css">
+
+<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Josefin+Sans+Std+Light">
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function () {
+
+    var musicSrc = 'b1u5t';
+    var langDefault = 'pt';
+    var showLanguage = false;
+    var backgroundImage = 'url("images/qback5.jpg")';
+
+
+    // Initialize background
+    $("#myDiv").css('background-image', backgroundImage);
+
+    // Initialize Sound
+    $("#mmm").attr('src',musicSrc + '1.mp3');
+
+    // Initialize Languages
+    if(!showLanguage){
+        $("#enus").hide();
+        $("#ptbr").hide();
+    }
+
+    $("#ptbr").click(function() {
+        document.getElementById('mmm').pause();
+        var a = $("#mmm").attr('src');
+        a = a.substring(0, 6);
+        a += "pt.mp3";
+        $("#mmm").attr('src',a);
+        document.getElementById('mmm').play();
+    });
+    $("#enus").click(function() {
+        document.getElementById('mmm').pause();
+        var a = $("#mmm").attr('src');
+        a = a.substring(0, 6);
+        a += "en.mp3";
+        $("#mmm").attr('src',a);
+        document.getElementById('mmm').play();
+    });
+
+	$("#next").click(function() {
+		$("#previous").show();
+		var testar = true;
+	
+		if(testar && $("#p1").css('display') == 'block'){
+			$("#p1").hide();
+			document.getElementById('mmm').pause();
+            $("#mmm").attr('src',musicSrc+ '2' +'.mp3');
+			document.getElementById('mmm').play();
+			$("#p2").show();
+			testar = false;
+            $("#next").hide();
+		}
+	});
+	
+	$("#previous").click(function() {
+		$("#next").show();
+		var testar = true;
+		
+		if(testar && $("#p2").css('display') == 'block'){
+			$("#p2").hide();
+			document.getElementById('mmm').pause();
+            $("#mmm").attr('src',musicSrc+ '1' +'.mp3');
+			document.getElementById('mmm').play();
+			$("#p1").show();
+			$("#previous").hide();
+			testar = false;
+		}
+	});
+
+});
+</script>
+
+<style type="text/css">
+	table
+	{
+		border-width: 0 0 1px 1px;
+		border-spacing: 0;
+		border-collapse: collapse;
+		border-style: solid;
+		font-size: 20px;
+	}
+
+	td, th
+	{
+		margin: 0;
+		padding: 4px;
+		border-width: 1px 1px 0 0;
+		border-style: solid;
+	}
+	
+	p {
+		margin:0px;
+	}
+</style>
+<body>
+
+	<!-- header -->
+<div id="class" class="wrap-section-header" style="display: block;">
+
+        <div class="section-header">
+            <h1>Unit Eleven - Homework</h1>
+        </div>
+    </div>
+	<!-- #END header -->
+<div class="wrap-section-body" id="classBody" style="display: block;">
+	<div id="class_content"><div class="class_container">
+
+
+	
+	
+    <form name="form1" method="post" action="Book2homework11.aspx" id="form1">
+    <div id="myDiv" style="background-image: url('images/qback11.jpg')">
+        <div id="pager">
+            <div id="previous" style="display: none;">
+            </div>
+            <div id="next" style="display: block;">
+            </div>
+        </div>
+
+        <div id="paginaAtual">
+            <img id="enus" src="http://www.webrazuca.com/v4/images/dc_icon_usa.png" width="30" height="30">
+
+            <audio id="mmm" controls src="b1u1g1pt.mp3">
+                Your browser does not support the audio element.
+            </audio>
+
+            <img id="ptbr" src="http://icongal.com/gallery/image/32079/brasil_br_kr_brazil.png" width="30" height="30">
+        </div>
+        <div style="padding: 30px;">
+            <div style="height: 500px;">
+                <div id="p1" class="pagina" style="display: block;">
+                    <strong>I DON'T NOW</strong><br />
+
+                    "I don't know, I don't know, I don't know!" Says William repeatedly. He is worried about what to do in the future.<br />
+                    Lots of people  don't really know what  to be when grow up. If you take  a wrong  decision when you are young, you can become a very  unhappy adult.<br />
+                    Imagine that many people  spend  about ten hours  of their  day in the company, of  course, some people more, some people less. But, the day has only twenty-four hours, so you have now only fourteen hours to sleep, have a shower, eat three meals, study, have  fun, watch TV, and many other things.<br />
+                    Researches show that three in ten people around the world are not happy with their jobs. It takes us to thirty percent of the world workforce.
+                </div>
+
+
+                <div id="p2" class="pagina" style="display: none;">
+                    We ate not talking about simple employees, we are also talking about managers and employers. These ones work on average more than thirteen hours per day. So, you need rapidly to think about your future. Take some time to discuss with some adults, the happy and sad ones. Every work is difficult, unlike it would not be a work.<br />
+                    "I need to decide what to do" William says to his father. "But you are only eight William. You can take this decision some years later." Says his father.
+                </div>
+        </div>
+    </div>
+    </div>
+    </form>
+
+</div>
+</div>
+</body></html>
+				

@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<head>
+<title>11</title>
+<link href="book2.css" rel="stylesheet" type="text/css">
+
+<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Josefin+Sans+Std+Light">
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function () {
+
+    var musicSrc = 'b1u6p';
+    var langDefault = 'pt';
+    var showLanguage = false;
+    var backgroundImage = 'url("images/qback5.jpg")';
+
+
+    // Initialize background
+    $("#myDiv").css('background-image', backgroundImage);
+
+    // Initialize Sound
+    $("#mmm").attr('src',musicSrc + '1.mp3');
+
+    // Initialize Languages
+    if(!showLanguage){
+        $("#enus").hide();
+        $("#ptbr").hide();
+    }
+
+    $("#ptbr").click(function() {
+        document.getElementById('mmm').pause();
+        var a = $("#mmm").attr('src');
+        a = a.substring(0, 6);
+        a += "pt.mp3";
+        $("#mmm").attr('src',a);
+        document.getElementById('mmm').play();
+    });
+    $("#enus").click(function() {
+        document.getElementById('mmm').pause();
+        var a = $("#mmm").attr('src');
+        a = a.substring(0, 6);
+        a += "en.mp3";
+        $("#mmm").attr('src',a);
+        document.getElementById('mmm').play();
+    });
+
+    $("#next").click(function() {
+        $("#previous").show();
+        var testar = true;
+
+        if(testar && $("#p1").css('display') == 'block'){
+            $("#p1").hide();
+            document.getElementById('mmm').pause();
+            $("#mmm").attr('src',musicSrc+ '2' +'.mp3');
+            document.getElementById('mmm').play();
+            $("#p2").show();
+            testar = false;
+        }
+
+        if(testar && $("#p2").css('display') == 'block'){
+            $("#p2").hide();
+            document.getElementById('mmm').pause();
+            $("#mmm").attr('src',musicSrc+'3' +'.mp3');
+            document.getElementById('mmm').play();
+            $("#p3").show();
+            testar = false;
+        }
+        if(testar && $("#p3").css('display') == 'block'){
+            $("#p3").hide();
+            document.getElementById('mmm').pause();
+            $("#mmm").attr('src',musicSrc+'4' +'.mp3');
+            document.getElementById('mmm').play();
+            $("#p4").show();
+            testar = false;
+            $("#next").hide();
+        }
+    });
+
+    $("#previous").click(function() {
+        $("#next").show();
+        var testar = true;
+
+        if(testar && $("#p2").css('display') == 'block'){
+            $("#p2").hide();
+            document.getElementById('mmm').pause();
+            $("#mmm").attr('src',musicSrc+ '1' +'.mp3');
+            document.getElementById('mmm').play();
+            $("#p1").show();
+            $("#previous").hide();
+            testar = false;
+        }
+
+        if(testar && $("#p3").css('display') == 'block'){
+            $("#p3").hide();
+            document.getElementById('mmm').pause();
+            $("#mmm").attr('src',musicSrc+ '2' +'.mp3');
+            document.getElementById('mmm').play();
+            $("#p2").show();
+            testar = false;
+        }
+
+        if(testar && $("#p4").css('display') == 'block'){
+            $("#p4").hide();
+            document.getElementById('mmm').pause();
+            $("#mmm").attr('src',musicSrc+ '3' +'.mp3');
+            document.getElementById('mmm').play();
+            $("#p3").show();
+            testar = false;
+        }
+    });
+
+    <!-- SHOW ANSWERS -->
+    $(".p_question").click(function() {
+        $(this).next().show();
+    });
+
+});
+</script>
+
+<style type="text/css">
+	table
+	{
+		border-width: 0 0 1px 1px;
+		border-spacing: 0;
+		border-collapse: collapse;
+		border-style: solid;
+		font-size: 20px;
+	}
+
+	td, th
+	{
+		margin: 0;
+		padding: 4px;
+		border-width: 1px 1px 0 0;
+		border-style: solid;
+	}
+	
+	p {
+		margin:0px;
+	}
+</style>
+<body>
+
+	<!-- header -->
+<div id="class" class="wrap-section-header" style="display: block;">
+
+        <div class="section-header">
+            <h1>Unit Eleven - Homework</h1>
+        </div>
+    </div>
+	<!-- #END header -->
+<div class="wrap-section-body" id="classBody" style="display: block;">
+	<div id="class_content"><div class="class_container">
+
+
+	
+	
+    <form name="form1" method="post" action="Book2homework11.aspx" id="form1">
+    <div id="myDiv" style="background-image: url('images/qback11.jpg')">
+        <div id="pager">
+            <div id="previous" style="display: none;">
+            </div>
+            <div id="next" style="display: block;">
+            </div>
+        </div>
+
+        <div id="paginaAtual">
+            <img id="enus" src="http://www.webrazuca.com/v4/images/dc_icon_usa.png" width="30" height="30">
+
+            <audio id="mmm" controls src="b1u1g1pt.mp3">
+                Your browser does not support the audio element.
+            </audio>
+
+            <img id="ptbr" src="http://icongal.com/gallery/image/32079/brasil_br_kr_brazil.png" width="30" height="30">
+        </div>
+        <div style="padding: 30px;">
+            <div style="height: 500px;">
+                <div id="p1" class="pagina" style="display: block;">
+                    <strong>Practice - WHAT ARE YOU GOING TO DO?</strong><br />
+
+                    <strong>1. Make like the example</strong><br />
+
+                    <strong>Example 1:</strong>Marc / surf / Saturday<br />
+                    Marc is going to surf on Saturday.
+
+                    <span class="p_question">A) Peter / play soccer / Tuesday</span>
+                    <span class="p_answer">Peter is going to play soccer on Tuesday.</span>
+
+                    <span class="p_question">B) Jessica / study English / January</span>
+                    <span class="p_answer">Jessica is going to study English in January.</span>
+
+                    <span class="p_question">C) Linda / dance / next weekend</span>
+                    <span class="p_answer">Linda is going to dance next weekend.</span>
+
+                    <span class="p_question">D) Daniel / teach the lesson / next Wednesday</span>
+                    <span class="p_answer">Daniel is going to teach the lesson next Wednesda</span>
+
+                    <span class="p_question">E) Dianne / drive the car / tomorr</span>
+                    <span class="p_answer">Dianne is going to drive the car tomorrow.</span>
+
+                    <span class="p_question">F) Belinda / finish her course / June 21st</span>
+                    <span class="p_answer">Belinda is going to finish her course on June 21st.</span>
+
+                </div>
+
+                <div id="p2" class="pagina" style="display: none;">
+                    <strong>2. Follow the example</strong><br />
+
+                    <strong>Example:</strong>James / do his lesson / play soccer<br />
+                    James is not going  to do his lesson. He is going to play soccer.
+
+                    <span class="p_question">A) We / use the phone / watch TV</span>
+                    <span class="p_answer">We are not going to use the phone. We are going to watch TV.</span>
+
+                    <span class="p_question">B) Henry / call his brother / travel to Gold Coast</span>
+                    <span class="p_answer">Henry is not going to call his brother. He is going to travel to Gold Coast.</span>
+
+                    <span class="p_question">C) The girls / buy new clothes / date in the park</span>
+                    <span class="p_answer">The girls are not going to buy new clothes. They are going to date in the park.</span>
+
+                    <span class="p_question">D) He / to be late / to be on time</span>
+                    <span class="p_answer">He is not going to be late. He is going to be on time.</span>
+
+                    <span class="p_question">E) We / cry / laugh</span>
+                    <span class="p_answer">We are not going to cry. We are going laugh.</span>
+
+                    <span class="p_question">F) Robert / stay here / leave at 6pm.</span>
+                    <span class="p_answer">Robert is not going to stay here. He is going to leave at 6pm.</span>
+
+                    <span class="p_question">G) Bob and Tim / have lunch / eat a snak</span>
+                    <span class="p_answer">Bob and Tim are not going to have lunch. They are going to eat snack.</span>
+
+                </div>
+                <div id="p3" class="pagina" style="display: none;">
+                    <strong>3. Inform the time</strong><br />
+
+                    <span class="p_question">A) 11:35</span>
+                    <span class="p_answer">It's eleven thirty-five / It's twenty-five to or before twelve.</span>
+
+                    <span class="p_question">B) 3:20</span>
+                    <span class="p_answer">It's three twenty / It's twenty past or after three. </span>
+
+                    <span class="p_question">C) 1:30</span>
+                    <span class="p_answer">It's one thirty / It's thirt past or after one / It's half past or after one.</span>
+
+                    <span class="p_question">D) 5:40</span>
+                    <span class="p_answer">It's five forty / It's twenty to or before six.</span>
+
+                    <span class="p_question">E) 12am</span>
+                    <span class="p_answer">It's twelve o'clock / It's twelve in sharp / It's midnight.</span>
+
+                    <span class="p_question">F) 8:15</span>
+                    <span class="p_answer">It's eight fifteen / It's fifteen past or after eight / It's a quarter past or after eight.</span>
+
+                    <span class="p_question">G) 12pm</span>
+                    <span class="p_answer">It's twelve o'clock / It's twelve in sharp / It's midday / It's noon.</span>
+
+                    <span class="p_question">H) 6:00	</span>
+                    <span class="p_answer">It's six o'clock / It's six in sharp.</span>
+
+                    <span class="p_question">I) 2:43</span>
+                    <span class="p_answer">It's two forty-three / It's seventeen to or before three. </span>
+
+                </div>
+                <div id="p4" class="pagina" style="display: none;">
+                    <strong>4. Answer according to the text</strong>
+
+                    <span class="p_question">A) What are the boys talking about?</span>
+                    <span class="p_answer">They are talking about vacation.</span>
+
+                    <span class="p_question">B) What is the name of the school?</span>
+                    <span class="p_answer">The name of the school is Dreams High-school.</span>
+
+                    <span class="p_question">C) Where does Jacky's sister want to go?</span>
+                    <span class="p_answer">She wants to go to California.</span>
+
+                    <span class="p_question">D) Whose father has to fo to Asia? Where do you live?</span>
+                    <span class="p_answer">Charlie's father has to go to Asia.</span>
+
+                    <span class="p_question">E) Which animals is Lucas Excited to see?</span>
+                    <span class="p_answer">He is going to have fun with the boys' girlfriends.</span>
+
+                    <span class="p_question">G) Who is goingo to travel to Europe?</span>
+                    <span class="p_answer">Peter is going to travel to Europe.</span>
+
+                    <span class="p_question">H) Which country is the first exporter?</span>
+                    <span class="p_answer">China is the fisrt exporter.</span>
+
+                    <span class="p_question">I) Who wants to visit New York?</span>
+                    <span class="p_answer">Jacky's mother wants to visit New York.</span>
+
+                </div>
+        </div>
+    </div>
+    </div>
+    </form>
+
+</div>
+</div>
+</body></html>
+				

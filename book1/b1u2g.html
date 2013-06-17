@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<head>
+<title>11</title>
+<link href="book2.css" rel="stylesheet" type="text/css">
+
+<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Josefin+Sans+Std+Light">
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            var musicSrc = 'b1u2g';
+            var langDefault = 'pt';
+            var showLanguage = true;
+            var backgroundImage = 'url("images/qback2.jpg")';
+
+
+            // Initialize background
+            $("#myDiv").css('background-image', backgroundImage);
+
+            // Initialize Sound
+            $("#mmm").attr('src',musicSrc + '1.mp3');
+
+            // Initialize Languages
+            if(!showLanguage){
+                $("#enus").hide();
+                $("#ptbr").hide();
+            }
+
+            $("#ptbr").click(function() {
+                document.getElementById('mmm').pause();
+                var a = $("#mmm").attr('src');
+                a = a.substring(0, 6);
+                a += "pt.mp3";
+                $("#mmm").attr('src',a);
+                document.getElementById('mmm').play();
+            });
+            $("#enus").click(function() {
+                document.getElementById('mmm').pause();
+                var a = $("#mmm").attr('src');
+                a = a.substring(0, 6);
+                a += "en.mp3";
+                $("#mmm").attr('src',a);
+                document.getElementById('mmm').play();
+            });
+
+            $("#next").click(function() {
+                $("#previous").show();
+                var testar = true;
+
+                if(testar && $("#p1").css('display') == 'block'){
+                    $("#p1").hide();
+                    document.getElementById('mmm').pause();
+                    $("#mmm").attr('src',musicSrc+ '2' +'.mp3');
+                    document.getElementById('mmm').play();
+                    $("#p2").show();
+                    testar = false;
+                }
+
+                if(testar && $("#p2").css('display') == 'block'){
+                    $("#p2").hide();
+                    document.getElementById('mmm').pause();
+                    $("#mmm").attr('src',musicSrc+ '3' +'.mp3');
+                    document.getElementById('mmm').play();
+                    $("#p3").show();
+                    testar = false;
+                }
+
+                if(testar && $("#p3").css('display') == 'block'){
+                    $("#p3").hide();
+                    document.getElementById('mmm').pause();
+                    $("#mmm").attr('src',musicSrc+ '4' +'.mp3');
+                    document.getElementById('mmm').play();
+                    $("#p4").show();
+                    testar = false;
+                }
+
+                if(testar && $("#p4").css('display') == 'block'){
+                    $("#p4").hide();
+                    document.getElementById('mmm').pause();
+                    $("#mmm").attr('src',musicSrc+ '5' +'.mp3');
+                    document.getElementById('mmm').play();
+                    $("#p5").show();
+                    testar = false;
+                    $("#next").hide();
+                }
+            });
+
+            $("#previous").click(function() {
+                $("#next").show();
+                var testar = true;
+
+                if(testar && $("#p2").css('display') == 'block'){
+                    $("#p2").hide();
+                    document.getElementById('mmm').pause();
+                    $("#mmm").attr('src',musicSrc+ '1' +'.mp3');
+                    document.getElementById('mmm').play();
+                    $("#p1").show();
+                    $("#previous").hide();
+                    testar = false;
+                }
+
+                if(testar && $("#p3").css('display') == 'block'){
+                    $("#p3").hide();
+                    document.getElementById('mmm').pause();
+                    $("#mmm").attr('src',musicSrc+ '2' +'.mp3');
+                    document.getElementById('mmm').play();
+                    $("#p2").show();
+                    testar = false;
+                }
+
+                if(testar && $("#p4").css('display') == 'block'){
+                    $("#p4").hide();
+                    document.getElementById('mmm').pause();
+                    $("#mmm").attr('src',musicSrc+ '3' +'.mp3');
+                    document.getElementById('mmm').play();
+                    $("#p3").show();
+                    testar = false;
+                }
+
+                if(testar && $("#p5").css('display') == 'block'){
+                    $("#p5").hide();
+                    document.getElementById('mmm').pause();
+                    $("#mmm").attr('src',musicSrc+ '4' +'.mp3');
+                    document.getElementById('mmm').play();
+                    $("#p4").show();
+                    testar = false;
+                }
+            });
+
+        });
+    </script>
+
+<style type="text/css">
+	table
+	{
+		border-width: 0 0 1px 1px;
+		border-spacing: 0;
+		border-collapse: collapse;
+		border-style: solid;
+		font-size: 20px;
+	}
+
+	td, th
+	{
+		margin: 0;
+		padding: 4px;
+		border-width: 1px 1px 0 0;
+		border-style: solid;
+	}
+	
+	p {
+		margin:0px;
+	}
+</style>
+<body>
+
+	<!-- header -->
+<div id="class" class="wrap-section-header" style="display: block;">
+
+        <div class="section-header">
+            <h1>Unit Eleven - Homework</h1>
+        </div>
+    </div>
+	<!-- #END header -->
+<div class="wrap-section-body" id="classBody" style="display: block;">
+	<div id="class_content"><div class="class_container">
+
+
+	
+	
+    <form name="form1" method="post" action="Book2homework11.aspx" id="form1">
+    <div id="myDiv" style="background-image: url('images/qback11.jpg')">
+        <div id="pager">
+            <div id="previous" style="display: none;">
+            </div>
+            <div id="next" style="display: block;">
+            </div>
+        </div>
+
+        <div id="paginaAtual">
+            <img id="enus" src="http://www.webrazuca.com/v4/images/dc_icon_usa.png" width="30" height="30">
+
+            <audio id="mmm" controls src="b1u1g1pt.mp3">
+                Your browser does not support the audio element.
+            </audio>
+
+            <img id="ptbr" src="http://icongal.com/gallery/image/32079/brasil_br_kr_brazil.png" width="30" height="30">
+        </div>
+        <div style="padding: 30px;">
+            <div style="height: 500px;">
+                <div id="p1" class="pagina" style="display: block;">
+
+                    <span class="titulo">Grammar - Where are my keys?</span><br /><br />
+
+                    <table border="1">
+                        <tr>
+                            <td> PERSONAL </td>
+                            <td> POSSESSIVE ADJETIVE </td>
+                            <td> POSSESSIVE </td>
+                        </tr>
+                        <tr>
+                            <td> I </td>
+                            <td> MY </td>
+                            <td> MINE </td>
+                        </tr>
+                        <tr>
+                            <td> YOU </td>
+                            <td> YOUR </td>
+                            <td> YOURS </td>
+                        </tr>
+                        <tr>
+                            <td> HE </td>
+                            <td> HIS </td>
+                            <td> HIS </td>
+                        </tr>
+                        <tr>
+                            <td> SHE </td>
+                            <td> HER </td>
+                            <td> HERS </td>
+                        </tr>
+                        <tr>
+                            <td> IT </td>
+                            <td> ITS </td>
+                            <td> ITS </td>
+                        </tr>
+                        <tr>
+                            <td> WE </td>
+                            <td> OUR </td>
+                            <td> OURS </td>
+                        </tr>
+                        <tr>
+                            <td> YOU </td>
+                            <td> YOUR </td>
+                            <td> YOURS </td>
+                        </tr>
+                        <tr>
+                            <td> THEY </td>
+                            <td> THEIR </td>
+                            <td> THEIRS </td>
+                        </tr>
+                    </table>
+                    <p class="bold">
+                        1. PRONOUNS
+                    </p>
+
+					<p>
+                        The personal pronouns commit the actions and they are before the verb. <br />
+                        The possessive adjective pronouns are used to indicate that someone has something and are used before the noun. <br />
+                        The possessive pronouns are used to indicate that someone has something and are used after the noun. <br />
+
+                        <strong>Examples:</strong> He is not her brother.<br />
+                        That book is hers and the dictionary is mine.         <br />
+                        A friend of mine is in Los Angeles with his family.<br />
+					</p>
+                </div>
+                <div id="p2" class="pagina" style="display: none;">
+                    <p><strong>2. GENITIVE CASE</strong></p>
+					<br />
+					<p>
+                        It's used to show possessions or close conection between two things.
+					</p>
+					<br />
+
+                    The book of Mike is red.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; = Mike's book is red.<br />
+                    The book of Mike and Tom is red.&nbsp;&nbsp;&nbsp; = Mike and Tom's book is red.<br />
+                    The book of Marcos is old. &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;= Marcos's (s) book is old.<br />
+                    The book of the child is new. &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;= The child's book is new.<br />
+                    <br />
+                    <br />
+
+                    <p><strong>3. COLORS</strong></p>  <br />
+
+                    while / bloack / green / red <br />
+                    purle / pink / blue / lilac <br />
+                    brown / yellow / orange / violet <br />
+                    gray / indigo / beige / silver / gold
+
+
+                </div>
+                <div id="p3" class="pagina" style="display: none;">
+                    <p><strong>4. PREPOSITIONS</strong></p>
+
+                    <strong>OF</strong>    <br />
+                    It's used to indicate that something belongs to someone.<br /><br />
+
+                    <strong>EXAMPLES:</strong> The doll of the girl is very beautiful.                <br />
+                    THe love of a mother for a child is something incredible. <br />
+                    <br />
+
+                    <strong>AT</strong><br />
+                    It's used before: specific time; commemorative date; specific place.<Br /><br />
+
+                    <strong>Examples:</strong> My next class is on Monday at 3pm.<br />
+                    The meeting is at Christmas.<br />
+                    The meeting is at Peter's restaurant. <br />
+                    <br />
+
+                    <table border="1">
+                        <tr>
+                            <td> AMONG = in the middle of 3 or more things. </td>
+                            <td>INSIDE = in a closed or delimited place.</td>
+                        </tr>
+                        <tr>
+                            <td> BEHING = at the back of something. </td>
+                            <td>NEAR = close to something.</td>
+                        </tr>
+                        <tr>
+                            <td> BESIDE = at one of the sides of something. </td>
+                            <td> UNDER = opposed to ON. </td>
+                        </tr>
+                        <tr>
+                            <td> BETWEEN = in the middle of 2 things. </td>
+                            <td> WITH = accompanied by. </td>
+                        </tr>
+                    </table>
+
+
+                </div>
+                <div id="p4" class="pagina" style="display: none;">
+                    <p><strong>5. INTERROGATIVE PRONOUNS</strong></p>
+
+                    <table border="0">
+                        <tr>
+                            <td>WHAT:</td>
+                            <td>It's about things.</td>
+                        </tr>
+                        <tr>
+                            <td>WHERE:</td>
+                            <td>It's about place.</td>
+                        </tr>
+                        <tr>
+                            <td>WHICH: </td>
+                            <td>It's used when we have options</td>
+                        </tr>
+                        <tr>
+                            <td>WHEN:</td>
+                            <td>It's used when we have options</td>
+                        </tr>
+                        <tr>
+                            <td>HOW:</td>
+                            <td>It's about state or condition.</td>
+                        </tr>
+                    </table><br />
+
+                    <table border="0">
+                        <tr>
+                            <td>Examples:</td>
+                            <td>What is her name?</td>
+                            <td>Her name is Ann.</td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>Where is your schoold?</td>
+                            <td>It's in SP.</td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>Which book is yours?</td>
+                            <td>The blue book is mine</td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>When is his birthday?</td>
+                            <td>His birthday is in July.</td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>How is she?</td>
+                            <td>She is fine.</td>
+                        </tr>
+                    </table>
+                </div>
+                <div id="p5" class="pagina" style="display: none;">
+                    <p><strong>6. CLOTHES</strong></p>
+
+                    <strong>Singular</strong><br />
+                    Belt / Blouse / Bra / Cap / Coat / Dress / Hat / Jacket / Jumper / Overcoat / Shirt / Skirt / Sweater / T-shirt
+                    <br />
+                    <br />
+
+                    <strong>Plural</strong>
+                    <br />
+                    Boots / Flip-flops / Glasses / Gloves / Panties / Pants / Sandals / Shoes / Slippers / Socks / Underpants
+                    <br /><br />
+
+                    <strong>7. VERB TO WEAR = TO DRESS</strong><br />
+                    We use these verbs to inform that someone is using clothes.<br />
+                    <strong>Examples:</strong> John is wearing black gloves.<br />
+                    Louise is wearing a nice skirt.
+                    <br /><br />
+
+                    <strong>8. COMPOSITION</strong>
+                    <strong>A birthday part (describre everybody's clothes)</strong>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    </form>
+
+</div>
+</div>
+</body></html>
+				

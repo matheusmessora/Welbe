@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<head>
+<title>11</title>
+<link href="book2.css" rel="stylesheet" type="text/css">
+
+<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Josefin+Sans+Std+Light">
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function () {
+
+    var musicSrc = 'b1u5p';
+    var langDefault = 'pt';
+    var showLanguage = false;
+    var backgroundImage = 'url("images/qback5.jpg")';
+
+
+    // Initialize background
+    $("#myDiv").css('background-image', backgroundImage);
+
+    // Initialize Sound
+    $("#mmm").attr('src',musicSrc + '1.mp3');
+
+    // Initialize Languages
+    if(!showLanguage){
+        $("#enus").hide();
+        $("#ptbr").hide();
+    }
+
+    $("#ptbr").click(function() {
+        document.getElementById('mmm').pause();
+        var a = $("#mmm").attr('src');
+        a = a.substring(0, 6);
+        a += "pt.mp3";
+        $("#mmm").attr('src',a);
+        document.getElementById('mmm').play();
+    });
+    $("#enus").click(function() {
+        document.getElementById('mmm').pause();
+        var a = $("#mmm").attr('src');
+        a = a.substring(0, 6);
+        a += "en.mp3";
+        $("#mmm").attr('src',a);
+        document.getElementById('mmm').play();
+    });
+
+    $("#next").click(function() {
+        $("#previous").show();
+        var testar = true;
+
+        if(testar && $("#p1").css('display') == 'block'){
+            $("#p1").hide();
+            document.getElementById('mmm').pause();
+            $("#mmm").attr('src',musicSrc+ '2' +'.mp3');
+            document.getElementById('mmm').play();
+            $("#p2").show();
+            testar = false;
+        }
+
+        if(testar && $("#p2").css('display') == 'block'){
+            $("#p2").hide();
+            document.getElementById('mmm').pause();
+            $("#mmm").attr('src',musicSrc+'3' +'.mp3');
+            document.getElementById('mmm').play();
+            $("#p3").show();
+            testar = false;
+        }
+        if(testar && $("#p3").css('display') == 'block'){
+            $("#p3").hide();
+            document.getElementById('mmm').pause();
+            $("#mmm").attr('src',musicSrc+'4' +'.mp3');
+            document.getElementById('mmm').play();
+            $("#p4").show();
+            testar = false;
+            $("#next").hide();
+        }
+    });
+
+    $("#previous").click(function() {
+        $("#next").show();
+        var testar = true;
+
+        if(testar && $("#p2").css('display') == 'block'){
+            $("#p2").hide();
+            document.getElementById('mmm').pause();
+            $("#mmm").attr('src',musicSrc+ '1' +'.mp3');
+            document.getElementById('mmm').play();
+            $("#p1").show();
+            $("#previous").hide();
+            testar = false;
+        }
+
+        if(testar && $("#p3").css('display') == 'block'){
+            $("#p3").hide();
+            document.getElementById('mmm').pause();
+            $("#mmm").attr('src',musicSrc+ '2' +'.mp3');
+            document.getElementById('mmm').play();
+            $("#p2").show();
+            testar = false;
+        }
+
+        if(testar && $("#p4").css('display') == 'block'){
+            $("#p4").hide();
+            document.getElementById('mmm').pause();
+            $("#mmm").attr('src',musicSrc+ '3' +'.mp3');
+            document.getElementById('mmm').play();
+            $("#p3").show();
+            testar = false;
+        }
+    });
+
+    <!-- SHOW ANSWERS -->
+    $(".p_question").click(function() {
+        $(this).next().show();
+    });
+
+});
+</script>
+
+<style type="text/css">
+	table
+	{
+		border-width: 0 0 1px 1px;
+		border-spacing: 0;
+		border-collapse: collapse;
+		border-style: solid;
+		font-size: 20px;
+	}
+
+	td, th
+	{
+		margin: 0;
+		padding: 4px;
+		border-width: 1px 1px 0 0;
+		border-style: solid;
+	}
+	
+	p {
+		margin:0px;
+	}
+</style>
+<body>
+
+	<!-- header -->
+<div id="class" class="wrap-section-header" style="display: block;">
+
+        <div class="section-header">
+            <h1>Unit Eleven - Homework</h1>
+        </div>
+    </div>
+	<!-- #END header -->
+<div class="wrap-section-body" id="classBody" style="display: block;">
+	<div id="class_content"><div class="class_container">
+
+
+	
+	
+    <form name="form1" method="post" action="Book2homework11.aspx" id="form1">
+    <div id="myDiv" style="background-image: url('images/qback11.jpg')">
+        <div id="pager">
+            <div id="previous" style="display: none;">
+            </div>
+            <div id="next" style="display: block;">
+            </div>
+        </div>
+
+        <div id="paginaAtual">
+            <img id="enus" src="http://www.webrazuca.com/v4/images/dc_icon_usa.png" width="30" height="30">
+
+            <audio id="mmm" controls src="b1u1g1pt.mp3">
+                Your browser does not support the audio element.
+            </audio>
+
+            <img id="ptbr" src="http://icongal.com/gallery/image/32079/brasil_br_kr_brazil.png" width="30" height="30">
+        </div>
+        <div style="padding: 30px;">
+            <div style="height: 500px;">
+                <div id="p1" class="pagina" style="display: block;">
+                    <strong>Practice - I DON'T KNOW</strong><br />
+
+                    <strong>1. Make like the example</strong><br />
+
+                    <strong>Example 1:</strong>John / play / soccer.<br />
+                    What does John to do? He likes  to play soccer.
+
+                    <strong>Example 2:</strong>They / wear / new  clothes.<br />
+                    What do they like to do? They like to wear new clothes.
+
+                    <span class="p_question">A) Peter / watch / TV.</span>
+                    <span class="p_answer">What does  Petter like to do? He likes to watch TV.</span>
+
+                    <span class="p_question">B) Jessica / study / English.</span>
+                    <span class="p_answer">What does Jessica like to do? She likes  to study English.</span>
+
+                    <span class="p_question">C) Linda and Donna / eat / ice-cream.</span>
+                    <span class="p_answer">What do Linda and Donna like to do? They like to eat ice-cream.</span>
+
+                    <span class="p_question">D) Daniel / teach / the lesson.</span>
+                    <span class="p_answer">What does Daniel  like to do? He likes to teach the lesson.</span>
+
+                    <span class="p_question">E) Dianne / drive / a car.</span>
+                    <span class="p_answer">What does Dianne  like to do? She likes to drive a car.</span>
+
+                    <span class="p_question">F) Belinda / wait for / her husband.</span>
+                    <span class="p_answer">What does Belinda like to do? She likes to wait for her husband.</span>
+
+                    <span class="p_question">G) Marc / write / a book.</span>
+                    <span class="p_answer">What does Marc like to do? He likes to write a book.</span>
+
+                    <span class="p_question">H) The Kids / use / the computer.</span>
+                    <span class="p_answer">What do the kids like to do? They like to use the computer.</span>
+
+                </div>
+
+                <div id="p2" class="pagina" style="display: none;">
+                    <strong>2. Follow the example</strong><br />
+
+                    <strong>Example:</strong> Christine / watch TV / read a book.<br />
+                    Christine does not like to watch TV. She likes to read a book.
+
+                    <span class="p_question">A) Paul / have lunch / disturb his mother.</span>
+                    <span class="p_answer">Paul does not like to have lunch. He likes to disturb his mother.</span>
+
+                    <span class="p_question">B) Henry / play video game / help his father.</span>
+                    <span class="p_answer"> Henry does not like to play video game. He likes to help his father.</span>
+
+                    <span class="p_question">C) The girls / cook the lunch / sleep.</span>
+                    <span class="p_answer"> The girls do not like to cook. They like to sleep.</span>
+
+                    <span class="p_question">D) The parents / dance / sing.</span>
+                    <span class="p_answer"> The parents do not like to dance. They like to sing.</span>
+
+                    <span class="p_question">E) Jimmy / wash the car / listen to music.</span>
+                    <span class="p_answer"> Jimmy does not like to wash the car. He likes to listen to music.</span>
+
+                    <span class="p_question">F) Robert / walk in the park / look at the girls.</span>
+                    <span class="p_answer"> Robert does not like to walk in the park. He likes to look at the girls.</span>
+
+                    <span class="p_question">G) Rachel / clean the house / have a shower</span>
+                    <span class="p_answer"> Rachel does not like to clean the house. She likes to have a shower.</span>
+
+                </div>
+                <div id="p3" class="pagina" style="display: none;">
+                    <strong>3.Complete the sentences with the verbs in brackets.</strong><br />
+
+                    <span class="p_question">A) She cleans her house everyday. (To clean)</span>
+
+                    <span class="p_question">B) We do not have time to watch TV. (To have (negative) / to watch)</span>
+
+                    <span class="p_question">C) Jimmy and Keith are in the park. (To be)</span>
+
+                    <span class="p_question">D) Patrick wants a car to go to the beach. (To want / to go)</span>
+
+                    <span class="p_question">E) When I see Mary I remember my mom. (To see / to remember)</span>
+
+                    <span class="p_question">F) The boys do not have girlfriends. (To have (negative))</span>
+
+                    <span class="p_question">G) Phil wakes up very early on Saturdays. (To wake up)</span>
+
+                    <span class="p_question">H) Marc likes very much to teach English. (To like/ to teach)</span>
+
+                </div>
+                <div id="p4" class="pagina" style="display: none;">
+                    <strong>4.Answer the questions below.</strong>
+
+                    <span class="p_question">A) What is your favorite color?</span>
+                    <span class="p_answer"> My favorite color is ... / it is ...(any color)</span>
+
+                    <span class="p_question">B) What do you like to do in your free time?</span>
+                    <span class="p_answer"> I like to ... (any verb)</span>
+
+                    <span class="p_question">C) Who is the president of your country?</span>
+                    <span class="p_answer"> The president of my country is... (the namo of the president)</span>
+
+                    <span class="p_question">D) Where do you live?</span>
+                    <span class="p_answer"> I live in ...(the name of the city)</span>
+
+                    <span class="p_question">E) Are you single ou married?</span>
+                    <span class="p_answer"> I am singles/ I am married.</span>
+
+                    <span class="p_question">F) What day do you study English?</span>
+                    <span class="p_answer"> I study English on ... (any week day)</span>
+
+                </div>
+        </div>
+    </div>
+    </div>
+    </form>
+
+</div>
+</div>
+</body></html>
+				
