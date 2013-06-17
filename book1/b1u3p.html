@@ -9,8 +9,23 @@
 
 <script type="text/javascript">
 $(document).ready(function () {
-	var musicSrc = 'b1u1p';
-	var langDefault = 'pt';
+    var musicSrc = 'b1u3p';
+    var langDefault = 'pt';
+    var showLanguage = false;
+    var backgroundImage = 'url("images/qback1.jpg")';
+
+
+    // Initialize background
+    $("#myDiv").css('background-image', backgroundImage);
+
+    // Initialize Sound
+    $("#mmm").attr('src',musicSrc + '1.mp3');
+
+    // Initialize Languages
+    if(!showLanguage){
+        $("#enus").hide();
+        $("#ptbr").hide();
+    }
 
     $("#next").click(function() {
         $("#previous").show();
@@ -19,7 +34,7 @@ $(document).ready(function () {
         if(testar && $("#p1").css('display') == 'block'){
             $("#p1").hide();
             document.getElementById('mmm').pause();
-            $("#mmm").attr('src',musicSrc+ '2' +langDefault+'.mp3');
+            $("#mmm").attr('src',musicSrc+ '2.mp3');
             document.getElementById('mmm').play();
             $("#p2").show();
             testar = false;
@@ -28,7 +43,7 @@ $(document).ready(function () {
         if(testar && $("#p2").css('display') == 'block'){
             $("#p2").hide();
             document.getElementById('mmm').pause();
-            $("#mmm").attr('src',musicSrc+ '3' +langDefault+'.mp3');
+            $("#mmm").attr('src',musicSrc+ '3.mp3');
             document.getElementById('mmm').play();
             $("#p3").show();
             testar = false;
@@ -37,7 +52,7 @@ $(document).ready(function () {
         if(testar && $("#p3").css('display') == 'block'){
             $("#p3").hide();
             document.getElementById('mmm').pause();
-            $("#mmm").attr('src',musicSrc+ '4' +langDefault+'.mp3');
+            $("#mmm").attr('src',musicSrc+ '4.mp3');
             document.getElementById('mmm').play();
             $("#p4").show();
             testar = false;
@@ -46,7 +61,7 @@ $(document).ready(function () {
         if(testar && $("#p4").css('display') == 'block'){
             $("#p4").hide();
             document.getElementById('mmm').pause();
-            $("#mmm").attr('src',musicSrc+ '5' +langDefault+'.mp3');
+            $("#mmm").attr('src',musicSrc+ '5.mp3');
             document.getElementById('mmm').play();
             $("#p5").show();
             $("#next").hide();
@@ -195,7 +210,7 @@ $(document).ready(function () {
                     <span class="p_question">B) This ball is his. (we)</span>
                     <span class="p_answer">That one is ours.</span>
 
-                    <span class="p_question">C_ These glasses are Julie's (he)</span>
+                    <span class="p_question">C) These glasses are Julie's (he)</span>
                     <span class="p_answer">Those ones are his.</span>
 
                     <span class="p_question">D) This toy is the boy's. (I)</span>

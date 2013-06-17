@@ -12,9 +12,7 @@ $(document).ready(function () {
 	$('.balloon').balloon({
 		tipSize: 24,
 		css: {
-
 			opacity: '1'
-			
 		}
   });
 	$('strong').balloon();
@@ -36,52 +34,54 @@ $(document).ready(function () {
         $("#ptbr").hide();
     }
 
-	$("#next").click(function() {
-		$("#previous").show();
-		var testar = true;
-	
-		if(testar && $("#p1").css('display') == 'block'){
-			$("#p1").hide();
-			document.getElementById('mmm').pause();
-			$("#mmm").attr('src',musicSrc+ '2' +langDefault+'.mp3');
-			document.getElementById('mmm').play();
-			$("#p2").show();
-			$("#next").hide();
-			testar = false;
-		}
-	});
-	
-	$("#ptbr").click(function() {
-		document.getElementById('mmm').pause();
-		var a = $("#mmm").attr('src');
-		a = a.substring(0, a.length-6);
-		a += "pt.mp3";
-		$("#mmm").attr('src',a);
-		document.getElementById('mmm').play();
-	});
-	$("#enus").click(function() {
-		document.getElementById('mmm').pause();
-		var a = $("#mmm").attr('src');
-		a = a.substring(0, a.length-6);
-		a += "en.mp3";
-		$("#mmm").attr('src',a);
-		document.getElementById('mmm').play();
-	});
-	
-	$("#previous").click(function() {
-		$("#next").show();
-		var testar = true;
+    // Language clicks
+    $("#ptbr").click(function() {
+        document.getElementById('mmm').pause();
+        var a = $("#mmm").attr('src');
+        a = a.substring(0, a.length-6);
+        a += "pt.mp3";
+        $("#mmm").attr('src',a);
+        document.getElementById('mmm').play();
+    });
+    $("#enus").click(function() {
+        document.getElementById('mmm').pause();
+        var a = $("#mmm").attr('src');
+        a = a.substring(0, a.length-6);
+        a += "en.mp3";
+        $("#mmm").attr('src',a);
+        document.getElementById('mmm').play();
+    });
 
-		if(testar && $("#p2").css('display') == 'block'){
-			$("#p2").hide();
-			document.getElementById('mmm').pause();
-			$("#mmm").attr('src','b2u11h1.mp3');
-			document.getElementById('mmm').play();
-			$("#p1").show();
-			$("#previous").hide();
-			testar = false;
-		}
-	});
+    // Next pages clicks
+    $("#next").click(function() {
+        $("#previous").show();
+        var testar = true;
+
+        if(testar && $("#p1").css('display') == 'block'){
+            $("#p1").hide();
+            document.getElementById('mmm').pause();
+            $("#mmm").attr('src',musicSrc+ '2' + '.mp3');
+            document.getElementById('mmm').play();
+            $("#p2").show();
+            $("#next").hide();
+            testar = false;
+        }
+    });
+
+    $("#previous").click(function() {
+        $("#next").show();
+        var testar = true;
+
+        if(testar && $("#p2").css('display') == 'block'){
+            $("#p2").hide();
+            document.getElementById('mmm').pause();
+            $("#mmm").attr('src',musicSrc+ '1' +'.mp3');
+            document.getElementById('mmm').play();
+            $("#p1").show();
+            $("#previous").hide();
+            testar = false;
+        }
+    });
 
 });
 </script>
@@ -158,6 +158,7 @@ $(document).ready(function () {
 
                 </div>
                 <div id="p2" class="pagina" style="display: none;">
+                    <br />
                     To drink, there are three different things, <span title="suco de manga" class="balloon">mango juice</span>, which is Mr. Stewart's favorite one, <span title="suco de mamão" class="balloon">papaya juice</span> for the boys and <span title="suco de abacaxi" class="balloon">pineapple juice</span> for Mrs. Stewart and Jane. And of course, much water. When <span title="tudo está pronto" class="balloon">everything is ready</span> to the picnic, Mrs. Stewart <span title="chama" class="balloon">calls</span> her <span title="marido" class="balloon">husband</span> and her <span title="filhos" class="balloon">kids</span> to ear, <span title="mas antes" class="balloon">but before</span>, they need <span title="lavar" class="balloon">to wash</span> their hands.<br>
                     There are many things to do in the park in a <span title="dia ensolarado" class="balloon">sunny day</span>. <span title="então, da próxima vez" class="balloon">So, next time</span> you have a beautiful day and it is your <span title="folga" class="balloon">day off</span>, go to the park to <span title="para se divertir" class="balloon">have fun</span>.
                 </div>

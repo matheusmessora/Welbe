@@ -7,78 +7,117 @@
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 <script src="http://file.urin.take-uma.net/jquery.balloon.min.js"></script>
 
-<script type="text/javascript">
-$(document).ready(function () {
-	var langDefault = 'pt';
-    var soundMain = "b1u4t";
-    var totalPages = 2;
-    var pageId = "#p";
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var musicSrc = 'b1u4p';
+            var langDefault = 'pt';
+            var showLanguage = false;
+            var backgroundImage = 'url("images/qback4.jpg")';
 
 
-    $("#next").click(function() {
-        $("#previous").show();
-        var testar = true;
+            // Initialize background
+            $("#myDiv").css('background-image', backgroundImage);
 
-        for (var i = 1; i <= totalPages; i++) {
-            if(testar && $(pageId + i).css('display') == 'block'){
-                $(pageId + i).hide();
-                document.getElementById('mmm').pause();
-                $("#mmm").attr('src', soundMain + '6' + langDefault + '.mp3');
-//                document.getElementById('mmm').play();
-                $(pageId + (i + 1)).show();
-                testar = false;
+            // Initialize Sound
+            $("#mmm").attr('src',musicSrc + '1.mp3');
 
-                if((i+1) == totalPages) {
+            // Initialize Languages
+            if(!showLanguage){
+                $("#enus").hide();
+                $("#ptbr").hide();
+            }
+
+            $("#next").click(function() {
+                $("#previous").show();
+                var testar = true;
+
+                if(testar && $("#p1").css('display') == 'block'){
+                    $("#p1").hide();
+                    document.getElementById('mmm').pause();
+                    $("#mmm").attr('src',musicSrc+ '2' +langDefault+'.mp3');
+                    document.getElementById('mmm').play();
+                    $("#p2").show();
+                    testar = false;
+                }
+
+                if(testar && $("#p2").css('display') == 'block'){
+                    $("#p2").hide();
+                    document.getElementById('mmm').pause();
+                    $("#mmm").attr('src',musicSrc+'3' +langDefault+'.mp3');
+                    document.getElementById('mmm').play();
+                    $("#p3").show();
+                    testar = false;
+                }
+                if(testar && $("#p3").css('display') == 'block'){
+                    $("#p3").hide();
+                    document.getElementById('mmm').pause();
+                    $("#mmm").attr('src',musicSrc+'4' +langDefault+'.mp3');
+                    document.getElementById('mmm').play();
+                    $("#p4").show();
+                    testar = false;
                     $("#next").hide();
                 }
-            }
-        }
-    });
+            });
 
-    $("#previous").click(function() {
-        $("#next").show();
-        var testar = true;
+            $("#previous").click(function() {
+                $("#next").show();
+                var testar = true;
 
-        for (var i = totalPages; i >= 1; i--) {
-            if(testar && $(pageId + i).css('display') == 'block'){
-                $(pageId + i).hide();
-                document.getElementById('mmm').pause();
-                $("#mmm").attr('src','b2u11h2.mp3');
-//                document.getElementById('mmm').play();
-                $(pageId + (i - 1)).show();
-                testar = false;
-
-                if((i-1) == 1) {
+                if(testar && $("#p2").css('display') == 'block'){
+                    $("#p2").hide();
+                    document.getElementById('mmm').pause();
+                    $("#mmm").attr('src',musicSrc+ '1' +'.mp3');
+                    document.getElementById('mmm').play();
+                    $("#p1").show();
                     $("#previous").hide();
+                    testar = false;
                 }
-            }
-        }
-    });
-	$("#ptbr").click(function() {
-		document.getElementById('mmm').pause();
-		var a = $("#mmm").attr('src');
-		a = a.substring(0, a.length-6);
-		a += "pt.mp3";
-		$("#mmm").attr('src',a);
-		document.getElementById('mmm').play();
-	});
 
-    $("#enus").click(function() {
-		document.getElementById('mmm').pause();
-		var a = $("#mmm").attr('src');
-		a = a.substring(0, a.length-6);
-		a += "en.mp3";
-		$("#mmm").attr('src',a);
-		document.getElementById('mmm').play();
-	});
+                if(testar && $("#p3").css('display') == 'block'){
+                    $("#p3").hide();
+                    document.getElementById('mmm').pause();
+                    $("#mmm").attr('src',musicSrc+ '2' +'.mp3');
+                    document.getElementById('mmm').play();
+                    $("#p2").show();
+                    testar = false;
+                }
 
-    <!-- SHOW ANSWERS -->
-    $(".p_question").click(function() {
-        $(this).next().show();
-    });
+                if(testar && $("#p4").css('display') == 'block'){
+                    $("#p4").hide();
+                    document.getElementById('mmm').pause();
+                    $("#mmm").attr('src',musicSrc+ '3' +'.mp3');
+                    document.getElementById('mmm').play();
+                    $("#p3").show();
+                    testar = false;
+                }
+            });
 
-});
-</script>
+            $("#ptbr").click(function() {
+                document.getElementById('mmm').pause();
+                var a = $("#mmm").attr('src');
+                a = a.substring(0, a.length-6);
+                a += "pt.mp3";
+                $("#mmm").attr('src',a);
+                document.getElementById('mmm').play();
+            });
+            $("#enus").click(function() {
+                document.getElementById('mmm').pause();
+                var a = $("#mmm").attr('src');
+                a = a.substring(0, a.length-6);
+                a += "en.mp3";
+                $("#mmm").attr('src',a);
+                document.getElementById('mmm').play();
+            });
+
+            <!-- SHOW ANSWERS -->
+
+            $(".p_question").click(function() {
+                $(this).next().show();
+            });
+
+        });
+    </script>
+
 
 <style type="text/css">
 	table
@@ -230,7 +269,7 @@ $(document).ready(function () {
                     <span class="p_question">A) Are Molly and Steve talking about things that involve no money?</span>
                     <span class="p_answer">Yes, they are talking about things that involve no money.</span>
 
-                    <span class="p_question">B) Where is MOlly living now?</span>
+                    <span class="p_question">B) Where is Molly living now?</span>
                     <span class="p_answer">She is living on the beach.</span>
 
                     <span class="p_question">C) Who is showing something to the girl?</span>

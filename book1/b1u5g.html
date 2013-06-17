@@ -8,6 +8,41 @@
 <script type="text/javascript">
 $(document).ready(function () {
 
+    var musicSrc = 'b1u5g';
+    var langDefault = 'pt';
+    var showLanguage = true;
+    var backgroundImage = 'url("images/qback5.jpg")';
+
+
+    // Initialize background
+    $("#myDiv").css('background-image', backgroundImage);
+
+    // Initialize Sound
+    $("#mmm").attr('src',musicSrc + '1.mp3');
+
+    // Initialize Languages
+    if(!showLanguage){
+        $("#enus").hide();
+        $("#ptbr").hide();
+    }
+
+    $("#ptbr").click(function() {
+        document.getElementById('mmm').pause();
+        var a = $("#mmm").attr('src');
+        a = a.substring(0, 6);
+        a += "pt.mp3";
+        $("#mmm").attr('src',a);
+        document.getElementById('mmm').play();
+    });
+    $("#enus").click(function() {
+        document.getElementById('mmm').pause();
+        var a = $("#mmm").attr('src');
+        a = a.substring(0, 6);
+        a += "en.mp3";
+        $("#mmm").attr('src',a);
+        document.getElementById('mmm').play();
+    });
+
 	$("#next").click(function() {
 		$("#previous").show();
 		var testar = true;
@@ -15,7 +50,7 @@ $(document).ready(function () {
 		if(testar && $("#p1").css('display') == 'block'){
 			$("#p1").hide();
 			document.getElementById('mmm').pause();
-			$("#mmm").attr('src','b2u11h2.mp3');
+            $("#mmm").attr('src',musicSrc+ '2' +'.mp3');
 			document.getElementById('mmm').play();
 			$("#p2").show();
 			testar = false;
@@ -24,7 +59,7 @@ $(document).ready(function () {
 		if(testar && $("#p2").css('display') == 'block'){
 			$("#p2").hide();
 			document.getElementById('mmm').pause();
-			$("#mmm").attr('src','b2u11h3.mp3');
+            $("#mmm").attr('src',musicSrc+ '3' +'.mp3');
 			document.getElementById('mmm').play();
 			$("#p3").show();
 			testar = false;
@@ -33,7 +68,7 @@ $(document).ready(function () {
 		if(testar && $("#p3").css('display') == 'block'){
 			$("#p3").hide();
 			document.getElementById('mmm').pause();
-			$("#mmm").attr('src','b2u11h4.mp3');
+            $("#mmm").attr('src',musicSrc+ '4' +'.mp3');
 			document.getElementById('mmm').play();
 			$("#p4").show();
 			$("#next").hide();
@@ -48,7 +83,7 @@ $(document).ready(function () {
 		if(testar && $("#p2").css('display') == 'block'){
 			$("#p2").hide();
 			document.getElementById('mmm').pause();
-			$("#mmm").attr('src','b2u11h1.mp3');
+            $("#mmm").attr('src',musicSrc+ '1' +'.mp3');
 			document.getElementById('mmm').play();
 			$("#p1").show();
 			$("#previous").hide();
@@ -58,7 +93,7 @@ $(document).ready(function () {
 		if(testar && $("#p3").css('display') == 'block'){
 			$("#p3").hide();
 			document.getElementById('mmm').pause();
-			$("#mmm").attr('src','b2u11h2.mp3');
+            $("#mmm").attr('src',musicSrc+ '2' +'.mp3');
 			document.getElementById('mmm').play();
 			$("#p2").show();
 			testar = false;
@@ -67,7 +102,7 @@ $(document).ready(function () {
 		if(testar && $("#p4").css('display') == 'block'){
 			$("#p4").hide();
 			document.getElementById('mmm').pause();
-			$("#mmm").attr('src','b2u11h3.mp3');
+            $("#mmm").attr('src',musicSrc+ '3' +'.mp3');
 			document.getElementById('mmm').play();
 			$("#p3").show();
 			testar = false;
@@ -125,9 +160,14 @@ $(document).ready(function () {
         </div>
 
         <div id="paginaAtual">
-		<audio id="mmm" controls src="b1u1g1.mp3"> 
-			Your browser does not support the audio element.
-		</audio></div>
+            <img id="enus" src="http://www.webrazuca.com/v4/images/dc_icon_usa.png" width="30" height="30">
+
+            <audio id="mmm" controls src="b1u1g1pt.mp3">
+                Your browser does not support the audio element.
+            </audio>
+
+            <img id="ptbr" src="http://icongal.com/gallery/image/32079/brasil_br_kr_brazil.png" width="30" height="30">
+        </div>
         <div style="padding: 30px;">
             <div style="height: 500px;">
                 <div id="p1" class="pagina" style="display: block;">
