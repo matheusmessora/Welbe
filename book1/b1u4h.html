@@ -46,25 +46,7 @@
                     document.getElementById('mmm').play();
                     $("#p3").show();
                     testar = false;
-                }
-
-                if(testar && $("#p3").css('display') == 'block'){
-                    $("#p3").hide();
-                    document.getElementById('mmm').pause();
-                    $("#mmm").attr('src',musicSrc+ '4.mp3');
-                    document.getElementById('mmm').play();
-                    $("#p4").show();
-                    testar = false;
-                }
-
-                if(testar && $("#p4").css('display') == 'block'){
-                    $("#p4").hide();
-                    document.getElementById('mmm').pause();
-                    $("#mmm").attr('src',musicSrc+ '5.mp3');
-                    document.getElementById('mmm').play();
-                    $("#p5").show();
                     $("#next").hide();
-                    testar = false;
                 }
             });
 
@@ -88,24 +70,6 @@
                     $("#mmm").attr('src','b2u11h2.mp3');
                     document.getElementById('mmm').play();
                     $("#p2").show();
-                    testar = false;
-                }
-
-                if(testar && $("#p4").css('display') == 'block'){
-                    $("#p4").hide();
-                    document.getElementById('mmm').pause();
-                    $("#mmm").attr('src','b2u11h3.mp3');
-                    document.getElementById('mmm').play();
-                    $("#p3").show();
-                    testar = false;
-                }
-
-                if(testar && $("#p5").css('display') == 'block'){
-                    $("#p5").hide();
-                    document.getElementById('mmm').pause();
-                    $("#mmm").attr('src','b2u11h4.mp3');
-                    document.getElementById('mmm').play();
-                    $("#p4").show();
                     testar = false;
                 }
             });
@@ -309,6 +273,7 @@
                     <p class="exercicio">
                         H) He is Mike's brother.
                         <input onblur="teste(this);" type="text" rel="Whose brother is he?">
+
                 </div>
                 <div id="p2" class="pagina" style="display: none;">
                     <p class="bold">
@@ -408,80 +373,7 @@
                     <p class="exercicio">
                         G) Brad Pitt, <input onblur="teste(this);" type="text" rel="his"> wife Angelina Jolie and <input onblur="teste(this);" type="text" rel="their"> kids are in Rome on vacation. (he/they)
 
-                    <div class="theLabel"></div><div class="green" title="p22"></div><div class="yellow"></div><div class="red"></div>
-                    <p class="exercicio">
-                        H) I <input onblur="teste(this);" type="text" rel="am not"> tired now. (negative)
-
                 </div>
-                <div id="p4" class="pagina" style="display: none;">
-                    <p class="bold">
-                        4. Complete the sentences with: this / that / these / those
-                    </p>
-
-                    <div class="theLabel"></div><div class="green" title="p23"></div><div class="yellow"></div><div class="red"></div>
-                    <p class="exercicio">
-                        A) I am Marc and <input onblur="teste(this);" type="text" rel="those"> boys are my kids. (far)
-
-                    <div class="theLabel"></div><div class="green" title="p24"></div><div class="yellow"></div><div class="red"></div>
-                    <p class="exercicio">
-                        B) What is <input onblur="teste(this);" type="text" rel="this"> on the table? (near)
-
-                    <div class="theLabel"></div><div class="green" title="p25"></div><div class="yellow"></div><div class="red"></div>
-                    <p class="exercicio">
-                        C) The hirl is <input onblur="teste(this);" type="text" rel="that"> one near the car. (far)
-
-                    <div class="theLabel"></div><div class="green" title="p26"></div><div class="yellow"></div><div class="red"></div>
-                    <p class="exercicio">
-                        D) <input onblur="teste(this);" type="text" rel="These"> are my friends Peter and Arthur. (near)
-
-                    <div class="theLabel"></div><div class="green" title="p27"></div><div class="yellow"></div><div class="red"></div>
-                    <p class="exercicio">
-                        E) <input onblur="teste(this);" type="text" rel="That"> car is not very beautiful, but <input onblur="teste(this);" type="text" rel="this"> one is fantastic. (far/near)
-
-                    <div class="theLabel"></div><div class="green" title="p28"></div><div class="yellow"></div><div class="red"></div>
-                    <p class="exercicio">
-                        F) <input onblur="teste(this);" type="text" rel="These"> men are here to talk to Julie. (near)
-
-                    <div class="theLabel"></div><div class="green" title="p29"></div><div class="yellow"></div><div class="red"></div>
-                    <p class="exercicio">
-                        G) <input onblur="teste(this);" type="text" rel="Those"> teams from Scotland are not very good. (far)
-
-
-                </div><div id="p5" class="pagina" style="display: none;">
-                <p class="bold">
-                    4. Complete the sentences with: a / an / in / on from
-                </p>
-
-                <div class="theLabel"></div><div class="green" title="p30"></div><div class="yellow"></div><div class="red"></div>
-                <p class="exercicio">
-                    A) Marc is  <input onblur="teste(this);" type="text" rel="an"> English teacher.
-
-                <div class="theLabel"></div><div class="green" title="p31"></div><div class="yellow"></div><div class="red"></div>
-                <p class="exercicio">
-                    B) The picture  <input onblur="teste(this);" type="text" rel="on"> the wall is  <input onblur="teste(this);" type="text" rel="a"> very beautiful picture.
-
-                <div class="theLabel"></div><div class="green" title="p32"></div><div class="yellow"></div><div class="red"></div>
-                <p class="exercicio">
-                    C) Those girls  <input onblur="teste(this);" type="text" rel="in"> the house are  <input onblur="teste(this);" type="text" rel="from"> New Zealand.
-
-                <div class="theLabel"></div><div class="green" title="p33"></div><div class="yellow"></div><div class="red"></div>
-                <p class="exercicio">
-                    D)  <input onblur="teste(this);" type="text" rel="The"> students are finishing  <input onblur="teste(this);" type="text" rel="the"> first unit of  <input onblur="teste(this);" type="text" rel="the"> book.
-
-                <div class="theLabel"></div><div class="green" title="p34"></div><div class="yellow"></div><div class="red"></div>
-                <p class="exercicio">
-                    E)  <input onblur="teste(this);" type="text" rel="On"> December 1st. I have  <input onblur="teste(this);" type="text" rel="a"> nice party to go.
-
-                <div class="theLabel"></div><div class="green" title="p35"></div><div class="yellow"></div><div class="red"></div>
-                <p class="exercicio">
-                    F) Next class is  <input onblur="teste(this);" type="text" rel="on"> Friday, ok? Ah  <input onblur="teste(this);" type="text" rel="in"> the morning.
-
-                <div class="theLabel"></div><div class="green" title="p36"></div><div class="yellow"></div><div class="red"></div>
-                <p class="exercicio">
-                    G) It is possible to see  <input onblur="teste(this);" type="text" rel="an"> elephant  <input onblur="teste(this);" type="text" rel="in"> the circus.
-
-
-            </div>
             </div>
         </div>
     </div>
