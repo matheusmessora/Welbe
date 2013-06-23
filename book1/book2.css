@@ -366,3 +366,7 @@ span.e7
     display: block;
     cursor: pointer;
 }
+
+.borderless td {
+    border: 0px;
+}

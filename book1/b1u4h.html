@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<head>
+    <title>11</title>
+    <link href="book2.css" rel="stylesheet" type="text/css">
+
+    <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Josefin+Sans+Std+Light">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var musicSrc = 'b1u4h';
+            var langDefault = 'pt';
+            var showLanguage = false;
+            var backgroundImage = 'url("images/qback4.jpg")';
+
+
+            // Initialize background
+            $("#myDiv").css('background-image', backgroundImage);
+
+            // Initialize Sound
+            $("#mmm").attr('src',musicSrc + '1.mp3');
+
+            // Initialize Languages
+            if(!showLanguage){
+                $("#enus").hide();
+                $("#ptbr").hide();
+            }
+
+
+            $("#next").click(function() {
+                $("#previous").show();
+                var testar = true;
+
+                if(testar && $("#p1").css('display') == 'block'){
+                    $("#p1").hide();
+                    document.getElementById('mmm').pause();
+                    $("#mmm").attr('src',musicSrc+ '2.mp3');
+                    document.getElementById('mmm').play();
+                    $("#p2").show();
+                    testar = false;
+                }
+
+                if(testar && $("#p2").css('display') == 'block'){
+                    $("#p2").hide();
+                    document.getElementById('mmm').pause();
+                    $("#mmm").attr('src',musicSrc+ '3.mp3');
+                    document.getElementById('mmm').play();
+                    $("#p3").show();
+                    testar = false;
+                    $("#next").hide();
+                }
+            });
+
+            $("#previous").click(function() {
+                $("#next").show();
+                var testar = true;
+
+                if(testar && $("#p2").css('display') == 'block'){
+                    $("#p2").hide();
+                    document.getElementById('mmm').pause();
+                    $("#mmm").attr('src','b2u11h1.mp3');
+                    document.getElementById('mmm').play();
+                    $("#p1").show();
+                    $("#previous").hide();
+                    testar = false;
+                }
+
+                if(testar && $("#p3").css('display') == 'block'){
+                    $("#p3").hide();
+                    document.getElementById('mmm').pause();
+                    $("#mmm").attr('src','b2u11h2.mp3');
+                    document.getElementById('mmm').play();
+                    $("#p2").show();
+                    testar = false;
+                }
+            });
+
+            $(".red").click(function() {
+                var campos = $(this).next().find('input');
+                if(teste(campos[0])){
+                    $(this).prev().prev().prev().html('Correct');
+                    $(this).prev().prev().prev().css('color', 'green');
+                }
+                else {
+                    $(this).prev().prev().prev().html('Incorrect');
+                    $(this).prev().prev().prev().css('color', 'red');
+                }
+
+                $(this).prev().show();
+            });
+
+            $(".yellow").click(function() {
+                var campos = $(this).next().next().find('input');
+                campos.each(function () {
+                    var rel;
+                    if ($(this).attr("rel").indexOf("|") == -1) {
+                        rel = $(this).attr("rel")
+                    }else {
+                        rel = $(this).attr("rel").toLowerCase().split("|")[0];
+                    }
+
+                    $(this).val(rel);
+                    $(this).css('color', 'green');
+                });
+
+                $(this).prev().prev().html('Correct');
+                $(this).prev().prev().css('color', 'green');
+                $(this).prev().show();
+            });
+
+            $(".green").click(function() {
+                var id = $(this).attr('title');
+                player(musicSrc + id);
+                $(this).next().click();
+                showCorrect($(this).prev());
+            });
+        });
+
+        function showCorrect(campo){
+            campo.html('Correct');
+            campo.css('color', 'green');
+        }
+        function player(mp3){
+            document.getElementById('mmm').pause();
+            $("#mmm").attr('src',mp3 + '.mp3');
+            document.getElementById('mmm').play();
+        }
+
+        function teste(campo){
+            var retorno = true;
+            var rel = $(campo).attr("rel").toLowerCase();
+
+            if ($(campo).attr("rel").indexOf("|") == -1) {
+                var valor = $(campo).val().toLowerCase();
+                if(valor == rel){
+                    $(campo).css("color","green");
+                }else {
+                    $(campo).css("color","red");
+                    retorno = false;
+                }
+            }else {
+                var ar = $(campo).attr("rel").toLowerCase().split("|");
+                for (i = 0; i < ar.length; i++) {
+                    if (ar[i] == $(campo).val().toLowerCase()) {
+                        $(campo).css('color', 'green');
+                        break;
+                    } else {
+                        $(campo).css('color', 'red');
+                        retorno = false;
+                    }
+                }
+            }
+
+            return retorno;
+        }
+    </script>
+
+<style type="text/css">
+.exercicio {
+    font-size: 18px;
+    margin:5px;
+    padding: 0px;;
+}
+
+#p1 input {
+        width: 350px;
+    }
+</style>
+
+
+<body>
+
+<!-- header -->
+<div id="class" class="wrap-section-header" style="display: block;">
+
+    <div class="section-header">
+        <h1>Unit Eleven - Homework</h1>
+    </div>
+</div>
+<!-- #END header -->
+<div class="wrap-section-body" id="classBody" style="display: block;">
+<div id="class_content"><div class="class_container">
+<form name="form1" method="post" action="Book2homework11.aspx" id="form1">
+    <div id="myDiv" style="background-image: url('images/qback11.jpg')">
+        <div id="pager">
+            <div id="previous" style="display: block;">
+            </div>
+            <div id="next" style="display: block;">
+            </div>
+        </div>
+
+        <div id="paginaAtual">
+            <audio id="mmm" controls src="b2u11h1.mp3">
+                Your browser does not support the audio element.
+            </audio></div>
+        <div style="padding: 30px;">
+            <div style="height: 500px;">
+                <div id="p1" class="pagina" style="display: block;">
+
+                    <span class="titulo">Homework - TO HAVE FUN X MONEY</span>
+                    <p class="bold">
+                        1. Answer the questions below.
+                    </p>
+                    <div class="theLabel"></div><div class="green" title="p1"></div><div class="yellow"></div><div class="red"></div>
+                    <p class="exercicio">
+                        A) Where is the Eifel Tower?
+                        <input onblur="teste(this);" type="text" rel="It is in Paris">
+                    </p>
+
+                    <div class="theLabel"></div><div class="green" title="p2"></div><div class="yellow"></div><div class="red"></div>
+                    <p  class="exercicio">
+                        B) Whose book is this?
+                        <input onblur="teste(this);" type="text" rel="It is mine">
+                    </p>
+
+                    <div class="theLabel"></div><div class="green" title="p3"></div><div class="yellow"></div><div class="red"></div>
+                    <p  class="exercicio">
+                        C) When is your next class? (Monday)
+                        <input onblur="teste(this);" type="text" rel="My next class is on Monday">
+
+                    <div class="theLabel"></div><div class="green" title="p4"></div><div class="yellow"></div><div class="red"></div>
+                    <p  class="exercicio">
+                        D) What is your soccer team? (Manchester United)
+                        <input style="width: 250px;" onblur="teste(this);" type="text" rel="My soccer team is Manchester United">
+
+
+                    <p class="bold">
+                        2. Ask questions for the underlined words.
+                    </p>
+
+                    <div class="theLabel"></div><div class="green" title="p7"></div><div class="yellow"></div><div class="red"></div>
+                    <p class="exercicio">
+                        A) Her party is in June.
+                        <input onblur="teste(this);" type="text" rel="Whose party is in June">
+
+
+                    <div class="theLabel"></div><div class="green" title="p7"></div><div class="yellow"></div><div class="red"></div>
+                    <p class="exercicio">
+                        B) Her party is in June.
+                        <input onblur="teste(this);" type="text" rel="When is her party">
+
+
+                    <div class="theLabel"></div><div class="green" title="p7"></div><div class="yellow"></div><div class="red"></div>
+                    <p class="exercicio">
+                        C) They are in the house.
+                        <input onblur="teste(this);" type="text" rel="Who is in the house">
+
+
+                    <div class="theLabel"></div><div class="green" title="p7"></div><div class="yellow"></div><div class="red"></div>
+                    <p class="exercicio">
+                        D) They are in the house.
+                        <input onblur="teste(this);" type="text" rel="Where are they">
+
+
+                    <div class="theLabel"></div><div class="green" title="p7"></div><div class="yellow"></div><div class="red"></div>
+                    <p class="exercicio">
+                        E) Yes, her name is Jane.
+                        <input onblur="teste(this);" type="text" rel="Is her name Jane">
+
+
+                    <div class="theLabel"></div><div class="green" title="p7"></div><div class="yellow"></div><div class="red"></div>
+                    <p class="exercicio">
+                        F) She is 30 years old.
+                        <input onblur="teste(this);" type="text" rel="How old is she">
+
+
+                    <div class="theLabel"></div><div class="green" title="p7"></div><div class="yellow"></div><div class="red"></div>
+                    <p class="exercicio">
+                        G) The girl is fine.
+                        <input onblur="teste(this);" type="text" rel="How is the girl">
+
+
+                    <div class="theLabel"></div><div class="green" title="p7"></div><div class="yellow"></div><div class="red"></div>
+                    <p class="exercicio">
+                        H) He is Mike's brother.
+                        <input onblur="teste(this);" type="text" rel="Whose brother is he?">
+
+                </div>
+                <div id="p2" class="pagina" style="display: none;">
+                    <p class="bold">
+                        3. Complete appropriately.
+                    </p>
+
+                    <div class="theLabel"></div><div class="green" title="p7"></div><div class="yellow"></div><div class="red"></div>
+                    <p class="exercicio">
+                        A) <input onblur="teste(this);" type="text" rel="the"> circus is <input onblur="teste(this);" type="text" rel="the"> 46, Linden Street.
+
+                    <div class="theLabel"></div><div class="green" title="p8"></div><div class="yellow"></div><div class="red"></div>
+                    <p  class="exercicio">
+                        B) Is Mary <input onblur="teste(this);" type="text" rel="watching"> TV <input onblur="teste(this);" type="text" rel="in|inside"> the bedroom?
+
+                    <div class="theLabel"></div><div class="green" title="p9"></div><div class="yellow"></div><div class="red"></div>
+                    <p  class="exercicio">
+                        C) There <input onblur="teste(this);" type="text" rel="is an"> important meeting tomorrow.
+
+                    <div class="theLabel"></div><div class="green" title="p10"></div><div class="yellow"></div><div class="red"></div>
+                    <p  class="exercicio">
+                        D) The black dog is playing <input onblur="teste(this);" type="text" rel="with|near|beside"> the cat.
+
+                    <div class="theLabel"></div><div class="green" title="p11"></div><div class="yellow"></div><div class="red"></div>
+                    <p  class="exercicio">
+                        E) Albert and <input onblur="teste(this);" type="text" rel="his"> brother are <input onblur="teste(this);" type="text" rel="at"> home.
+
+                    <div class="theLabel"></div><div class="green" title="p12"></div><div class="yellow"></div><div class="red"></div>
+                    <p  class="exercicio">
+                        F) <input onblur="teste(this);" type="text" rel="What"> is there in the room? There is <input onblur="teste(this);" type="text" rel="a"> desk, there.
+
+                    <div class="theLabel"></div><div class="green" title="p13"></div><div class="yellow"></div><div class="red"></div>
+                    <p  class="exercicio">
+                        G) <input onblur="teste(this);" type="text" rel="where"> is Jane? She is <input onblur="teste(this);" type="text" rel="in"> the company.
+
+                    <p class="bold">
+                        4. Write the interrogative form:
+                    </p>
+
+
+                    <div class="theLabel"></div><div class="green" title="p14"></div><div class="yellow"></div><div class="red"></div>
+                    <p  class="exercicio">
+                        A) These slippers are hers. <input onblur="teste(this);" type="text" rel="Are these slippers hers"> ?
+
+                    <div class="theLabel"></div><div class="green" title="p14"></div><div class="yellow"></div><div class="red"></div>
+                    <p  class="exercicio">
+                        B) This coat is Mike's <input onblur="teste(this);" type="text" rel="Is this coat Mike's"> ?
+
+                    <div class="theLabel"></div><div class="green" title="p14"></div><div class="yellow"></div><div class="red"></div>
+                    <p  class="exercicio">
+                        C) This overcoat is his. <input onblur="teste(this);" type="text" rel="Is this overcoat his"> ?
+
+                    <div class="theLabel"></div><div class="green" title="p14"></div><div class="yellow"></div><div class="red"></div>
+                    <p  class="exercicio">
+                        D) These pants are theirs <input onblur="teste(this);" type="text" rel="Are these pants theirs"> ?
+
+                    <div class="theLabel"></div><div class="green" title="p14"></div><div class="yellow"></div><div class="red"></div>
+                    <p  class="exercicio">
+                        E) The girl are Joe's friends. <input onblur="teste(this);" type="text" rel="Are the girls Joe's friends"> ?
+
+                    <div class="theLabel"></div><div class="green" title="p14"></div><div class="yellow"></div><div class="red"></div>
+                    <p  class="exercicio">
+                        F) That car is very nice. <input onblur="teste(this);" type="text" rel="Is that car very nice"> ?
+
+                </div>
+                <div id="p3" class="pagina" style="display: none;">
+                    <p class="bold">
+                        5. Complete with the best pronoun like the example
+                    </p>
+
+                    <strong>Example:</strong> This is __MY__ son and __HIS__ girlfriend. (I / he)
+
+                    <div class="theLabel"></div><div class="green" title="p15"></div><div class="yellow"></div><div class="red"></div>
+                    <p class="exercicio">
+                        A) Melissa and <input onblur="teste(this);" type="text" rel="her"> sister are in the park with Antony, who is another friend of <input onblur="teste(this);" type="text" rel="theirs">. (she / they)
+
+                    <div class="theLabel"></div><div class="green" title="p16"></div><div class="yellow"></div><div class="red"></div>
+                    <p class="exercicio">
+                        B) <input onblur="teste(this);" type="text" rel="My"> teacher is asking me to do <input onblur="teste(this);" type="text" rel="her"> lesson. (I/she)
+
+                    <div class="theLabel"></div><div class="green" title="p17"></div><div class="yellow"></div><div class="red"></div>
+                    <p class="exercicio">
+                        C) Henry, <input onblur="teste(this);" type="text" rel="his"> brother Pete and <input onblur="teste(this);" type="text" rel="their"> sister Gabi are sleeping. (he/they)
+
+                    <div class="theLabel"></div><div class="green" title="p18"></div><div class="yellow"></div><div class="red"></div>
+                    <p class="exercicio">
+                        D) <input onblur="teste(this);" type="text" rel="Our"> boss is very worried about the company. <input onblur="teste(this);" type="text" rel="Its"> situation is not good at the moment. (we/it)
+
+                    <div class="theLabel"></div><div class="green" title="p19"></div><div class="yellow"></div><div class="red"></div>
+                    <p class="exercicio">
+                        E) They don't like <input onblur="teste(this);" type="text" rel="my"> friends, they prefer <input onblur="teste(this);" type="text" rel="yours">. (I/you)
+
+                    <div class="theLabel"></div><div class="green" title="p20"></div><div class="yellow"></div><div class="red"></div>
+                    <p class="exercicio">
+                        F) A friend of <input onblur="teste(this);" type="text" rel="mine"> and <input onblur="teste(this);" type="text" rel="her"> husband are traveling with <input onblur="teste(this);" type="text" rel="their"> kids. (I/she/they)
+
+                    <div class="theLabel"></div><div class="green" title="p21"></div><div class="yellow"></div><div class="red"></div>
+                    <p class="exercicio">
+                        G) Brad Pitt, <input onblur="teste(this);" type="text" rel="his"> wife Angelina Jolie and <input onblur="teste(this);" type="text" rel="their"> kids are in Rome on vacation. (he/they)
+
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+</div>
+</div>
+</body></html>
+				
