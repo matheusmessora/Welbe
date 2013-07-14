@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<head>
+<title>11</title>
+<link href="book2.css" rel="stylesheet" type="text/css">
+
+<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Josefin+Sans+Std+Light">
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function () {
+
+    var musicSrc = 'b1u10p';
+    var langDefault = 'pt';
+    var showLanguage = false;
+    var backgroundImage = 'url("images/qback10.jpg")';
+
+
+    // Initialize background
+    $("#myDiv").css('background-image', backgroundImage);
+
+    // Initialize Sound
+    $("#mmm").attr('src',musicSrc + '1.mp3');
+
+    // Initialize Languages
+    if(!showLanguage){
+        $("#enus").hide();
+        $("#ptbr").hide();
+    }
+
+    $("#ptbr").click(function() {
+        document.getElementById('mmm').pause();
+        var a = $("#mmm").attr('src');
+        a = a.substring(0, 6);
+        a += "pt.mp3";
+        $("#mmm").attr('src',a);
+        document.getElementById('mmm').play();
+    });
+    $("#enus").click(function() {
+        document.getElementById('mmm').pause();
+        var a = $("#mmm").attr('src');
+        a = a.substring(0, 6);
+        a += "en.mp3";
+        $("#mmm").attr('src',a);
+        document.getElementById('mmm').play();
+    });
+
+    $("#next").click(function() {
+        $("#previous").show();
+        var testar = true;
+
+        if(testar && $("#p1").css('display') == 'block'){
+            $("#p1").hide();
+            document.getElementById('mmm').pause();
+            $("#mmm").attr('src',musicSrc+ '2' +'.mp3');
+            document.getElementById('mmm').play();
+            $("#p2").show();
+            testar = false;
+        }
+
+        if(testar && $("#p2").css('display') == 'block'){
+            $("#p2").hide();
+            document.getElementById('mmm').pause();
+            $("#mmm").attr('src',musicSrc+'3' +'.mp3');
+            document.getElementById('mmm').play();
+            $("#p3").show();
+            testar = false;
+        }
+        if(testar && $("#p3").css('display') == 'block'){
+            $("#p3").hide();
+            document.getElementById('mmm').pause();
+            $("#mmm").attr('src',musicSrc+'4' +'.mp3');
+            document.getElementById('mmm').play();
+            $("#p4").show();
+            testar = false;
+            $("#next").hide();
+        }
+    });
+
+    $("#previous").click(function() {
+        $("#next").show();
+        var testar = true;
+
+        if(testar && $("#p2").css('display') == 'block'){
+            $("#p2").hide();
+            document.getElementById('mmm').pause();
+            $("#mmm").attr('src',musicSrc+ '1' +'.mp3');
+            document.getElementById('mmm').play();
+            $("#p1").show();
+            $("#previous").hide();
+            testar = false;
+        }
+
+        if(testar && $("#p3").css('display') == 'block'){
+            $("#p3").hide();
+            document.getElementById('mmm').pause();
+            $("#mmm").attr('src',musicSrc+ '2' +'.mp3');
+            document.getElementById('mmm').play();
+            $("#p2").show();
+            testar = false;
+        }
+
+        if(testar && $("#p4").css('display') == 'block'){
+            $("#p4").hide();
+            document.getElementById('mmm').pause();
+            $("#mmm").attr('src',musicSrc+ '3' +'.mp3');
+            document.getElementById('mmm').play();
+            $("#p3").show();
+            testar = false;
+        }
+    });
+
+    <!-- SHOW ANSWERS -->
+    $(".p_question").click(function() {
+        $(this).next().show();
+    });
+
+});
+</script>
+
+<style type="text/css">
+	table
+	{
+		border-width: 0 0 1px 1px;
+		border-spacing: 0;
+		border-collapse: collapse;
+		border-style: solid;
+		font-size: 20px;
+	}
+
+	td, th
+	{
+		margin: 0;
+		padding: 4px;
+		border-width: 1px 1px 0 0;
+		border-style: solid;
+	}
+	
+	p {
+		margin:0px;
+	}
+</style>
+<body>
+
+<div class="wrap-section-body" id="classBody" style="display: block;">
+	<div id="class_content"><div class="class_container">
+
+
+    <form name="form1" method="post" action="Book2homework11.aspx" id="form1">
+    <div id="myDiv" style="background-image: url('images/qback11.jpg')">
+        <div id="pager">
+            <div id="previous" style="display: none;">
+            </div>
+            <div id="next" style="display: block;">
+            </div>
+        </div>
+
+        <div id="paginaAtual">
+            <img id="enus" src="http://www.webrazuca.com/v4/images/dc_icon_usa.png" width="30" height="30">
+
+            <audio id="mmm" controls src="b1u1g1pt.mp3">
+                Your browser does not support the audio element.
+            </audio>
+
+            <img id="ptbr" src="http://icongal.com/gallery/image/32079/brasil_br_kr_brazil.png" width="30" height="30">
+        </div>
+        <div style="padding: 30px;">
+            <div style="height: 500px;">
+                <div id="p1" class="pagina" style="display: block;">
+                    <strong>PRACTICE - THE BASIC IS OVER</strong><br />
+
+                    <strong>1. Put the sentences below into interrogative and negative.</strong><br />
+
+                    <span class="p_question">A) Glenn speaks English and French.</span>
+                    <span class="p_answer">Does Glenn speak English and French? Glenn doesn't speak English and Frech.</span>
+
+                    <span class="p_question">B) Mr. and Mrs. Peterson have two kids.</span>
+                    <span class="p_answer">Do Mr.  and Mrs. Peterson have two kids? Mr. and Mrs. Peterson don't have two kids.</span>
+
+                    <span class="p_question">C) We would do it differently.</span>
+                    <span class="p_answer">Would we do it differently?		? We wouldn't do it differently.</span>
+
+                    <span class="p_question">D) I need to take more water during the day.</span>
+                    <span class="p_answer">Do I need to take more water during the day	? I don't need to take more water during the day.</span>
+
+                    <span class="p_question">E) She thinks that they are her friends.</span>
+                    <span class="p_answer">Does she think that they are her friends ? She doesn't think that they are her friends.</span>
+
+                </div>
+
+                <div id="p2" class="pagina" style="display: none;">
+                    <strong>2. Follow the example</strong><br />
+
+                    <strong>Example:</strong> Brendon / Go theater. (Always)<br />
+                    How often does Brandon go to the theater? <br />
+                    He always goes to the theater.
+
+                    <span class="p_question">A) Cindy and boyfriend / Travel night. (Sometimes)</span>
+                    <span class="p_answer">How often do Cindy and her boyfriend travel at night? They sometimes travel at night.</span>
+
+                    <span class="p_question">B) Charlene / Walk Park. (Usually)</span>
+                    <span class="p_answer">How often does Charlene walk in the park? She usually walks in the Park.</span>
+
+                    <span class="p_question">C) Arthur / to be happy. (always)</span>
+                    <span class="p_answer">How often is Arthur happy? He is always happy.</span>
+
+                    <span class="p_question">D) The kids / to sleep early. (never)</span>
+                    <span class="p_answer">How often do the kids sleep early? They never sleep early.</span>
+
+                    <span class="p_question">E) Warm but cloudy</span>
+                    <span class="p_answer">How often does Marie drive the car? She rarely drives the car.</span>
+
+                </div>
+                <div id="p3" class="pagina" style="display: none;">
+                    <strong>3. Follow the example</strong><br />
+
+                    <strong>Example:</strong> Marie would like to talk to you. (they / her)<br />
+                    How often does Brandon go to the theater? <br />
+                    They would like to talk to her.
+
+                    <br /><br />
+
+
+                    <span class="p_question">A) Mr. Tompson / Jimmy.</span>
+                    <span class="p_answer">Mr. Tompson would like to talk to Jimmy.</span>
+
+                    <span class="p_question">B) George / me</span>
+                    <span class="p_answer">George would like to talk to me.</span>
+
+                    <span class="p_question">C) William / us.</span>
+                    <span class="p_answer">William would like to talk to us.</span>
+
+                    <span class="p_question">D) I / him.</span>
+                    <span class="p_answer">I would like to talk to him.</span>
+
+                    <span class="p_question">E) She / you</span>
+                    <span class="p_answer">She would like to talk to you.</span>
+
+                    <span class="p_question">F) We / them.</span>
+                    <span class="p_answer">We would like to talk to them.</span>
+
+
+                </div>
+                <div id="p4" class="pagina" style="display: none;">
+                    <p class="bold">
+                        4. Make like the example:
+                    </p>
+
+
+                    <strong>Example: </strong> Would Steve like to go with us? (You / Me)<br />
+                    Would you like to go with me?
+                    <br /><br />
+
+
+                    <span class="p_question">A) Pete / her.</span>
+                    <span class="p_answer">Would Pete like to go with her?</span>
+
+                    <span class="p_question">B) Doug / them.</span>
+                    <span class="p_answer">Would Doug like to go with them?</span>
+
+                    <span class="p_question">C) He / us.</span>
+                    <span class="p_answer">Would he like to go with us?</span>
+
+                    <span class="p_question">D) Gabi / Henry.</span>
+                    <span class="p_answer">Would Gabi like to go with Henry?</span>
+
+                    <span class="p_question">E) She / you.</span>
+                    <span class="p_answer">Would she like to go  with you?</span>
+
+                    <span class="p_question">F) You / Marie and I.</span>
+                    <span class="p_answer">Would you like to go with Marie and I?</span>
+
+                </div>
+        </div>
+    </div>
+    </div>
+    </form>
+
+</div>
+</div>
+</body></html>
+				
