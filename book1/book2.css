@@ -370,3 +370,8 @@ span.e7
 .borderless td {
     border: 0px;
 }
+
+.notice {
+    color: red;
+    font-weight: bold;
+}
