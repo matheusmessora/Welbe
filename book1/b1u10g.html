@@ -8,10 +8,11 @@
 <script type="text/javascript">
 $(document).ready(function () {
 
-    var musicSrc = 'b1u9g';
+    var musicSrc = 'b1u10g';
     var langDefault = 'pt';
     var showLanguage = true;
-    var backgroundImage = 'url("images/qback9.jpg")';
+    var totalPages = 2;
+    var backgroundImage = 'url("images/qback10.jpg")';
 
 
     // Initialize background
@@ -43,71 +44,47 @@ $(document).ready(function () {
         document.getElementById('mmm').play();
     });
 
-	$("#next").click(function() {
-		$("#previous").show();
-		var testar = true;
-	
-		if(testar && $("#p1").css('display') == 'block'){
-			$("#p1").hide();
-			document.getElementById('mmm').pause();
-            $("#mmm").attr('src',musicSrc+ '2' +'.mp3');
-			document.getElementById('mmm').play();
-			$("#p2").show();
-			testar = false;
-		}
-		
-		if(testar && $("#p2").css('display') == 'block'){
-			$("#p2").hide();
-			document.getElementById('mmm').pause();
-            $("#mmm").attr('src',musicSrc+ '3' +'.mp3');
-			document.getElementById('mmm').play();
-			$("#p3").show();
-			testar = false;
-		}
-		
-		if(testar && $("#p3").css('display') == 'block'){
-			$("#p3").hide();
-			document.getElementById('mmm').pause();
-            $("#mmm").attr('src',musicSrc+ '4' +'.mp3');
-			document.getElementById('mmm').play();
-			$("#p4").show();
-			$("#next").hide();
-			testar = false;
-		}
-	});
-	
-	$("#previous").click(function() {
-		$("#next").show();
-		var testar = true;
-		
-		if(testar && $("#p2").css('display') == 'block'){
-			$("#p2").hide();
-			document.getElementById('mmm').pause();
-            $("#mmm").attr('src',musicSrc+ '1' +'.mp3');
-			document.getElementById('mmm').play();
-			$("#p1").show();
-			$("#previous").hide();
-			testar = false;
-		}
-		
-		if(testar && $("#p3").css('display') == 'block'){
-			$("#p3").hide();
-			document.getElementById('mmm').pause();
-            $("#mmm").attr('src',musicSrc+ '2' +'.mp3');
-			document.getElementById('mmm').play();
-			$("#p2").show();
-			testar = false;
-		}
-		
-		if(testar && $("#p4").css('display') == 'block'){
-			$("#p4").hide();
-			document.getElementById('mmm').pause();
-            $("#mmm").attr('src',musicSrc+ '3' +'.mp3');
-			document.getElementById('mmm').play();
-			$("#p3").show();
-			testar = false;
-		}
-	});
+    $("#next").click(function() {
+        $("#previous").show();
+        var testar = true;
+
+        for (var i = 1; i <= totalPages; i++) {
+            if(testar && $(pageId + i).css('display') == 'block'){
+                $(pageId + i).hide();
+                document.getElementById('mmm').pause();
+                // TODO: Correct sound link
+                $("#mmm").attr('src','b2u11h2.mp3');
+//                document.getElementById('mmm').play();
+                $(pageId + (i + 1)).show();
+                testar = false;
+
+                if((i+1) == totalPages) {
+                    $("#next").hide();
+                }
+            }
+        }
+    });
+
+    $("#previous").click(function() {
+        $("#next").show();
+        var testar = true;
+
+        for (var i = totalPages; i >= 1; i--) {
+            if(testar && $(pageId + i).css('display') == 'block'){
+                $(pageId + i).hide();
+                document.getElementById('mmm').pause();
+                $("#mmm").attr('src','b2u11h2.mp3');
+//                document.getElementById('mmm').play();
+                $(pageId + (i - 1)).show();
+                testar = false;
+
+                if((i-1) == 1) {
+                    $("#previous").hide();
+                }
+            }
+        }
+    });
+
 
 });
 </script>
@@ -162,165 +139,119 @@ $(document).ready(function () {
             <div style="height: 500px;">
                 <div id="p1" class="pagina" style="display: block;">
 
-                    <span class="titulo">GRAMMAR - CROOKS</span><br /><br />
+                    <span class="titulo">GRAMMAR - THE BASIC IS OVER</span><br /><br />
                     <p class="bold">
-                        1.WHY AND BECAUSE
+                        1. Review - Verb Tenses
                     </p>
 
-                    Why is an interrogative pronoun and is more frequently used in questions.<br />
-                    Because is a conjunction and is used in answers.<br />
+                    <strong>Present Continuous or Present Progressive (action now).<br /></strong>
+                    Subject + to be + main verb + ing<br />
                     <br /><br />
 
-                    <strong>Example: </strong>
-                    <br />
-                    Why do study English? I study because it is very important. <br />
-                    Because can be abbreviated like: 'cos / 'cause (informal) <br />
-
-                    <br /><br />
-                    <p class="bold">
-                        2. ADJECTIVES
-                    </p>
-
-                    The adjectives change the nouns and it's important to follow some rules like:
-
-                    <ul>
-                        <li>They are used before nouns: She is a smart girl.</li>
-                        <li>They are never used in the plural: They are smart girls.</li>
-                        <li>When you have more than I adjective you have to follow an order.</li>
-                    </ul>
 
                     <div style="display:block; width:75%; margin:auto;">
                         <table border="1" style="width:100%;">
-							<tr>
-								<td>1</td>
-								<td>2</td>
-								<td>3</td>
-								<td>4</td>
-								<td>5</td>
-							</tr>
-							<tr>
-								<td>How Big</td>
-								<td>How old</td>
-								<td>What color</td>
-								<td>Where from</td>
-								<td>What's made of</td>
-							</tr>
-						</table>
+                          <tr>
+                              <td><strong>Examples:</strong></td>
+                              <td>I am speaking with you. <br />
+                                  Am I speaking with you? <br />
+                                  I am not speaking with you.
+                              </td>
+                          </tr>
+                        </table>
                     </div>
 
+                    <strong>Simple present (routines - habits)</strong>
+
+                    <div style="display:block; width:75%; margin:auto;">
+                        <table border="1" style="width:100%;">
+                            <tr>
+                                <td><strong>I - you - we - you - they</strong></td>
+                                <td><strong>he - she it</strong></td>
+                            </tr>
+                            <tr>
+                                <td>Subject + main verb</td>
+                                <td>Subject + main verb + S (ES - IES)</td>
+                            </tr>
+                        </table>
+                    </div>
+
+
+
+
+                    <div style="display:block; width:75%; margin:auto;">
+                        <table border="1" style="width:100%;">
+                            <tr>
+                                <td><strong>Examples:</strong></td>
+                                <td>I wake up early everyday.   <br />
+                                    You wake up early everyday. <br />
+                                    He wakes up early everyday.
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
                 </div>
                 <div id="p2" class="pagina" style="display: none;">
                     <p class="bold">
-                        3. What are you like?
+                        In Interrogative and Negative use the auxiliaries:
                     </p>
 
-                    (this question is used to describe the personality of the person or the appearance) <br />
-                    I'm talkative and kind.
+
+                    <div style="display:block; width:75%; margin:auto;">
+                        <table border="1" style="width:100%;">
+                            <tr>
+                                <td><strong>I - you - we - you - they</strong></td>
+                                <td><strong>Do and Don't</strong></td>
+                            </tr>
+                            <tr>
+                                <td>he - she - it</td>
+                                <td>Does and Doesn't</td>
+                            </tr>
+                        </table>
+                    </div>
+
+
+                    <div style="display:block; width:75%; margin:auto;">
+                        <table border="1" style="width:100%;">
+                            <tr>
+                                <td><strong>Examples:</strong></td>
+                                <td>Do you wake up early everyday?	Does he wake up early everyday? <br />
+                                    I don't wake up early everyday.	He doesn't wake up early everyday.
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    <br /><br />
+                    <p class="bold">
+                        Planned Future (action in the future)<br />
+                        Subject + to be + going to + main verb+ complement
+
+                    </p>
+
+
+                    <div style="display:block; width:75%; margin:auto;">
+                        <table border="1" style="width:100%;">
+                            <tr>
+                                <td><strong>Examples:</strong></td>
+                                <td>
+                                    I am going to travel to Las Vegas next year.  <br />
+                                    I am going to buy a new house next year.       <br />
+                                    Are you going to watch that movie on Saturday? <br />
+                                    What are you going to do next weekend?       <br />
+                                    He is not going to speak with her later.      <br />
+                                    He isn't going to travel with us.           <br />
+                                    What are you gonna do now? I'm gonna study(Informal English) <br />
+                                    What are you gonna do next Saturday Night?(Informal English)  <br />
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
 
                     <br /><br />
                     <p class="bold">
-                        4. What do you look like?
+                        2- COMPOSITION
                     </p>
-
-                    (this question is used do describe the appearance of the person) <br />
-                    I'm tall and young.
-
-                    <br /><br />
-                    <p class="bold">
-                        5. What do you like?
-                    </p>
-                    (this question is used to describe the preference of the person) <br />
-                    I like to watch TV.
-
-                    <br /><br />
-                    <p class="bold">
-                        6. COMPOSITION
-                    </p>
-                    Describe your whole family.
-
-
-                </div>
-                <div id="p3" class="pagina" style="display: none;">
-                    <p>
-						In negative: SUBJECT + DO + NOT (DON'T) + MAIN VERD + COMPLEMENT
-					</p>
-					<br />
-					
-					<div style="display:block; width:90%; margin:auto;">
-						<table style="width:100%">
-							<tr>
-								<td>I</td>
-								<td></td>
-								<td></td>
-								<td></td>
-							</tr>
-							<tr>
-								<td>YOU</td>
-								<td></td>
-								<td>WORK</td>
-								<td>IN SP.</td>
-							</tr>
-							<tr>
-								<td>WE</td>
-								<td>DON'T</td>
-								<td>WATCH</td>
-								<td>TV EVERY NIGHT.</td>
-							</tr>
-							<tr>
-								<td>YOU</td>
-								<td></td>
-								<td>STUDY</td>
-								<td>ENGLISH AT WELBE PRIVATE CLASS.</td>
-							</tr>
-						</table>
-					</div>
-					
-					<br /><br />
-					<p>
-					And for HE / SHE / IT: SUBJECT + DOES + NO (DOESN'T) + MAIN VERB + COMPLEMENT
-					</p>
-					<br />
-					<div style="display:block; width:85%; margin:auto;">
-						<table style="width:100%">
-							<tr>
-								<td>HE</td>
-								<td></td>
-								<td>WORK</td>
-								<td>IN SP.</td>
-							</tr>
-							<tr>
-								<td>SHE</td>
-								<td>DOESN'T</td>
-								<td>WATCH</td>
-								<td>TV EVERY NIGHT.</td>
-							</tr>
-							<tr>
-								<td>IT</td>
-								<td></td>
-								<td>STUDY</td>
-								<td>ENGLISH AT WELBE PRIVATE CLASS.</td>
-							</tr>
-						</table>
-					</div>
-					<br />
-					<p>
-					NOTICE: Pay attentation to the verb when the auxiliary DOES is used, because the verb <br />
-					needs to lose the S, ES or IES.
-					</p>
-                </div>
-                <div id="p4" class="pagina" style="display: none;">
-                    <span class="bold">2. AMERICAN AND BRITISH ENGLISH </span>
-                    <br />
-					<p>
-					American: favorive / color / program / to realize / favor.<br />
-					British: favourite / colour / programme / to realise / favour.
-					</p>
-					<br />
-					<br />
-					<span class="bold">3. COMPOSITION </span>
-					<p style="font-weight:strong;">
-					Describe your daily routine using the Simple Present form.
-					</p>
+                    Write a composition trying to use all the topics learnt in this book.
                 </div>
             </div>
         </div>

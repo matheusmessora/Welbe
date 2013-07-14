@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<head xmlns="http://www.w3.org/1999/html">
+<title>11</title>
+<link href="book2.css" rel="stylesheet" type="text/css">
+
+<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Josefin+Sans+Std+Light">
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script src="http://file.urin.take-uma.net/jquery.balloon.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function () {
+	$('.balloon').balloon({
+		tipSize: 24,
+		css: {
+			opacity: '1'
+		}
+  });
+	$('strong').balloon();
+
+    var musicSrc = 'b1u10t';
+    var showLanguage = false;
+    var backgroundImage = 'url("images/qback10.jpg")';
+
+
+    // Initialize background
+    $("#myDiv").css('background-image', backgroundImage);
+
+    // Initialize Sound
+    $("#mmm").attr('src',musicSrc + '1.mp3');
+
+    // Initialize Languages
+    if(!showLanguage){
+        $("#enus").hide();
+        $("#ptbr").hide();
+    }
+
+    // Language clicks
+    $("#ptbr").click(function() {
+        document.getElementById('mmm').pause();
+        var a = $("#mmm").attr('src');
+        a = a.substring(0, a.length-6);
+        a += "pt.mp3";
+        $("#mmm").attr('src',a);
+        document.getElementById('mmm').play();
+    });
+    $("#enus").click(function() {
+        document.getElementById('mmm').pause();
+        var a = $("#mmm").attr('src');
+        a = a.substring(0, a.length-6);
+        a += "en.mp3";
+        $("#mmm").attr('src',a);
+        document.getElementById('mmm').play();
+    });
+
+    // Next pages clicks
+    $("#next").click(function() {
+        $("#previous").show();
+        var testar = true;
+
+        if(testar && $("#p1").css('display') == 'block'){
+            $("#p1").hide();
+            document.getElementById('mmm').pause();
+            $("#mmm").attr('src',musicSrc+ '2' + '.mp3');
+            document.getElementById('mmm').play();
+            $("#p2").show();
+            $("#next").hide();
+            testar = false;
+        }
+    });
+
+    $("#previous").click(function() {
+        $("#next").show();
+        var testar = true;
+
+        if(testar && $("#p2").css('display') == 'block'){
+            $("#p2").hide();
+            document.getElementById('mmm').pause();
+            $("#mmm").attr('src',musicSrc+ '1' +'.mp3');
+            document.getElementById('mmm').play();
+            $("#p1").show();
+            $("#previous").hide();
+            testar = false;
+        }
+    });
+
+});
+</script>
+
+<style type="text/css">
+	table
+	{
+		border-width: 0 0 1px 1px;
+		border-spacing: 0;
+		border-collapse: collapse;
+		border-style: solid;
+		font-size: 20px;
+	}
+
+	td, th
+	{
+		margin: 0;
+		padding: 4px;
+		border-width: 1px 1px 0 0;
+		border-style: solid;
+	}
+	
+	p {
+		margin:0px;
+	}
+</style>
+<body>
+
+<div class="wrap-section-body" id="classBody" style="display: block;">
+	<div id="class_content"><div class="class_container">
+
+
+	
+	
+    <form name="form1" method="post" action="Book2homework11.aspx" id="form1">
+    <div id="myDiv">
+        <div id="pager">
+            <div id="previous" style="display: none;">
+            </div>
+            <div id="next" style="display: block;">
+            </div>
+        </div>
+
+        <div id="paginaAtual">
+			<img id="enus" src="http://www.webrazuca.com/v4/images/dc_icon_usa.png" width="30" height="30">
+			
+				<audio id="mmm" controls src="b1u1g1pt.mp3"> 
+					Your browser does not support the audio element.
+				</audio>
+			
+			<img id="ptbr" src="http://icongal.com/gallery/image/32079/brasil_br_kr_brazil.png" width="30" height="30">
+		</div>
+        <div style="padding: 25px;">
+            <div style="height: 500px;">
+                <div id="p1" class="pagina" style="display: block;">
+					<strong>The basic is over</strong><br />
+
+                    It is exactly this. The basic <span title="acabou" class="balloon">is over</span> guy. <Br />
+                    Now you can tell your friends you are not basic in English <span title="anymore" class="balloon">anymore</span>. <Br />
+                    A new level is coming and things <span title="serão" class="balloon">will be</span> more difficult, however your <span title="conhecimento" class="balloon">knowledge</span> will <span title="aumentarão também" class="balloon">increase as well</span> and <span title="mais e mais" class="balloon">increasingly</span> you will speak different things. <Br />
+                    Do you remember the first lessons? Lots of basic things as verb to be, pronouns, articles, prepositions, oh, prepositions are still hard, aren't they? I know they are. <Br />
+                    Also native speakers have <span title="problemas" class="balloon">troubles</span> when they have to choose a preposition, but don't worry about that. You have many things more importante <span title="para se preocupar" class="balloon">to concern</span> about. <Br />
+                    What you need to do is <span title="continuar estudando" class="balloon">to keep studying</span>. Your lever now is not bad, but many people fail in the intermediate level, because some of them think their level is good enough and then, they don't study hard anymore. <Br />
+                    Don't make this mistake <span title="camarada" class="balloon">buddy</span>! Now, you have to study more than in the past. You are going to learn really hard thing <span title="tais como" class="balloon">such as</span> comparative, superlative, equality, inequality, more modal verbs, the past tense and many others. <Br />
+
+                </div>
+                <div id="p2" class="pagina" style="display: none;">
+                    The focus of this lever you finished is the vocabulary, pronouns and verb tenses. They are hard and <span title="devem ser estudados" class="balloon">must be studied</span> again from time to time. <Br />
+                    Well my friend, I hope you have enjoyed the explanations, texts, practices and exercises. Your opinion is very important for us, because our <span title="missão" class="balloon">mission statement</span> is to make you speak English and <span title="aperfeiçoar" class="balloon">improve</span> your <span title="conhecimento" class="balloon">knowledge</span> in a short period of time. <Br />
+                    If you liked to study with us, we hope to see you next module. If not, please, do not <span title="hesitar" class="balloon">hesitate</span> to tell us what <span title="você não gostou" class="balloon">you didn't like</span> and <span title="então" class="balloon">then</span> we will try to change that. <Br />
+                    A very special <span title="agradecimento" class="balloon">acknowledgement</span> from Welbe Private Class team. <br />
+
+                </div>
+            </div>
+        </div>
+    </div>
+    </form>
+
+</div>
+</div>
+</div>
+</body></html>
+
+				
