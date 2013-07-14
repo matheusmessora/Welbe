@@ -7,12 +7,12 @@
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     <script type="text/javascript">
         $(document).ready(function () {
-
             var musicSrc = 'b1u2g';
             var langDefault = 'pt';
             var showLanguage = true;
             var backgroundImage = 'url("images/qback2.jpg")';
-
+            var totalPages = 5;
+            var pageId = "#p";
 
             // Initialize background
             $("#myDiv").css('background-image', backgroundImage);
@@ -25,6 +25,7 @@
                 $("#enus").hide();
                 $("#ptbr").hide();
             }
+
 
             $("#ptbr").click(function() {
                 document.getElementById('mmm').pause();
@@ -43,45 +44,38 @@
                 document.getElementById('mmm').play();
             });
 
+
+            // Play Sound
+            if(showLanguage){
+                $("#enus").trigger('click');
+            }else {
+                document.getElementById('mmm').play();
+            }
+
+
             $("#next").click(function() {
                 $("#previous").show();
                 var testar = true;
 
-                if(testar && $("#p1").css('display') == 'block'){
-                    $("#p1").hide();
-                    document.getElementById('mmm').pause();
-                    $("#mmm").attr('src',musicSrc+ '2' +'.mp3');
-                    document.getElementById('mmm').play();
-                    $("#p2").show();
-                    testar = false;
-                }
+                for (var i = 1; i <= totalPages; i++) {
+                    if(testar && $(pageId + i).css('display') == 'block'){
+                        $(pageId + i).hide();
+                        document.getElementById('mmm').pause();
+                        var sourceMusic = musicSrc + (i+1);
+                        if(showLanguage){
+                            sourceMusic += 'en';
+                        }
+                        sourceMusic += '.mp3';
 
-                if(testar && $("#p2").css('display') == 'block'){
-                    $("#p2").hide();
-                    document.getElementById('mmm').pause();
-                    $("#mmm").attr('src',musicSrc+ '3' +'.mp3');
-                    document.getElementById('mmm').play();
-                    $("#p3").show();
-                    testar = false;
-                }
+                        $("#mmm").attr('src',sourceMusic);
+                        document.getElementById('mmm').play();
+                        $(pageId + (i + 1)).show();
+                        testar = false;
 
-                if(testar && $("#p3").css('display') == 'block'){
-                    $("#p3").hide();
-                    document.getElementById('mmm').pause();
-                    $("#mmm").attr('src',musicSrc+ '4' +'.mp3');
-                    document.getElementById('mmm').play();
-                    $("#p4").show();
-                    testar = false;
-                }
-
-                if(testar && $("#p4").css('display') == 'block'){
-                    $("#p4").hide();
-                    document.getElementById('mmm').pause();
-                    $("#mmm").attr('src',musicSrc+ '5' +'.mp3');
-                    document.getElementById('mmm').play();
-                    $("#p5").show();
-                    testar = false;
-                    $("#next").hide();
+                        if((i+1) == totalPages) {
+                            $("#next").hide();
+                        }
+                    }
                 }
             });
 
@@ -89,47 +83,29 @@
                 $("#next").show();
                 var testar = true;
 
-                if(testar && $("#p2").css('display') == 'block'){
-                    $("#p2").hide();
-                    document.getElementById('mmm').pause();
-                    $("#mmm").attr('src',musicSrc+ '1' +'.mp3');
-                    document.getElementById('mmm').play();
-                    $("#p1").show();
-                    $("#previous").hide();
-                    testar = false;
-                }
+                for (var i = totalPages; i >= 1; i--) {
+                    if(testar && $(pageId + i).css('display') == 'block'){
+                        $(pageId + i).hide();
+                        document.getElementById('mmm').pause();
+                        var sourceMusic = musicSrc + (i-1);
+                        if(showLanguage){
+                            sourceMusic += 'en';
+                        }
+                        sourceMusic += '.mp3';
 
-                if(testar && $("#p3").css('display') == 'block'){
-                    $("#p3").hide();
-                    document.getElementById('mmm').pause();
-                    $("#mmm").attr('src',musicSrc+ '2' +'.mp3');
-                    document.getElementById('mmm').play();
-                    $("#p2").show();
-                    testar = false;
-                }
+                        $("#mmm").attr('src',sourceMusic);
+                        document.getElementById('mmm').play();
+                        $(pageId + (i - 1)).show();
+                        testar = false;
 
-                if(testar && $("#p4").css('display') == 'block'){
-                    $("#p4").hide();
-                    document.getElementById('mmm').pause();
-                    $("#mmm").attr('src',musicSrc+ '3' +'.mp3');
-                    document.getElementById('mmm').play();
-                    $("#p3").show();
-                    testar = false;
-                }
-
-                if(testar && $("#p5").css('display') == 'block'){
-                    $("#p5").hide();
-                    document.getElementById('mmm').pause();
-                    $("#mmm").attr('src',musicSrc+ '4' +'.mp3');
-                    document.getElementById('mmm').play();
-                    $("#p4").show();
-                    testar = false;
+                        if((i-1) == 1) {
+                            $("#previous").hide();
+                        }
+                    }
                 }
             });
-
         });
     </script>
-
 <style type="text/css">
 	table
 	{
@@ -160,14 +136,6 @@
 </style>
 <body>
 
-	<!-- header -->
-<div id="class" class="wrap-section-header" style="display: block;">
-
-        <div class="section-header">
-            <h1>Unit Eleven - Homework</h1>
-        </div>
-    </div>
-	<!-- #END header -->
 <div class="wrap-section-body" id="classBody" style="display: block;">
 	<div id="class_content"><div class="class_container">
 
@@ -250,16 +218,15 @@
                         1. PRONOUNS
                     </p>
 
-					<p>
-                        The personal pronouns commit the actions and they are before the verb. <br />
-                        The possessive adjective pronouns are used to indicate that someone has something and are used before the noun. <br />
-                        The possessive pronouns are used to indicate that someone has something and are used after the noun. <br />
+					<ul>
+                        <li>The <strong>personal pronouns commit the actions</strong> and they are <strong>before the verb</strong>. </li>
+                        <li>The <strong>possessive adjective</strong> pronouns are <strong>used to indicate that someone has something</strong> and are used before the noun. </li>
+                        <li>The <strong>possessive</strong> pronouns are <strong>used to indicate that someone has something </strong>and are used <strong>after the noun</strong>. </li>
 
-                        <br />
-                        <strong>Examples:</strong> He is not her brother.<br />
-                        That book is hers and the dictionary is mine.         <br />
-                        A friend of mine is in Los Angeles with his family.<br />
-					</p>
+                    </ul>
+                        <strong>Examples:</strong> <strong>He</strong> is not <strong>her</strong> brother. That book is <strong>hers</strong> and the dictionary is <strong>mine</strong>.         <br />
+                        A friend of <strong>mine</strong> is in Los Angeles with <strong>his</strong> family.<br />
+
                 </div>
                 <div id="p2" class="pagina" style="display: none;">
                     <p><strong>2. GENITIVE CASE</strong></p>
@@ -291,34 +258,34 @@
                     <strong>OF</strong>    <br />
                     It's used to indicate that something belongs to someone.<br /><br />
 
-                    <strong>EXAMPLES:</strong> The doll of the girl is very beautiful.                <br />
-                    THe love of a mother for a child is something incredible. <br />
+                    <strong>EXAMPLES:</strong> The doll <strong>of</strong> the girl is very beautiful.                <br />
+                    THe love <strong>of</strong> a mother for a child is something incredible. <br />
                     <br />
 
                     <strong>AT</strong><br />
                     It's used before: specific time; commemorative date; specific place.<Br /><br />
 
-                    <strong>Examples:</strong> My next class is on Monday at 3pm.<br />
-                    The meeting is at Christmas.<br />
-                    The meeting is at Peter's restaurant. <br />
+                    <strong>Examples:</strong> My next class is on Monday <strong>at</strong> 3pm.<br />
+                    The meeting is <strong>at</strong> Christmas.<br />
+                    The meeting is <strong>at</strong> Peter's restaurant. <br />
                     <br />
 
-                    <table border="1">
+                    <table border="1" style="font-size: 18px;">
                         <tr>
-                            <td> AMONG = in the middle of 3 or more things. </td>
-                            <td>INSIDE = in a closed or delimited place.</td>
+                            <td><strong>AMONG</strong> = in the middle of 3 or more things. </td>
+                            <td><strong>INSIDE</strong> = in a closed or delimited place.</td>
                         </tr>
                         <tr>
-                            <td> BEHING = at the back of something. </td>
-                            <td>NEAR = close to something.</td>
+                            <td><strong>BEHING</strong> = at the back of something. </td>
+                            <td><strong>NEAR</strong> = close to something.</td>
                         </tr>
                         <tr>
-                            <td> BESIDE = at one of the sides of something. </td>
-                            <td> UNDER = opposed to ON. </td>
+                            <td><strong>BESIDE </strong>= at one of the sides of something. </td>
+                            <td><strong>UNDER </strong>= opposed to ON. </td>
                         </tr>
                         <tr>
-                            <td> BETWEEN = in the middle of 2 things. </td>
-                            <td> WITH = accompanied by. </td>
+                            <td><strong>BETWEEN </strong>= in the middle of 2 things. </td>
+                            <td><strong>WITH </strong>= accompanied by. </td>
                         </tr>
                     </table>
 
@@ -326,33 +293,33 @@
                 </div>
                 <div id="p4" class="pagina" style="display: none;">
                     <p><strong>5. INTERROGATIVE PRONOUNS</strong></p>
-
-                    <table border="0">
+                                <br />
+                    <table border="0" class="borderless">
                         <tr>
-                            <td>WHAT:</td>
+                            <td class="bold">WHAT:</td>
                             <td>It's about things.</td>
                         </tr>
                         <tr>
-                            <td>WHERE:</td>
+                            <td class="bold">WHERE:</td>
                             <td>It's about place.</td>
                         </tr>
                         <tr>
-                             <td>WHICH: </td>
+                             <td class="bold">WHICH: </td>
                             <td>It's used when we have options</td>
                         </tr>
                         <tr>
-                            <td>WHEN:</td>
+                            <td class="bold">WHEN:</td>
                             <td>It's used when we have options</td>
                         </tr>
                         <tr>
-                            <td>HOW:</td>
+                            <td class="bold">HOW:</td>
                             <td>It's about state or condition.</td>
                         </tr>
                     </table><br />
 
                     <table border="0" class="borderless">
                         <tr>
-                            <td >Examples:</td>
+                            <td class="bold">Examples:</td>
                             <td>What is her name?</td>
                             <td>Her name is Ann.</td>
                         </tr>
@@ -390,13 +357,13 @@
                     <br />
                     Boots / Flip-flops / Glasses / Gloves / Panties / Pants / Sandals / Shoes / Slippers / Socks / Underpants
                     <br /><br />
-
+                    <br />
                     <strong>7. VERB TO WEAR = TO DRESS</strong><br />
-                    We use these verbs to inform that someone is using clothes.<br />
+                    We use these verbs to inform that someone is using clothes.<br /><br />
                     <strong>Examples:</strong> John is wearing black gloves.<br />
                     Louise is wearing a nice skirt.
                     <br /><br />
-
+                    <br />
                     <strong>8. COMPOSITION</strong>
                     <strong>A birthday part (describre everybody's clothes)</strong>
 
