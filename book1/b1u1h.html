@@ -7,11 +7,13 @@
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 <script type="text/javascript">
 $(document).ready(function () {
+
     var musicSrc = 'b1u1h';
     var langDefault = 'pt';
     var showLanguage = false;
     var backgroundImage = 'url("images/qback1.jpg")';
-
+    var totalPages = 5;
+    var pageId = "#p";
 
     // Initialize background
     $("#myDiv").css('background-image', backgroundImage);
@@ -26,45 +28,55 @@ $(document).ready(function () {
     }
 
 
+    $("#ptbr").click(function() {
+        document.getElementById('mmm').pause();
+        var a = $("#mmm").attr('src');
+        a = a.substring(0, 6);
+        a += "pt.mp3";
+        $("#mmm").attr('src',a);
+        document.getElementById('mmm').play();
+    });
+    $("#enus").click(function() {
+        document.getElementById('mmm').pause();
+        var a = $("#mmm").attr('src');
+        a = a.substring(0, 6);
+        a += "en.mp3";
+        $("#mmm").attr('src',a);
+        document.getElementById('mmm').play();
+    });
+
+
+    // Play Sound
+    if(showLanguage){
+        $("#enus").trigger('click');
+    }else {
+        document.getElementById('mmm').play();
+    }
+
+
     $("#next").click(function() {
         $("#previous").show();
         var testar = true;
 
-        if(testar && $("#p1").css('display') == 'block'){
-            $("#p1").hide();
-            document.getElementById('mmm').pause();
-            $("#mmm").attr('src',musicSrc+ '2.mp3');
-            document.getElementById('mmm').play();
-            $("#p2").show();
-            testar = false;
-        }
+        for (var i = 1; i <= totalPages; i++) {
+            if(testar && $(pageId + i).css('display') == 'block'){
+                $(pageId + i).hide();
+                document.getElementById('mmm').pause();
+                var sourceMusic = musicSrc + (i+1);
+                if(showLanguage){
+                    sourceMusic += 'en';
+                }
+                sourceMusic += '.mp3';
 
-        if(testar && $("#p2").css('display') == 'block'){
-            $("#p2").hide();
-            document.getElementById('mmm').pause();
-            $("#mmm").attr('src',musicSrc+ '3.mp3');
-            document.getElementById('mmm').play();
-            $("#p3").show();
-            testar = false;
-        }
+                $("#mmm").attr('src',sourceMusic);
+                document.getElementById('mmm').play();
+                $(pageId + (i + 1)).show();
+                testar = false;
 
-        if(testar && $("#p3").css('display') == 'block'){
-            $("#p3").hide();
-            document.getElementById('mmm').pause();
-            $("#mmm").attr('src',musicSrc+ '4.mp3');
-            document.getElementById('mmm').play();
-            $("#p4").show();
-            testar = false;
-        }
-
-        if(testar && $("#p4").css('display') == 'block'){
-            $("#p4").hide();
-            document.getElementById('mmm').pause();
-            $("#mmm").attr('src',musicSrc+ '5.mp3');
-            document.getElementById('mmm').play();
-            $("#p5").show();
-            $("#next").hide();
-            testar = false;
+                if((i+1) == totalPages) {
+                    $("#next").hide();
+                }
+            }
         }
     });
 
@@ -72,43 +84,28 @@ $(document).ready(function () {
         $("#next").show();
         var testar = true;
 
-        if(testar && $("#p2").css('display') == 'block'){
-            $("#p2").hide();
-            document.getElementById('mmm').pause();
-            $("#mmm").attr('src','b2u11h1.mp3');
-            document.getElementById('mmm').play();
-            $("#p1").show();
-            $("#previous").hide();
-            testar = false;
-        }
+        for (var i = totalPages; i >= 1; i--) {
+            if(testar && $(pageId + i).css('display') == 'block'){
+                $(pageId + i).hide();
+                document.getElementById('mmm').pause();
+                var sourceMusic = musicSrc + (i-1);
+                if(showLanguage){
+                    sourceMusic += 'en';
+                }
+                sourceMusic += '.mp3';
 
-        if(testar && $("#p3").css('display') == 'block'){
-            $("#p3").hide();
-            document.getElementById('mmm').pause();
-            $("#mmm").attr('src','b2u11h2.mp3');
-            document.getElementById('mmm').play();
-            $("#p2").show();
-            testar = false;
-        }
+                $("#mmm").attr('src',sourceMusic);
+                document.getElementById('mmm').play();
+                $(pageId + (i - 1)).show();
+                testar = false;
 
-        if(testar && $("#p4").css('display') == 'block'){
-            $("#p4").hide();
-            document.getElementById('mmm').pause();
-            $("#mmm").attr('src','b2u11h3.mp3');
-            document.getElementById('mmm').play();
-            $("#p3").show();
-            testar = false;
-        }
-
-        if(testar && $("#p5").css('display') == 'block'){
-            $("#p5").hide();
-            document.getElementById('mmm').pause();
-            $("#mmm").attr('src','b2u11h4.mp3');
-            document.getElementById('mmm').play();
-            $("#p4").show();
-            testar = false;
+                if((i-1) == 1) {
+                    $("#previous").hide();
+                }
+            }
         }
     });
+
 
 	$(".red").click(function() {
 		var campos = $(this).next().find('input');
@@ -190,16 +187,16 @@ function teste(campo){
 }
 </script>
 
+<style type="text/css">
+    #p2 input {
+        width: 350px;
+    }
+    #p3 input {
+        width: 100px;
+    }
+</style>
 <body>
 
-	<!-- header -->
-<div id="class" class="wrap-section-header" style="display: block;">
-
-        <div class="section-header">
-            <h1>Unit Eleven - Homework</h1>
-        </div>
-    </div>
-	<!-- #END header -->
 <div class="wrap-section-body" id="classBody" style="display: block;">
 	<div id="class_content"><div class="class_container">
 
@@ -209,7 +206,7 @@ function teste(campo){
     <form name="form1" method="post" action="Book2homework11.aspx" id="form1">
     <div id="myDiv" style="background-image: url('images/qback11.jpg')">
         <div id="pager">
-            <div id="previous" style="display: block;">
+            <div id="previous" style="display: none;">
             </div>
             <div id="next" style="display: block;">
             </div>
@@ -337,65 +334,65 @@ function teste(campo){
                         4. Complete the sentences with: this / that / these / those
                     </p>
 
-                    <div class="theLabel"></div><div class="green" title="p23"></div><div class="yellow"></div><div class="red"></div>
+                    <div class="theLabel"></div><div class="green" title="p4A"></div><div class="yellow"></div><div class="red"></div>
                     <p class="exercicio">
                         A) I am Marc and <input onblur="teste(this);" type="text" rel="those"> boys are my kids. (far)
 
-                    <div class="theLabel"></div><div class="green" title="p24"></div><div class="yellow"></div><div class="red"></div>
+                    <div class="theLabel"></div><div class="green" title="p4B"></div><div class="yellow"></div><div class="red"></div>
                     <p class="exercicio">
                         B) What is <input onblur="teste(this);" type="text" rel="this"> on the table? (near)
 
-                    <div class="theLabel"></div><div class="green" title="p25"></div><div class="yellow"></div><div class="red"></div>
+                    <div class="theLabel"></div><div class="green" title="p4C"></div><div class="yellow"></div><div class="red"></div>
                     <p class="exercicio">
                         C) The hirl is <input onblur="teste(this);" type="text" rel="that"> one near the car. (far)
 
-                    <div class="theLabel"></div><div class="green" title="p26"></div><div class="yellow"></div><div class="red"></div>
+                    <div class="theLabel"></div><div class="green" title="p4D"></div><div class="yellow"></div><div class="red"></div>
                     <p class="exercicio">
                         D) <input onblur="teste(this);" type="text" rel="These"> are my friends Peter and Arthur. (near)
 
-                    <div class="theLabel"></div><div class="green" title="p27"></div><div class="yellow"></div><div class="red"></div>
+                    <div class="theLabel"></div><div class="green" title="p4E"></div><div class="yellow"></div><div class="red"></div>
                     <p class="exercicio">
                         E) <input onblur="teste(this);" type="text" rel="That"> car is not very beautiful, but <input onblur="teste(this);" type="text" rel="this"> one is fantastic. (far/near)
 
-                    <div class="theLabel"></div><div class="green" title="p28"></div><div class="yellow"></div><div class="red"></div>
+                    <div class="theLabel"></div><div class="green" title="p4F"></div><div class="yellow"></div><div class="red"></div>
                     <p class="exercicio">
                         F) <input onblur="teste(this);" type="text" rel="These"> men are here to talk to Julie. (near)
 
-                    <div class="theLabel"></div><div class="green" title="p29"></div><div class="yellow"></div><div class="red"></div>
+                    <div class="theLabel"></div><div class="green" title="p4G"></div><div class="yellow"></div><div class="red"></div>
                     <p class="exercicio">
                         G) <input onblur="teste(this);" type="text" rel="Those"> teams from Scotland are not very good. (far)
 
 
                 </div><div id="p5" class="pagina" style="display: none;">
                     <p class="bold">
-                        4. Complete the sentences with: a / an / in / on from
+                        5. Complete the sentences with: a / an / in / on from
                     </p>
 
-                <div class="theLabel"></div><div class="green" title="p30"></div><div class="yellow"></div><div class="red"></div>
+                <div class="theLabel"></div><div class="green" title="p5A"></div><div class="yellow"></div><div class="red"></div>
                     <p class="exercicio">
                         A) Marc is  <input onblur="teste(this);" type="text" rel="an"> English teacher.
 
-                <div class="theLabel"></div><div class="green" title="p31"></div><div class="yellow"></div><div class="red"></div>
+                <div class="theLabel"></div><div class="green" title="p5B"></div><div class="yellow"></div><div class="red"></div>
                     <p class="exercicio">
                         B) The picture  <input onblur="teste(this);" type="text" rel="on"> the wall is  <input onblur="teste(this);" type="text" rel="a"> very beautiful picture.
 
-                <div class="theLabel"></div><div class="green" title="p32"></div><div class="yellow"></div><div class="red"></div>
+                <div class="theLabel"></div><div class="green" title="p5C"></div><div class="yellow"></div><div class="red"></div>
                     <p class="exercicio">
                         C) Those girls  <input onblur="teste(this);" type="text" rel="in"> the house are  <input onblur="teste(this);" type="text" rel="from"> New Zealand.
 
-                <div class="theLabel"></div><div class="green" title="p33"></div><div class="yellow"></div><div class="red"></div>
+                <div class="theLabel"></div><div class="green" title="p5D"></div><div class="yellow"></div><div class="red"></div>
                     <p class="exercicio">
                         D)  <input onblur="teste(this);" type="text" rel="The"> students are finishing  <input onblur="teste(this);" type="text" rel="the"> first unit of  <input onblur="teste(this);" type="text" rel="the"> book.
 
-                <div class="theLabel"></div><div class="green" title="p34"></div><div class="yellow"></div><div class="red"></div>
+                <div class="theLabel"></div><div class="green" title="p5E"></div><div class="yellow"></div><div class="red"></div>
                     <p class="exercicio">
                         E)  <input onblur="teste(this);" type="text" rel="On"> December 1st. I have  <input onblur="teste(this);" type="text" rel="a"> nice party to go.
 
-                <div class="theLabel"></div><div class="green" title="p35"></div><div class="yellow"></div><div class="red"></div>
+                <div class="theLabel"></div><div class="green" title="p5F"></div><div class="yellow"></div><div class="red"></div>
                     <p class="exercicio">
                         F) Next class is  <input onblur="teste(this);" type="text" rel="on"> Friday, ok? Ah  <input onblur="teste(this);" type="text" rel="in"> the morning.
 
-                <div class="theLabel"></div><div class="green" title="p36"></div><div class="yellow"></div><div class="red"></div>
+                <div class="theLabel"></div><div class="green" title="p5G"></div><div class="yellow"></div><div class="red"></div>
                     <p class="exercicio">
                         G) It is possible to see  <input onblur="teste(this);" type="text" rel="an"> elephant  <input onblur="teste(this);" type="text" rel="in"> the circus.
 

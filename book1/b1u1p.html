@@ -8,126 +8,104 @@
 <script src="http://file.urin.take-uma.net/jquery.balloon.min.js"></script>
 
 <script type="text/javascript">
-$(document).ready(function () {
-	var musicSrc = 'b1u1p';
-	var langDefault = 'pt';
-    var showLanguage = false;
-    var backgroundImage = 'url("images/qback1.jpg")';
+    $(document).ready(function () {
+        var musicSrc = 'b1u1p';
+        var langDefault = 'pt';
+        var showLanguage = false;
+        var backgroundImage = 'url("images/qback1.jpg")';
+        var totalPages = 5;
+        var pageId = "#p";
 
+        // Initialize background
+        $("#myDiv").css('background-image', backgroundImage);
 
-    // Initialize background
-    $("#myDiv").css('background-image', backgroundImage);
+        // Initialize Sound
+        $("#mmm").attr('src',musicSrc + '1.mp3');
 
-    // Initialize Sound
-    $("#mmm").attr('src',musicSrc + '1.mp3');
-
-    // Initialize Languages
-    if(!showLanguage){
-        $("#enus").hide();
-        $("#ptbr").hide();
-    }
-
-    $("#next").click(function() {
-        $("#previous").show();
-        var testar = true;
-
-        if(testar && $("#p1").css('display') == 'block'){
-            $("#p1").hide();
-            document.getElementById('mmm').pause();
-            $("#mmm").attr('src',musicSrc+ '2.mp3');
-            document.getElementById('mmm').play();
-            $("#p2").show();
-            testar = false;
+        // Initialize Languages
+        if(!showLanguage){
+            $("#enus").hide();
+            $("#ptbr").hide();
         }
 
-        if(testar && $("#p2").css('display') == 'block'){
-            $("#p2").hide();
+
+        $("#ptbr").click(function() {
             document.getElementById('mmm').pause();
-            $("#mmm").attr('src',musicSrc+ '3.mp3');
+            var a = $("#mmm").attr('src');
+            a = a.substring(0, 6);
+            a += "pt.mp3";
+            $("#mmm").attr('src',a);
             document.getElementById('mmm').play();
-            $("#p3").show();
-            testar = false;
+        });
+        $("#enus").click(function() {
+            document.getElementById('mmm').pause();
+            var a = $("#mmm").attr('src');
+            a = a.substring(0, 6);
+            a += "en.mp3";
+            $("#mmm").attr('src',a);
+            document.getElementById('mmm').play();
+        });
+
+
+        // Play Sound
+        if(showLanguage){
+            $("#enus").trigger('click');
+        }else {
+            document.getElementById('mmm').play();
         }
 
-        if(testar && $("#p3").css('display') == 'block'){
-            $("#p3").hide();
-            document.getElementById('mmm').pause();
-            $("#mmm").attr('src',musicSrc+ '4.mp3');
-            document.getElementById('mmm').play();
-            $("#p4").show();
-            testar = false;
-        }
 
-        if(testar && $("#p4").css('display') == 'block'){
-            $("#p4").hide();
-            document.getElementById('mmm').pause();
-            $("#mmm").attr('src',musicSrc+ '5.mp3');
-            document.getElementById('mmm').play();
-            $("#p5").show();
-            $("#next").hide();
-            testar = false;
-        }
-    });
+        $("#next").click(function() {
+            $("#previous").show();
+            var testar = true;
 
-    $("#previous").click(function() {
-        $("#next").show();
-        var testar = true;
+            for (var i = 1; i <= totalPages; i++) {
+                if(testar && $(pageId + i).css('display') == 'block'){
+                    $(pageId + i).hide();
+                    document.getElementById('mmm').pause();
+                    var sourceMusic = musicSrc + (i+1);
+                    if(showLanguage){
+                        sourceMusic += 'en';
+                    }
+                    sourceMusic += '.mp3';
 
-        if(testar && $("#p2").css('display') == 'block'){
-            $("#p2").hide();
-            document.getElementById('mmm').pause();
-            $("#mmm").attr('src','b2u11h1.mp3');
-            document.getElementById('mmm').play();
-            $("#p1").show();
-            $("#previous").hide();
-            testar = false;
-        }
+                    $("#mmm").attr('src',sourceMusic);
+                    document.getElementById('mmm').play();
+                    $(pageId + (i + 1)).show();
+                    testar = false;
 
-        if(testar && $("#p3").css('display') == 'block'){
-            $("#p3").hide();
-            document.getElementById('mmm').pause();
-            $("#mmm").attr('src','b2u11h2.mp3');
-            document.getElementById('mmm').play();
-            $("#p2").show();
-            testar = false;
-        }
+                    if((i+1) == totalPages) {
+                        $("#next").hide();
+                    }
+                }
+            }
+        });
 
-        if(testar && $("#p4").css('display') == 'block'){
-            $("#p4").hide();
-            document.getElementById('mmm').pause();
-            $("#mmm").attr('src','b2u11h3.mp3');
-            document.getElementById('mmm').play();
-            $("#p3").show();
-            testar = false;
-        }
+        $("#previous").click(function() {
+            $("#next").show();
+            var testar = true;
 
-        if(testar && $("#p5").css('display') == 'block'){
-            $("#p5").hide();
-            document.getElementById('mmm').pause();
-            $("#mmm").attr('src','b2u11h4.mp3');
-            document.getElementById('mmm').play();
-            $("#p4").show();
-            testar = false;
-        }
-    });
+            for (var i = totalPages; i >= 1; i--) {
+                if(testar && $(pageId + i).css('display') == 'block'){
+                    $(pageId + i).hide();
+                    document.getElementById('mmm').pause();
+                    var sourceMusic = musicSrc + (i-1);
+                    if(showLanguage){
+                        sourceMusic += 'en';
+                    }
+                    sourceMusic += '.mp3';
 
-	$("#ptbr").click(function() {
-		document.getElementById('mmm').pause();
-		var a = $("#mmm").attr('src');
-		a = a.substring(0, a.length-6);
-		a += "pt.mp3";
-		$("#mmm").attr('src',a);
-		document.getElementById('mmm').play();
-	});
+                    $("#mmm").attr('src',sourceMusic);
+                    document.getElementById('mmm').play();
+                    $(pageId + (i - 1)).show();
+                    testar = false;
 
-    $("#enus").click(function() {
-		document.getElementById('mmm').pause();
-		var a = $("#mmm").attr('src');
-		a = a.substring(0, a.length-6);
-		a += "en.mp3";
-		$("#mmm").attr('src',a);
-		document.getElementById('mmm').play();
-	});
+                    if((i-1) == 1) {
+                        $("#previous").hide();
+                    }
+                }
+            }
+        });
 
     <!-- SHOW ANSWERS -->
     $(".p_question").click(function() {
@@ -161,14 +139,6 @@ $(document).ready(function () {
 </style>
 <body>
 
-	<!-- header -->
-<div id="class" class="wrap-section-header" style="display: block;">
-
-        <div class="section-header">
-            <h1>Unit Eleven - Homework</h1>
-        </div>
-    </div>
-	<!-- #END header -->
 <div class="wrap-section-body" id="classBody" style="display: block;">
 	<div id="class_content"><div class="class_container">
 
@@ -200,8 +170,8 @@ $(document).ready(function () {
 
                     <strong>1. Follow the example</strong><br /><br />
 
-                    <strong>Example 1:</strong>Marc / English teacher / (near). This is Marc. He is an English teacher.<br />
-                    <strong>Example 2:</strong>Marc/  English teacher / (far). That is Marc. He is an English teacher.<br /><br />
+                    <strong>Example 1:</strong> Marc / English teacher / (near). This is Marc. He is an English teacher.<br />
+                    <strong>Example 2:</strong> Marc/  English teacher / (far). That is Marc. He is an English teacher.<br /><br />
 
                     <span class="p_question">A) James / engineering student / (far)</span>
                     <span class="p_answer">That's James. He is an engineering student.</span><br />
@@ -281,7 +251,7 @@ $(document).ready(function () {
                 <div id="p4" class="pagina" style="display: none;">
                     <strong>4. Follow the example:</strong><br /> <br />
 
-                    <strong>Example: Judd / fat / thin. Judd is not fat. She is thin.</strong>    <br />
+                    <strong>Example:</strong> Judd / fat / thin. Judd is not fat. She is thin. <br />
 
                     <span class="p_question">A) James / tall / short.</span>
                     <span class="p_answer">James is not tall. He is short.</span>   <br />
@@ -315,7 +285,7 @@ $(document).ready(function () {
                     <span class="p_question">J) The sun / blue / yellow</span>
                     <span class="p_answer">The sun is not blue. It is yellow</span>  <br />
 
-                    <span class="p_question">K) THe book / big small.</span>
+                    <span class="p_question">K) The book / big small.</span>
                     <span class="p_answer">THe book is not big. It is small</span>    <br />
 
                     <span class="p_question">L) The womem / dumb / intelligent</span>
@@ -331,9 +301,9 @@ $(document).ready(function () {
                     <span class="p_answer">She and he are not enemies. They are friends.</span>   <br />
 
                     <span class="p_question">P) The pillow / hard / soft.</span>
-                    <span class="p_answer">THe pillow is not hard. It is sof.</span>   <br />
+                    <span class="p_answer">The pillow is not hard. It is sof.</span>   <br />
 
-                    <span class="p_question">Q) The men / weak / strong</span>
+                    <span class="p_question" style="display: inline; ">Q) The men / weak / strong</span>
                     <span class="p_answer">The men are not weak. They are strong.</span>   <br />
 
                 </div>

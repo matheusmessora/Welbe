@@ -7,87 +7,119 @@
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 <script src="http://file.urin.take-uma.net/jquery.balloon.min.js"></script>
 
-<script type="text/javascript">
-$(document).ready(function () {
-	$('.balloon').balloon({
-		tipSize: 24,
-		css: {
-			opacity: '1'
-		}
-  });
-
-	$('strong').balloon();
-
-
-	var musicSrc = 'b1u1t';
-    var showLanguage = false;
-    var backgroundImage = 'url("images/qback1.jpg")';
+    <script type="text/javascript">
+        $(document).ready(function () {
+            // Ballons
+            $('.balloon').balloon({
+                tipSize: 24,
+                css: {
+                    opacity: '1'
+                }
+            });
+            $('strong').balloon();
 
 
-    // Initialize background
-    $("#myDiv").css('background-image', backgroundImage);
+            var musicSrc = 'b1u1t';
+            var langDefault = 'pt';
+            var showLanguage = false;
+            var backgroundImage = 'url("images/qback1.jpg")';
+            var totalPages = 2;
+            var pageId = "#p";
 
-    // Initialize Sound
-    $("#mmm").attr('src',musicSrc + '1.mp3');
+            // Initialize background
+            $("#myDiv").css('background-image', backgroundImage);
 
-    // Initialize Languages
-    if(!showLanguage){
-        $("#enus").hide();
-        $("#ptbr").hide();
-    }
+            // Initialize Sound
+            $("#mmm").attr('src',musicSrc + '1.mp3');
 
-    // Language clicks
-    $("#ptbr").click(function() {
-        document.getElementById('mmm').pause();
-        var a = $("#mmm").attr('src');
-        a = a.substring(0, a.length-6);
-        a += "pt.mp3";
-        $("#mmm").attr('src',a);
-        document.getElementById('mmm').play();
-    });
-    $("#enus").click(function() {
-        document.getElementById('mmm').pause();
-        var a = $("#mmm").attr('src');
-        a = a.substring(0, a.length-6);
-        a += "en.mp3";
-        $("#mmm").attr('src',a);
-        document.getElementById('mmm').play();
-    });
+            // Initialize Languages
+            if(!showLanguage){
+                $("#enus").hide();
+                $("#ptbr").hide();
+            }
 
 
-    // Next pages clicks
-	$("#next").click(function() {
-		$("#previous").show();
-		var testar = true;
-	
-		if(testar && $("#p1").css('display') == 'block'){
-			$("#p1").hide();
-			document.getElementById('mmm').pause();
-			$("#mmm").attr('src',musicSrc+ '2' + '.mp3');
-			document.getElementById('mmm').play();
-			$("#p2").show();
-			$("#next").hide();
-			testar = false;
-		}
-	});
-	
-	$("#previous").click(function() {
-		$("#next").show();
-		var testar = true;
 
-		if(testar && $("#p2").css('display') == 'block'){
-			$("#p2").hide();
-			document.getElementById('mmm').pause();
-			$("#mmm").attr('src',musicSrc+ '1' +'.mp3');
-			document.getElementById('mmm').play();
-			$("#p1").show();
-			$("#previous").hide();
-			testar = false;
-		}
-	});
 
-});
-</script>
+            $("#ptbr").click(function() {
+                document.getElementById('mmm').pause();
+                var a = $("#mmm").attr('src');
+                a = a.substring(0, 6);
+                a += "pt.mp3";
+                $("#mmm").attr('src',a);
+                document.getElementById('mmm').play();
+            });
+            $("#enus").click(function() {
+                document.getElementById('mmm').pause();
+                var a = $("#mmm").attr('src');
+                a = a.substring(0, 6);
+                a += "en.mp3";
+                $("#mmm").attr('src',a);
+                document.getElementById('mmm').play();
+            });
+
+
+            // Play Sound
+            if(showLanguage){
+                $("#enus").trigger('click');
+            }else {
+                document.getElementById('mmm').play();
+            }
+
+
+            $("#next").click(function() {
+                $("#previous").show();
+                var testar = true;
+
+                for (var i = 1; i <= totalPages; i++) {
+                    if(testar && $(pageId + i).css('display') == 'block'){
+                        $(pageId + i).hide();
+                        document.getElementById('mmm').pause();
+                        var sourceMusic = musicSrc + (i+1);
+                        if(showLanguage){
+                            sourceMusic += 'en';
+                        }
+                        sourceMusic += '.mp3';
+
+                        $("#mmm").attr('src',sourceMusic);
+                        document.getElementById('mmm').play();
+                        $(pageId + (i + 1)).show();
+                        testar = false;
+
+                        if((i+1) == totalPages) {
+                            $("#next").hide();
+                        }
+                    }
+                }
+            });
+
+            $("#previous").click(function() {
+                $("#next").show();
+                var testar = true;
+
+                for (var i = totalPages; i >= 1; i--) {
+                    if(testar && $(pageId + i).css('display') == 'block'){
+                        $(pageId + i).hide();
+                        document.getElementById('mmm').pause();
+                        var sourceMusic = musicSrc + (i-1);
+                        if(showLanguage){
+                            sourceMusic += 'en';
+                        }
+                        sourceMusic += '.mp3';
+
+                        $("#mmm").attr('src',sourceMusic);
+                        document.getElementById('mmm').play();
+                        $(pageId + (i - 1)).show();
+                        testar = false;
+
+                        if((i-1) == 1) {
+                            $("#previous").hide();
+                        }
+                    }
+                }
+            });
+        });
+    </script>
 
 <style type="text/css">
 	table
@@ -113,14 +145,6 @@ $(document).ready(function () {
 </style>
 <body>
 
-	<!-- header -->
-<div id="class" class="wrap-section-header" style="display: block;">
-
-        <div class="section-header">
-            <h1>Unit Eleven - Homework</h1>
-        </div>
-    </div>
-	<!-- #END header -->
 <div class="wrap-section-body" id="classBody" style="display: block;">
 	<div id="class_content"><div class="class_container">
 
@@ -152,7 +176,7 @@ $(document).ready(function () {
 
 
 					- Hello guys, I'm Marc your English teacher today. I am 36 years old and have four children, Gabi, Henry, Pete and Arthur. Gabi is 14, Henry is 8 years old, Pete <span title="está completando" class="balloon">is turning</span> 4 and Arthur is just a baby.
-                    <br /><img src="b1u1t1.png" alt="" width="370px" height="350px" style="float: left; margin-right: 5px;"/>
+                    <br /><img src="b1u1t1.png" alt="" style="float: left; margin-right: 5px;"/>
 					I am <span title="casado" class="balloon">married</span>. My wife's name is Marie. She is 29 years old.
                     <br />- Now, you guys introduce yourselves.
                     <br /><br />- James, tell the other students where you are from, how old you are and what you do in your country.
@@ -161,7 +185,7 @@ $(document).ready(function () {
                     <br />- Well people, I am from Korea. I am 32 years old and I am a <span title="advogada" class="balloon">lawyer</span> <span title="lá / ali / aí" class="balloon">there</span>.
                 </div>
                 <div id="p2" class="pagina" style="display: none;">
-                    <img src="b1u1t2.png" alt="" width="370px" height="350px" style="float: left; margin-right: 5px;"/>
+                    <img src="b1u1t2.png" alt="" style="float: left; margin-right: 5px;"/>
                     <br />- Good job Julia! Now Manuel, <span title="responda" class="balloon">answer</span> these 3 questions, please. Where are you from? How old are you? What is your job description?
 					<br />- <span title="certo" class="balloon">All right</span>, I'm from Portugal, I am 25 and I am a taxi driver there.
                     <br />- <span title="perfeito" class="balloon">Terrific</span>! Now Manuel, only to train. introduce Julia to us, please.
