@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<head>
+<title>11</title>
+<link href="book2.css" rel="stylesheet" type="text/css">
+
+<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Josefin+Sans+Std+Light">
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script src="http://file.urin.take-uma.net/jquery.balloon.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function () {
+    var musicSrc = 'b1u2p';
+    var langDefault = 'pt';
+    var showLanguage = false;
+    var backgroundImage = 'url("images/qback1.jpg")';
+
+
+    // Initialize background
+    $("#myDiv").css('background-image', backgroundImage);
+
+    // Initialize Sound
+    $("#mmm").attr('src',musicSrc + '1.mp3');
+
+    // Initialize Languages
+    if(!showLanguage){
+        $("#enus").hide();
+        $("#ptbr").hide();
+    }
+
+    $("#next").click(function() {
+        $("#previous").show();
+        var testar = true;
+
+        if(testar && $("#p1").css('display') == 'block'){
+            $("#p1").hide();
+            document.getElementById('mmm').pause();
+            $("#mmm").attr('src',musicSrc+ '2.mp3');
+            document.getElementById('mmm').play();
+            $("#p2").show();
+            testar = false;
+        }
+
+        if(testar && $("#p2").css('display') == 'block'){
+            $("#p2").hide();
+            document.getElementById('mmm').pause();
+            $("#mmm").attr('src',musicSrc+ '3.mp3');
+            document.getElementById('mmm').play();
+            $("#p3").show();
+            testar = false;
+        }
+
+        if(testar && $("#p3").css('display') == 'block'){
+            $("#p3").hide();
+            document.getElementById('mmm').pause();
+            $("#mmm").attr('src',musicSrc+ '4.mp3');
+            document.getElementById('mmm').play();
+            $("#p4").show();
+            testar = false;
+        }
+
+        if(testar && $("#p4").css('display') == 'block'){
+            $("#p4").hide();
+            document.getElementById('mmm').pause();
+            $("#mmm").attr('src',musicSrc+ '5.mp3');
+            document.getElementById('mmm').play();
+            $("#p5").show();
+            $("#next").hide();
+            testar = false;
+        }
+    });
+
+    $("#previous").click(function() {
+        $("#next").show();
+        var testar = true;
+
+        if(testar && $("#p2").css('display') == 'block'){
+            $("#p2").hide();
+            document.getElementById('mmm').pause();
+            $("#mmm").attr('src','b2u11h1.mp3');
+            document.getElementById('mmm').play();
+            $("#p1").show();
+            $("#previous").hide();
+            testar = false;
+        }
+
+        if(testar && $("#p3").css('display') == 'block'){
+            $("#p3").hide();
+            document.getElementById('mmm').pause();
+            $("#mmm").attr('src','b2u11h2.mp3');
+            document.getElementById('mmm').play();
+            $("#p2").show();
+            testar = false;
+        }
+
+        if(testar && $("#p4").css('display') == 'block'){
+            $("#p4").hide();
+            document.getElementById('mmm').pause();
+            $("#mmm").attr('src','b2u11h3.mp3');
+            document.getElementById('mmm').play();
+            $("#p3").show();
+            testar = false;
+        }
+
+        if(testar && $("#p5").css('display') == 'block'){
+            $("#p5").hide();
+            document.getElementById('mmm').pause();
+            $("#mmm").attr('src','b2u11h4.mp3');
+            document.getElementById('mmm').play();
+            $("#p4").show();
+            testar = false;
+        }
+    });
+
+	$("#ptbr").click(function() {
+		document.getElementById('mmm').pause();
+		var a = $("#mmm").attr('src');
+		a = a.substring(0, a.length-6);
+		a += "pt.mp3";
+		$("#mmm").attr('src',a);
+		document.getElementById('mmm').play();
+	});
+
+    $("#enus").click(function() {
+		document.getElementById('mmm').pause();
+		var a = $("#mmm").attr('src');
+		a = a.substring(0, a.length-6);
+		a += "en.mp3";
+		$("#mmm").attr('src',a);
+		document.getElementById('mmm').play();
+	});
+
+    <!-- SHOW ANSWERS -->
+
+    $(".p_question").click(function() {
+        $(this).next().show();
+    });
+
+});
+</script>
+
+<style type="text/css">
+	table
+	{
+		border-width: 0 0 1px 1px;
+		border-spacing: 0;
+		border-collapse: collapse;
+		border-style: solid;
+		font-size: 20px;
+	}
+
+	td, th
+	{
+		margin: 0;
+		padding: 4px;
+		border-width: 1px 1px 0 0;
+		border-style: solid;
+	}
+
+	p {
+		margin:0px;
+	}
+</style>
+<body>
+
+<div class="wrap-section-body" id="classBody" style="display: block;">
+	<div id="class_content"><div class="class_container">
+
+    <form name="form1" method="post" action="Book2homework11.aspx" id="form1">
+    <div id="myDiv" style="background-image: url('images/qback1.jpg')">
+        <div id="pager">
+            <div id="previous" style="display: none;">
+            </div>
+            <div id="next" style="display: block;">
+            </div>
+        </div>
+
+        <div id="paginaAtual">
+			<img id="enus" src="http://www.webrazuca.com/v4/images/dc_icon_usa.png" width="30" height="30">
+
+				<audio id="mmm" controls src="b1u1g1pt.mp3">
+					Your browser does not support the audio element.
+				</audio>
+
+			<img id="ptbr" src="http://icongal.com/gallery/image/32079/brasil_br_kr_brazil.png" width="30" height="30">
+		</div>
+        <div style="padding: 25px;">
+            <div style="height: 500px;">
+                <div id="p1" class="pagina" style="display: block;">
+					<strong>PRACTICE - WHERE ARE MY KEYS?</strong><br />
+
+                    <strong>1. Follow the example</strong><br />
+
+                    <strong>Example:</strong> Jimmy / black belt / gray belt.<br />
+
+                    <span class="p_question">A) Jimmy / black belt / gray belt.</span>
+                    <span class="p_answer">Is Jimmy wearing a black belt? No, he isn't. He is wearing a gray belt.</span>
+
+                    <span class="p_question">B) Marily / blue dress / silver dress.</span>
+                    <span class="p_answer">Is Marilyn wearing a blue dress? No, she isn't. She is wearing a silver dress.</span>
+
+                    <span class="p_question">C) Marie / brown skirt / indigo skirt.</span>
+                    <span class="p_answer">Is Marie wearing a brown skirt? No, she isn't. She is wearing an indigo skirt</span>
+
+                    <span class="p_question">D) Henry / yellow cap / red cap.</span>
+                    <span class="p_answer">Is Henry wearing a yellow cap? No, he isn't. He is wearing a red cap.</span>
+
+                    <span class="p_question">E) Pete / orange blouse / green blouse.</span>
+                    <span class="p_answer">Is Pete wearing an orange blouse? No, he isn't. He is wearing a green blouse.</span>
+
+                    <span class="p_question">F) Gabi / beige sweater / white sweater.</span>
+                    <span class="p_answer">Is Gabi wearing a beige sweater? No, she isn't. She is wearing a white sweater.</span>
+
+                    <span class="p_question">G) Marc / lilac shirt / gold shirt.</span>
+                    <span class="p_answer">Is Marc wearing a lilac shirt? No, he isn't. He is wearing a gold shirt.</span>
+
+                </div>
+                <div id="p2" class="pagina" style="display: none;">
+                    <strong>2. Follow the example</strong><br />
+
+                    <strong>Example:</strong> Marc / black pants / brown pants <br />
+                                               Is Marc wearing black pants? No, he isn't. He is wearing brown pants.<br />
+
+                    <span class="p_question">Pete / black shorts / indigo shorts.</span>
+                    <span class="p_answer">Is Pete wearing black shorts? No, he isn't. He is wearing indigo shorts.</span>
+
+                    <span class="p_question">B) Henry / blue flip-flops / white flip-flops.</span>
+                    <span class="p_answer">Is Henry wearing blue flip-flops? No, he isn't. He is wearing white flip-flops.</span>
+
+                    <span class="p_question">C) Gabi / grey sandals / brown sandals.</span>
+                    <span class="p_answer">Is Gabi wearing grey sandals? No, she isn't. She is wearing brown sandals.</span>
+
+                    <span class="p_question">D) Marie / white boots / black boots.</span>
+                    <span class="p_answer">Is Marie wearing white boots? No, she isn't. She is wearing black boots.</span>
+
+                    <span class="p_question">E) Marc / violet shoes / grey and red shoes.</span>
+                    <span class="p_answer">Is Marc wearing violet shoes? No, he isn't. He is wearing grey and red shoes.</span>
+
+                    <span class="p_question">F) Marilyn / silver slippers / gold slippers.</span>
+                    <span class="p_answer">Is Marilyn wearing silver slippers? No, she isn't. She is wearing gold slippers.</span>
+
+                    <span class="p_question">G) Jimmy / shite socks / beige socks.</span>
+                    <span class="p_answer">Is Jimmy wearing white socks? No, he isn't. He is wearing beige socks.</span>
+
+
+                </div>
+                <div id="p3" class="pagina" style="display: none;">
+                    <strong>3. Complete with the verb THERE TO BE and the prepositions</strong><br />
+
+                    <span class="p_question">A) Is there a black dog in the house?</span>
+                    <span class="p_question">B) THere are many people at Paul's restaurant.</span>
+                    <span class="p_question">C) There are two cats under / on / near / beside the table.</span>
+                    <span class="p_question">D) What is there in / inside the drawer?</span>
+                    <span class="p_question">E) There are not jeans inside / in the closed.</span>
+
+                    <strong>4. Make like the example:</strong>
+                    Example: Marc / Englang / Canada<br>
+                    Is Marc from England? No, he is not. He is from Canada.
+
+
+                    <span class="p_question">A) Henry / Germany / Australia</span>
+                    <span class="p_answer">Is Henry from Germany? No, he is not. He is from Australia.</span>
+
+                    <span class="p_question">B) Marcos and Charles / New Zealand / Brazil</span>
+                    <span class="p_answer">Are Marcos and Charles from New Zealand? No, they are not. They are from Brazil.</span>
+
+                    <span class="p_question">C) Julie / USA / France</span>
+                    <span class="p_answer">Is Julie from the USA? NO, she is not. She is from France.</span>
+
+                </div>
+                <div id="p4" class="pagina" style="display: none;">
+                    <span class="p_question">D) Gabi / Australia / Italy</span>
+                    <span class="p_answer">Is Gabi from Australia? No she is not. She is from Italy</span>
+
+                    <span class="p_question">E) Joe and Judd / South africa / Canada</span>
+                    <span class="p_answer">Are Joe and Judd from South Africa? No, they are not. They are from Canada</span>
+
+                    <span class="p_question">F) Pete / Spain / Scotland</span>
+                    <span class="p_answer">Is Pete from Spain? No, he is not. He is from Scotland.</span>
+
+                    <span class="p_question">G) Marie / Brazil  USA</span>
+                    <span class="p_answer">Is Marie from Brazil? No, she is not. she is from the USA.</span>
+
+                    <span class="p_question">H) James and Lauren / France / Ireland</span>
+                    <span class="p_answer">Are James and Lauren from France? No, they are not. They are from Ireland.</span>
+
+                </div>
+                <div id="p5" class="pagina" style="display: none;">
+                    <strong>5. Speak these numbers</strong>
+
+                    <span class="p_question">A) 11</span>
+                    <span class="p_answer">Eleven</span>
+
+                    <span class="p_question">B) 32nd</span>
+                    <span class="p_answer">Thirty second</span>
+
+                    <span class="p_question">C) 4940</span>
+                    <span class="p_answer">Four thousand nine hundred and forty</span>
+
+                    <span class="p_question">D) 98</span>
+                    <span class="p_answer">Ninety-eight</span>
+
+                    <span class="p_question">E) 168</span>
+                    <span class="p_answer">One hundred and sixty-eight</span>
+
+                    <span class="p_question">F) 271st</span>
+                    <span class="p_answer">Two hundred seventy first</span>
+
+                    <span class="p_question">G) 1256</span>
+                    <span class="p_answer">One thousand two hundred and fifty-six</span>
+
+                    <span class="p_question">H) 53rd</span>
+                    <span class="p_answer">Fifty third</span>
+
+                    <span class="p_question">I) 230.000</span>
+                    <span class="p_answer">Two hundred thirty thousand</span>
+
+                    <span class="p_question">J) 100.000</span>
+                    <span class="p_answer">One hundred thousand</span>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    </form>
+
+</div>
+</div>
+</div>
+</body></html>
+

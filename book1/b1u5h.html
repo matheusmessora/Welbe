@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<head>
+<title>11</title>
+<link href="book2.css" rel="stylesheet" type="text/css">
+
+<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Josefin+Sans+Std+Light">
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function () {
+    var soundMain = "b1u5h";
+    var totalPages = 4;
+    var pageId = "#p";
+
+	$("#next").click(function() {
+		$("#previous").show();
+		var testar = true;
+
+        for (var i = 1; i <= totalPages; i++) {
+            if(testar && $(pageId + i).css('display') == 'block'){
+                $(pageId + i).hide();
+                document.getElementById('mmm').pause();
+                $("#mmm").attr('src','b2u11h2.mp3');
+//                document.getElementById('mmm').play();
+                $(pageId + (i + 1)).show();
+                testar = false;
+
+                if((i+1) == totalPages) {
+                    $("#next").hide();
+                }
+            }
+        }
+	});
+	
+	$("#previous").click(function() {
+		$("#next").show();
+		var testar = true;
+
+        for (var i = totalPages; i >= 1; i--) {
+            if(testar && $(pageId + i).css('display') == 'block'){
+                $(pageId + i).hide();
+                document.getElementById('mmm').pause();
+                $("#mmm").attr('src','b2u11h2.mp3');
+//                document.getElementById('mmm').play();
+                $(pageId + (i - 1)).show();
+                testar = false;
+
+                if((i-1) == 1) {
+                    $("#previous").hide();
+                }
+            }
+        }
+	});
+	
+	$(".red").click(function() {
+		var campos = $(this).next().find('input');
+		if(teste(campos[0])){
+			$(this).prev().prev().prev().html('Correct');
+			$(this).prev().prev().prev().css('color', 'green');
+		}
+		else {
+			$(this).prev().prev().prev().html('Incorrect');
+			$(this).prev().prev().prev().css('color', 'red');
+		}
+		
+		$(this).prev().show();
+	});
+	
+	$(".yellow").click(function() {
+		var campos = $(this).next().next().find('input');
+		campos.each(function () {
+			var rel;
+			if ($(this).attr("rel").indexOf("|") == -1) {
+				rel = $(this).attr("rel")
+			}else {
+				rel = $(this).attr("rel").toLowerCase().split("|")[0];
+			}
+		
+			$(this).val(rel);
+			$(this).css('color', 'green');
+		});
+		
+		$(this).prev().prev().html('Correct');
+		$(this).prev().prev().css('color', 'green');
+		$(this).prev().show();
+	});
+		
+	$(".green").click(function() {
+		var id = $(this).next().next().next().attr('id');
+		player('b2u11h1'+ id);
+		$(this).next().click();
+		showCorrect($(this).prev());
+	});
+});
+
+function showCorrect(campo){
+	campo.html('Correct');
+	campo.css('color', 'green');
+}
+function player(mp3){
+	document.getElementById('mmm').pause();
+	$("#mmm").attr('src',mp3 + '.mp3');
+	document.getElementById('mmm').play();
+}
+
+function teste(campo){
+	var retorno = true;
+	var rel = $(campo).attr("rel").toLowerCase();
+	
+	if ($(campo).attr("rel").indexOf("|") == -1) {
+		var valor = $(campo).val().toLowerCase();
+		if(valor == rel){
+			$(campo).css("color","green");
+		}else {
+			$(campo).css("color","red");
+			retorno = false;
+		}
+	}else {
+		var ar = $(campo).attr("rel").toLowerCase().split("|");
+		for (i = 0; i < ar.length; i++) {
+			if (ar[i] == $(campo).val().toLowerCase()) {
+				$(campo).css('color', 'green');
+				break;
+			} else {
+				$(campo).css('color', 'red');
+				retorno = false;
+			}
+		}
+	}
+	
+	return retorno;
+}
+</script>
+
+<style type="text/css">
+
+    #p1 input, #p2 input {
+        width: 220px;
+    }
+
+    #p3 p {
+        font-size: 18px;
+        line-height: 12px;
+        /*margin:0;*/
+        /*padding:0;*/
+    }
+    #p4 input {
+        width: 300px;
+        font-size: 16px;
+    }
+    #p5 input {
+        width: 300px;
+    }
+    #p5 p {
+        font-size: 18px;
+        line-height: 20px;
+    }
+
+
+</style>
+</head>
+<body>
+
+<div class="wrap-section-body" id="classBody" style="display: block;">
+	<div id="class_content"><div class="class_container">
+	
+    <form name="form1" method="post" action="Book2homework11.aspx" id="form1">
+    <div id="myDiv" style="background-image: url('images/qback11.jpg')">
+        <div id="pager">
+            <div id="previous" style="display: block;">
+            </div>
+            <div id="next" style="display: block;">
+            </div>
+        </div>
+
+        <div id="paginaAtual">
+		<audio id="mmm" controls src="b2u11h1.mp3"> 
+			Your browser does not support the audio element.
+		</audio></div>
+        <div style="padding: 30px;">
+            <div style="height: 500px;">
+                <div id="p1" class="pagina" style="display: block;">
+
+                    <span class="titulo">HOMEWORK - I DON'T KNOW</span>
+                    <p class="bold">1. Answer the questions below</p>
+					<div class="theLabel"></div><div class="green"></div><div class="yellow"></div><div class="red"></div>
+                    <p  class="exercicio">
+                        A) When is your birthday? <input onblur="teste(this);" type="text" rel="My birthday is in (any month)"><br />
+                        
+					<div class="theLabel"></div><div class="green"></div><div class="yellow"></div><div class="red"></div>
+                    <p  class="exercicio">
+                        B) Where does your mom live? <input onblur="teste(this);" type="text" rel="She lives in (any city)">
+					
+					<div class="theLabel"></div><div class="green" rel="b2u11h1c"></div><div class="yellow"></div><div class="red"></div>
+                    <p  class="exercicio">
+                        C) Who do you always help? <input onblur="teste(this);" type="text" rel="I always help my family or any other person">
+
+					<div class="theLabel"></div><div class="green" rel="b2u11h1d"></div><div class="yellow"></div><div class="red"></div>
+                    <p  class="exercicio">
+                        D) What time do you normally sleep? <input onblur="teste(this);" type="text" rel="I normally sleep at (any time)">
+
+				<p class="bold">2. Ask question for the underlined words</p>
+					<div class="theLabel"></div><div class="green"></div><div class="yellow"></div><div class="red"></div>
+                    <p  class="exercicio">
+                        A) Jack likes to study. <input onblur="teste(this);" type="text" rel="What does Jack like? | What does Jacky like to do"><br />
+                        
+					<div class="theLabel"></div><div class="green"></div><div class="yellow"></div><div class="red"></div>
+                    <p  class="exercicio">
+                        B) Jacky likes to study? <input onblur="teste(this);" type="text" rel="Who likes to study">
+					
+					<div class="theLabel"></div><div class="green" rel="b2u11h1c"></div><div class="yellow"></div><div class="red"></div>
+                    <p  class="exercicio">
+                        C) No, I don' speak English. <input onblur="teste(this);" type="text" rel="Do you speak English?">
+
+					<div class="theLabel"></div><div class="green" rel="b2u11h1d"></div><div class="yellow"></div><div class="red"></div>
+                    <p  class="exercicio">
+                        D) Linda is at home. <input onblur="teste(this);" type="text" rel="Where is Linda">
+
+					<div class="theLabel"></div><div class="green" rel="b2u11h1d"></div><div class="yellow"></div><div class="red"></div>
+                    <p  class="exercicio">
+                        E) They are dancing <input onblur="teste(this);" type="text" rel="What are they doing">
+
+				
+                </div>
+                <div id="p2" class="pagina" style="display: none;">
+                    <p class="bold">
+                        2. Fill out with the suitable verb tense.
+                    </p>
+					
+					<div class="theLabel"></div><div class="green" rel="b2u1h1g"></div><div class="yellow"></div><div class="red"></div>
+                    <p class="exercicio">
+                        A) James <input onblur="teste(this);" type="text" rel="studies"> at Welbe Private Class at night. (to study)
+                    
+					<div class="theLabel"></div><div class="green" rel="b2u11h1g"></div><div class="yellow"></div><div class="red"></div>
+                    <p class="exercicio">
+                        B) <input onblur="teste(this);" type="text" rel="Is"> Larry <input onblur="teste(this);" type="text" rel="working"> now? (to work)
+                    
+					<div class="theLabel"></div><div class="green" rel="b2u11h1g"></div><div class="yellow"></div><div class="red"></div>
+                    <p class="exercicio">
+                        C) Doctor Carol <input onblur="teste(this);" type="text" rel="needs"> to talk to you now. It's urgent. (to need)
+                    
+					<div class="theLabel"></div><div class="green" rel="b2u11h1g"></div><div class="yellow"></div><div class="red"></div>
+                    <p class="exercicio">
+                        D) Her birthday party <input onblur="teste(this);" type="text" rel="is"> at Hard Rock Cafe. (to be)
+                    
+					<div class="theLabel"></div><div class="green" rel="b2u11h1g"></div><div class="yellow"></div><div class="red"></div>
+                    <p class="exercicio">
+                        E) I really <input onblur="teste(this);" type="text" rel="do not know"> what I <input onblur="teste(this);" type="text" rel="do | am doing">. (to not know/to do)
+
+					<div class="theLabel"></div><div class="green" rel="b2u11h1g"></div><div class="yellow"></div><div class="red"></div>
+                    <p class="exercicio">
+                        F) <input onblur="teste(this);" type="text" rel="Do"> they <input onblur="teste(this);" type="text" rel="like"> Oliver? Yes, they like Oliver a lot. (to like)
+                    
+					<div class="theLabel"></div><div class="green" rel="b2u11h1g"></div><div class="yellow"></div><div class="red"></div>
+                    <p class="exercicio">
+                        G) She <input onblur="teste(this);" type="text" rel="watches"> TV at night and her parents <input onblur="teste(this);" type="text" rel="sleep">. (to watch/to sleep)
+
+                    <div class="theLabel"></div><div class="green" rel="b2u11h1g"></div><div class="yellow"></div><div class="red"></div>
+                    <p class="exercicio">
+                        H) He and she <input onblur="teste(this);" type="text" rel="are"> at home <input onblur="teste(this);" type="text" rel="drinking"> a good wine. (to be/to drink)
+
+                </div>
+
+                <div id="p3" class="pagina" style="display: none;">
+                    <p><strong>4. Write the interrogative and the negative forms:</strong><br />
+
+                    <div class="theLabel"></div><div class="green" rel="b2u1h1g"></div><div class="yellow"></div><div class="red"></div>
+                    <p class="exercicio">
+                        A) Mr. Peterson wants to see you right now. <br />
+                        <input onblur="teste(this);" type="text" rel="Does Mr. Peterson want to see you right now">?<br />
+                        <input onblur="teste(this);" type="text" rel="Mr. Peterson does not want to see you right now">.
+                        
+
+                    <div class="theLabel"></div><div class="green" rel="b2u1h1g"></div><div class="yellow"></div><div class="red"></div>
+                    <p class="exercicio">
+                        B) Marilyn, her boyfriend and a friend of theirs are watching TV <br />
+                        <input onblur="teste(this);" type="text" rel="Are Marilyn, her boyfriend and a friend of theirs watching TV">?<br />
+                        <input onblur="teste(this);" type="text" rel="Are they Marco's socks? No, they are Thoma's socks">.
+
+                    <div class="theLabel"></div><div class="green" rel="b2u1h1g"></div><div class="yellow"></div><div class="red"></div>
+                    <p class="exercicio">
+                        C) Phil and Paul play soccer very well. <br />
+                        <input onblur="teste(this);" type="text" rel="Do Phil and Paul play soccer very well">?<br />
+                        <input onblur="teste(this);" type="text" rel="Phil and Paul do not play soccer very well">.
+
+                        <div class="theLabel"></div><div class="green" rel="b2u1h1g"></div><div class="yellow"></div><div class="red"></div>
+                    <p class="exercicio">
+                        D) She likes to study at Welbe Private Class.<br />
+                        <input onblur="teste(this);" type="text" rel="Does she like to study at Welbe Private Class">?<br />
+                        <input onblur="teste(this);" type="text" rel="She does not like to study at Welbe Private Class">.
+                </div>
+                <div id="p4" class="pagina" style="display: none;">
+                    <p><strong>4. Write the interrogative and the negative forms:</strong><br />
+
+                    <strong>Examples:</strong> They / to study / friends / morning. <br /> They study with their friends in the morning. <br />
+
+                    <div class="theLabel"></div><div class="green" rel="b2u1h1g"></div><div class="yellow"></div><div class="red"></div>
+                    <p class="exercicio">
+                        A) She / to go / cinema / once a month. <br />
+                        <input onblur="teste(this);" type="text" rel="She goes to the cinema once month">.<br />
+
+                    <div class="theLabel"></div><div class="green" rel="b2u1h1g"></div><div class="yellow"></div><div class="red"></div>
+                    <p class="exercicio">
+                        B) Oxford / to be / good / unniversity. <br />
+                        <input onblur="teste(this);" type="text" rel="Oxford is a good university">.<br />
+
+                    <div class="theLabel"></div><div class="green" rel="b2u1h1g"></div><div class="yellow"></div><div class="red"></div>
+                    <p class="exercicio">
+                        C) My friend / to live / Canada <br />
+                        <input onblur="teste(this);" type="text" rel="My friend lives in Canada">.<br />
+
+                        <div class="theLabel"></div><div class="green" rel="b2u1h1g"></div><div class="yellow"></div><div class="red"></div>
+                    <p class="exercicio">
+                        D) I / to need / to study / more / my free time.<br />
+                        <input onblur="teste(this);" type="text" rel="I need to study more in my free time">.<br />
+
+                            <div class="theLabel"></div><div class="green" rel="b2u1h1g"></div><div class="yellow"></div><div class="red"></div>
+                    <p class="exercicio">
+                        E) Olivia / to want / to travel / Nicholas?<br />
+                        <input onblur="teste(this);" type="text" rel="Does Olivia want to travel with Nicholas">?<br />
+                </div>
+            </div>
+        </div>
+    </div>
+    </form>
+
+</div>
+</div>
+</div>
+</body></html>
+				
