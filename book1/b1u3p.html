@@ -7,137 +7,114 @@
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 <script src="http://file.urin.take-uma.net/jquery.balloon.min.js"></script>
 
-<script type="text/javascript">
-$(document).ready(function () {
-    var musicSrc = 'b1u3p';
-    var langDefault = 'pt';
-    var showLanguage = false;
-    var backgroundImage = 'url("images/qback1.jpg")';
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var musicSrc = 'b1u3p';
+            var langDefault = 'pt';
+            var showLanguage = false;
+            var backgroundImage = 'url("images/qback3.jpg")';
+            var totalPages = 5;
+            var pageId = "#p";
+
+            // Initialize background
+            $("#myDiv").css('background-image', backgroundImage);
+
+            // Initialize Sound
+            $("#mmm").attr('src',musicSrc + '1.mp3');
+
+            // Initialize Languages
+            if(!showLanguage){
+                $("#enus").hide();
+                $("#ptbr").hide();
+            }
 
 
-    // Initialize background
-    $("#myDiv").css('background-image', backgroundImage);
+            $("#ptbr").click(function() {
+                document.getElementById('mmm').pause();
+                var a = $("#mmm").attr('src');
+                a = a.substring(0, 6);
+                a += "pt.mp3";
+                $("#mmm").attr('src',a);
+                document.getElementById('mmm').play();
+            });
+            $("#enus").click(function() {
+                document.getElementById('mmm').pause();
+                var a = $("#mmm").attr('src');
+                a = a.substring(0, 6);
+                a += "en.mp3";
+                $("#mmm").attr('src',a);
+                document.getElementById('mmm').play();
+            });
 
-    // Initialize Sound
-    $("#mmm").attr('src',musicSrc + '1.mp3');
 
-    // Initialize Languages
-    if(!showLanguage){
-        $("#enus").hide();
-        $("#ptbr").hide();
-    }
+            // Play Sound
+            if(showLanguage){
+                $("#enus").trigger('click');
+            }else {
+                document.getElementById('mmm').play();
+            }
 
-    $("#next").click(function() {
-        $("#previous").show();
-        var testar = true;
 
-        if(testar && $("#p1").css('display') == 'block'){
-            $("#p1").hide();
-            document.getElementById('mmm').pause();
-            $("#mmm").attr('src',musicSrc+ '2.mp3');
-            document.getElementById('mmm').play();
-            $("#p2").show();
-            testar = false;
-        }
+            $("#next").click(function() {
+                $("#previous").show();
+                var testar = true;
 
-        if(testar && $("#p2").css('display') == 'block'){
-            $("#p2").hide();
-            document.getElementById('mmm').pause();
-            $("#mmm").attr('src',musicSrc+ '3.mp3');
-            document.getElementById('mmm').play();
-            $("#p3").show();
-            testar = false;
-        }
+                for (var i = 1; i <= totalPages; i++) {
+                    if(testar && $(pageId + i).css('display') == 'block'){
+                        $(pageId + i).hide();
+                        document.getElementById('mmm').pause();
+                        var sourceMusic = musicSrc + (i+1);
+                        if(showLanguage){
+                            sourceMusic += 'en';
+                        }
+                        sourceMusic += '.mp3';
 
-        if(testar && $("#p3").css('display') == 'block'){
-            $("#p3").hide();
-            document.getElementById('mmm').pause();
-            $("#mmm").attr('src',musicSrc+ '4.mp3');
-            document.getElementById('mmm').play();
-            $("#p4").show();
-            testar = false;
-        }
+                        $("#mmm").attr('src',sourceMusic);
+                        document.getElementById('mmm').play();
+                        $(pageId + (i + 1)).show();
+                        testar = false;
 
-        if(testar && $("#p4").css('display') == 'block'){
-            $("#p4").hide();
-            document.getElementById('mmm').pause();
-            $("#mmm").attr('src',musicSrc+ '5.mp3');
-            document.getElementById('mmm').play();
-            $("#p5").show();
-            $("#next").hide();
-            testar = false;
-        }
-    });
+                        if((i+1) == totalPages) {
+                            $("#next").hide();
+                        }
+                    }
+                }
+            });
 
-    $("#previous").click(function() {
-        $("#next").show();
-        var testar = true;
+            $("#previous").click(function() {
+                $("#next").show();
+                var testar = true;
 
-        if(testar && $("#p2").css('display') == 'block'){
-            $("#p2").hide();
-            document.getElementById('mmm').pause();
-            $("#mmm").attr('src','b2u11h1.mp3');
-            document.getElementById('mmm').play();
-            $("#p1").show();
-            $("#previous").hide();
-            testar = false;
-        }
+                for (var i = totalPages; i >= 1; i--) {
+                    if(testar && $(pageId + i).css('display') == 'block'){
+                        $(pageId + i).hide();
+                        document.getElementById('mmm').pause();
+                        var sourceMusic = musicSrc + (i-1);
+                        if(showLanguage){
+                            sourceMusic += 'en';
+                        }
+                        sourceMusic += '.mp3';
 
-        if(testar && $("#p3").css('display') == 'block'){
-            $("#p3").hide();
-            document.getElementById('mmm').pause();
-            $("#mmm").attr('src','b2u11h2.mp3');
-            document.getElementById('mmm').play();
-            $("#p2").show();
-            testar = false;
-        }
+                        $("#mmm").attr('src',sourceMusic);
+                        document.getElementById('mmm').play();
+                        $(pageId + (i - 1)).show();
+                        testar = false;
 
-        if(testar && $("#p4").css('display') == 'block'){
-            $("#p4").hide();
-            document.getElementById('mmm').pause();
-            $("#mmm").attr('src','b2u11h3.mp3');
-            document.getElementById('mmm').play();
-            $("#p3").show();
-            testar = false;
-        }
+                        if((i-1) == 1) {
+                            $("#previous").hide();
+                        }
+                    }
+                }
+            });
 
-        if(testar && $("#p5").css('display') == 'block'){
-            $("#p5").hide();
-            document.getElementById('mmm').pause();
-            $("#mmm").attr('src','b2u11h4.mp3');
-            document.getElementById('mmm').play();
-            $("#p4").show();
-            testar = false;
-        }
-    });
+            <!-- SHOW ANSWERS -->
+            $(".p_question").click(function() {
+                $(this).next().show();
+            });
 
-	$("#ptbr").click(function() {
-		document.getElementById('mmm').pause();
-		var a = $("#mmm").attr('src');
-		a = a.substring(0, a.length-6);
-		a += "pt.mp3";
-		$("#mmm").attr('src',a);
-		document.getElementById('mmm').play();
-	});
-
-    $("#enus").click(function() {
-		document.getElementById('mmm').pause();
-		var a = $("#mmm").attr('src');
-		a = a.substring(0, a.length-6);
-		a += "en.mp3";
-		$("#mmm").attr('src',a);
-		document.getElementById('mmm').play();
-	});
-
-    <!-- SHOW ANSWERS -->
-
-    $(".p_question").click(function() {
-        $(this).next().show();
-    });
-
-});
-</script>
-
+        });
+    </script>
 <style type="text/css">
 	table
 	{
@@ -205,22 +182,22 @@ $(document).ready(function () {
                     <strong>Example 2:</strong>These keys are yours. (they) Those ones are theirs.<br />
 
                     <span class="p_question">A) This computer is Mary's. (Julie)</span>
-                    <span class="p_answer">That one is Julie's</span>
+                    <span class="p_answer">That one is Julie's</span>     <br />
 
                     <span class="p_question">B) This ball is his. (we)</span>
-                    <span class="p_answer">That one is ours.</span>
+                    <span class="p_answer">That one is ours.</span>            <br />
 
                     <span class="p_question">C) These glasses are Julie's (he)</span>
-                    <span class="p_answer">Those ones are his.</span>
+                    <span class="p_answer">Those ones are his.</span>                   <br />
 
                     <span class="p_question">D) This toy is the boy's. (I)</span>
-                    <span class="p_answer">That one is mine.</span>
+                    <span class="p_answer">That one is mine.</span>                  <br />
 
                     <span class="p_question">E) These socks are Marco's. (Bruce)</span>
-                    <span class="p_answer">Those ones are Bruce's.</span>
+                    <span class="p_answer">Those ones are Bruce's.</span>                <br />
 
                     <span class="p_question">F) This motorcycle is hers. (you)</span>
-                    <span class="p_answer">That one is yours.</span>
+                    <span class="p_answer">That one is yours.</span>                    <br />
 
                     <span class="p_question">G) These jeans are the girl's. (they)</span>
                     <span class="p_answer">Those ones are theirs.</span>
@@ -230,22 +207,22 @@ $(document).ready(function () {
                     <strong>2. Answer the questions about the text with complete answers</strong><br />
 
                     <span class="p_question">A) Are the Stewarts on the beach?</span>
-                    <span class="p_answer">No, they are not on the beach.</span>
+                    <span class="p_answer">No, they are not on the beach.</span>     <br />
 
                     <span class="p_question">B) Is it a rainy day?</span>
-                    <span class="p_answer">No, it is not a rainy day.</span>
+                    <span class="p_answer">No, it is not a rainy day.</span>      <br />
 
                     <span class="p_question">C) What is the daughter's name?</span>
-                    <span class="p_answer">Her name is Jane. / It is Jane.</span>
+                    <span class="p_answer">Her name is Jane. / It is Jane.</span>     <br />
 
                     <span class="p_question">D) What are the sons' names?</span>
-                    <span class="p_answer">Their names are John and Mike. / They are John and Mike.</span>
+                    <span class="p_answer">Their names are John and Mike. / They are John and Mike.</span>               <br />
 
                     <span class="p_question">E) Where are the Stewarts?</span>
-                    <span class="p_answer">They are in the park</span>
+                    <span class="p_answer">They are in the park</span>     <br />
 
                     <span class="p_question">F) Is the dog with the family?</span>
-                    <span class="p_answer">No, the dog is not with the family. / No, it is not with the family.</span>
+                    <span class="p_answer">No, the dog is not with the family. / No, it is not with the family.</span>     <br />
 
 
                 </div>
@@ -259,16 +236,16 @@ $(document).ready(function () {
                     <span class="p_question">E) There are not jeans inside / in the closed.</span>
 
                     <br />
-                    <strong>4. Make like the example:</strong>
-                    Example: Marc / Englang / Canada<br>
+                    <strong>4. Make like the example:</strong><br />
+                    <strong>Example:</strong> Marc / Englang / Canada<br>
                     Is Marc from England? No, he is not. He is from Canada.
 
 
                     <span class="p_question">A) Henry / Germany / Australia</span>
-                    <span class="p_answer">Is Henry from Germany? No, he is not. He is from Australia.</span>
+                    <span class="p_answer">Is Henry from Germany? No, he is not. He is from Australia.</span>       <br />
 
                     <span class="p_question">B) Marcos and Charles / New Zealand / Brazil</span>
-                    <span class="p_answer">Are Marcos and Charles from New Zealand? No, they are not. They are from Brazil.</span>
+                    <span class="p_answer">Are Marcos and Charles from New Zealand? No, they are not. They are from Brazil.</span>  <br />
 
                     <span class="p_question">C) Julie / USA / France</span>
                     <span class="p_answer">Is Julie from the USA? NO, she is not. She is from France.</span>
@@ -276,16 +253,16 @@ $(document).ready(function () {
                 </div>
                 <div id="p4" class="pagina" style="display: none;">
                     <span class="p_question">D) Gabi / Australia / Italy</span>
-                    <span class="p_answer">Is Gabi from Australia? No she is not. She is from Italy</span>
+                    <span class="p_answer">Is Gabi from Australia? No she is not. She is from Italy</span> <br />
 
                     <span class="p_question">E) Joe and Judd / South africa / Canada</span>
-                    <span class="p_answer">Are Joe and Judd from South Africa? No, they are not. They are from Canada</span>
+                    <span class="p_answer">Are Joe and Judd from South Africa? No, they are not. They are from Canada</span>   <br />
 
                     <span class="p_question">F) Pete / Spain / Scotland</span>
-                    <span class="p_answer">Is Pete from Spain? No, he is not. He is from Scotland.</span>
+                    <span class="p_answer">Is Pete from Spain? No, he is not. He is from Scotland.</span>  <br />
 
                     <span class="p_question">G) Marie / Brazil  USA</span>
-                    <span class="p_answer">Is Marie from Brazil? No, she is not. she is from the USA.</span>
+                    <span class="p_answer">Is Marie from Brazil? No, she is not. she is from the USA.</span> <br />
 
                     <span class="p_question">H) James and Lauren / France / Ireland</span>
                     <span class="p_answer">Are James and Lauren from France? No, they are not. They are from Ireland.</span>
@@ -332,7 +309,7 @@ $(document).ready(function () {
                     <span class="p_answer">Two hundred thirty thousand</span>
                     <br />
 
-                    <span class="p_question">J) 100.000</span>
+                    <span class="p_question" style="float: left;">J) 100.000</span>
                     <span class="p_answer">One hundred thousand</span>
 
                 </div>
