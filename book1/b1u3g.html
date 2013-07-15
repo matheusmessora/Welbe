@@ -7,10 +7,15 @@
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     <script type="text/javascript">
         $(document).ready(function () {
-
             var musicSrc = 'b1u3g';
-            var showLanguage = false;
+            var langDefault = 'pt';
+            var showLanguage = true;
             var backgroundImage = 'url("images/qback3.jpg")';
+            var totalPages = 5;
+            var pageId = "#p";
+
+            // Initialize background
+            $("#myDiv").css('background-image', backgroundImage);
 
             // Initialize Sound
             $("#mmm").attr('src',musicSrc + '1.mp3');
@@ -21,28 +26,56 @@
                 $("#ptbr").hide();
             }
 
-            // Next pages clicks
+
+            $("#ptbr").click(function() {
+                document.getElementById('mmm').pause();
+                var a = $("#mmm").attr('src');
+                a = a.substring(0, 6);
+                a += "pt.mp3";
+                $("#mmm").attr('src',a);
+                document.getElementById('mmm').play();
+            });
+            $("#enus").click(function() {
+                document.getElementById('mmm').pause();
+                var a = $("#mmm").attr('src');
+                a = a.substring(0, 6);
+                a += "en.mp3";
+                $("#mmm").attr('src',a);
+                document.getElementById('mmm').play();
+            });
+
+
+            // Play Sound
+            if(showLanguage){
+                $("#enus").trigger('click');
+            }else {
+                document.getElementById('mmm').play();
+            }
+
+
             $("#next").click(function() {
                 $("#previous").show();
                 var testar = true;
 
-                if(testar && $("#p1").css('display') == 'block'){
-                    $("#p1").hide();
-                    document.getElementById('mmm').pause();
-                    $("#mmm").attr('src',musicSrc+ '2' + '.mp3');
-                    document.getElementById('mmm').play();
-                    $("#p2").show();
-                    testar = false;
-                }
+                for (var i = 1; i <= totalPages; i++) {
+                    if(testar && $(pageId + i).css('display') == 'block'){
+                        $(pageId + i).hide();
+                        document.getElementById('mmm').pause();
+                        var sourceMusic = musicSrc + (i+1);
+                        if(showLanguage){
+                            sourceMusic += 'en';
+                        }
+                        sourceMusic += '.mp3';
 
-                if(testar && $("#p2").css('display') == 'block'){
-                    $("#p2").hide();
-                    document.getElementById('mmm').pause();
-                    $("#mmm").attr('src',musicSrc+ '3' + '.mp3');
-                    document.getElementById('mmm').play();
-                    $("#p3").show();
-                    $("#next").hide();
-                    testar = false;
+                        $("#mmm").attr('src',sourceMusic);
+                        document.getElementById('mmm').play();
+                        $(pageId + (i + 1)).show();
+                        testar = false;
+
+                        if((i+1) == totalPages) {
+                            $("#next").hide();
+                        }
+                    }
                 }
             });
 
@@ -50,44 +83,27 @@
                 $("#next").show();
                 var testar = true;
 
-                if(testar && $("#p3").css('display') == 'block'){
-                    $("#p3").hide();
-                    document.getElementById('mmm').pause();
-                    $("#mmm").attr('src',musicSrc+ '2' +'.mp3');
-                    document.getElementById('mmm').play();
-                    $("#p2").show();
-                    testar = false;
+                for (var i = totalPages; i >= 1; i--) {
+                    if(testar && $(pageId + i).css('display') == 'block'){
+                        $(pageId + i).hide();
+                        document.getElementById('mmm').pause();
+                        var sourceMusic = musicSrc + (i-1);
+                        if(showLanguage){
+                            sourceMusic += 'en';
+                        }
+                        sourceMusic += '.mp3';
+
+                        $("#mmm").attr('src',sourceMusic);
+                        document.getElementById('mmm').play();
+                        $(pageId + (i - 1)).show();
+                        testar = false;
+
+                        if((i-1) == 1) {
+                            $("#previous").hide();
+                        }
+                    }
                 }
-                if(testar && $("#p2").css('display') == 'block'){
-                    $("#p2").hide();
-                    document.getElementById('mmm').pause();
-                    $("#mmm").attr('src',musicSrc+ '1' +'.mp3');
-                    document.getElementById('mmm').play();
-                    $("#p1").show();
-                    $("#previous").hide();
-                    testar = false;
-                }
             });
-
-
-
-            $("#ptbr").click(function () {
-                document.getElementById('mmm').pause();
-                var a = $("#mmm").attr('src');
-                a = a.substring(0, a.length - 6);
-                a += "pt.mp3";
-                $("#mmm").attr('src', a);
-                document.getElementById('mmm').play();
-            });
-            $("#enus").click(function () {
-                document.getElementById('mmm').pause();
-                var a = $("#mmm").attr('src');
-                a = a.substring(0, a.length - 6);
-                a += "en.mp3";
-                $("#mmm").attr('src', a);
-                document.getElementById('mmm').play();
-            });
-
         });
     </script>
 
@@ -113,14 +129,6 @@
     </style>
 <body>
 
-<!-- header -->
-<div id="class" class="wrap-section-header" style="display: block;">
-
-    <div class="section-header">
-        <h1>Unit Eleven - Homework</h1>
-    </div>
-</div>
-<!-- #END header -->
 <div class="wrap-section-body" id="classBody" style="display: block;">
 <div id="class_content">
 <div class="class_container">
