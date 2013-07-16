@@ -7,136 +7,114 @@
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 <script src="http://file.urin.take-uma.net/jquery.balloon.min.js"></script>
 
-<script type="text/javascript">
-$(document).ready(function () {
-    var musicSrc = 'b1u2p';
-    var langDefault = 'pt';
-    var showLanguage = false;
-    var backgroundImage = 'url("images/qback1.jpg")';
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var musicSrc = 'b1u2p';
+            var langDefault = 'pt';
+            var showLanguage = false;
+            var backgroundImage = 'url("images/qback2.jpg")';
+            var totalPages = 5;
+            var pageId = "#p";
+
+            // Initialize background
+            $("#myDiv").css('background-image', backgroundImage);
+
+            // Initialize Sound
+            $("#mmm").attr('src',musicSrc + '1.mp3');
+
+            // Initialize Languages
+            if(!showLanguage){
+                $("#enus").hide();
+                $("#ptbr").hide();
+            }
 
 
-    // Initialize background
-    $("#myDiv").css('background-image', backgroundImage);
+            $("#ptbr").click(function() {
+                document.getElementById('mmm').pause();
+                var a = $("#mmm").attr('src');
+                a = a.substring(0, 6);
+                a += "pt.mp3";
+                $("#mmm").attr('src',a);
+                document.getElementById('mmm').play();
+            });
+            $("#enus").click(function() {
+                document.getElementById('mmm').pause();
+                var a = $("#mmm").attr('src');
+                a = a.substring(0, 6);
+                a += "en.mp3";
+                $("#mmm").attr('src',a);
+                document.getElementById('mmm').play();
+            });
 
-    // Initialize Sound
-    $("#mmm").attr('src',musicSrc + '1.mp3');
 
-    // Initialize Languages
-    if(!showLanguage){
-        $("#enus").hide();
-        $("#ptbr").hide();
-    }
+            // Play Sound
+            if(showLanguage){
+                $("#enus").trigger('click');
+            }else {
+                document.getElementById('mmm').play();
+            }
 
-    $("#next").click(function() {
-        $("#previous").show();
-        var testar = true;
 
-        if(testar && $("#p1").css('display') == 'block'){
-            $("#p1").hide();
-            document.getElementById('mmm').pause();
-            $("#mmm").attr('src',musicSrc+ '2.mp3');
-            document.getElementById('mmm').play();
-            $("#p2").show();
-            testar = false;
-        }
+            $("#next").click(function() {
+                $("#previous").show();
+                var testar = true;
 
-        if(testar && $("#p2").css('display') == 'block'){
-            $("#p2").hide();
-            document.getElementById('mmm').pause();
-            $("#mmm").attr('src',musicSrc+ '3.mp3');
-            document.getElementById('mmm').play();
-            $("#p3").show();
-            testar = false;
-        }
+                for (var i = 1; i <= totalPages; i++) {
+                    if(testar && $(pageId + i).css('display') == 'block'){
+                        $(pageId + i).hide();
+                        document.getElementById('mmm').pause();
+                        var sourceMusic = musicSrc + (i+1);
+                        if(showLanguage){
+                            sourceMusic += 'en';
+                        }
+                        sourceMusic += '.mp3';
 
-        if(testar && $("#p3").css('display') == 'block'){
-            $("#p3").hide();
-            document.getElementById('mmm').pause();
-            $("#mmm").attr('src',musicSrc+ '4.mp3');
-            document.getElementById('mmm').play();
-            $("#p4").show();
-            testar = false;
-        }
+                        $("#mmm").attr('src',sourceMusic);
+                        document.getElementById('mmm').play();
+                        $(pageId + (i + 1)).show();
+                        testar = false;
 
-        if(testar && $("#p4").css('display') == 'block'){
-            $("#p4").hide();
-            document.getElementById('mmm').pause();
-            $("#mmm").attr('src',musicSrc+ '5.mp3');
-            document.getElementById('mmm').play();
-            $("#p5").show();
-            $("#next").hide();
-            testar = false;
-        }
-    });
+                        if((i+1) == totalPages) {
+                            $("#next").hide();
+                        }
+                    }
+                }
+            });
 
-    $("#previous").click(function() {
-        $("#next").show();
-        var testar = true;
+            $("#previous").click(function() {
+                $("#next").show();
+                var testar = true;
 
-        if(testar && $("#p2").css('display') == 'block'){
-            $("#p2").hide();
-            document.getElementById('mmm').pause();
-            $("#mmm").attr('src','b2u11h1.mp3');
-            document.getElementById('mmm').play();
-            $("#p1").show();
-            $("#previous").hide();
-            testar = false;
-        }
+                for (var i = totalPages; i >= 1; i--) {
+                    if(testar && $(pageId + i).css('display') == 'block'){
+                        $(pageId + i).hide();
+                        document.getElementById('mmm').pause();
+                        var sourceMusic = musicSrc + (i-1);
+                        if(showLanguage){
+                            sourceMusic += 'en';
+                        }
+                        sourceMusic += '.mp3';
 
-        if(testar && $("#p3").css('display') == 'block'){
-            $("#p3").hide();
-            document.getElementById('mmm').pause();
-            $("#mmm").attr('src','b2u11h2.mp3');
-            document.getElementById('mmm').play();
-            $("#p2").show();
-            testar = false;
-        }
+                        $("#mmm").attr('src',sourceMusic);
+                        document.getElementById('mmm').play();
+                        $(pageId + (i - 1)).show();
+                        testar = false;
 
-        if(testar && $("#p4").css('display') == 'block'){
-            $("#p4").hide();
-            document.getElementById('mmm').pause();
-            $("#mmm").attr('src','b2u11h3.mp3');
-            document.getElementById('mmm').play();
-            $("#p3").show();
-            testar = false;
-        }
+                        if((i-1) == 1) {
+                            $("#previous").hide();
+                        }
+                    }
+                }
+            });
 
-        if(testar && $("#p5").css('display') == 'block'){
-            $("#p5").hide();
-            document.getElementById('mmm').pause();
-            $("#mmm").attr('src','b2u11h4.mp3');
-            document.getElementById('mmm').play();
-            $("#p4").show();
-            testar = false;
-        }
-    });
+            <!-- SHOW ANSWERS -->
+            $(".p_question").click(function() {
+                $(this).next().show();
+            });
 
-	$("#ptbr").click(function() {
-		document.getElementById('mmm').pause();
-		var a = $("#mmm").attr('src');
-		a = a.substring(0, a.length-6);
-		a += "pt.mp3";
-		$("#mmm").attr('src',a);
-		document.getElementById('mmm').play();
-	});
-
-    $("#enus").click(function() {
-		document.getElementById('mmm').pause();
-		var a = $("#mmm").attr('src');
-		a = a.substring(0, a.length-6);
-		a += "en.mp3";
-		$("#mmm").attr('src',a);
-		document.getElementById('mmm').play();
-	});
-
-    <!-- SHOW ANSWERS -->
-
-    $(".p_question").click(function() {
-        $(this).next().show();
-    });
-
-});
-</script>
+        });
+    </script>
 
 <style type="text/css">
 	table
@@ -159,6 +137,14 @@ $(document).ready(function () {
 	p {
 		margin:0px;
 	}
+
+
+    #p3 {
+        font-size: 18px;
+        line-height: 20px;
+
+
+    }
 </style>
 <body>
 
@@ -193,25 +179,25 @@ $(document).ready(function () {
                     <strong>Example:</strong> Jimmy / black belt / gray belt.<br />
 
                     <span class="p_question">A) Jimmy / black belt / gray belt.</span>
-                    <span class="p_answer">Is Jimmy wearing a black belt? No, he isn't. He is wearing a gray belt.</span>
+                    <span class="p_answer">Is Jimmy wearing a black belt? No, he isn't. He is wearing a gray belt.</span>  <br />
 
                     <span class="p_question">B) Marily / blue dress / silver dress.</span>
-                    <span class="p_answer">Is Marilyn wearing a blue dress? No, she isn't. She is wearing a silver dress.</span>
+                    <span class="p_answer">Is Marilyn wearing a blue dress? No, she isn't. She is wearing a silver dress.</span><br />
 
                     <span class="p_question">C) Marie / brown skirt / indigo skirt.</span>
-                    <span class="p_answer">Is Marie wearing a brown skirt? No, she isn't. She is wearing an indigo skirt</span>
+                    <span class="p_answer">Is Marie wearing a brown skirt? No, she isn't. She is wearing an indigo skirt</span> <br />
 
                     <span class="p_question">D) Henry / yellow cap / red cap.</span>
-                    <span class="p_answer">Is Henry wearing a yellow cap? No, he isn't. He is wearing a red cap.</span>
+                    <span class="p_answer">Is Henry wearing a yellow cap? No, he isn't. He is wearing a red cap.</span>   <br />
 
                     <span class="p_question">E) Pete / orange blouse / green blouse.</span>
-                    <span class="p_answer">Is Pete wearing an orange blouse? No, he isn't. He is wearing a green blouse.</span>
+                    <span class="p_answer">Is Pete wearing an orange blouse? No, he isn't. He is wearing a green blouse.</span>   <br />
 
                     <span class="p_question">F) Gabi / beige sweater / white sweater.</span>
-                    <span class="p_answer">Is Gabi wearing a beige sweater? No, she isn't. She is wearing a white sweater.</span>
+                    <span class="p_answer">Is Gabi wearing a beige sweater? No, she isn't. She is wearing a white sweater.</span> <br />
 
                     <span class="p_question">G) Marc / lilac shirt / gold shirt.</span>
-                    <span class="p_answer">Is Marc wearing a lilac shirt? No, he isn't. He is wearing a gold shirt.</span>
+                    <span class="p_answer">Is Marc wearing a lilac shirt? No, he isn't. He is wearing a gold shirt.</span>  <br />
 
                 </div>
                 <div id="p2" class="pagina" style="display: none;">
@@ -220,102 +206,116 @@ $(document).ready(function () {
                     <strong>Example:</strong> Marc / black pants / brown pants <br />
                                                Is Marc wearing black pants? No, he isn't. He is wearing brown pants.<br />
 
-                    <span class="p_question">Pete / black shorts / indigo shorts.</span>
-                    <span class="p_answer">Is Pete wearing black shorts? No, he isn't. He is wearing indigo shorts.</span>
+                    <span class="p_question">A) Pete / black shorts / indigo shorts.</span>
+                    <span class="p_answer">Is Pete wearing black shorts? No, he isn't. He is wearing indigo shorts.</span>       <br />
 
                     <span class="p_question">B) Henry / blue flip-flops / white flip-flops.</span>
-                    <span class="p_answer">Is Henry wearing blue flip-flops? No, he isn't. He is wearing white flip-flops.</span>
+                    <span class="p_answer">Is Henry wearing blue flip-flops? No, he isn't. He is wearing white flip-flops.</span>  <br />
 
                     <span class="p_question">C) Gabi / grey sandals / brown sandals.</span>
-                    <span class="p_answer">Is Gabi wearing grey sandals? No, she isn't. She is wearing brown sandals.</span>
+                    <span class="p_answer">Is Gabi wearing grey sandals? No, she isn't. She is wearing brown sandals.</span> <br />
 
                     <span class="p_question">D) Marie / white boots / black boots.</span>
-                    <span class="p_answer">Is Marie wearing white boots? No, she isn't. She is wearing black boots.</span>
+                    <span class="p_answer">Is Marie wearing white boots? No, she isn't. She is wearing black boots.</span>  <br />
 
                     <span class="p_question">E) Marc / violet shoes / grey and red shoes.</span>
-                    <span class="p_answer">Is Marc wearing violet shoes? No, he isn't. He is wearing grey and red shoes.</span>
+                    <span class="p_answer">Is Marc wearing violet shoes? No, he isn't. He is wearing grey and red shoes.</span>   <br />
 
                     <span class="p_question">F) Marilyn / silver slippers / gold slippers.</span>
-                    <span class="p_answer">Is Marilyn wearing silver slippers? No, she isn't. She is wearing gold slippers.</span>
+                    <span class="p_answer">Is Marilyn wearing silver slippers? No, she isn't. She is wearing gold slippers.</span>  <br />
 
                     <span class="p_question">G) Jimmy / shite socks / beige socks.</span>
-                    <span class="p_answer">Is Jimmy wearing white socks? No, he isn't. He is wearing beige socks.</span>
+                    <span class="p_answer">Is Jimmy wearing white socks? No, he isn't. He is wearing beige socks.</span>   <br />
 
 
                 </div>
                 <div id="p3" class="pagina" style="display: none;">
-                    <strong>3. Complete with the verb THERE TO BE and the prepositions</strong><br />
-
-                    <span class="p_question">A) Is there a black dog in the house?</span>
-                    <span class="p_question">B) THere are many people at Paul's restaurant.</span>
-                    <span class="p_question">C) There are two cats under / on / near / beside the table.</span>
-                    <span class="p_question">D) What is there in / inside the drawer?</span>
-                    <span class="p_question">E) There are not jeans inside / in the closed.</span>
-
-                    <strong>4. Make like the example:</strong>
-                    Example: Marc / Englang / Canada<br>
-                    Is Marc from England? No, he is not. He is from Canada.
+                    <strong>3. Complete with the verb THERE TO BE and the prepositions</strong><br /><br />
 
 
-                    <span class="p_question">A) Henry / Germany / Australia</span>
-                    <span class="p_answer">Is Henry from Germany? No, he is not. He is from Australia.</span>
+                    <strong>Example 1:</strong> Marc / red t-shirt / yellow t-shirt <br />
+                    Is Marc wearing a red t-shirt? No, he isn't. He is wearing a yellow t-shirt.<br /><br />
 
-                    <span class="p_question">B) Marcos and Charles / New Zealand / Brazil</span>
-                    <span class="p_answer">Are Marcos and Charles from New Zealand? No, they are not. They are from Brazil.</span>
+                    <strong>Example 2:</strong> Marc / black pants / brown pants <br />
+                    Is Marc wearing black pants? No, he isn't. He is wearing brown pants.<br />
+                    <br />
 
-                    <span class="p_question">C) Julie / USA / France</span>
-                    <span class="p_answer">Is Julie from the USA? NO, she is not. She is from France.</span>
+                    <span class="p_question">Jimmy / white shirt / lilac shirt.</span>
+                    <span class="p_answer">Is Jimmy wearing a white shirt? No, he isn't. He is wearing a lilac shirt.</span>   <br />
+
+                    <span class="p_question">B) Marilyn / purple dress / red dress.</span>
+                    <span class="p_answer">Is Marilyn wearing a purple dress? No, she isn't. She is wearing a red dress.</span>   <br />
+
+                    <span class="p_question">C) Pete and Henry / blue jeans / black jeans.</span>
+                    <span class="p_answer">Are Pete and Henry wearing blue jeans? No, they aren't. They are wearing black jeans.</span>   <br />
+
+                    <span class="p_question">D) Gabi and Marie / gray gloves / pink gloves.</span>
+                    <span class="p_answer">Are Gabi and Marie wearing gray gloves? No, they aren't. They are wearing pink gloves.</span>   <br />
+
+                    <span class="p_question">E) Jimmy / green coat / silver coat.</span>
+                    <span class="p_answer">Is Jimmy wearing a green coat? No, he isn't. He is wearing a silver coat.</span>   <br />
+
+                    <span class="p_question">F) Marc / orange overcoat / black overcoat.</span>
+                    <span class="p_answer">Is Marc wearing an orange overcoat? No, he isn't. He is wearing a black overcoat.</span>   <br />
+
+                    <span class="p_question">G) Marilyn / gold panties / red panties</span>
+                    <span class="p_answer">Is Marilyn wearing gold panties? No, she isn't. She is wearing red panties.</span>   <br />
+
 
                 </div>
                 <div id="p4" class="pagina" style="display: none;">
-                    <span class="p_question">D) Gabi / Australia / Italy</span>
-                    <span class="p_answer">Is Gabi from Australia? No she is not. She is from Italy</span>
+                    <strong>4. Follow the example:</strong><br />
 
-                    <span class="p_question">E) Joe and Judd / South africa / Canada</span>
-                    <span class="p_answer">Are Joe and Judd from South Africa? No, they are not. They are from Canada</span>
 
-                    <span class="p_question">F) Pete / Spain / Scotland</span>
-                    <span class="p_answer">Is Pete from Spain? No, he is not. He is from Scotland.</span>
+                    <strong>Example:</strong> Her school / my school.<br />
+                    Is this her school? No, it is not. It is my school<br /><br />
 
-                    <span class="p_question">G) Marie / Brazil  USA</span>
-                    <span class="p_answer">Is Marie from Brazil? No, she is not. she is from the USA.</span>
 
-                    <span class="p_question">H) James and Lauren / France / Ireland</span>
-                    <span class="p_answer">Are James and Lauren from France? No, they are not. They are from Ireland.</span>
+                    <span class="p_question">A) His car/ their car.</span>
+                    <span class="p_answer">Is this his car? No, it is not. It is their car.</span>   <br />
+
+                    <span class="p_question">B) Your cat / her cat.</span>
+                    <span class="p_answer">Is this your cat? No, it is not. It is her cat.</span>      <br />
+
+                    <span class="p_question">C) Our book / his book.</span>
+                    <span class="p_answer">Is this our book? No, it is not. It is his book.</span>    <br />
+
+                    <span class="p_question">D) My belt / our belt</span>
+                    <span class="p_answer">Is this my belt? No, it is not. It is our belt.</span>     <br />
+
+                    <span class="p_question">E) Their ball / my ball</span>
+                    <span class="p_answer">Is this their ball? No, it is not. It is my ball.</span>     <br />
+
+                    <span class="p_question">F) His motorcycle / her motorcycle</span>
+                    <span class="p_answer">Is this his motorcycle? No, it is not. It is her motorcycle</span>     <br />
 
                 </div>
                 <div id="p5" class="pagina" style="display: none;">
-                    <strong>5. Speak these numbers</strong>
+                    <strong>5. Put into interrogative and affirmative</strong>
 
-                    <span class="p_question">A) 11</span>
-                    <span class="p_answer">Eleven</span>
+                    <span class="p_question">A) He is not a taxi driver from Portugal.</span>
+                    <span class="p_answer">Is he a taxi driver from Portugal? He is a taxi driver from Portugal.</span>   <br />
 
-                    <span class="p_question">B) 32nd</span>
-                    <span class="p_answer">Thirty second</span>
+                    <span class="p_question">B) This is not James.</span>
+                    <span class="p_answer">Is this James? This is James.</span>   <br />
 
-                    <span class="p_question">C) 4940</span>
-                    <span class="p_answer">Four thousand nine hundred and forty</span>
+                    <span class="p_question">C) Julia isn't a lawyer.</span>
+                    <span class="p_answer">Is Julia a lawyer? Julia is a lawyer.</span>  <br />
 
-                    <span class="p_question">D) 98</span>
-                    <span class="p_answer">Ninety-eight</span>
+                    <span class="p_question">D) The engineering student is not from Mexico.</span>
+                    <span class="p_answer">Is the engineering student from Mexico? The engineering student is from Mexico.</span>   <br />
 
-                    <span class="p_question">E) 168</span>
-                    <span class="p_answer">One hundred and sixty-eight</span>
+                    <span class="p_question">E) Marie is not the wife.</span>
+                    <span class="p_answer">Is Marie the wife? Marie is the wife.</span>  <br />
 
-                    <span class="p_question">F) 271st</span>
-                    <span class="p_answer">Two hundred seventy first</span>
+                    <span class="p_question">F) Gabi, Henry and Pete are not the kids.</span>
+                    <span class="p_answer">Is Gaby, Henry and Pete the kids? Gabi, Henry and Pete are the kids.</span>  <br />
 
-                    <span class="p_question">G) 1256</span>
-                    <span class="p_answer">One thousand two hundred and fifty-six</span>
+                    <span class="p_question">G) Marc is not married.</span>
+                    <span class="p_answer">Is Marc married? Marc is married.</span> <br />
 
-                    <span class="p_question">H) 53rd</span>
-                    <span class="p_answer">Fifty third</span>
-
-                    <span class="p_question">I) 230.000</span>
-                    <span class="p_answer">Two hundred thirty thousand</span>
-
-                    <span class="p_question">J) 100.000</span>
-                    <span class="p_answer">One hundred thousand</span>
+                    <span class="p_question">H) I am not the teacher today.</span>
+                    <span class="p_answer">Am I the teacher today? I am the teacher today.</span>
 
                 </div>
             </div>
