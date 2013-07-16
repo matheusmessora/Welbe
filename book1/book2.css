@@ -368,6 +368,14 @@ span.e7
     cursor: pointer;
 }
 
+.noBorder {
+    border:0;
+}
+
+.noBorder table, .noBorder td {
+    border:0;
+}
+
 .borderless td {
     border: 0px;
 }

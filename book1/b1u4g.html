@@ -9,9 +9,10 @@
         $(document).ready(function () {
             var musicSrc = 'b1u4g';
             var langDefault = 'pt';
-            var showLanguage = false;
+            var showLanguage = true;
             var backgroundImage = 'url("images/qback4.jpg")';
-
+            var totalPages = 3;
+            var pageId = "#p";
 
             // Initialize background
             $("#myDiv").css('background-image', backgroundImage);
@@ -25,27 +26,56 @@
                 $("#ptbr").hide();
             }
 
+
+            $("#ptbr").click(function() {
+                document.getElementById('mmm').pause();
+                var a = $("#mmm").attr('src');
+                a = a.substring(0, 6);
+                a += "pt.mp3";
+                $("#mmm").attr('src',a);
+                document.getElementById('mmm').play();
+            });
+            $("#enus").click(function() {
+                document.getElementById('mmm').pause();
+                var a = $("#mmm").attr('src');
+                a = a.substring(0, 6);
+                a += "en.mp3";
+                $("#mmm").attr('src',a);
+                document.getElementById('mmm').play();
+            });
+
+
+            // Play Sound
+            if(showLanguage){
+                $("#enus").trigger('click');
+            }else {
+                document.getElementById('mmm').play();
+            }
+
+
             $("#next").click(function() {
                 $("#previous").show();
                 var testar = true;
 
-                if(testar && $("#p1").css('display') == 'block'){
-                    $("#p1").hide();
-                    document.getElementById('mmm').pause();
-                    $("#mmm").attr('src',musicSrc+ '2' +langDefault+'.mp3');
-                    document.getElementById('mmm').play();
-                    $("#p2").show();
-                    testar = false;
-                }
+                for (var i = 1; i <= totalPages; i++) {
+                    if(testar && $(pageId + i).css('display') == 'block'){
+                        $(pageId + i).hide();
+                        document.getElementById('mmm').pause();
+                        var sourceMusic = musicSrc + (i+1);
+                        if(showLanguage){
+                            sourceMusic += 'en';
+                        }
+                        sourceMusic += '.mp3';
 
-                if(testar && $("#p2").css('display') == 'block'){
-                    $("#p2").hide();
-                    document.getElementById('mmm').pause();
-                    $("#mmm").attr('src',musicSrc+'3' +langDefault+'.mp3');
-                    document.getElementById('mmm').play();
-                    $("#p3").show();
-                    $("#next").hide();
-                    testar = false;
+                        $("#mmm").attr('src',sourceMusic);
+                        document.getElementById('mmm').play();
+                        $(pageId + (i + 1)).show();
+                        testar = false;
+
+                        if((i+1) == totalPages) {
+                            $("#next").hide();
+                        }
+                    }
                 }
             });
 
@@ -53,46 +83,30 @@
                 $("#next").show();
                 var testar = true;
 
-                if(testar && $("#p2").css('display') == 'block'){
-                    $("#p2").hide();
-                    document.getElementById('mmm').pause();
-                    $("#mmm").attr('src',musicSrc+ '1' +'.mp3');
-                    document.getElementById('mmm').play();
-                    $("#p1").show();
-                    $("#previous").hide();
-                    testar = false;
+                for (var i = totalPages; i >= 1; i--) {
+                    if(testar && $(pageId + i).css('display') == 'block'){
+                        $(pageId + i).hide();
+                        document.getElementById('mmm').pause();
+                        var sourceMusic = musicSrc + (i-1);
+                        if(showLanguage){
+                            sourceMusic += 'en';
+                        }
+                        sourceMusic += '.mp3';
+
+                        $("#mmm").attr('src',sourceMusic);
+                        document.getElementById('mmm').play();
+                        $(pageId + (i - 1)).show();
+                        testar = false;
+
+                        if((i-1) == 1) {
+                            $("#previous").hide();
+                        }
+                    }
                 }
-
-                if(testar && $("#p3").css('display') == 'block'){
-                    $("#p3").hide();
-                    document.getElementById('mmm').pause();
-                    $("#mmm").attr('src',musicSrc+ '2' +'.mp3');
-                    document.getElementById('mmm').play();
-                    $("#p2").show();
-                    testar = false;
-                }
-        });
-
-        $("#ptbr").click(function() {
-            document.getElementById('mmm').pause();
-            var a = $("#mmm").attr('src');
-            a = a.substring(0, a.length-6);
-            a += "pt.mp3";
-            $("#mmm").attr('src',a);
-            document.getElementById('mmm').play();
-        });
-        $("#enus").click(function() {
-            document.getElementById('mmm').pause();
-            var a = $("#mmm").attr('src');
-            a = a.substring(0, a.length-6);
-            a += "en.mp3";
-            $("#mmm").attr('src',a);
-            document.getElementById('mmm').play();
-        });
-
-
+            });
         });
     </script>
+
 
     <style type="text/css">
         table {
@@ -110,20 +124,16 @@
             border-style: solid;
         }
 
+        #p2 {
+            font-size: 18px;
+        }
+
         p {
             margin: 0px;
         }
     </style>
 <body>
 
-<!-- header -->
-<div id="class" class="wrap-section-header" style="display: block;">
-
-    <div class="section-header">
-        <h1>Unit Eleven - Homework</h1>
-    </div>
-</div>
-<!-- #END header -->
 <div class="wrap-section-body" id="classBody" style="display: block;">
 <div id="class_content">
 <div class="class_container">
@@ -160,16 +170,17 @@
     We us the present continuous form when the action is in this moment, or in the future.<br />
     It's formed by:  <br />
 
-    <strong>SUBJECT + TO BE + MAIN VERB  + ING + COMPLEMENT</strong> <br />
+    <strong>SUBJECT + TO BE + MAIN VERB  + ING + COMPLEMENT</strong> <br /><br />
 
     <strong>Examples:</strong> Pete is studying with his girlfriend. <br/>
     What are you doing on Saturday at 6pm? At 6pm I am working.<br />
     They are not eating their food. <br />
 
     NOTICE: We have to pay attention to some terminations of the verbs <br />
+    <br />
 
     <div style="display:block; width:75%; margin:auto;">
-        <table border="1" style="width:100%;">
+        <table border="0" class="noBorder" style="width:100%;">
             <tr>
                 <td>TO SMOKE</td>
                 <td>SMOKING</td>
@@ -205,10 +216,10 @@
 <div id="p2" class="pagina" style="display: none;">
     <p class="bold">
         2. INTERROGATIVE PRONOUNS
-    </p><br/>
+    </p>
 
     <div style="display:block; width:75%; margin:auto;">
-        <table border="1" style="width:100%;">
+        <table border="1" style="width:100%; font-size: 16px;   ">
             <tr>
                 <td>WHAT</td>
                 <td>It's about things.</td>
@@ -238,13 +249,14 @@
                 <td>It's about person.</td>
             </tr>
         </table>
-    </div>
+    </div><br />
 
-    NOTICE: Special attention when you use WHAT / WHICH / WHO. They have the same translation in some cases, but must be used in different situations.<br />
-    What: It is used with the same translation of the others in questions and exclamation.<br /><br />
+    <span class="notice"> NOTICE:</span> Special attention when you use <strong>WHAT / WHICH / WHO</strong>. They have the same translation in some cases, but must be used in different situations.<br />
+    <br />
+    <strong>What:</strong> It is used with the same translation of the others in questions and exclamation.<br />
     Examples: What time is it? / What a beautiful day! <br /><br />
-    Which: It is used with the same translation of the others adding information for animals or objects. Example: The company, which Mike works, is moving to Paris.<br /><br />
-    Who: It is used with the same translation of the others adding information for people. Example: Mike, who works in London, is moving to Paris.
+    <strong>Which:</strong> It is used with the same translation of the others adding information for animals or objects. Example: The company, which Mike works, is moving to Paris.<br /><br />
+    <strong>Who:</strong> It is used with the same translation of the others adding information for people. Example: Mike, who works in London, is moving to Paris.
 
 </div>
 <div id="p3" class="pagina" style="display: none;">
