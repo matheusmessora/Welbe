@@ -1,142 +1,179 @@
 <!DOCTYPE html>
 <head>
-<title>11</title>
-<link href="book2.css" rel="stylesheet" type="text/css">
+    <title>11</title>
+    <link href="book2.css" rel="stylesheet" type="text/css">
 
-<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Josefin+Sans+Std+Light">
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-<script type="text/javascript">
-$(document).ready(function () {
+    <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Josefin+Sans+Std+Light">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src="http://file.urin.take-uma.net/jquery.balloon.min.js"></script>
 
-    var musicSrc = 'b1u5t';
-    var langDefault = 'pt';
-    var showLanguage = false;
-    var backgroundImage = 'url("images/qback5.jpg")';
+    <script type="text/javascript">
+        $(document).ready(function () {
+            // Ballons
+            $('.balloon').balloon({
+                tipSize: 24,
+                css: {
+                    opacity: '1'
+                }
+            });
+            $('strong').balloon();
 
 
-    // Initialize background
-    $("#myDiv").css('background-image', backgroundImage);
+            var musicSrc = 'b1u5t';
+            var langDefault = 'pt';
+            var showLanguage = false;
+            var backgroundImage = 'url("images/qback5.jpg")';
+            var totalPages = 2;
+            var pageId = "#p";
 
-    // Initialize Sound
-    $("#mmm").attr('src',musicSrc + '1.mp3');
+            // Initialize background
+            $("#myDiv").css('background-image', backgroundImage);
 
-    // Initialize Languages
-    if(!showLanguage){
-        $("#enus").hide();
-        $("#ptbr").hide();
-    }
+            // Initialize Sound
+            $("#mmm").attr('src',musicSrc + '1.mp3');
 
-    $("#ptbr").click(function() {
-        document.getElementById('mmm').pause();
-        var a = $("#mmm").attr('src');
-        a = a.substring(0, 6);
-        a += "pt.mp3";
-        $("#mmm").attr('src',a);
-        document.getElementById('mmm').play();
-    });
-    $("#enus").click(function() {
-        document.getElementById('mmm').pause();
-        var a = $("#mmm").attr('src');
-        a = a.substring(0, 6);
-        a += "en.mp3";
-        $("#mmm").attr('src',a);
-        document.getElementById('mmm').play();
-    });
+            // Initialize Languages
+            if(!showLanguage){
+                $("#enus").hide();
+                $("#ptbr").hide();
+            }
 
-	$("#next").click(function() {
-		$("#previous").show();
-		var testar = true;
-	
-		if(testar && $("#p1").css('display') == 'block'){
-			$("#p1").hide();
-			document.getElementById('mmm').pause();
-            $("#mmm").attr('src',musicSrc+ '2' +'.mp3');
-			document.getElementById('mmm').play();
-			$("#p2").show();
-			testar = false;
-            $("#next").hide();
-		}
-	});
-	
-	$("#previous").click(function() {
-		$("#next").show();
-		var testar = true;
-		
-		if(testar && $("#p2").css('display') == 'block'){
-			$("#p2").hide();
-			document.getElementById('mmm').pause();
-            $("#mmm").attr('src',musicSrc+ '1' +'.mp3');
-			document.getElementById('mmm').play();
-			$("#p1").show();
-			$("#previous").hide();
-			testar = false;
-		}
-	});
 
-});
-</script>
 
-<style type="text/css">
-	table
-	{
-		border-width: 0 0 1px 1px;
-		border-spacing: 0;
-		border-collapse: collapse;
-		border-style: solid;
-		font-size: 20px;
-	}
 
-	td, th
-	{
-		margin: 0;
-		padding: 4px;
-		border-width: 1px 1px 0 0;
-		border-style: solid;
-	}
-	
-	p {
-		margin:0px;
-	}
-</style>
+            $("#ptbr").click(function() {
+                document.getElementById('mmm').pause();
+                var a = $("#mmm").attr('src');
+                a = a.substring(0, 6);
+                a += "pt.mp3";
+                $("#mmm").attr('src',a);
+                document.getElementById('mmm').play();
+            });
+            $("#enus").click(function() {
+                document.getElementById('mmm').pause();
+                var a = $("#mmm").attr('src');
+                a = a.substring(0, 6);
+                a += "en.mp3";
+                $("#mmm").attr('src',a);
+                document.getElementById('mmm').play();
+            });
+
+
+            // Play Sound
+            if(showLanguage){
+                $("#enus").trigger('click');
+            }else {
+                document.getElementById('mmm').play();
+            }
+
+
+            $("#next").click(function() {
+                $("#previous").show();
+                var testar = true;
+
+                for (var i = 1; i <= totalPages; i++) {
+                    if(testar && $(pageId + i).css('display') == 'block'){
+                        $(pageId + i).hide();
+                        document.getElementById('mmm').pause();
+                        var sourceMusic = musicSrc + (i+1);
+                        if(showLanguage){
+                            sourceMusic += 'en';
+                        }
+                        sourceMusic += '.mp3';
+
+                        $("#mmm").attr('src',sourceMusic);
+                        document.getElementById('mmm').play();
+                        $(pageId + (i + 1)).show();
+                        testar = false;
+
+                        if((i+1) == totalPages) {
+                            $("#next").hide();
+                        }
+                    }
+                }
+            });
+
+            $("#previous").click(function() {
+                $("#next").show();
+                var testar = true;
+
+                for (var i = totalPages; i >= 1; i--) {
+                    if(testar && $(pageId + i).css('display') == 'block'){
+                        $(pageId + i).hide();
+                        document.getElementById('mmm').pause();
+                        var sourceMusic = musicSrc + (i-1);
+                        if(showLanguage){
+                            sourceMusic += 'en';
+                        }
+                        sourceMusic += '.mp3';
+
+                        $("#mmm").attr('src',sourceMusic);
+                        document.getElementById('mmm').play();
+                        $(pageId + (i - 1)).show();
+                        testar = false;
+
+                        if((i-1) == 1) {
+                            $("#previous").hide();
+                        }
+                    }
+                }
+            });
+        });
+    </script>
+
+    <style type="text/css">
+        table
+        {
+            border-width: 0 0 1px 1px;
+            border-spacing: 0;
+            border-collapse: collapse;
+            border-style: solid;
+            font-size: 20px;
+        }
+
+        td, th
+        {
+            margin: 0;
+            padding: 4px;
+            border-width: 1px 1px 0 0;
+            border-style: solid;
+        }
+
+        p {
+            margin:0px;
+        }
+    </style>
 <body>
 
-	<!-- header -->
-<div id="class" class="wrap-section-header" style="display: block;">
-
-        <div class="section-header">
-            <h1>Unit Eleven - Homework</h1>
-        </div>
-    </div>
-	<!-- #END header -->
 <div class="wrap-section-body" id="classBody" style="display: block;">
-	<div id="class_content"><div class="class_container">
+    <div id="class_content"><div class="class_container">
 
 
-	
-	
-    <form name="form1" method="post" action="Book2homework11.aspx" id="form1">
-    <div id="myDiv" style="background-image: url('images/qback11.jpg')">
-        <div id="pager">
-            <div id="previous" style="display: none;">
-            </div>
-            <div id="next" style="display: block;">
-            </div>
-        </div>
 
-        <div id="paginaAtual">
-            <img id="enus" src="http://www.webrazuca.com/v4/images/dc_icon_usa.png" width="30" height="30">
 
-            <audio id="mmm" controls src="b1u1g1pt.mp3">
-                Your browser does not support the audio element.
-            </audio>
+        <form name="form1" method="post" action="Book2homework11.aspx" id="form1">
+            <div id="myDiv" style="background-image: url('images/qback1.jpg')">
+                <div id="pager">
+                    <div id="previous" style="display: none;">
+                    </div>
+                    <div id="next" style="display: block;">
+                    </div>
+                </div>
 
-            <img id="ptbr" src="http://icongal.com/gallery/image/32079/brasil_br_kr_brazil.png" width="30" height="30">
-        </div>
+                <div id="paginaAtual">
+                    <img id="enus" src="http://www.webrazuca.com/v4/images/dc_icon_usa.png" width="30" height="30">
+
+                    <audio id="mmm" controls src="b1u1g1pt.mp3">
+                        Your browser does not support the audio element.
+                    </audio>
+
+                    <img id="ptbr" src="http://icongal.com/gallery/image/32079/brasil_br_kr_brazil.png" width="30" height="30">
+                </div>
         <div style="padding: 30px;">
             <div style="height: 500px;">
                 <div id="p1" class="pagina" style="display: block;">
                     <strong>I DON'T NOW</strong><br />
-                    <img src="b1u5t1.png" alt="" width="370px" height="350px" style="float: left; margin-right: 5px;"/>
+                    <img src="b1u5t1.png" alt=""   style="float: left; margin-right: 5px;"/>
                     "I don't know, I don't know, I don't know!" Says William repeatedly. He is worried about what to do in the future.<br />
                     Lots of people  don't really know what  to be when grow up. If you take  a wrong  decision when you are young, you can become a very  unhappy adult.<br />
                     Imagine that many people  spend  about ten hours  of their  day in the company, of  course, some people more, some people less. But, the day has only twenty-four hours, so you have now only fourteen hours to sleep, have a shower, eat three meals, study, have  fun, watch TV, and many other things.<br />
