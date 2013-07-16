@@ -1,92 +1,125 @@
 <!DOCTYPE html>
-<head xmlns="http://www.w3.org/1999/html">
-<title>11</title>
-<link href="book2.css" rel="stylesheet" type="text/css">
+<head>
+    <title>11</title>
+    <link href="book2.css" rel="stylesheet" type="text/css">
 
-<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Josefin+Sans+Std+Light">
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-<script src="http://file.urin.take-uma.net/jquery.balloon.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Josefin+Sans+Std+Light">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src="http://file.urin.take-uma.net/jquery.balloon.min.js"></script>
 
-<script type="text/javascript">
-$(document).ready(function () {
-	$('.balloon').balloon({
-		tipSize: 24,
-		css: {
-			opacity: '1'
-		}
-  });
-	$('strong').balloon();
-
-    var musicSrc = 'b1u2t';
-    var showLanguage = false;
-    var backgroundImage = 'url("images/qback2.jpg")';
+    <script type="text/javascript">
+        $(document).ready(function () {
+            // Ballons
+            $('.balloon').balloon({
+                tipSize: 24,
+                css: {
+                    opacity: '1'
+                }
+            });
+            $('strong').balloon();
 
 
-    // Initialize background
-    $("#myDiv").css('background-image', backgroundImage);
+            var musicSrc = 'b1u2t';
+            var langDefault = 'pt';
+            var showLanguage = false;
+            var backgroundImage = 'url("images/qback2.jpg")';
+            var totalPages = 2;
+            var pageId = "#p";
 
-    // Initialize Sound
-    $("#mmm").attr('src',musicSrc + '1.mp3');
+            // Initialize background
+            $("#myDiv").css('background-image', backgroundImage);
 
-    // Initialize Languages
-    if(!showLanguage){
-        $("#enus").hide();
-        $("#ptbr").hide();
-    }
+            // Initialize Sound
+            $("#mmm").attr('src',musicSrc + '1.mp3');
 
-    document.getElementById('mmm').play();
+            // Initialize Languages
+            if(!showLanguage){
+                $("#enus").hide();
+                $("#ptbr").hide();
+            }
 
-    // Language clicks
-    $("#ptbr").click(function() {
-        document.getElementById('mmm').pause();
-        var a = $("#mmm").attr('src');
-        a = a.substring(0, a.length-6);
-        a += "pt.mp3";
-        $("#mmm").attr('src',a);
-        document.getElementById('mmm').play();
-    });
-    $("#enus").click(function() {
-        document.getElementById('mmm').pause();
-        var a = $("#mmm").attr('src');
-        a = a.substring(0, a.length-6);
-        a += "en.mp3";
-        $("#mmm").attr('src',a);
-        document.getElementById('mmm').play();
-    });
 
-    // Next pages clicks
-    $("#next").click(function() {
-        $("#previous").show();
-        var testar = true;
 
-        if(testar && $("#p1").css('display') == 'block'){
-            $("#p1").hide();
-            document.getElementById('mmm').pause();
-            $("#mmm").attr('src',musicSrc+ '2' + '.mp3');
-            document.getElementById('mmm').play();
-            $("#p2").show();
-            $("#next").hide();
-            testar = false;
-        }
-    });
 
-    $("#previous").click(function() {
-        $("#next").show();
-        var testar = true;
+            $("#ptbr").click(function() {
+                document.getElementById('mmm').pause();
+                var a = $("#mmm").attr('src');
+                a = a.substring(0, 6);
+                a += "pt.mp3";
+                $("#mmm").attr('src',a);
+                document.getElementById('mmm').play();
+            });
+            $("#enus").click(function() {
+                document.getElementById('mmm').pause();
+                var a = $("#mmm").attr('src');
+                a = a.substring(0, 6);
+                a += "en.mp3";
+                $("#mmm").attr('src',a);
+                document.getElementById('mmm').play();
+            });
 
-        if(testar && $("#p2").css('display') == 'block'){
-            $("#p2").hide();
-            document.getElementById('mmm').pause();
-            $("#mmm").attr('src',musicSrc+ '1' +'.mp3');
-            document.getElementById('mmm').play();
-            $("#p1").show();
-            $("#previous").hide();
-            testar = false;
-        }
-    });
 
-});
-</script>
+            // Play Sound
+            if(showLanguage){
+                $("#enus").trigger('click');
+            }else {
+                document.getElementById('mmm').play();
+            }
+
+
+            $("#next").click(function() {
+                $("#previous").show();
+                var testar = true;
+
+                for (var i = 1; i <= totalPages; i++) {
+                    if(testar && $(pageId + i).css('display') == 'block'){
+                        $(pageId + i).hide();
+                        document.getElementById('mmm').pause();
+                        var sourceMusic = musicSrc + (i+1);
+                        if(showLanguage){
+                            sourceMusic += 'en';
+                        }
+                        sourceMusic += '.mp3';
+
+                        $("#mmm").attr('src',sourceMusic);
+                        document.getElementById('mmm').play();
+                        $(pageId + (i + 1)).show();
+                        testar = false;
+
+                        if((i+1) == totalPages) {
+                            $("#next").hide();
+                        }
+                    }
+                }
+            });
+
+            $("#previous").click(function() {
+                $("#next").show();
+                var testar = true;
+
+                for (var i = totalPages; i >= 1; i--) {
+                    if(testar && $(pageId + i).css('display') == 'block'){
+                        $(pageId + i).hide();
+                        document.getElementById('mmm').pause();
+                        var sourceMusic = musicSrc + (i-1);
+                        if(showLanguage){
+                            sourceMusic += 'en';
+                        }
+                        sourceMusic += '.mp3';
+
+                        $("#mmm").attr('src',sourceMusic);
+                        document.getElementById('mmm').play();
+                        $(pageId + (i - 1)).show();
+                        testar = false;
+
+                        if((i-1) == 1) {
+                            $("#previous").hide();
+                        }
+                    }
+                }
+            });
+        });
+    </script>
 
 <style type="text/css">
 	table
@@ -115,9 +148,6 @@ $(document).ready(function () {
 <div class="wrap-section-body" id="classBody" style="display: block;">
 	<div id="class_content"><div class="class_container">
 
-
-	
-	
     <form name="form1" method="post" action="Book2homework11.aspx" id="form1">
     <div id="myDiv">
         <div id="pager">
