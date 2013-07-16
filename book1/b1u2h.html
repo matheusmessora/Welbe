@@ -6,134 +6,194 @@
 <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Josefin+Sans+Std+Light">
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 <script type="text/javascript">
-$(document).ready(function () {
-    var soundMain = "b1u2h";
-    var totalPages = 4;
-    var pageId = "#p";
+    $(document).ready(function () {
 
-	$("#next").click(function() {
-		$("#previous").show();
-		var testar = true;
+        var musicSrc = 'b1u2h';
+        var langDefault = 'pt';
+        var showLanguage = false;
+        var backgroundImage = 'url("images/qback2.jpg")';
+        var totalPages = 4;
+        var pageId = "#p";
 
-        for (var i = 1; i <= totalPages; i++) {
-            if(testar && $(pageId + i).css('display') == 'block'){
-                $(pageId + i).hide();
-                document.getElementById('mmm').pause();
-                $("#mmm").attr('src','b2u11h2.mp3');
-//                document.getElementById('mmm').play();
-                $(pageId + (i + 1)).show();
-                testar = false;
+        // Initialize background
+        $("#myDiv").css('background-image', backgroundImage);
 
-                if((i+1) == totalPages) {
-                    $("#next").hide();
+        // Initialize Sound
+        $("#mmm").attr('src',musicSrc + '1.mp3');
+
+        // Initialize Languages
+        if(!showLanguage){
+            $("#enus").hide();
+            $("#ptbr").hide();
+        }
+
+
+        $("#ptbr").click(function() {
+            document.getElementById('mmm').pause();
+            var a = $("#mmm").attr('src');
+            a = a.substring(0, 6);
+            a += "pt.mp3";
+            $("#mmm").attr('src',a);
+            document.getElementById('mmm').play();
+        });
+        $("#enus").click(function() {
+            document.getElementById('mmm').pause();
+            var a = $("#mmm").attr('src');
+            a = a.substring(0, 6);
+            a += "en.mp3";
+            $("#mmm").attr('src',a);
+            document.getElementById('mmm').play();
+        });
+
+
+        // Play Sound
+        if(showLanguage){
+            $("#enus").trigger('click');
+        }else {
+            document.getElementById('mmm').play();
+        }
+
+
+        $("#next").click(function() {
+            $("#previous").show();
+            var testar = true;
+
+            for (var i = 1; i <= totalPages; i++) {
+                if(testar && $(pageId + i).css('display') == 'block'){
+                    $(pageId + i).hide();
+                    document.getElementById('mmm').pause();
+                    var sourceMusic = musicSrc + (i+1);
+                    if(showLanguage){
+                        sourceMusic += 'en';
+                    }
+                    sourceMusic += '.mp3';
+
+                    $("#mmm").attr('src',sourceMusic);
+                    document.getElementById('mmm').play();
+                    $(pageId + (i + 1)).show();
+                    testar = false;
+
+                    if((i+1) == totalPages) {
+                        $("#next").hide();
+                    }
+                }
+            }
+        });
+
+        $("#previous").click(function() {
+            $("#next").show();
+            var testar = true;
+
+            for (var i = totalPages; i >= 1; i--) {
+                if(testar && $(pageId + i).css('display') == 'block'){
+                    $(pageId + i).hide();
+                    document.getElementById('mmm').pause();
+                    var sourceMusic = musicSrc + (i-1);
+                    if(showLanguage){
+                        sourceMusic += 'en';
+                    }
+                    sourceMusic += '.mp3';
+
+                    $("#mmm").attr('src',sourceMusic);
+                    document.getElementById('mmm').play();
+                    $(pageId + (i - 1)).show();
+                    testar = false;
+
+                    if((i-1) == 1) {
+                        $("#previous").hide();
+                    }
+                }
+            }
+        });
+
+
+        $(".red").click(function() {
+            var campos = $(this).next().find('input');
+            if(teste(campos[0])){
+                $(this).prev().prev().prev().html('Correct');
+                $(this).prev().prev().prev().css('color', 'green');
+            }
+            else {
+                $(this).prev().prev().prev().html('Incorrect');
+                $(this).prev().prev().prev().css('color', 'red');
+            }
+
+            $(this).prev().show();
+        });
+
+        $(".yellow").click(function() {
+            var campos = $(this).next().next().find('input');
+            campos.each(function () {
+                var rel;
+                if ($(this).attr("rel").indexOf("|") == -1) {
+                    rel = $(this).attr("rel")
+                }else {
+                    rel = $(this).attr("rel").toLowerCase().split("|")[0];
+                }
+
+                $(this).val(rel);
+                $(this).css('color', 'green');
+            });
+
+            $(this).prev().prev().html('Correct');
+            $(this).prev().prev().css('color', 'green');
+            $(this).prev().show();
+        });
+
+        $(".green").click(function() {
+            var id = $(this).attr('title');
+            player(musicSrc + id);
+            $(this).next().click();
+            showCorrect($(this).prev());
+        });
+    });
+
+    function showCorrect(campo){
+        campo.html('Correct');
+        campo.css('color', 'green');
+    }
+    function player(mp3){
+        document.getElementById('mmm').pause();
+        $("#mmm").attr('src',mp3 + '.mp3');
+        document.getElementById('mmm').play();
+    }
+
+    function teste(campo){
+        var retorno = true;
+        var rel = $(campo).attr("rel").toLowerCase();
+
+        if ($(campo).attr("rel").indexOf("|") == -1) {
+            var valor = $(campo).val().toLowerCase();
+            if(valor == rel){
+                $(campo).css("color","green");
+            }else {
+                $(campo).css("color","red");
+                retorno = false;
+            }
+        }else {
+            var ar = $(campo).attr("rel").toLowerCase().split("|");
+            for (i = 0; i < ar.length; i++) {
+                if (ar[i] == $(campo).val().toLowerCase()) {
+                    $(campo).css('color', 'green');
+                    break;
+                } else {
+                    $(campo).css('color', 'red');
+                    retorno = false;
                 }
             }
         }
-	});
-	
-	$("#previous").click(function() {
-		$("#next").show();
-		var testar = true;
 
-        for (var i = totalPages; i >= 1; i--) {
-            if(testar && $(pageId + i).css('display') == 'block'){
-                $(pageId + i).hide();
-                document.getElementById('mmm').pause();
-                $("#mmm").attr('src','b2u11h2.mp3');
-//                document.getElementById('mmm').play();
-                $(pageId + (i - 1)).show();
-                testar = false;
-
-                if((i-1) == 1) {
-                    $("#previous").hide();
-                }
-            }
-        }
-	});
-	
-	$(".red").click(function() {
-		var campos = $(this).next().find('input');
-		if(teste(campos[0])){
-			$(this).prev().prev().prev().html('Correct');
-			$(this).prev().prev().prev().css('color', 'green');
-		}
-		else {
-			$(this).prev().prev().prev().html('Incorrect');
-			$(this).prev().prev().prev().css('color', 'red');
-		}
-		
-		$(this).prev().show();
-	});
-	
-	$(".yellow").click(function() {
-		var campos = $(this).next().next().find('input');
-		campos.each(function () {
-			var rel;
-			if ($(this).attr("rel").indexOf("|") == -1) {
-				rel = $(this).attr("rel")
-			}else {
-				rel = $(this).attr("rel").toLowerCase().split("|")[0];
-			}
-		
-			$(this).val(rel);
-			$(this).css('color', 'green');
-		});
-		
-		$(this).prev().prev().html('Correct');
-		$(this).prev().prev().css('color', 'green');
-		$(this).prev().show();
-	});
-		
-	$(".green").click(function() {
-		var id = $(this).next().next().next().attr('id');
-		player('b2u11h1'+ id);
-		$(this).next().click();
-		showCorrect($(this).prev());
-	});
-});
-
-function showCorrect(campo){
-	campo.html('Correct');
-	campo.css('color', 'green');
-}
-function player(mp3){
-	document.getElementById('mmm').pause();
-	$("#mmm").attr('src',mp3 + '.mp3');
-	document.getElementById('mmm').play();
-}
-
-function teste(campo){
-	var retorno = true;
-	var rel = $(campo).attr("rel").toLowerCase();
-	
-	if ($(campo).attr("rel").indexOf("|") == -1) {
-		var valor = $(campo).val().toLowerCase();
-		if(valor == rel){
-			$(campo).css("color","green");
-		}else {
-			$(campo).css("color","red");
-			retorno = false;
-		}
-	}else {
-		var ar = $(campo).attr("rel").toLowerCase().split("|");
-		for (i = 0; i < ar.length; i++) {
-			if (ar[i] == $(campo).val().toLowerCase()) {
-				$(campo).css('color', 'green');
-				break;
-			} else {
-				$(campo).css('color', 'red');
-				retorno = false;
-			}
-		}
-	}
-	
-	return retorno;
-}
+        return retorno;
+    }
 </script>
 
 <style type="text/css">
 
-    #p1 input, #p2 input {
+    #p1 input {
+        width: 80px;
+    }
+
+     #p2 input {
         width: 220px;
     }
 
@@ -144,15 +204,8 @@ function teste(campo){
         /*padding:0;*/
     }
     #p4 input {
-        width: 300px;
+        width: 450px;
         font-size: 16px;
-    }
-    #p5 input {
-        width: 300px;
-    }
-    #p5 p {
-        font-size: 18px;
-        line-height: 20px;
     }
 
 
@@ -182,31 +235,31 @@ function teste(campo){
 
                     <span class="titulo">HOMEWORK - WHERE ARE MY KEYS?</span>
                     <p class="bold">1. Complete the sentences with: is / are / where / it / they</p>
-					<div class="theLabel"></div><div class="green"></div><div class="yellow"></div><div class="red"></div>
+					<div class="theLabel"></div><div class="green" title="1p1a"></div><div class="yellow"></div><div class="red"></div>
                     <p  class="exercicio">
-                        A) <input onblur="teste(this);" type="text" rel="Where"> is the blank? It's at 459, Linden Street.<br />
+                        A) <input onblur="teste(this);" type="text" rel="Where"> is the bank? It's at 459, Linden Street.<br />
                         
-					<div class="theLabel"></div><div class="green"></div><div class="yellow"></div><div class="red"></div>
+					<div class="theLabel"></div><div class="green" title="1p1b"></div><div class="yellow"></div><div class="red"></div>
                     <p  class="exercicio">
                         B) The bank <input onblur="teste(this);" type="text" rel="is"> big.<br />
 					
-					<div class="theLabel"></div><div class="green" rel="b2u11h1c"></div><div class="yellow"></div><div class="red"></div>
+					<div class="theLabel"></div><div class="green" title="1p1c"></div><div class="yellow"></div><div class="red"></div>
                     <p  class="exercicio">
                         C) My family <input onblur="teste(this);" type="text" rel="is"> very important.<br />
 
-					<div class="theLabel"></div><div class="green" rel="b2u11h1d"></div><div class="yellow"></div><div class="red"></div>
+					<div class="theLabel"></div><div class="green" title="1p1d"></div><div class="yellow"></div><div class="red"></div>
                     <p  class="exercicio">
                         D) <input onblur="teste(this);" type="text" rel="They"> are in the house.<br />
 
-					<div class="theLabel"></div><div class="green" rel="b2u11h1e"></div><div class="yellow"></div><div class="red"></div>
+					<div class="theLabel"></div><div class="green" title="1p1e"></div><div class="yellow"></div><div class="red"></div>
                     <p  class="exercicio">
                         E) Billy's car <input onblur="teste(this);" type="text" rel="is"> red. <input onblur="teste(this);" type="text" rel="It"> is modern<br />
                     
-					<div class="theLabel"></div><div class="green" rel="b2u11h1f"></div><div class="yellow"></div><div class="red"></div>
+					<div class="theLabel"></div><div class="green" title="1p1f"></div><div class="yellow"></div><div class="red"></div>
                     <p  class="exercicio">
                         F) Julie's sun glasses <input onblur="teste(this);" type="text" rel="are">beatiful. <input onblur="teste(this);" type="text" rel="They"> are modern.<br />
 
-                    <div class="theLabel"></div><div class="green" rel="b2u11h1f"></div><div class="yellow"></div><div class="red"></div>
+                    <div class="theLabel"></div><div class="green" title="1p1g"></div><div class="yellow"></div><div class="red"></div>
                     <p  class="exercicio">
                         G) John's jeans <input onblur="teste(this);" type="text" rel="are"> new.<br />
                 </div>
@@ -215,35 +268,35 @@ function teste(campo){
                         2. Ask the questions correctly.
                     </p>
 					
-					<div class="theLabel"></div><div class="green" rel="b2u1h1g"></div><div class="yellow"></div><div class="red"></div>
+					<div class="theLabel"></div><div class="green" title="2pA"></div><div class="yellow"></div><div class="red"></div>
                     <p class="exercicio">
                         A) His bag is gray. What color <input onblur="teste(this);" type="text" rel="is his bag"> ?
                     
-					<div class="theLabel"></div><div class="green" rel="b2u11h1g"></div><div class="yellow"></div><div class="red"></div>
+					<div class="theLabel"></div><div class="green" title="2pB"></div><div class="yellow"></div><div class="red"></div>
                     <p class="exercicio">
                         B) Her shoes are black. What color <input onblur="teste(this);" type="text" rel="are her shoes"> ?
                     
-					<div class="theLabel"></div><div class="green" rel="b2u11h1g"></div><div class="yellow"></div><div class="red"></div>
+					<div class="theLabel"></div><div class="green" title="2pC"></div><div class="yellow"></div><div class="red"></div>
                     <p class="exercicio">
                         C) Their shorts are yellow. What color  <input onblur="teste(this);" type="text" rel="are their shorts"> ?
                     
-					<div class="theLabel"></div><div class="green" rel="b2u11h1g"></div><div class="yellow"></div><div class="red"></div>
+					<div class="theLabel"></div><div class="green" title="2pD"></div><div class="yellow"></div><div class="red"></div>
                     <p class="exercicio">
                         D) Marc's tie is gold. What color <input onblur="teste(this);" type="text" rel="is Marc's tie"> ?
                     
-					<div class="theLabel"></div><div class="green" rel="b2u11h1g"></div><div class="yellow"></div><div class="red"></div>
+					<div class="theLabel"></div><div class="green" title="2pE"></div><div class="yellow"></div><div class="red"></div>
                     <p class="exercicio">
                         E) Judd is at the club. Where <input onblur="teste(this);" type="text" rel="is Judd"> ?
 
-					<div class="theLabel"></div><div class="green" rel="b2u11h1g"></div><div class="yellow"></div><div class="red"></div>
+					<div class="theLabel"></div><div class="green" title="2pF"></div><div class="yellow"></div><div class="red"></div>
                     <p class="exercicio">
                         F) The company is near here. Where <input onblur="teste(this);" type="text" rel="is the company"> ?
                     
-					<div class="theLabel"></div><div class="green" rel="b2u11h1g"></div><div class="yellow"></div><div class="red"></div>
+					<div class="theLabel"></div><div class="green" title="2pG"></div><div class="yellow"></div><div class="red"></div>
                     <p class="exercicio">
                         G) Her birthday is in September. When <input onblur="teste(this);" type="text" rel="is her birthday"> ?
 
-                    <div class="theLabel"></div><div class="green" rel="b2u11h1g"></div><div class="yellow"></div><div class="red"></div>
+                    <div class="theLabel"></div><div class="green" title="2pH"></div><div class="yellow"></div><div class="red"></div>
                     <p class="exercicio">
                         H) She is 23 years old. How old <input onblur="teste(this);" type="text" rel="is she"> ?
 
@@ -253,39 +306,39 @@ function teste(campo){
                         3. Use the correct possessive adjective pronoun.
                     </p>
 
-                    <div class="theLabel"></div><div class="green" rel="b2u1h1g"></div><div class="yellow"></div><div class="red"></div>
+                    <div class="theLabel"></div><div class="green"title="3pA"></div><div class="yellow"></div><div class="red"></div>
                     <p class="exercicio">
                         A) It is <input onblur="teste(this);" type="text" rel="their"> book. (they).
 
-                    <div class="theLabel"></div><div class="green" rel="b2u1h1g"></div><div class="yellow"></div><div class="red"></div>
+                    <div class="theLabel"></div><div class="green"title="3pB"></div><div class="yellow"></div><div class="red"></div>
                     <p class="exercicio">
                         B) I like Marilyn and <input onblur="teste(this);" type="text" rel="her"> sister. (she)
 
-                    <div class="theLabel"></div><div class="green" rel="b2u1h1g"></div><div class="yellow"></div><div class="red"></div>
+                    <div class="theLabel"></div><div class="green"title="3pC"></div><div class="yellow"></div><div class="red"></div>
                     <p class="exercicio">
                         C) That is Pete and <input onblur="teste(this);" type="text" rel="his"> brother. (he)
 
-                    <div class="theLabel"></div><div class="green" rel="b2u1h1g"></div><div class="yellow"></div><div class="red"></div>
+                    <div class="theLabel"></div><div class="green"title="3pD"></div><div class="yellow"></div><div class="red"></div>
                     <p class="exercicio">
                         D) That is not <input onblur="teste(this);" type="text" rel="my"> belt. (I)
                     </p>
 
-                    <div class="theLabel"></div><div class="green" rel="b2u1h1g"></div><div class="yellow"></div><div class="red"></div>
+                    <div class="theLabel"></div><div class="green"title="3pE"></div><div class="yellow"></div><div class="red"></div>
                     <p class="exercicio">
                         E) Those are the teachers and <input onblur="teste(this);" type="text" rel="their"> new students. (they)
                     </p>
 
-                    <div class="theLabel"></div><div class="green" rel="b2u1h1g"></div><div class="yellow"></div><div class="red"></div>
+                    <div class="theLabel"></div><div class="green"title="3pF"></div><div class="yellow"></div><div class="red"></div>
                     <p class="exercicio">
                         F) <input onblur="teste(this);" type="text" rel="My"> wife and I love <input onblur="teste(this);" type="text" rel="our"> kids. (I/we)
                     </p>
 
-                    <div class="theLabel"></div><div class="green" rel="b2u1h1g"></div><div class="yellow"></div><div class="red"></div>
+                    <div class="theLabel"></div><div class="green"title="3pG"></div><div class="yellow"></div><div class="red"></div>
                     <p class="exercicio">
                         G) The dog and <input onblur="teste(this);" type="text" rel="its"> owner are in the park. (it)
                     </p>
 
-                    <div class="theLabel"></div><div class="green" rel="b2u1h1g"></div><div class="yellow"></div><div class="red"></div>
+                    <div class="theLabel"></div><div class="green"title="3pH"></div><div class="yellow"></div><div class="red"></div>
                     <p class="exercicio">
                         H) <input onblur="teste(this);" type="text" rel="Your"> father is necessary here. (you)
                     </p>
@@ -296,20 +349,20 @@ function teste(campo){
                     <p><strong>4. Follow the example:</strong><br />
                         <strong>Example:</strong> Marc / car / Marie<br /> It's not Marc's car. It's Marie's car. <br /> Is it Marc's car? No, it's Marie's car.</p>
 
-                    <div class="theLabel"></div><div class="green" rel="b2u1h1g"></div><div class="yellow"></div><div class="red"></div>
+                    <div class="theLabel"></div><div class="green"title="4pA"></div><div class="yellow"></div><div class="red"></div>
                     <p class="exercicio">
                         A) Henry / ball / Pete <br />
                         <input onblur="teste(this);" type="text" rel="It's not Henry's ball. It's Peter's ball">.<br />
                         <input onblur="teste(this);" type="text" rel="Is it Henry's ball? No, it's Pete's ball">.
                         
 
-                    <div class="theLabel"></div><div class="green" rel="b2u1h1g"></div><div class="yellow"></div><div class="red"></div>
+                    <div class="theLabel"></div><div class="green"title="4pB"></div><div class="yellow"></div><div class="red"></div>
                     <p class="exercicio">
                         B) Marcos / socks / Thomas <br />
                         <input onblur="teste(this);" type="text" rel="They are not Marco's socks. They are Thomas's socks">.<br />
                         <input onblur="teste(this);" type="text" rel="Are they Marco's socks? No, they are Thoma's socks">.
 
-                    <div class="theLabel"></div><div class="green" rel="b2u1h1g"></div><div class="yellow"></div><div class="red"></div>
+                    <div class="theLabel"></div><div class="green"title="4pC"></div><div class="yellow"></div><div class="red"></div>
                     <p class="exercicio">
                         C) Julie / pencil / James <br />
                         <input onblur="teste(this);" type="text" rel="It's not Julie's pencil. It's Jame's pencil">.<br />
