@@ -5,112 +5,107 @@
 
 <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Josefin+Sans+Std+Light">
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-    <script type="text/javascript">
-        $(document).ready(function () {
+<script type="text/javascript">
+$(document).ready(function () {
+    var musicSrc = 'b1u6g';
+    var langDefault = 'pt';
+    var showLanguage = true;
+    var backgroundImage = 'url("images/qback6.jpg")';
+    var totalPages = 4;
+    var pageId = "#p";
 
-            var musicSrc = 'b1u6g';
-            var langDefault = 'pt';
-            var showLanguage = true;
-            var backgroundImage = 'url("images/qback6.jpg")';
+    // Initialize background
+    $("#myDiv").css('background-image', backgroundImage);
+
+    // Initialize Sound
+    $("#mmm").attr('src',musicSrc + '1.mp3');
+
+    // Initialize Languages
+    if(!showLanguage){
+        $("#enus").hide();
+        $("#ptbr").hide();
+    }
 
 
-            // Initialize background
-            $("#myDiv").css('background-image', backgroundImage);
+    $("#ptbr").click(function() {
+        document.getElementById('mmm').pause();
+        var a = $("#mmm").attr('src');
+        a = a.substring(0, 6);
+        a += "pt.mp3";
+        $("#mmm").attr('src',a);
+        document.getElementById('mmm').play();
+    });
+    $("#enus").click(function() {
+        document.getElementById('mmm').pause();
+        var a = $("#mmm").attr('src');
+        a = a.substring(0, 6);
+        a += "en.mp3";
+        $("#mmm").attr('src',a);
+        document.getElementById('mmm').play();
+    });
 
-            // Initialize Sound
-            $("#mmm").attr('src',musicSrc + '1.mp3');
 
-            // Initialize Languages
-            if(!showLanguage){
-                $("#enus").hide();
-                $("#ptbr").hide();
-            }
+    // Play Sound
+    if(showLanguage){
+        $("#enus").trigger('click');
+    }else {
+        document.getElementById('mmm').play();
+    }
 
-            $("#ptbr").click(function() {
+
+    $("#next").click(function() {
+        $("#previous").show();
+        var testar = true;
+
+        for (var i = 1; i <= totalPages; i++) {
+            if(testar && $(pageId + i).css('display') == 'block'){
+                $(pageId + i).hide();
                 document.getElementById('mmm').pause();
-                var a = $("#mmm").attr('src');
-                a = a.substring(0, 6);
-                a += "pt.mp3";
-                $("#mmm").attr('src',a);
-                document.getElementById('mmm').play();
-            });
-            $("#enus").click(function() {
-                document.getElementById('mmm').pause();
-                var a = $("#mmm").attr('src');
-                a = a.substring(0, 6);
-                a += "en.mp3";
-                $("#mmm").attr('src',a);
-                document.getElementById('mmm').play();
-            });
-
-            $("#next").click(function() {
-                $("#previous").show();
-                var testar = true;
-
-                if(testar && $("#p1").css('display') == 'block'){
-                    $("#p1").hide();
-                    document.getElementById('mmm').pause();
-                    $("#mmm").attr('src',musicSrc+ '2' +'.mp3');
-                    document.getElementById('mmm').play();
-                    $("#p2").show();
-                    testar = false;
+                var sourceMusic = musicSrc + (i+1);
+                if(showLanguage){
+                    sourceMusic += 'en';
                 }
+                sourceMusic += '.mp3';
 
-                if(testar && $("#p2").css('display') == 'block'){
-                    $("#p2").hide();
-                    document.getElementById('mmm').pause();
-                    $("#mmm").attr('src',musicSrc+ '3' +'.mp3');
-                    document.getElementById('mmm').play();
-                    $("#p3").show();
-                    testar = false;
-                }
+                $("#mmm").attr('src',sourceMusic);
+                document.getElementById('mmm').play();
+                $(pageId + (i + 1)).show();
+                testar = false;
 
-                if(testar && $("#p3").css('display') == 'block'){
-                    $("#p3").hide();
-                    document.getElementById('mmm').pause();
-                    $("#mmm").attr('src',musicSrc+ '4' +'.mp3');
-                    document.getElementById('mmm').play();
-                    $("#p4").show();
+                if((i+1) == totalPages) {
                     $("#next").hide();
-                    testar = false;
                 }
-            });
+            }
+        }
+    });
 
-            $("#previous").click(function() {
-                $("#next").show();
-                var testar = true;
+    $("#previous").click(function() {
+        $("#next").show();
+        var testar = true;
 
-                if(testar && $("#p2").css('display') == 'block'){
-                    $("#p2").hide();
-                    document.getElementById('mmm').pause();
-                    $("#mmm").attr('src',musicSrc+ '1' +'.mp3');
-                    document.getElementById('mmm').play();
-                    $("#p1").show();
+        for (var i = totalPages; i >= 1; i--) {
+            if(testar && $(pageId + i).css('display') == 'block'){
+                $(pageId + i).hide();
+                document.getElementById('mmm').pause();
+                var sourceMusic = musicSrc + (i-1);
+                if(showLanguage){
+                    sourceMusic += 'en';
+                }
+                sourceMusic += '.mp3';
+
+                $("#mmm").attr('src',sourceMusic);
+                document.getElementById('mmm').play();
+                $(pageId + (i - 1)).show();
+                testar = false;
+
+                if((i-1) == 1) {
                     $("#previous").hide();
-                    testar = false;
                 }
-
-                if(testar && $("#p3").css('display') == 'block'){
-                    $("#p3").hide();
-                    document.getElementById('mmm').pause();
-                    $("#mmm").attr('src',musicSrc+ '2' +'.mp3');
-                    document.getElementById('mmm').play();
-                    $("#p2").show();
-                    testar = false;
-                }
-
-                if(testar && $("#p4").css('display') == 'block'){
-                    $("#p4").hide();
-                    document.getElementById('mmm').pause();
-                    $("#mmm").attr('src',musicSrc+ '3' +'.mp3');
-                    document.getElementById('mmm').play();
-                    $("#p3").show();
-                    testar = false;
-                }
-            });
-
-        });
-    </script>
+            }
+        }
+    });
+});
+</script>
 
 <style type="text/css">
 	table
@@ -133,23 +128,21 @@
 	p {
 		margin:0px;
 	}
+
+    #p1 {
+        font-size: 18px;
+    }
+    #p1 table {
+        font-size: 16px;
+        line-height: 14px;
+    }
 </style>
 <body>
 
-	<!-- header -->
-<div id="class" class="wrap-section-header" style="display: block;">
 
-        <div class="section-header">
-            <h1>Unit Eleven - Homework</h1>
-        </div>
-    </div>
-	<!-- #END header -->
 <div class="wrap-section-body" id="classBody" style="display: block;">
 	<div id="class_content"><div class="class_container">
 
-
-	
-	
     <form name="form1" method="post" action="Book2homework11.aspx" id="form1">
     <div id="myDiv" style="background-image: url('images/qback11.jpg')">
         <div id="pager">
@@ -177,10 +170,8 @@
                         1. PRONOUNS
                     </p>
 
-					<p class="bold">
-						SUBJECT + MAIN VERB + COMPLEMENT (affirmative)<br />
-
-                    <table border="1">
+                    <div style="display:block; width:75%; margin:auto;">
+                        <table border="1" style="width:100%;">
                         <tr>
                             <td> PERSONAL </td>
                             <td> POSS. ADJETIVE </td>
@@ -236,23 +227,29 @@
                             <td> THEM </td>
                         </tr>
                     </table>
-					<br />
-					<p style="font-size:15px;">
-                        The personal pronouns commit the actions and they are before the verb. <br />
-                        The possessive adjective pronouns are used to indicate that someone has something and are used before the noun. <br />
-                        The possessive pronouns are used to indicate that someone has something and are used after the object. <br />
-                        The objective pronouns receive the actions and they are after the verb. <br />
-
+                </div>
+					
+                        <ul style="font-size:16px;">
+                            <li>The personal pronouns commit the actions and they are before the verb. </li>
+                            <li>The possessive adjective pronouns are used to indicate that someone has something and are used before the noun.</li>
+                            <li>The possessive pronouns are used to indicate that someone has something and are used after the object. </li>
+                            <li>The objective pronouns receive the actions and they are after the verb. </li>
+                        </ul>
+                        
+                        
+                        
+                        <p style="font-size:16px;">
                         <strong>Examples:</strong> That is her car. That car is hers.<br />
                         Those are my books. Those books are mine.         <br />
                         I need to talk to her. (not I need to talk to she.)     <br />
+                    </p>
 					</p>
                 </div>
                 <div id="p2" class="pagina" style="display: none;">
-                    <p><strong>2.MODAL VERBS</strong></p>
+                    <p><strong>2. MODAL VERBS</strong></p>
 					<br />
 					<p>
-                        These verbs are special becaus: They work like auxiliaries; they have no different conjugation; we never put TO after the modal verb despite of having another verb after.
+                        These verbs are special becaus: <strong>They work like auxiliaries;</strong> they have no different conjugation; <strong>we never put TO</strong> after the modal verb despite of having another verb after.
 					</p>
 					<br />
 
@@ -281,7 +278,7 @@
                     What would you do if you had US$1.000.000 in the bank?                                      <br />
                     I would not (wouldn't) be here if I had this money in the bank.                                   <br /><br />
 
-                    <span style="color:Red;"><strong>NOTICE:</strong> </span>When we used the modal verb WOULD with the verb LIKE, it expresses a polite form of asking or ordering something. <br /><br />
+                    <span style="color:Red;"><strong>NOTICE:</strong> </span>When we used the modal verb <strong>WOULD</strong> with the verb <strong>LIKE</strong>, it expresses a polite form of asking or ordering something. <br /><br />
 
                     <strong>Examples:</strong> What would you lite to eat for dinner? <br />
                     I'd Like to have more free time.
@@ -289,7 +286,7 @@
 
                 </div>
                 <div id="p4" class="pagina" style="display: none;">
-                    <strong>3. TOO / EITHER</strong> <br />
+                    <strong>3. TOO / EITHER</strong> <br /><br />
 
                     I like Rock. I am happy. I can do it alone. <br/>
                     I like Rock, too. I am happy, too. I can do it alone, too.<br/>
