@@ -8,87 +8,119 @@
 <script src="http://file.urin.take-uma.net/jquery.balloon.min.js"></script>
 <script src="book2.js"></script>
 
-<script type="text/javascript">
-$(document).ready(function () {
-    $('.balloon').balloon({
-        tipSize: 24,
-        css: {
-
-            opacity: '1'
-
-        }
-    });
-	$('strong').balloon();
-
-    var musicSrc = 'b1u4t';
-    var langDefault = 'pt';
-    var showLanguage = false;
-    var backgroundImage = 'url("images/qback4.jpg")';
+    <script type="text/javascript">
+        $(document).ready(function () {
+            // Ballons
+            $('.balloon').balloon({
+                tipSize: 24,
+                css: {
+                    opacity: '1'
+                }
+            });
+            $('strong').balloon();
 
 
-    // Initialize background
-    $("#myDiv").css('background-image', backgroundImage);
+            var musicSrc = 'b1u4t';
+            var langDefault = 'pt';
+            var showLanguage = false;
+            var backgroundImage = 'url("images/qback4.jpg")';
+            var totalPages = 2;
+            var pageId = "#p";
 
-    // Initialize Sound
-    $("#mmm").attr('src',musicSrc + '1.mp3');
+            // Initialize background
+            $("#myDiv").css('background-image', backgroundImage);
 
-    // Initialize Languages
-    if(!showLanguage){
-        $("#enus").hide();
-        $("#ptbr").hide();
-    }
+            // Initialize Sound
+            $("#mmm").attr('src',musicSrc + '1.mp3');
+
+            // Initialize Languages
+            if(!showLanguage){
+                $("#enus").hide();
+                $("#ptbr").hide();
+            }
 
 
-    $("#next").click(function() {
-        $("#previous").show();
-        var testar = true;
 
-        if(testar && $("#p1").css('display') == 'block'){
-            $("#p1").hide();
-            document.getElementById('mmm').pause();
-            $("#mmm").attr('src',musicSrc+ '2' +langDefault+'.mp3');
-            document.getElementById('mmm').play();
-            $("#p2").show();
-            testar = false;
-        }
 
-        if(testar && $("#p2").css('display') == 'block'){
-            $("#p2").hide();
-            document.getElementById('mmm').pause();
-            $("#mmm").attr('src',musicSrc+'3' +langDefault+'.mp3');
-            document.getElementById('mmm').play();
-            $("#p3").show();
-            testar = false;
-            $("#next").hide();
-        }
-    });
+            $("#ptbr").click(function() {
+                document.getElementById('mmm').pause();
+                var a = $("#mmm").attr('src');
+                a = a.substring(0, 6);
+                a += "pt.mp3";
+                $("#mmm").attr('src',a);
+                document.getElementById('mmm').play();
+            });
+            $("#enus").click(function() {
+                document.getElementById('mmm').pause();
+                var a = $("#mmm").attr('src');
+                a = a.substring(0, 6);
+                a += "en.mp3";
+                $("#mmm").attr('src',a);
+                document.getElementById('mmm').play();
+            });
 
-    $("#previous").click(function() {
-        $("#next").show();
-        var testar = true;
 
-        if(testar && $("#p2").css('display') == 'block'){
-            $("#p2").hide();
-            document.getElementById('mmm').pause();
-            $("#mmm").attr('src',musicSrc+ '1' +'.mp3');
-            document.getElementById('mmm').play();
-            $("#p1").show();
-            $("#previous").hide();
-            testar = false;
-        }
+            // Play Sound
+            if(showLanguage){
+                $("#enus").trigger('click');
+            }else {
+                document.getElementById('mmm').play();
+            }
 
-        if(testar && $("#p3").css('display') == 'block'){
-            $("#p3").hide();
-            document.getElementById('mmm').pause();
-            $("#mmm").attr('src',musicSrc+ '2' +'.mp3');
-            document.getElementById('mmm').play();
-            $("#p2").show();
-            testar = false;
-        }
-    });
-});
-</script>
 
+            $("#next").click(function() {
+                $("#previous").show();
+                var testar = true;
+
+                for (var i = 1; i <= totalPages; i++) {
+                    if(testar && $(pageId + i).css('display') == 'block'){
+                        $(pageId + i).hide();
+                        document.getElementById('mmm').pause();
+                        var sourceMusic = musicSrc + (i+1);
+                        if(showLanguage){
+                            sourceMusic += 'en';
+                        }
+                        sourceMusic += '.mp3';
+
+                        $("#mmm").attr('src',sourceMusic);
+                        document.getElementById('mmm').play();
+                        $(pageId + (i + 1)).show();
+                        testar = false;
+
+                        if((i+1) == totalPages) {
+                            $("#next").hide();
+                        }
+                    }
+                }
+            });
+
+            $("#previous").click(function() {
+                $("#next").show();
+                var testar = true;
+
+                for (var i = totalPages; i >= 1; i--) {
+                    if(testar && $(pageId + i).css('display') == 'block'){
+                        $(pageId + i).hide();
+                        document.getElementById('mmm').pause();
+                        var sourceMusic = musicSrc + (i-1);
+                        if(showLanguage){
+                            sourceMusic += 'en';
+                        }
+                        sourceMusic += '.mp3';
+
+                        $("#mmm").attr('src',sourceMusic);
+                        document.getElementById('mmm').play();
+                        $(pageId + (i - 1)).show();
+                        testar = false;
+
+                        if((i-1) == 1) {
+                            $("#previous").hide();
+                        }
+                    }
+                }
+            });
+        });
+    </script>
 <style type="text/css">
 	table
 	{
@@ -142,11 +174,11 @@ $(document).ready(function () {
         <strong>To have fun X money</strong><br />
         <img src="b1u4t1.png" alt="" width="370px" height="350px" style="float: left; margin-right: 5px;"/>
         - Hi Steve, <span title="e aí" class="balloon">what's up</span>. <br />
-        - Hello Judd, I'm <span title="tentandon descobrir" class="balloon">trying to find out </span> what that <span title="casal" class="balloon">couple</span> is doing. The boy is showing her something and they are <span title="rindo" class="balloon">laughing</span> very much.<br />
-        - Isn't that girl Molly? <br />
-        - No, she's living on the beach now. <br />
-        - But maybe, she is spending some days here. I think they are looking at some photos. <br />
-        - <span title="é realmente legal aproveitar o tempo" class="balloon">It's really good to enjoy the time</span> doing things that make us happy, isn it Judd? <br />
+        <br />- Hello Judd, I'm <span title="tentandon descobrir" class="balloon">trying to find out </span> what that <span title="casal" class="balloon">couple</span> is doing. The boy is showing her something and they are <span title="rindo" class="balloon">laughing</span> very much.<br />
+        <br />- Isn't that girl Molly? <br />
+        <br />- No, she's living on the beach now. <br />
+        <br /> - But maybe, she is spending some days here. I think they are looking at some photos. <br />
+        <br /> - <span title="é realmente legal aproveitar o tempo" class="balloon">It's really good to enjoy the time</span> doing things that make us happy, isn it Judd? <br />
         - Yes Steve, and in my opinion, there are many things that we can do spending very little money, or baybe no money.
     </div>
 
@@ -155,8 +187,8 @@ $(document).ready(function () {
     <br />
     <img src="b1u4t2.png" alt="" width="370px" height="350px" style="float: left; margin-right: 5px;"/>
         - <span title="sim" class="balloon">Absolutely</span>, we can list many things that involve no money, or things that are almost <span title="de graça" class="balloon">free of charge</span>. For example, parks, a <span title="passeio" class="balloon">ride</span> in a shopping mall, museum or <span title="simplesmente" class="balloon">simply</span> to have a nice conversation with a good friend.<br />
-        - And speaking of a good conversation, I think it's exactly what they are doing. They are having a good conversation. <br />
-        - And you reader, what is possible to do with short money in your opinion?
+       <br /> - And speaking of a good conversation, I think it's exactly what they are doing. They are having a good conversation. <br />
+        <br /> - And you reader, what is possible to do with short money in your opinion?
 
     </div>
 </div>
