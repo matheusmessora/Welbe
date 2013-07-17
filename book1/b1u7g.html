@@ -7,185 +7,105 @@
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     <script type="text/javascript">
         $(document).ready(function () {
-
             var musicSrc = 'b1u7g';
             var langDefault = 'pt';
-            var showLanguage = false;
+            var showLanguage = true;
             var backgroundImage = 'url("images/qback7.jpg")';
-            var totalPages = 3;
+            var totalPages = 2;
             var pageId = "#p";
 
             // Initialize background
             $("#myDiv").css('background-image', backgroundImage);
 
             // Initialize Sound
-            $("#mmm").attr('src', musicSrc + '1.mp3');
+            $("#mmm").attr('src',musicSrc + '1.mp3');
 
             // Initialize Languages
-            if (!showLanguage) {
+            if(!showLanguage){
                 $("#enus").hide();
                 $("#ptbr").hide();
             }
 
 
-            $("#ptbr").click(function () {
+            $("#ptbr").click(function() {
                 document.getElementById('mmm').pause();
                 var a = $("#mmm").attr('src');
                 a = a.substring(0, 6);
                 a += "pt.mp3";
-                $("#mmm").attr('src', a);
+                $("#mmm").attr('src',a);
                 document.getElementById('mmm').play();
             });
-            $("#enus").click(function () {
+            $("#enus").click(function() {
                 document.getElementById('mmm').pause();
                 var a = $("#mmm").attr('src');
                 a = a.substring(0, 6);
                 a += "en.mp3";
-                $("#mmm").attr('src', a);
+                $("#mmm").attr('src',a);
                 document.getElementById('mmm').play();
             });
 
 
             // Play Sound
-            if (showLanguage) {
+            if(showLanguage){
                 $("#enus").trigger('click');
-            } else {
+            }else {
                 document.getElementById('mmm').play();
             }
 
 
-            $("#next").click(function () {
+            $("#next").click(function() {
                 $("#previous").show();
                 var testar = true;
 
                 for (var i = 1; i <= totalPages; i++) {
-                    if (testar && $(pageId + i).css('display') == 'block') {
+                    if(testar && $(pageId + i).css('display') == 'block'){
                         $(pageId + i).hide();
                         document.getElementById('mmm').pause();
-                        var sourceMusic = musicSrc + (i + 1);
-                        if (showLanguage) {
+                        var sourceMusic = musicSrc + (i+1);
+                        if(showLanguage){
                             sourceMusic += 'en';
                         }
                         sourceMusic += '.mp3';
 
-                        $("#mmm").attr('src', sourceMusic);
+                        $("#mmm").attr('src',sourceMusic);
                         document.getElementById('mmm').play();
                         $(pageId + (i + 1)).show();
                         testar = false;
 
-                        if ((i + 1) == totalPages) {
+                        if((i+1) == totalPages) {
                             $("#next").hide();
                         }
                     }
                 }
             });
 
-            $("#previous").click(function () {
+            $("#previous").click(function() {
                 $("#next").show();
                 var testar = true;
 
                 for (var i = totalPages; i >= 1; i--) {
-                    if (testar && $(pageId + i).css('display') == 'block') {
+                    if(testar && $(pageId + i).css('display') == 'block'){
                         $(pageId + i).hide();
                         document.getElementById('mmm').pause();
-                        var sourceMusic = musicSrc + (i - 1);
-                        if (showLanguage) {
+                        var sourceMusic = musicSrc + (i-1);
+                        if(showLanguage){
                             sourceMusic += 'en';
                         }
                         sourceMusic += '.mp3';
 
-                        $("#mmm").attr('src', sourceMusic);
+                        $("#mmm").attr('src',sourceMusic);
                         document.getElementById('mmm').play();
                         $(pageId + (i - 1)).show();
                         testar = false;
 
-                        if ((i - 1) == 1) {
+                        if((i-1) == 1) {
                             $("#previous").hide();
                         }
                     }
                 }
             });
-
-
-            $(".red").click(function () {
-                var campos = $(this).next().find('input');
-                if (teste(campos[0])) {
-                    $(this).prev().prev().prev().html('Correct');
-                    $(this).prev().prev().prev().css('color', 'green');
-                }
-                else {
-                    $(this).prev().prev().prev().html('Incorrect');
-                    $(this).prev().prev().prev().css('color', 'red');
-                }
-
-                $(this).prev().show();
-            });
-
-            $(".yellow").click(function () {
-                var campos = $(this).next().next().find('input');
-                campos.each(function () {
-                    var rel;
-                    if ($(this).attr("rel").indexOf("|") == -1) {
-                        rel = $(this).attr("rel")
-                    } else {
-                        rel = $(this).attr("rel").toLowerCase().split("|")[0];
-                    }
-
-                    $(this).val(rel);
-                    $(this).css('color', 'green');
-                });
-
-                $(this).prev().prev().html('Correct');
-                $(this).prev().prev().css('color', 'green');
-                $(this).prev().show();
-            });
-
-            $(".green").click(function () {
-                var id = $(this).attr('title');
-                player(musicSrc + id);
-                $(this).next().click();
-                showCorrect($(this).prev());
-            });
         });
-
-        function showCorrect(campo) {
-            campo.html('Correct');
-            campo.css('color', 'green');
-        }
-        function player(mp3) {
-            document.getElementById('mmm').pause();
-            $("#mmm").attr('src', mp3 + '.mp3');
-            document.getElementById('mmm').play();
-        }
-
-        function teste(campo) {
-            var retorno = true;
-            var rel = $(campo).attr("rel").toLowerCase();
-
-            if ($(campo).attr("rel").indexOf("|") == -1) {
-                var valor = $(campo).val().toLowerCase();
-                if (valor == rel) {
-                    $(campo).css("color", "green");
-                } else {
-                    $(campo).css("color", "red");
-                    retorno = false;
-                }
-            } else {
-                var ar = $(campo).attr("rel").toLowerCase().split("|");
-                for (i = 0; i < ar.length; i++) {
-                    if (ar[i] == $(campo).val().toLowerCase()) {
-                        $(campo).css('color', 'green');
-                        break;
-                    } else {
-                        $(campo).css('color', 'red');
-                        retorno = false;
-                    }
-                }
-            }
-
-            return retorno;
-        }
-</script>
+    </script>
 
 <style type="text/css">
 	table
@@ -259,6 +179,7 @@
 
                     NOTICE: What are you gonna do next Saturday night?<br />
 
+                    <br />
                     <p><strong>2. THE TIME</strong></p><br />
 
                     The time in English is divided in AM (Anti Meridian) or PM (Post Meridian). The common question used to know the time is: What time is it?<br />
@@ -270,8 +191,8 @@
 7:15 = It's seven fifteen. = It's fifteen past seven. = It's quarter after seven. <br />
 7:30 = It's seven thirty. = It's thirty after seven. = It's half past seven.<br />
 7:45 = It's seven forty-five. = It's fifteen to eight. = It's a quarter before eight.<br />
-
-                    <p><strong>3. DIRECTIONS</strong></p><br />
+                    <br />
+                    <p><strong>3. DIRECTIONS</strong></p>
                     <br />
 
                     Turn right or turn left / go ahead (on) / on the corner and at the corner.<br />
@@ -279,26 +200,8 @@
 Example: Where is the supermarket?<br />
 
 Weel, you are at the corner of Paulista Avenue with Bela Cintra Street, so go ahead on Paulista Avenue and after six blocks, on the corner, you turn left, walk two more blocks and turn right.<br />
-
+                    <br />
 <p><strong>4. COMPOSITION</strong></p><br />
-You are on vacation and are going to travel to Europe with your friends. What is going to happen, there?<br />
-
-                </div>
-                <div id="p3" class="pagina" style="display: none;">
-                <br />
-                   <p><strong>3. DIRECTIONS</strong></p><br />
-                    <br />
-
-                    Turn right or turn left / go ahead (on) / on the corner and at the corner.<br />
-
-Example: Where is the supermarket?<br />
-
-Weel, you are at the corner of Paulista Avenue with Bela Cintra Street, so go ahead on Paulista Avenue and after six blocks, on the corner, you turn left, walk two more blocks and turn right.<br />
-
-                </div>
-                <div id="p4" class="pagina" style="display: none;">
-                <br />
-                   <p><strong>4. COMPOSITION</strong></p><br />
 You are on vacation and are going to travel to Europe with your friends. What is going to happen, there?<br />
 
                 </div>
