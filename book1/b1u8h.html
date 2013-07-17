@@ -19,87 +19,87 @@
             $("#myDiv").css('background-image', backgroundImage);
 
             // Initialize Sound
-            $("#mmm").attr('src', musicSrc + '1.mp3');
+            $("#mmm").attr('src',musicSrc + '1.mp3');
 
             // Initialize Languages
-            if (!showLanguage) {
+            if(!showLanguage){
                 $("#enus").hide();
                 $("#ptbr").hide();
             }
 
 
-            $("#ptbr").click(function () {
+            $("#ptbr").click(function() {
                 document.getElementById('mmm').pause();
                 var a = $("#mmm").attr('src');
                 a = a.substring(0, 6);
                 a += "pt.mp3";
-                $("#mmm").attr('src', a);
+                $("#mmm").attr('src',a);
                 document.getElementById('mmm').play();
             });
-            $("#enus").click(function () {
+            $("#enus").click(function() {
                 document.getElementById('mmm').pause();
                 var a = $("#mmm").attr('src');
                 a = a.substring(0, 6);
                 a += "en.mp3";
-                $("#mmm").attr('src', a);
+                $("#mmm").attr('src',a);
                 document.getElementById('mmm').play();
             });
 
 
             // Play Sound
-            if (showLanguage) {
+            if(showLanguage){
                 $("#enus").trigger('click');
-            } else {
+            }else {
                 document.getElementById('mmm').play();
             }
 
 
-            $("#next").click(function () {
+            $("#next").click(function() {
                 $("#previous").show();
                 var testar = true;
 
                 for (var i = 1; i <= totalPages; i++) {
-                    if (testar && $(pageId + i).css('display') == 'block') {
+                    if(testar && $(pageId + i).css('display') == 'block'){
                         $(pageId + i).hide();
                         document.getElementById('mmm').pause();
-                        var sourceMusic = musicSrc + (i + 1);
-                        if (showLanguage) {
+                        var sourceMusic = musicSrc + (i+1);
+                        if(showLanguage){
                             sourceMusic += 'en';
                         }
                         sourceMusic += '.mp3';
 
-                        $("#mmm").attr('src', sourceMusic);
+                        $("#mmm").attr('src',sourceMusic);
                         document.getElementById('mmm').play();
                         $(pageId + (i + 1)).show();
                         testar = false;
 
-                        if ((i + 1) == totalPages) {
+                        if((i+1) == totalPages) {
                             $("#next").hide();
                         }
                     }
                 }
             });
 
-            $("#previous").click(function () {
+            $("#previous").click(function() {
                 $("#next").show();
                 var testar = true;
 
                 for (var i = totalPages; i >= 1; i--) {
-                    if (testar && $(pageId + i).css('display') == 'block') {
+                    if(testar && $(pageId + i).css('display') == 'block'){
                         $(pageId + i).hide();
                         document.getElementById('mmm').pause();
-                        var sourceMusic = musicSrc + (i - 1);
-                        if (showLanguage) {
+                        var sourceMusic = musicSrc + (i-1);
+                        if(showLanguage){
                             sourceMusic += 'en';
                         }
                         sourceMusic += '.mp3';
 
-                        $("#mmm").attr('src', sourceMusic);
+                        $("#mmm").attr('src',sourceMusic);
                         document.getElementById('mmm').play();
                         $(pageId + (i - 1)).show();
                         testar = false;
 
-                        if ((i - 1) == 1) {
+                        if((i-1) == 1) {
                             $("#previous").hide();
                         }
                     }
@@ -107,9 +107,9 @@
             });
 
 
-            $(".red").click(function () {
+            $(".red").click(function() {
                 var campos = $(this).next().find('input');
-                if (teste(campos[0])) {
+                if(teste(campos[0])){
                     $(this).prev().prev().prev().html('Correct');
                     $(this).prev().prev().prev().css('color', 'green');
                 }
@@ -121,13 +121,13 @@
                 $(this).prev().show();
             });
 
-            $(".yellow").click(function () {
+            $(".yellow").click(function() {
                 var campos = $(this).next().next().find('input');
                 campos.each(function () {
                     var rel;
                     if ($(this).attr("rel").indexOf("|") == -1) {
                         rel = $(this).attr("rel")
-                    } else {
+                    }else {
                         rel = $(this).attr("rel").toLowerCase().split("|")[0];
                     }
 
@@ -140,7 +140,7 @@
                 $(this).prev().show();
             });
 
-            $(".green").click(function () {
+            $(".green").click(function() {
                 var id = $(this).attr('title');
                 player(musicSrc + id);
                 $(this).next().click();
@@ -148,29 +148,29 @@
             });
         });
 
-        function showCorrect(campo) {
+        function showCorrect(campo){
             campo.html('Correct');
             campo.css('color', 'green');
         }
-        function player(mp3) {
+        function player(mp3){
             document.getElementById('mmm').pause();
-            $("#mmm").attr('src', mp3 + '.mp3');
+            $("#mmm").attr('src',mp3 + '.mp3');
             document.getElementById('mmm').play();
         }
 
-        function teste(campo) {
+        function teste(campo){
             var retorno = true;
             var rel = $(campo).attr("rel").toLowerCase();
 
             if ($(campo).attr("rel").indexOf("|") == -1) {
                 var valor = $(campo).val().toLowerCase();
-                if (valor == rel) {
-                    $(campo).css("color", "green");
-                } else {
-                    $(campo).css("color", "red");
+                if(valor == rel){
+                    $(campo).css("color","green");
+                }else {
+                    $(campo).css("color","red");
                     retorno = false;
                 }
-            } else {
+            }else {
                 var ar = $(campo).attr("rel").toLowerCase().split("|");
                 for (i = 0; i < ar.length; i++) {
                     if (ar[i] == $(campo).val().toLowerCase()) {
@@ -185,7 +185,7 @@
 
             return retorno;
         }
-</script>
+    </script>
 
 <style type="text/css">
 .exercicio {
@@ -193,10 +193,25 @@
     margin:5px;
     padding: 0px;;
 }
-
 #p1 input {
-        width: 350px;
+        width: 500px;
+    font-size: 18px;
     }
+
+
+#p2 input {
+    width: 330px;
+    font-size:18px;
+}
+#p3 {
+    font-size: 18px;
+    line-height: 18px;
+}
+#p3 input {
+    width: 500px;
+    font-size: 18px;
+    line-height: 18px;
+}
 </style>
 
 
@@ -227,30 +242,30 @@
                     </p>
                     <div class="theLabel"></div><div class="green" title="p1"></div><div class="yellow"></div><div class="red"></div>
                     <p class="exercicio">
-                        A) How often do you have your hair cut?
+                        A) How often do you have your hair cut? <br />
                         <input onblur="teste(this);" type="text" rel="I (any Frequency Adverb) have my hair cut.">
                     </p>
 
                     <div class="theLabel"></div><div class="green" title="p2"></div><div class="yellow"></div><div class="red"></div>
                     <p  class="exercicio">
-                        B) How old are you?
+                        B) How old are you? <br />
                       <input onblur="teste(this);" type="text" rel="I am (any number) years old.">
                     </p>
 
                     <div class="theLabel"></div><div class="green" title="p3"></div><div class="yellow"></div><div class="red"></div>
                     <p  class="exercicio">
-                        C) How often can you help your mother when she needs?
+                        C) How often can you help your mother when she needs? <br />
                         <input onblur="teste(this);" type="text" rel="I can (any Frequency Adverb) help my mother when she needs.">
 
                     <div class="theLabel"></div><div class="green" title="p4"></div><div class="yellow"></div><div class="red"></div>
                     <p  class="exercicio">
-                       D) How far is your home from your work?
+                       D) How far is your home from your work? <br />
                         <input onblur="teste(this);" type="text" rel="It is (any number) kilometers far from my work.">
 
 
                     <div class="theLabel"></div><div class="green" title="p4"></div><div class="yellow"></div><div class="red"></div>
                     <p  class="exercicio">
-                       E) How much do you like to watch TV?
+                       E) How much do you like to watch TV? <br />
                         <input onblur="teste(this);" type="text" rel="I don't like it very much. / or I like it a lot.">
      
                 </div>
@@ -287,7 +302,7 @@
                                 <div class="theLabel"></div><div class="green" title="p7"></div><div class="yellow"></div><div class="red"></div>
                     <p class="exercicio">
                         E) David <span style="text-decoration:underline">usually</span> does his lesson.
-                        <input onblur="teste(this);" type="text" rel="How often does David do his lesson">
+                        <input onblur="teste(this);" type="text" rel="How often does David do his lesson?">
 
                                 <div class="theLabel"></div><div class="green" title="p7"></div><div class="yellow"></div><div class="red"></div>
                     <p class="exercicio">
@@ -299,35 +314,32 @@
                         3. Fill out with the suitable preposition
                     </p>
 
-                    <input onblur="teste(this);" type="text" rel="">
-
-
                     <div class="theLabel"></div><div class="green" title="p7"></div><div class="yellow"></div><div class="red"></div>
                     <p class="exercicio">
-                        A) The boy is <input onblur="teste(this);" type="text" rel="in/from"> the USA and is <input onblur="teste(this);" type="text" rel="in|from"> Brazil
+                        A) The boy is <input onblur="teste(this);" style="width: 60px;" type="text" rel="in|from"> the USA and is <input onblur="teste(this);" style="width: 60px;" type="text" rel="in|from"> Brazil
 
                         <div class="theLabel"></div><div class="green" title="p7"></div><div class="yellow"></div><div class="red"></div>
                     <p class="exercicio">
-                        B) His test is <input onblur="teste(this);" type="text" rel="on"> March 2nd.
+                        B) His test is <input onblur="teste(this);" style="width: 60px;" type="text" rel="on"> March 2nd.
 
                         <div class="theLabel"></div><div class="green" title="p7"></div><div class="yellow"></div><div class="red"></div>
                     <p class="exercicio">
-                        C) Sit down <input onblur="teste(this);" type="text" rel="near/beside"> John?
+                        C) Sit down <input onblur="teste(this);" style="width: 60px;" type="text" rel="near|beside"> John?
 
                         <div class="theLabel"></div><div class="green" title="p7"></div><div class="yellow"></div><div class="red"></div>
                     <p class="exercicio">
-                        D) <input onblur="teste(this);" type="text" rel="in/within"> 2012 I'm going to be 38 years old.
+                        D) <input onblur="teste(this);" style="width: 60px;" type="text" rel="in|within"> 2012 I'm going to be 38 years old.
 
                 </div>
 
 
                 <div id="p3" class="pagina" style="display: none;">
-                    <p class="bold">
+                    <strong>
                         4. Make questions and give the answers like the example
-                    </p>
+                    </strong><br />
 
                     <strong>Example:</strong> Steve / to study / night. (10%) How often does Steve study at night? <br /> He rarely studies at night.
-
+                    <br /><br />
 
                     <div class="theLabel"></div><div class="green" title="p14"></div><div class="yellow"></div><div class="red"></div>
                     <p  class="exercicio">
