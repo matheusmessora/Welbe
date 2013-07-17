@@ -7,13 +7,15 @@
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 <script src="http://file.urin.take-uma.net/jquery.balloon.min.js"></script>
 
+
     <script type="text/javascript">
         $(document).ready(function () {
             var musicSrc = 'b1u7p';
             var langDefault = 'pt';
             var showLanguage = false;
             var backgroundImage = 'url("images/qback7.jpg")';
-
+            var totalPages = 4;
+            var pageId = "#p";
 
             // Initialize background
             $("#myDiv").css('background-image', backgroundImage);
@@ -27,75 +29,11 @@
                 $("#ptbr").hide();
             }
 
-            $("#next").click(function() {
-                $("#previous").show();
-                var testar = true;
-
-                if(testar && $("#p1").css('display') == 'block'){
-                    $("#p1").hide();
-                    document.getElementById('mmm').pause();
-                    $("#mmm").attr('src',musicSrc+ '2' +langDefault+'.mp3');
-                    document.getElementById('mmm').play();
-                    $("#p2").show();
-                    testar = false;
-                }
-
-                if(testar && $("#p2").css('display') == 'block'){
-                    $("#p2").hide();
-                    document.getElementById('mmm').pause();
-                    $("#mmm").attr('src',musicSrc+'3' +langDefault+'.mp3');
-                    document.getElementById('mmm').play();
-                    $("#p3").show();
-                    testar = false;
-                }
-                if(testar && $("#p3").css('display') == 'block'){
-                    $("#p3").hide();
-                    document.getElementById('mmm').pause();
-                    $("#mmm").attr('src',musicSrc+'4' +langDefault+'.mp3');
-                    document.getElementById('mmm').play();
-                    $("#p4").show();
-                    testar = false;
-                    $("#next").hide();
-                }
-            });
-
-            $("#previous").click(function() {
-                $("#next").show();
-                var testar = true;
-
-                if(testar && $("#p2").css('display') == 'block'){
-                    $("#p2").hide();
-                    document.getElementById('mmm').pause();
-                    $("#mmm").attr('src',musicSrc+ '1' +'.mp3');
-                    document.getElementById('mmm').play();
-                    $("#p1").show();
-                    $("#previous").hide();
-                    testar = false;
-                }
-
-                if(testar && $("#p3").css('display') == 'block'){
-                    $("#p3").hide();
-                    document.getElementById('mmm').pause();
-                    $("#mmm").attr('src',musicSrc+ '2' +'.mp3');
-                    document.getElementById('mmm').play();
-                    $("#p2").show();
-                    testar = false;
-                }
-
-                if(testar && $("#p4").css('display') == 'block'){
-                    $("#p4").hide();
-                    document.getElementById('mmm').pause();
-                    $("#mmm").attr('src',musicSrc+ '3' +'.mp3');
-                    document.getElementById('mmm').play();
-                    $("#p3").show();
-                    testar = false;
-                }
-            });
 
             $("#ptbr").click(function() {
                 document.getElementById('mmm').pause();
                 var a = $("#mmm").attr('src');
-                a = a.substring(0, a.length-6);
+                a = a.substring(0, 6);
                 a += "pt.mp3";
                 $("#mmm").attr('src',a);
                 document.getElementById('mmm').play();
@@ -103,14 +41,74 @@
             $("#enus").click(function() {
                 document.getElementById('mmm').pause();
                 var a = $("#mmm").attr('src');
-                a = a.substring(0, a.length-6);
+                a = a.substring(0, 6);
                 a += "en.mp3";
                 $("#mmm").attr('src',a);
                 document.getElementById('mmm').play();
             });
 
-            <!-- SHOW ANSWERS -->
 
+            // Play Sound
+            if(showLanguage){
+                $("#enus").trigger('click');
+            }else {
+                document.getElementById('mmm').play();
+            }
+
+
+            $("#next").click(function() {
+                $("#previous").show();
+                var testar = true;
+
+                for (var i = 1; i <= totalPages; i++) {
+                    if(testar && $(pageId + i).css('display') == 'block'){
+                        $(pageId + i).hide();
+                        document.getElementById('mmm').pause();
+                        var sourceMusic = musicSrc + (i+1);
+                        if(showLanguage){
+                            sourceMusic += 'en';
+                        }
+                        sourceMusic += '.mp3';
+
+                        $("#mmm").attr('src',sourceMusic);
+                        document.getElementById('mmm').play();
+                        $(pageId + (i + 1)).show();
+                        testar = false;
+
+                        if((i+1) == totalPages) {
+                            $("#next").hide();
+                        }
+                    }
+                }
+            });
+
+            $("#previous").click(function() {
+                $("#next").show();
+                var testar = true;
+
+                for (var i = totalPages; i >= 1; i--) {
+                    if(testar && $(pageId + i).css('display') == 'block'){
+                        $(pageId + i).hide();
+                        document.getElementById('mmm').pause();
+                        var sourceMusic = musicSrc + (i-1);
+                        if(showLanguage){
+                            sourceMusic += 'en';
+                        }
+                        sourceMusic += '.mp3';
+
+                        $("#mmm").attr('src',sourceMusic);
+                        document.getElementById('mmm').play();
+                        $(pageId + (i - 1)).show();
+                        testar = false;
+
+                        if((i-1) == 1) {
+                            $("#previous").hide();
+                        }
+                    }
+                }
+            });
+
+            <!-- SHOW ANSWERS -->
             $(".p_question").click(function() {
                 $(this).next().show();
             });
@@ -175,19 +173,19 @@
                     Marc is going to surf on Saturday.
 
                     <span class="p_question">A) Peter / play soccer / Tuesday</span>
-                    <span class="p_answer">Peter is going to play soccer on Tuesday.</span>
+                    <span class="p_answer">Peter is going to play soccer on Tuesday.</span>  <br />
 
                     <span class="p_question">B) Jessica / study English / January</span>
-                    <span class="p_answer">Jessica is going to study English in January.</span>
+                    <span class="p_answer">Jessica is going to study English in January.</span> <br />
 
                     <span class="p_question">C) Linda / dance / next weekend</span>
-                    <span class="p_answer">Linda is going to dance next weekend.</span>
+                    <span class="p_answer">Linda is going to dance next weekend.</span>  <br />
 
                     <span class="p_question">D) Daniel / teach the lesson / next Wednesday</span>
-                    <span class="p_answer">Daniel is going to teach the lesson next Wednesday.</span>
+                    <span class="p_answer">Daniel is going to teach the lesson next Wednesday.</span>   <br />
 
                     <span class="p_question">E) Dianne / drive the car / tomorrow</span>
-                    <span class="p_answer">Dianne is going to drive the car tomorrow.</span>
+                    <span class="p_answer">Dianne is going to drive the car tomorrow.</span> <br />
 
                     <span class="p_question">F) Belinda / finish her course / June 21st</span>
                     <span class="p_answer">Belinda is going to finish her course on June 21st.</span>
@@ -200,22 +198,22 @@
                     James is not going to do his lesson. He is going to play soccer.
 
                     <span class="p_question">A) We / use the phone / watch TV</span>
-                    <span class="p_answer">We are not going to use the phone. We are going to wwatch TV.</span>
+                    <span class="p_answer">We are not going to use the phone. We are going to wwatch TV.</span>   <br />
 
                     <span class="p_question">B) Henry / call this brother / travel to Gold Coast</span>
-                    <span class="p_answer">Henry is not going to call his brother. He is going to travel to Gold Coast.</span>
+                    <span class="p_answer">Henry is not going to call his brother. He is going to travel to Gold Coast.</span> <br />
 
                     <span class="p_question">C) The girls / buy new clothes / date in the park</span>
-                    <span class="p_answer">The girls are not going to buy new clothes. They are going to date in the park.</span>
+                    <span class="p_answer">The girls are not going to buy new clothes. They are going to date in the park.</span> <br />
 
                     <span class="p_question">D) He / to be late / to be on time</span>
-                    <span class="p_answer">He is not going to be late. He is going to be on time.</span>
+                    <span class="p_answer">He is not going to be late. He is going to be on time.</span> <br />
 
                     <span class="p_question">E) We / cry / laugh</span>
-                    <span class="p_answer">We are not going to cry. We are going to laugh.</span>
+                    <span class="p_answer">We are not going to cry. We are going to laugh.</span>   <br />
 
                     <span class="p_question">F) Robert / stay here / leave at 6pm</span>
-                    <span class="p_answer">Robert is not going to stay here. He is going to leave at 6pm.</span>
+                    <span class="p_answer">Robert is not going to stay here. He is going to leave at 6pm.</span>   <br />
 
                     <span class="p_question">G) Bob and Tim / have lunch / eat a snack</span>
                     <span class="p_answer">Bab and Tim are not going to have lunch. They are going to eat a snack.</span>
@@ -223,21 +221,21 @@
                 <div id="p3" class="pagina" style="display: none;">
                     <strong>3. Inform the time</strong><br />
 
-                    <span class="p_question">A) 11:35 </span><span class="p_answer">It's eleven thirty-five|It's twenty-five to or before twelve.</span>
+                    <span class="p_question">A) 11:35 </span><span class="p_answer">It's eleven thirty-five|It's twenty-five to or before twelve.</span>   <br />
 
-                    <span class="p_question">B) 3:20 </span><span class="p_answer">It's three twenty|It's twenty past or after three.</span>
+                    <span class="p_question">B) 3:20 </span><span class="p_answer">It's three twenty|It's twenty past or after three.</span>    <br />
 
-                    <span class="p_question">C) 1:30 </span><span class="p_answer">It's one thirty|It's thirt past or after one / It's half past or after one.</span>
+                    <span class="p_question">C) 1:30 </span><span class="p_answer">It's one thirty|It's thirt past or after one / It's half past or after one.</span>  <br />
 
-                    <span class="p_question">D) 5:40 </span><span class="p_answer">It's five forty|It's twenty to or before six.</span>
+                    <span class="p_question">D) 5:40 </span><span class="p_answer">It's five forty|It's twenty to or before six.</span>       <br />
 
-                    <span class="p_question">E) 12am </span><span class="p_answer">It's twelve o'clock|It's twelve in sharp / It's midnight./in</span>
+                    <span class="p_question">E) 12am </span><span class="p_answer">It's twelve o'clock|It's twelve in sharp / It's midnight./in</span>    <br />
 
-                    <span class="p_question">F) 8:15 </span><span class="p_answer">It's eight fifteen|It's fifteen past or after eight / It's a quarter past or after eight.</span>
+                    <span class="p_question">F) 8:15 </span><span class="p_answer">It's eight fifteen|It's fifteen past or after eight / It's a quarter past or after eight.</span>  <br />
 
-                    <span class="p_question">G) 12pm </span><span class="p_answer">It's twelve o'clock|It's twelve in sharp / It's midday / It's noon.</span>
+                    <span class="p_question">G) 12pm </span><span class="p_answer">It's twelve o'clock|It's twelve in sharp / It's midday / It's noon.</span>    <br />
 
-                    <span class="p_question">H) 6:00 </span><span class="p_answer">It's six o'clock|It's six in sharp</span>
+                    <span class="p_question">H) 6:00 </span><span class="p_answer">It's six o'clock|It's six in sharp</span> <br />
 
                     <span class="p_question">I) 2:43 </span><span class="p_answer">It's two forty-three|It's seventeen to or before three.</span>
 
@@ -246,28 +244,28 @@
                     <strong>4. Answer according to the text</strong>
 
                     <span class="p_question">A) What are the boys talking about?</span>
-                    <span class="p_answer">They are talking about vacation.</span>
+                    <span class="p_answer">They are talking about vacation.</span>    <br />
 
                     <span class="p_question">B) What is the name of the school?</span>
-                    <span class="p_answer">Th name of the school is Dreams High-school.</span>
+                    <span class="p_answer">Th name of the school is Dreams High-school.</span>  <br />
 
                     <span class="p_question">C) Where does Jacky's sister want to go?</span>
-                    <span class="p_answer">She wants to go to California.</span>
+                    <span class="p_answer">She wants to go to California.</span>          <br />
 
                     <span class="p_question">D) Whose father has to go to Asia?</span>
-                    <span class="p_answer">Charlie's father has to go to Asia.</span>
+                    <span class="p_answer">Charlie's father has to go to Asia.</span>  <br />
 
                     <span class="p_question">E) Which animals is Lucas excited to see?</span>
-                    <span class="p_answer">He is excited to see kangaroos and koalas.</span>
+                    <span class="p_answer">He is excited to see kangaroos and koalas.</span>  <br />
 
                     <span class="p_question">F) What is John going to do?</span>
-                    <span class="p_answer">He is going to have fun with the boys' girlfriends.</span>
+                    <span class="p_answer">He is going to have fun with the boys' girlfriends.</span><br />
 
                     <span class="p_question">G) Who is going to travel to Europe?</span>
-                    <span class="p_answer">Peter is going to travel to Europe.</span>
+                    <span class="p_answer">Peter is going to travel to Europe.</span> <br />
 
                     <span class="p_question">H) Which country is the first exporter?</span>
-                    <span class="p_answer">China is the first exporter.</span>
+                    <span class="p_answer">China is the first exporter.</span> <br />
 
                     <span class="p_question">I) Who wants to visit New York?</span>
                     <span class="p_answer">Jacky's mother wants to visit New York.</span>
