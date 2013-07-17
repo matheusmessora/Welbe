@@ -7,13 +7,15 @@
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 <script src="http://file.urin.take-uma.net/jquery.balloon.min.js"></script>
 
+
     <script type="text/javascript">
         $(document).ready(function () {
             var musicSrc = 'b1u8p';
             var langDefault = 'pt';
             var showLanguage = false;
             var backgroundImage = 'url("images/qback8.jpg")';
-
+            var totalPages = 4;
+            var pageId = "#p";
 
             // Initialize background
             $("#myDiv").css('background-image', backgroundImage);
@@ -27,75 +29,11 @@
                 $("#ptbr").hide();
             }
 
-            $("#next").click(function() {
-                $("#previous").show();
-                var testar = true;
-
-                if(testar && $("#p1").css('display') == 'block'){
-                    $("#p1").hide();
-                    document.getElementById('mmm').pause();
-                    $("#mmm").attr('src',musicSrc+ '2' +langDefault+'.mp3');
-                    document.getElementById('mmm').play();
-                    $("#p2").show();
-                    testar = false;
-                }
-
-                if(testar && $("#p2").css('display') == 'block'){
-                    $("#p2").hide();
-                    document.getElementById('mmm').pause();
-                    $("#mmm").attr('src',musicSrc+'3' +langDefault+'.mp3');
-                    document.getElementById('mmm').play();
-                    $("#p3").show();
-                    testar = false;
-                }
-                if(testar && $("#p3").css('display') == 'block'){
-                    $("#p3").hide();
-                    document.getElementById('mmm').pause();
-                    $("#mmm").attr('src',musicSrc+'4' +langDefault+'.mp3');
-                    document.getElementById('mmm').play();
-                    $("#p4").show();
-                    testar = false;
-                    $("#next").hide();
-                }
-            });
-
-            $("#previous").click(function() {
-                $("#next").show();
-                var testar = true;
-
-                if(testar && $("#p2").css('display') == 'block'){
-                    $("#p2").hide();
-                    document.getElementById('mmm').pause();
-                    $("#mmm").attr('src',musicSrc+ '1' +'.mp3');
-                    document.getElementById('mmm').play();
-                    $("#p1").show();
-                    $("#previous").hide();
-                    testar = false;
-                }
-
-                if(testar && $("#p3").css('display') == 'block'){
-                    $("#p3").hide();
-                    document.getElementById('mmm').pause();
-                    $("#mmm").attr('src',musicSrc+ '2' +'.mp3');
-                    document.getElementById('mmm').play();
-                    $("#p2").show();
-                    testar = false;
-                }
-
-                if(testar && $("#p4").css('display') == 'block'){
-                    $("#p4").hide();
-                    document.getElementById('mmm').pause();
-                    $("#mmm").attr('src',musicSrc+ '3' +'.mp3');
-                    document.getElementById('mmm').play();
-                    $("#p3").show();
-                    testar = false;
-                }
-            });
 
             $("#ptbr").click(function() {
                 document.getElementById('mmm').pause();
                 var a = $("#mmm").attr('src');
-                a = a.substring(0, a.length-6);
+                a = a.substring(0, 6);
                 a += "pt.mp3";
                 $("#mmm").attr('src',a);
                 document.getElementById('mmm').play();
@@ -103,14 +41,74 @@
             $("#enus").click(function() {
                 document.getElementById('mmm').pause();
                 var a = $("#mmm").attr('src');
-                a = a.substring(0, a.length-6);
+                a = a.substring(0, 6);
                 a += "en.mp3";
                 $("#mmm").attr('src',a);
                 document.getElementById('mmm').play();
             });
 
-            <!-- SHOW ANSWERS -->
 
+            // Play Sound
+            if(showLanguage){
+                $("#enus").trigger('click');
+            }else {
+                document.getElementById('mmm').play();
+            }
+
+
+            $("#next").click(function() {
+                $("#previous").show();
+                var testar = true;
+
+                for (var i = 1; i <= totalPages; i++) {
+                    if(testar && $(pageId + i).css('display') == 'block'){
+                        $(pageId + i).hide();
+                        document.getElementById('mmm').pause();
+                        var sourceMusic = musicSrc + (i+1);
+                        if(showLanguage){
+                            sourceMusic += 'en';
+                        }
+                        sourceMusic += '.mp3';
+
+                        $("#mmm").attr('src',sourceMusic);
+                        document.getElementById('mmm').play();
+                        $(pageId + (i + 1)).show();
+                        testar = false;
+
+                        if((i+1) == totalPages) {
+                            $("#next").hide();
+                        }
+                    }
+                }
+            });
+
+            $("#previous").click(function() {
+                $("#next").show();
+                var testar = true;
+
+                for (var i = totalPages; i >= 1; i--) {
+                    if(testar && $(pageId + i).css('display') == 'block'){
+                        $(pageId + i).hide();
+                        document.getElementById('mmm').pause();
+                        var sourceMusic = musicSrc + (i-1);
+                        if(showLanguage){
+                            sourceMusic += 'en';
+                        }
+                        sourceMusic += '.mp3';
+
+                        $("#mmm").attr('src',sourceMusic);
+                        document.getElementById('mmm').play();
+                        $(pageId + (i - 1)).show();
+                        testar = false;
+
+                        if((i-1) == 1) {
+                            $("#previous").hide();
+                        }
+                    }
+                }
+            });
+
+            <!-- SHOW ANSWERS -->
             $(".p_question").click(function() {
                 $(this).next().show();
             });
@@ -175,19 +173,19 @@
                     How often do you go to the cinema? I seldon go to the cinema.
 
                     <span class="p_question">They / travel on business. (10%)</span>
-                    <span class="p_answer">How often do they travel on business? They rarely travel on business.</span>
+                    <span class="p_answer">How often do they travel on business? They rarely travel on business.</span> <br />
 
                     <span class="p_question">B) Marc / sleep eight or more hours per night. (0%)</span>
-                    <span class="p_answer">How often does Marc sleep eight or more hours per night? Marc never sleeps eight or more hours per night.</span>
+                    <span class="p_answer">How often does Marc sleep eight or more hours per night? Marc never sleeps eight or more hours per night.</span> <br />
 
                     <span class="p_question">C) Paul and Pete / work from Monday to Friday. (80%)</span>
-                    <span class="p_answer">How often do Paul and Pete work from Monday to Friday? They usually work from Monday to Friday.</span>
+                    <span class="p_answer">How often do Paul and Pete work from Monday to Friday? They usually work from Monday to Friday.</span>  <br />
 
                     <span class="p_question">D) Marie / wake up before 8am. (100%)</span>
-                    <span class="p_answer">How often does Marie wake up before 8am? She always wakes up before 8am.</span>
+                    <span class="p_answer">How often does Marie wake up before 8am? She always wakes up before 8am.</span> <br />
 
                     <span class="p_question">E) Mike / can have three meals. (50%)</span>
-                    <span class="p_answer">How often can Mike have three meals? He can sometimes have three meals. or Sometimes he can..</span>
+                    <span class="p_answer">How often can Mike have three meals? He can sometimes have three meals. or Sometimes he can..</span>   <br />
 
                     <span class="p_question">F) You / watch TV on Sundays. (70%)</span>
                     <span class="p_answer"> How often do you watch TV on Sundays? I often watch TV on Sundays.</span>
@@ -196,22 +194,22 @@
 
                 <div id="p2" class="pagina" style="display: none;">
                     <span class="p_question">G) Julie and you / play chess. (80%)</span>
-                    <span class="p_answer"> How often do Julie and you play chess? We usually play chess. / or Julie and I usually play chess.</span>
+                    <span class="p_answer"> How often do Julie and you play chess? We usually play chess. / or Julie and I usually play chess.</span> <br />
 
                     <span class="p_question">H) Your friends / be happy. (100%)</span>
-                    <span class="p_answer"> How often do are your friends happy? They are always happy.</span>
+                    <span class="p_answer"> How often do are your friends happy? They are always happy.</span> <br />
 
                     <span class="p_question">I) John's sister / ahave a shower in the morning (50%)</span>
-                    <span class="p_answer"> How often does John's sister have a shower in the morning? She sometimes has a shower in the morning</span>
+                    <span class="p_answer"> How often does John's sister have a shower in the morning? She sometimes has a shower in the morning</span> <br />
 
                     <span class="p_question">J) Louise / dance at night. (0%)</span>
-                    <span class="p_answer"> How often does Louise dance at night? She never dances at night.</span>
+                    <span class="p_answer"> How often does Louise dance at night? She never dances at night.</span> <br />
 
                     <span class="p_question">K) You / take your kids to the theater. (70%)</span>
-                    <span class="p_answer"> How often do you take your kids to the theater? I often take my kids to the theater.</span>
+                    <span class="p_answer"> How often do you take your kids to the theater? I often take my kids to the theater.</span> <br />
 
                     <span class="p_question">L) Henry and Pete / play video game. (10%)</span>
-                    <span class="p_answer"> How often do Henry and Pete play video game? They rarely play video game.</span>
+                    <span class="p_answer"> How often do Henry and Pete play video game? They rarely play video game.</span> <br />
                 </div>
 
                 
@@ -250,6 +248,7 @@
                     <span class="p_question">4. What time do they like to watch the game on Sunday?</span>
                     <span class="p_answer">At 4 pm.</span>
 
+                    <br /><br />
                     C) <span style="text-decoration:underline">She</span> is <span style="text-decoration:underline">sleeping</span> <span style="text-decoration:underline">in the living room</span>.
                     <br />
                     <span class="p_question">1. Who is sleeping in the living room?</span>
