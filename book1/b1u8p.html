@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<head>
+<title>11</title>
+<link href="book2.css" rel="stylesheet" type="text/css">
+
+<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Josefin+Sans+Std+Light">
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script src="http://file.urin.take-uma.net/jquery.balloon.min.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var musicSrc = 'b1u8p';
+            var langDefault = 'pt';
+            var showLanguage = false;
+            var backgroundImage = 'url("images/qback8.jpg")';
+
+
+            // Initialize background
+            $("#myDiv").css('background-image', backgroundImage);
+
+            // Initialize Sound
+            $("#mmm").attr('src',musicSrc + '1.mp3');
+
+            // Initialize Languages
+            if(!showLanguage){
+                $("#enus").hide();
+                $("#ptbr").hide();
+            }
+
+            $("#next").click(function() {
+                $("#previous").show();
+                var testar = true;
+
+                if(testar && $("#p1").css('display') == 'block'){
+                    $("#p1").hide();
+                    document.getElementById('mmm').pause();
+                    $("#mmm").attr('src',musicSrc+ '2' +langDefault+'.mp3');
+                    document.getElementById('mmm').play();
+                    $("#p2").show();
+                    testar = false;
+                }
+
+                if(testar && $("#p2").css('display') == 'block'){
+                    $("#p2").hide();
+                    document.getElementById('mmm').pause();
+                    $("#mmm").attr('src',musicSrc+'3' +langDefault+'.mp3');
+                    document.getElementById('mmm').play();
+                    $("#p3").show();
+                    testar = false;
+                }
+                if(testar && $("#p3").css('display') == 'block'){
+                    $("#p3").hide();
+                    document.getElementById('mmm').pause();
+                    $("#mmm").attr('src',musicSrc+'4' +langDefault+'.mp3');
+                    document.getElementById('mmm').play();
+                    $("#p4").show();
+                    testar = false;
+                    $("#next").hide();
+                }
+            });
+
+            $("#previous").click(function() {
+                $("#next").show();
+                var testar = true;
+
+                if(testar && $("#p2").css('display') == 'block'){
+                    $("#p2").hide();
+                    document.getElementById('mmm').pause();
+                    $("#mmm").attr('src',musicSrc+ '1' +'.mp3');
+                    document.getElementById('mmm').play();
+                    $("#p1").show();
+                    $("#previous").hide();
+                    testar = false;
+                }
+
+                if(testar && $("#p3").css('display') == 'block'){
+                    $("#p3").hide();
+                    document.getElementById('mmm').pause();
+                    $("#mmm").attr('src',musicSrc+ '2' +'.mp3');
+                    document.getElementById('mmm').play();
+                    $("#p2").show();
+                    testar = false;
+                }
+
+                if(testar && $("#p4").css('display') == 'block'){
+                    $("#p4").hide();
+                    document.getElementById('mmm').pause();
+                    $("#mmm").attr('src',musicSrc+ '3' +'.mp3');
+                    document.getElementById('mmm').play();
+                    $("#p3").show();
+                    testar = false;
+                }
+            });
+
+            $("#ptbr").click(function() {
+                document.getElementById('mmm').pause();
+                var a = $("#mmm").attr('src');
+                a = a.substring(0, a.length-6);
+                a += "pt.mp3";
+                $("#mmm").attr('src',a);
+                document.getElementById('mmm').play();
+            });
+            $("#enus").click(function() {
+                document.getElementById('mmm').pause();
+                var a = $("#mmm").attr('src');
+                a = a.substring(0, a.length-6);
+                a += "en.mp3";
+                $("#mmm").attr('src',a);
+                document.getElementById('mmm').play();
+            });
+
+            <!-- SHOW ANSWERS -->
+
+            $(".p_question").click(function() {
+                $(this).next().show();
+            });
+
+        });
+    </script>
+
+
+<style type="text/css">
+	table
+	{
+		border-width: 0 0 1px 1px;
+		border-spacing: 0;
+		border-collapse: collapse;
+		border-style: solid;
+		font-size: 20px;
+	}
+
+	td, th
+	{
+		margin: 0;
+		padding: 4px;
+		border-width: 1px 1px 0 0;
+		border-style: solid;
+	}
+
+	p {
+		margin:0px;
+	}
+</style>
+<body>
+
+<div class="wrap-section-body" id="classBody" style="display: block;">
+	<div id="class_content"><div class="class_container">
+
+    <form name="form1" method="post" action="Book2homework11.aspx" id="form1">
+    <div id="myDiv" style="background-image: url('images/qback1.jpg')">
+        <div id="pager">
+            <div id="previous" style="display: none;">
+            </div>
+            <div id="next" style="display: block;">
+            </div>
+        </div>
+
+        <div id="paginaAtual">
+			<img id="enus" src="http://www.webrazuca.com/v4/images/dc_icon_usa.png" width="30" height="30">
+
+				<audio id="mmm" controls src="b1u1g1pt.mp3">
+					Your browser does not support the audio element.
+				</audio>
+
+			<img id="ptbr" src="http://icongal.com/gallery/image/32079/brasil_br_kr_brazil.png" width="30" height="30">
+		</div>
+        <div style="padding: 25px;">
+            <div style="height: 500px;">
+                <div id="p1" class="pagina" style="display: block;">
+					<strong>Practice - UNIT EIGHT - HABITS</strong><br />
+
+                    <strong>1. Ask questions and answer like the example</strong><br />
+
+                    <strong>Example 1:</strong>You / go to the cinema. (20%)<br />
+                    How often do you go to the cinema? I seldon go to the cinema.
+
+                    <span class="p_question">They / travel on business. (10%)</span>
+                    <span class="p_answer">How often do they travel on business? They rarely travel on business.</span>
+
+                    <span class="p_question">B) Marc / sleep eight or more hours per night. (0%)</span>
+                    <span class="p_answer">How often does Marc sleep eight or more hours per night? Marc never sleeps eight or more hours per night.</span>
+
+                    <span class="p_question">C) Paul and Pete / work from Monday to Friday. (80%)</span>
+                    <span class="p_answer">How often do Paul and Pete work from Monday to Friday? They usually work from Monday to Friday.</span>
+
+                    <span class="p_question">D) Marie / wake up before 8am. (100%)</span>
+                    <span class="p_answer">How often does Marie wake up before 8am? She always wakes up before 8am.</span>
+
+                    <span class="p_question">E) Mike / can have three meals. (50%)</span>
+                    <span class="p_answer">How often can Mike have three meals? He can sometimes have three meals. or Sometimes he can..</span>
+
+                    <span class="p_question">F) You / watch TV on Sundays. (70%)</span>
+                    <span class="p_answer"> How often do you watch TV on Sundays? I often watch TV on Sundays.</span>
+
+                </div>
+
+                <div id="p2" class="pagina" style="display: none;">
+                    <span class="p_question">G) Julie and you / play chess. (80%)</span>
+                    <span class="p_answer"> How often do Julie and you play chess? We usually play chess. / or Julie and I usually play chess.</span>
+
+                    <span class="p_question">H) Your friends / be happy. (100%)</span>
+                    <span class="p_answer"> How often do are your friends happy? They are always happy.</span>
+
+                    <span class="p_question">I) John's sister / ahave a shower in the morning (50%)</span>
+                    <span class="p_answer"> How often does John's sister have a shower in the morning? She sometimes has a shower in the morning</span>
+
+                    <span class="p_question">J) Louise / dance at night. (0%)</span>
+                    <span class="p_answer"> How often does Louise dance at night? She never dances at night.</span>
+
+                    <span class="p_question">K) You / take your kids to the theater. (70%)</span>
+                    <span class="p_answer"> How often do you take your kids to the theater? I often take my kids to the theater.</span>
+
+                    <span class="p_question">L) Henry and Pete / play video game. (10%)</span>
+                    <span class="p_answer"> How often do Henry and Pete play video game? They rarely play video game.</span>
+                </div>
+
+                
+                <div id="p3" class="pagina" style="display: none;">
+                    <strong>2. Make the appropriate questions. Follow the example</strong><br />
+
+                    <strong>Example:</strong> <span style="text-decoration:underline">Judd</span> would like to <span style="text-decoration:underline">to buy</span> <span style="text-decoration:underline">a new car</span> <span style="text-decoration:underline">in January</span><br />
+
+                    1. Who would like to buy a new car in January? Judd<br />
+                    2. What would Judd like to do in January? to buy <br />
+                    3. What would Judd like to buy in January? a new car<br />
+                    4. When would Judd like to buy a new car? In January<br />
+                    <br />
+                    A) <span style="text-decoration:underline">She </span>can <span style="text-decoration:underline">always go </span><span style="text-decoration:underline">to the beach </span><span style="text-decoration:underline">on Friday</span>.
+                    <br />
+                    <span class="p_question">1.Who - Who can always go to the beach on Friday?</span>
+                    <span class="p_answer">She</span>
+                    <span class="p_question"> 2.How often - How often can she go to the beach?</span>
+                    <span class="p_answer">Always</span>
+                    <span class="p_question">3. What - What can she always do on Friday?</span>
+                    <span class="p_answer">Go to the beach</span>
+                    <span class="p_question">4. Where - Where can she alwyas go on Friday?</span>
+                    <span class="p_answer">To the beach</span>
+                    <span class="p_question">5. When - When can she always go to the beach?</span>
+                    <span class="p_answer">On Friday</span>
+                </div>
+                <div id="p4" class="pagina" style="display: none;">
+                    B) <span style="text-decoration:underline">They</span> like <span style="text-decoration:underline">to watch</span> <span style="text-decoration:underline">the game</span> <span style="text-decoration:underline">on Sunday</span> <span style="text-decoration:underline">at 4pm</span>.
+                    <br />
+                    <span class="p_question">1. What do they like to do on Sunday at 4pm?</span>
+                    <span class="p_answer">To watch the game</span>
+                    <span class="p_question"> 2. What do they like to watch on Sunday at 4pm?</span>
+                    <span class="p_answer">The game</span>
+                    <span class="p_question">3. When do they like to watch the game at 4pm?</span>
+                    <span class="p_answer">On Sunday</span>
+                    <span class="p_question">4. What time do they like to watch the game on Sunday?</span>
+                    <span class="p_answer">At 4 pm.</span>
+
+                    C) <span style="text-decoration:underline">She</span> is <span style="text-decoration:underline">sleeping</span> <span style="text-decoration:underline">in the living room</span>.
+                    <br />
+                    <span class="p_question">1. Who is sleeping in the living room?</span>
+                    <span class="p_answer">She</span>
+                    <span class="p_question"> 2. What is she doing in the living room?</span>
+                    <span class="p_answer">Sleeping</span>
+                    <span class="p_question">3. Where is she sleeping?</span>
+                    <span class="p_answer">In the living room</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    </form>
+
+</div>
+</div>
+</div>
+</body></html>
+

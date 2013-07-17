@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<head>
+<title>11</title>
+<link href="book2.css" rel="stylesheet" type="text/css">
+
+<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Josefin+Sans+Std+Light">
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            var musicSrc = 'b1u8g';
+            var langDefault = 'pt';
+            var showLanguage = false;
+            var backgroundImage = 'url("images/qback8.jpg")';
+            var totalPages = 2;
+            var pageId = "#p";
+
+            // Initialize background
+            $("#myDiv").css('background-image', backgroundImage);
+
+            // Initialize Sound
+            $("#mmm").attr('src', musicSrc + '1.mp3');
+
+            // Initialize Languages
+            if (!showLanguage) {
+                $("#enus").hide();
+                $("#ptbr").hide();
+            }
+
+
+            $("#ptbr").click(function () {
+                document.getElementById('mmm').pause();
+                var a = $("#mmm").attr('src');
+                a = a.substring(0, 6);
+                a += "pt.mp3";
+                $("#mmm").attr('src', a);
+                document.getElementById('mmm').play();
+            });
+            $("#enus").click(function () {
+                document.getElementById('mmm').pause();
+                var a = $("#mmm").attr('src');
+                a = a.substring(0, 6);
+                a += "en.mp3";
+                $("#mmm").attr('src', a);
+                document.getElementById('mmm').play();
+            });
+
+
+            // Play Sound
+            if (showLanguage) {
+                $("#enus").trigger('click');
+            } else {
+                document.getElementById('mmm').play();
+            }
+
+
+            $("#next").click(function () {
+                $("#previous").show();
+                var testar = true;
+
+                for (var i = 1; i <= totalPages; i++) {
+                    if (testar && $(pageId + i).css('display') == 'block') {
+                        $(pageId + i).hide();
+                        document.getElementById('mmm').pause();
+                        var sourceMusic = musicSrc + (i + 1);
+                        if (showLanguage) {
+                            sourceMusic += 'en';
+                        }
+                        sourceMusic += '.mp3';
+
+                        $("#mmm").attr('src', sourceMusic);
+                        document.getElementById('mmm').play();
+                        $(pageId + (i + 1)).show();
+                        testar = false;
+
+                        if ((i + 1) == totalPages) {
+                            $("#next").hide();
+                        }
+                    }
+                }
+            });
+
+            $("#previous").click(function () {
+                $("#next").show();
+                var testar = true;
+
+                for (var i = totalPages; i >= 1; i--) {
+                    if (testar && $(pageId + i).css('display') == 'block') {
+                        $(pageId + i).hide();
+                        document.getElementById('mmm').pause();
+                        var sourceMusic = musicSrc + (i - 1);
+                        if (showLanguage) {
+                            sourceMusic += 'en';
+                        }
+                        sourceMusic += '.mp3';
+
+                        $("#mmm").attr('src', sourceMusic);
+                        document.getElementById('mmm').play();
+                        $(pageId + (i - 1)).show();
+                        testar = false;
+
+                        if ((i - 1) == 1) {
+                            $("#previous").hide();
+                        }
+                    }
+                }
+            });
+
+
+            $(".red").click(function () {
+                var campos = $(this).next().find('input');
+                if (teste(campos[0])) {
+                    $(this).prev().prev().prev().html('Correct');
+                    $(this).prev().prev().prev().css('color', 'green');
+                }
+                else {
+                    $(this).prev().prev().prev().html('Incorrect');
+                    $(this).prev().prev().prev().css('color', 'red');
+                }
+
+                $(this).prev().show();
+            });
+
+            $(".yellow").click(function () {
+                var campos = $(this).next().next().find('input');
+                campos.each(function () {
+                    var rel;
+                    if ($(this).attr("rel").indexOf("|") == -1) {
+                        rel = $(this).attr("rel")
+                    } else {
+                        rel = $(this).attr("rel").toLowerCase().split("|")[0];
+                    }
+
+                    $(this).val(rel);
+                    $(this).css('color', 'green');
+                });
+
+                $(this).prev().prev().html('Correct');
+                $(this).prev().prev().css('color', 'green');
+                $(this).prev().show();
+            });
+
+            $(".green").click(function () {
+                var id = $(this).attr('title');
+                player(musicSrc + id);
+                $(this).next().click();
+                showCorrect($(this).prev());
+            });
+        });
+
+        function showCorrect(campo) {
+            campo.html('Correct');
+            campo.css('color', 'green');
+        }
+        function player(mp3) {
+            document.getElementById('mmm').pause();
+            $("#mmm").attr('src', mp3 + '.mp3');
+            document.getElementById('mmm').play();
+        }
+
+        function teste(campo) {
+            var retorno = true;
+            var rel = $(campo).attr("rel").toLowerCase();
+
+            if ($(campo).attr("rel").indexOf("|") == -1) {
+                var valor = $(campo).val().toLowerCase();
+                if (valor == rel) {
+                    $(campo).css("color", "green");
+                } else {
+                    $(campo).css("color", "red");
+                    retorno = false;
+                }
+            } else {
+                var ar = $(campo).attr("rel").toLowerCase().split("|");
+                for (i = 0; i < ar.length; i++) {
+                    if (ar[i] == $(campo).val().toLowerCase()) {
+                        $(campo).css('color', 'green');
+                        break;
+                    } else {
+                        $(campo).css('color', 'red');
+                        retorno = false;
+                    }
+                }
+            }
+
+            return retorno;
+        }
+</script>
+
+<style type="text/css">
+	table
+	{
+		border-width: 0 0 1px 1px;
+		border-spacing: 0;
+		border-collapse: collapse;
+		border-style: solid;
+		font-size: 20px;
+	}
+
+	td, th
+	{
+		margin: 0;
+		padding: 4px;
+		border-width: 1px 1px 0 0;
+		border-style: solid;
+	}
+	
+	p {
+		margin:0px;
+	}
+
+
+    .borderless {
+        border: 0px;
+        border-width: 0px;
+    }
+</style>
+<body>
+
+<div class="wrap-section-body" id="classBody" style="display: block;">
+	<div id="class_content"><div class="class_container">
+	
+    <form name="form1" method="post" action="Book2homework11.aspx" id="form1">
+    <div id="myDiv" style="background-image: url('images/qback11.jpg')">
+        <div id="pager">
+            <div id="previous" style="display: none;">
+            </div>
+            <div id="next" style="display: block;">
+            </div>
+        </div>
+
+        <div id="paginaAtual">
+            <img id="enus" src="http://www.webrazuca.com/v4/images/dc_icon_usa.png" width="30" height="30">
+
+            <audio id="mmm" controls src="b1u1g1pt.mp3">
+                Your browser does not support the audio element.
+            </audio>
+
+            <img id="ptbr" src="http://icongal.com/gallery/image/32079/brasil_br_kr_brazil.png" width="30" height="30">
+        </div>
+        <div style="padding: 30px;">
+            <div style="height: 500px;">
+                <div id="p1" class="pagina" style="display: block; font-size:15px;">
+                <span class="titulo">Grammar - Different lives</span><br /><br />
+
+                    <p><strong>1. FREQUENCY ADVERBS</strong></p>
+					<br />
+					<p>
+                        The planned future is used to speak about something that will happen in the future and the rule is:
+					</p>
+					<br />
+
+                    <table border="1" cellpadding="1">
+<tr>
+<td> 100% </td>
+<td> ALWAYS </td>
+</tr>
+<tr>
+<td> 80% </td>
+<td> USUALLY</td>
+</tr>
+<tr>
+<td> 70% </td>
+<td> OFTEN </td>
+</tr>
+<tr>
+<td> 50% </td>
+<td> SOMETIMES/OCCASIONALLY</td>
+</tr>
+<tr>
+<td> 20% </td>
+<td> SELDOM </td>
+</tr>
+<tr>
+<td> 10% </td>
+<td> RARELY </td>
+</tr>
+<tr>
+<td> 0% </td>
+<td> NEVER </td>
+</tr> 
+</table>
+
+
+<br />
+We use the frequency adverbs to know the frequency something happens or the frequency someone does something.<br />
+To make the question we use: How often and most of the time the questions are made in the Simple Present.
+
+Examples: How often do you go to the cinema? I rarely go to the cinema.<br />
+            How often does she dance? She usually dances.<br />
+            How often can you travel alone? I can never travel alone.<br />
+            How often are you at home? I'm always at home
+
+                </div>
+                <div id="p2" class="pagina" style="display: none;">
+                <br />
+                   NOTICE: Take care because there is an order to put the adverbs and you have to respect this order. The order is: Subject + adverb + main verb.
+                   <br />
+                   Howerver, when you use SOMETIMES or OCCASIONALLY you can start the sentences and when you have TO BE or MODAL VERBS, you never separate them of the subject.
+
+                   <br />Examples:
+
+                   Sometimes I do my lessons at night. = I sometimes do my lessons at night.
+                   <br />I am always happy on Fridays. 
+                   <br />I can always help you if you ask me.
+
+                    <p><strong>2. COMPOSITION</strong></p><br />
+                    Write about your habits using the frequency adverbs.
+                    <br />
+
+                </div>
+            </div>
+        </div>
+    </div>
+    </form>
+
+</div>
+</div>
+</body></html>
+				

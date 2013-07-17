@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<head xmlns="http://www.w3.org/1999/html">
+<title>11</title>
+<link href="book2.css" rel="stylesheet" type="text/css">
+
+<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Josefin+Sans+Std+Light">
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script src="http://file.urin.take-uma.net/jquery.balloon.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function () {
+	$('.balloon').balloon({
+		tipSize: 24,
+		css: {
+			opacity: '1'
+		}
+  });
+	$('strong').balloon();
+
+    var musicSrc = 'b1u8t';
+    var showLanguage = false;
+    var backgroundImage = 'url("images/qback8.jpg")';
+
+
+    // Initialize background
+    $("#myDiv").css('background-image', backgroundImage);
+
+    // Initialize Sound
+    $("#mmm").attr('src',musicSrc + '1.mp3');
+
+    // Initialize Languages
+    if(!showLanguage){
+        $("#enus").hide();
+        $("#ptbr").hide();
+    }
+
+    // Language clicks
+    $("#ptbr").click(function() {
+        document.getElementById('mmm').pause();
+        var a = $("#mmm").attr('src');
+        a = a.substring(0, a.length-6);
+        a += "pt.mp3";
+        $("#mmm").attr('src',a);
+        document.getElementById('mmm').play();
+    });
+    $("#enus").click(function() {
+        document.getElementById('mmm').pause();
+        var a = $("#mmm").attr('src');
+        a = a.substring(0, a.length-6);
+        a += "en.mp3";
+        $("#mmm").attr('src',a);
+        document.getElementById('mmm').play();
+    });
+
+    // Next pages clicks
+    $("#next").click(function() {
+        $("#previous").show();
+        var testar = true;
+
+        if(testar && $("#p1").css('display') == 'block'){
+            $("#p1").hide();
+            document.getElementById('mmm').pause();
+            $("#mmm").attr('src',musicSrc+ '2' + '.mp3');
+            document.getElementById('mmm').play();
+            $("#p2").show();
+            $("#next").hide();
+            testar = false;
+        }
+    });
+
+    $("#previous").click(function() {
+        $("#next").show();
+        var testar = true;
+
+        if(testar && $("#p2").css('display') == 'block'){
+            $("#p2").hide();
+            document.getElementById('mmm').pause();
+            $("#mmm").attr('src',musicSrc+ '1' +'.mp3');
+            document.getElementById('mmm').play();
+            $("#p1").show();
+            $("#previous").hide();
+            testar = false;
+        }
+    });
+
+});
+</script>
+
+<style type="text/css">
+	table
+	{
+		border-width: 0 0 1px 1px;
+		border-spacing: 0;
+		border-collapse: collapse;
+		border-style: solid;
+		font-size: 20px;
+	}
+
+	td, th
+	{
+		margin: 0;
+		padding: 4px;
+		border-width: 1px 1px 0 0;
+		border-style: solid;
+	}
+	
+	p {
+		margin:0px;
+	}
+</style>
+<body>
+
+<div class="wrap-section-body" id="classBody" style="display: block;">
+	<div id="class_content"><div class="class_container">
+
+    <form name="form1" method="post" action="Book2homework11.aspx" id="form1">
+    <div id="myDiv">
+        <div id="pager">
+            <div id="previous" style="display: none;">
+            </div>
+            <div id="next" style="display: block;">
+            </div>
+        </div>
+
+        <div id="paginaAtual">
+			<img id="enus" src="http://www.webrazuca.com/v4/images/dc_icon_usa.png" width="30" height="30">
+			
+				<audio id="mmm" controls src="b1u1g1pt.mp3"> 
+					Your browser does not support the audio element.
+				</audio>
+			
+			<img id="ptbr" src="http://icongal.com/gallery/image/32079/brasil_br_kr_brazil.png" width="30" height="30">
+		</div>
+        <div style="padding: 25px;">
+            <div style="height: 500px;">
+                <div id="p1" class="pagina" style="display: block;">
+					<strong>What are you going to do?</strong><br />
+
+                    <img src="b1u8t1.png" alt="" width="370px" height="350px" style="float: left; margin-right: 5px;"/>
+                    <br />
+                    Do you know what habits are? Well, they are things that people <span title="geralmente" class="balloon">commonly</span> do. For example, I always sleep <span title="menos que" class="balloon">less than</span> six hours per night. It is a very bad habit, because <span title="de acordo com" class="balloon">according to experts</span>, the correct is to sleep eight hours per night. I usually listen to music during the day. It normally happens when I drive my car. Sometimes I watched the news on TV and sometimes I <span title="apenas" class="balloon">just</span> read the news on internet. For me, it is essential to know <span title="o que está acontecendo" class="balloon">what is going on</span> in the world.<br />I like to play with my kids. <span title="infelizmente" class="balloon">Unfortunately</span>, I seldom do it because my time is always <span title="curto" class="balloon">short</span>, but when I am free at home, we often have fun together. The kids are always <span title="prontos" class="balloon">ready</span> to have fun.
+                    
+
+                </div>
+                <div id="p2" class="pagina" style="display: none;">
+                    <img src="b1u8t2.png" alt="" width="370px" height="350px" style="float: left; margin-right: 5px;"/>
+                    <br />
+                    I rarely go to the beach now, because of my job. <span title="No entanto" class="balloon">However</span>, when I go I always take my <span title="prancha de surf" class="balloon">surfboard</span> with me. I love this sport. I usually listen to surfers saying that surf isn't a sport, it is a life style. <span title="De qualquer modo" class="balloon">Anyway</span>, it is a good <span title="maneira/jeito/forma/modo" class="balloon">way</span> to keep in <span title="forma" class="balloon">shape</span>. <br />
+                    I never watch reality shows on TV, because I really think they are very <span title="vazio" class="balloon">empty </span>and as my time is short, I don't spend it on <span title="coisas fúteis" class="balloon">silly things like this</span>.
+                    <br />Well, now that you know my habits, tell me about yours. How often do you go to the cinema? How often do you practice sports? How often do you travel to have fun? How often do you do things that make you happy?<br /> Can you see? If you answer these questions <span title="above" class="balloon">above</span>, you are just speaking about your habits. I hope you have good habits. <span title="Se não" class="balloon">If not</span>, there is timie to change them.
+                </div>
+            </div>
+        </div>
+    </div>
+    </form>
+
+</div>
+</div>
+</div>
+</body></html>
+
+				

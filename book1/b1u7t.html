@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<head xmlns="http://www.w3.org/1999/html">
+<title>11</title>
+<link href="book2.css" rel="stylesheet" type="text/css">
+
+<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Josefin+Sans+Std+Light">
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script src="http://file.urin.take-uma.net/jquery.balloon.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function () {
+	$('.balloon').balloon({
+		tipSize: 24,
+		css: {
+			opacity: '1'
+		}
+  });
+	$('strong').balloon();
+
+    var musicSrc = 'b1u7t';
+    var showLanguage = false;
+    var backgroundImage = 'url("images/qback7.jpg")';
+
+
+    // Initialize background
+    $("#myDiv").css('background-image', backgroundImage);
+
+    // Initialize Sound
+    $("#mmm").attr('src',musicSrc + '1.mp3');
+
+    // Initialize Languages
+    if(!showLanguage){
+        $("#enus").hide();
+        $("#ptbr").hide();
+    }
+
+    // Language clicks
+    $("#ptbr").click(function() {
+        document.getElementById('mmm').pause();
+        var a = $("#mmm").attr('src');
+        a = a.substring(0, a.length-6);
+        a += "pt.mp3";
+        $("#mmm").attr('src',a);
+        document.getElementById('mmm').play();
+    });
+    $("#enus").click(function() {
+        document.getElementById('mmm').pause();
+        var a = $("#mmm").attr('src');
+        a = a.substring(0, a.length-6);
+        a += "en.mp3";
+        $("#mmm").attr('src',a);
+        document.getElementById('mmm').play();
+    });
+
+    // Next pages clicks
+    $("#next").click(function() {
+        $("#previous").show();
+        var testar = true;
+
+        if(testar && $("#p1").css('display') == 'block'){
+            $("#p1").hide();
+            document.getElementById('mmm').pause();
+            $("#mmm").attr('src',musicSrc+ '2' + '.mp3');
+            document.getElementById('mmm').play();
+            $("#p2").show();
+            $("#next").hide();
+            testar = false;
+        }
+    });
+
+    $("#previous").click(function() {
+        $("#next").show();
+        var testar = true;
+
+        if(testar && $("#p2").css('display') == 'block'){
+            $("#p2").hide();
+            document.getElementById('mmm').pause();
+            $("#mmm").attr('src',musicSrc+ '1' +'.mp3');
+            document.getElementById('mmm').play();
+            $("#p1").show();
+            $("#previous").hide();
+            testar = false;
+        }
+    });
+
+});
+</script>
+
+<style type="text/css">
+	table
+	{
+		border-width: 0 0 1px 1px;
+		border-spacing: 0;
+		border-collapse: collapse;
+		border-style: solid;
+		font-size: 20px;
+	}
+
+	td, th
+	{
+		margin: 0;
+		padding: 4px;
+		border-width: 1px 1px 0 0;
+		border-style: solid;
+	}
+	
+	p {
+		margin:0px;
+	}
+</style>
+<body>
+
+<div class="wrap-section-body" id="classBody" style="display: block;">
+	<div id="class_content"><div class="class_container">
+
+
+	
+	
+    <form name="form1" method="post" action="Book2homework11.aspx" id="form1">
+    <div id="myDiv">
+        <div id="pager">
+            <div id="previous" style="display: none;">
+            </div>
+            <div id="next" style="display: block;">
+            </div>
+        </div>
+
+        <div id="paginaAtual">
+			<img id="enus" src="http://www.webrazuca.com/v4/images/dc_icon_usa.png" width="30" height="30">
+			
+				<audio id="mmm" controls src="b1u1g1pt.mp3"> 
+					Your browser does not support the audio element.
+				</audio>
+			
+			<img id="ptbr" src="http://icongal.com/gallery/image/32079/brasil_br_kr_brazil.png" width="30" height="30">
+		</div>
+        <div style="padding: 25px;">
+            <div style="height: 500px;">
+                <div id="p1" class="pagina" style="display: block;">
+					<strong>What are you going to do?</strong><br />
+
+                    <img src="b1u7t1.png" alt="" width="370px" height="350px" style="float: left; margin-right: 5px;"/>
+                    <br />
+                    Finally the holiday is coming at Dreams High-school. There are hundreds of students who are talking about thing to do during the <span title="férias" class="balloon">vacation</span>. A group of five friends are <span title="se perguntando/perguntando um ao outro" class="balloon">asking each other</span> what they are going to do. 
+                    What are you going to do Peter? John asks.
+                    I am going to travel with my family to Europe. We are going to visit <span title="vários lugares" class="balloon">several places</span> there, <span title="como" class="balloon">as</span> London, Frankfurt, Athens, Paris and Rome. I would like to go to Madrid, too, but my mother says it is impossible, <span title="porque" class="balloon">because</span> we don't have all this money. 
+                    What about you, Lucas?
+                    Well, my family and I are going to travel to Australia and ew Zealand. I am so <span title="animado" class="balloon">excited</span> to see Kangaroo and Koala. Probably, we are going to ski in Queenstown. It is <span title="uma cidade da ilha do sul" class="balloon">a south island town</span> in New Zealand. What about you Jacky?
+                    My father is planning a <span title="viagem" class="balloon">trip</span> for us. We are probably going to travel to the USA.
+                    
+
+                </div>
+                <div id="p2" class="pagina" style="display: none;">
+                    <br />
+                    <img src="b1u7t2.png" alt="" width="370px" height="350px" style="float: left; margin-right: 5px;"/>
+                    I want to visit Disneyland because it is my <span title="sonho" class="balloon">dream</span>. My sister wants go to California. She loves Hollywood. Her dream is to visit Beverly Hills, Malibu and San Francisco. But my mom wants to go to New York. She wants to walk on the Fifth Avenue, visit the Central Park and Broadway. What about you Charlie?
+                    I don't know <span title="ainda" class="balloon">yet</span>. My father has to go to Asia on business and maybe my mothe and I are going with him. I would like to visit China. It is the first <span title="exportador" class="balloon">exporter</span> in the world and its population is near 1.4 billion, Imagine the <span title="preço" class="balloon">price</span> of the things there. Whats about you John?
+                    Well guys, I don't have money to go to these places you are going to, <span title="Vou ficar aqui e me divertir" class="balloon">I am going to stay here and have fun</span> with your girlfriends.
+                </div>
+            </div>
+        </div>
+    </div>
+    </form>
+
+</div>
+</div>
+</div>
+</body></html>
+
+				
