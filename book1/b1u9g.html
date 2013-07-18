@@ -5,112 +5,107 @@
 
 <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Josefin+Sans+Std+Light">
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-<script type="text/javascript">
-$(document).ready(function () {
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var musicSrc = 'b1u9g';
+            var langDefault = 'pt';
+            var showLanguage = true;
+            var backgroundImage = 'url("images/qback9.jpg")';
+            var totalPages = 2;
+            var pageId = "#p";
 
-    var musicSrc = 'b1u9g';
-    var langDefault = 'pt';
-    var showLanguage = true;
-    var backgroundImage = 'url("images/qback9.jpg")';
+            // Initialize background
+            $("#myDiv").css('background-image', backgroundImage);
+
+            // Initialize Sound
+            $("#mmm").attr('src',musicSrc + '1.mp3');
+
+            // Initialize Languages
+            if(!showLanguage){
+                $("#enus").hide();
+                $("#ptbr").hide();
+            }
 
 
-    // Initialize background
-    $("#myDiv").css('background-image', backgroundImage);
+            $("#ptbr").click(function() {
+                document.getElementById('mmm').pause();
+                var a = $("#mmm").attr('src');
+                a = a.substring(0, 6);
+                a += "pt.mp3";
+                $("#mmm").attr('src',a);
+                document.getElementById('mmm').play();
+            });
+            $("#enus").click(function() {
+                document.getElementById('mmm').pause();
+                var a = $("#mmm").attr('src');
+                a = a.substring(0, 6);
+                a += "en.mp3";
+                $("#mmm").attr('src',a);
+                document.getElementById('mmm').play();
+            });
 
-    // Initialize Sound
-    $("#mmm").attr('src',musicSrc + '1.mp3');
 
-    // Initialize Languages
-    if(!showLanguage){
-        $("#enus").hide();
-        $("#ptbr").hide();
-    }
+            // Play Sound
+            if(showLanguage){
+                $("#enus").trigger('click');
+            }else {
+                document.getElementById('mmm').play();
+            }
 
-    $("#ptbr").click(function() {
-        document.getElementById('mmm').pause();
-        var a = $("#mmm").attr('src');
-        a = a.substring(0, 6);
-        a += "pt.mp3";
-        $("#mmm").attr('src',a);
-        document.getElementById('mmm').play();
-    });
-    $("#enus").click(function() {
-        document.getElementById('mmm').pause();
-        var a = $("#mmm").attr('src');
-        a = a.substring(0, 6);
-        a += "en.mp3";
-        $("#mmm").attr('src',a);
-        document.getElementById('mmm').play();
-    });
 
-	$("#next").click(function() {
-		$("#previous").show();
-		var testar = true;
-	
-		if(testar && $("#p1").css('display') == 'block'){
-			$("#p1").hide();
-			document.getElementById('mmm').pause();
-            $("#mmm").attr('src',musicSrc+ '2' +'.mp3');
-			document.getElementById('mmm').play();
-			$("#p2").show();
-			testar = false;
-		}
-		
-		if(testar && $("#p2").css('display') == 'block'){
-			$("#p2").hide();
-			document.getElementById('mmm').pause();
-            $("#mmm").attr('src',musicSrc+ '3' +'.mp3');
-			document.getElementById('mmm').play();
-			$("#p3").show();
-			testar = false;
-		}
-		
-		if(testar && $("#p3").css('display') == 'block'){
-			$("#p3").hide();
-			document.getElementById('mmm').pause();
-            $("#mmm").attr('src',musicSrc+ '4' +'.mp3');
-			document.getElementById('mmm').play();
-			$("#p4").show();
-			$("#next").hide();
-			testar = false;
-		}
-	});
-	
-	$("#previous").click(function() {
-		$("#next").show();
-		var testar = true;
-		
-		if(testar && $("#p2").css('display') == 'block'){
-			$("#p2").hide();
-			document.getElementById('mmm').pause();
-            $("#mmm").attr('src',musicSrc+ '1' +'.mp3');
-			document.getElementById('mmm').play();
-			$("#p1").show();
-			$("#previous").hide();
-			testar = false;
-		}
-		
-		if(testar && $("#p3").css('display') == 'block'){
-			$("#p3").hide();
-			document.getElementById('mmm').pause();
-            $("#mmm").attr('src',musicSrc+ '2' +'.mp3');
-			document.getElementById('mmm').play();
-			$("#p2").show();
-			testar = false;
-		}
-		
-		if(testar && $("#p4").css('display') == 'block'){
-			$("#p4").hide();
-			document.getElementById('mmm').pause();
-            $("#mmm").attr('src',musicSrc+ '3' +'.mp3');
-			document.getElementById('mmm').play();
-			$("#p3").show();
-			testar = false;
-		}
-	});
+            $("#next").click(function() {
+                $("#previous").show();
+                var testar = true;
 
-});
-</script>
+                for (var i = 1; i <= totalPages; i++) {
+                    if(testar && $(pageId + i).css('display') == 'block'){
+                        $(pageId + i).hide();
+                        document.getElementById('mmm').pause();
+                        var sourceMusic = musicSrc + (i+1);
+                        if(showLanguage){
+                            sourceMusic += 'en';
+                        }
+                        sourceMusic += '.mp3';
+
+                        $("#mmm").attr('src',sourceMusic);
+                        document.getElementById('mmm').play();
+                        $(pageId + (i + 1)).show();
+                        testar = false;
+
+                        if((i+1) == totalPages) {
+                            $("#next").hide();
+                        }
+                    }
+                }
+            });
+
+            $("#previous").click(function() {
+                $("#next").show();
+                var testar = true;
+
+                for (var i = totalPages; i >= 1; i--) {
+                    if(testar && $(pageId + i).css('display') == 'block'){
+                        $(pageId + i).hide();
+                        document.getElementById('mmm').pause();
+                        var sourceMusic = musicSrc + (i-1);
+                        if(showLanguage){
+                            sourceMusic += 'en';
+                        }
+                        sourceMusic += '.mp3';
+
+                        $("#mmm").attr('src',sourceMusic);
+                        document.getElementById('mmm').play();
+                        $(pageId + (i - 1)).show();
+                        testar = false;
+
+                        if((i-1) == 1) {
+                            $("#previous").hide();
+                        }
+                    }
+                }
+            });
+        });
+    </script>
 
 <style type="text/css">
 	table
@@ -169,7 +164,7 @@ $(document).ready(function () {
 
                     Why is an interrogative pronoun and is more frequently used in questions.<br />
                     Because is a conjunction and is used in answers.<br />
-                    <br /><br />
+                    <br />
 
                     <strong>Example: </strong>
                     <br />
@@ -239,88 +234,6 @@ $(document).ready(function () {
                     Describe your whole family.
 
 
-                </div>
-                <div id="p3" class="pagina" style="display: none;">
-                    <p>
-						In negative: SUBJECT + DO + NOT (DON'T) + MAIN VERD + COMPLEMENT
-					</p>
-					<br />
-					
-					<div style="display:block; width:90%; margin:auto;">
-						<table style="width:100%">
-							<tr>
-								<td>I</td>
-								<td></td>
-								<td></td>
-								<td></td>
-							</tr>
-							<tr>
-								<td>YOU</td>
-								<td></td>
-								<td>WORK</td>
-								<td>IN SP.</td>
-							</tr>
-							<tr>
-								<td>WE</td>
-								<td>DON'T</td>
-								<td>WATCH</td>
-								<td>TV EVERY NIGHT.</td>
-							</tr>
-							<tr>
-								<td>YOU</td>
-								<td></td>
-								<td>STUDY</td>
-								<td>ENGLISH AT WELBE PRIVATE CLASS.</td>
-							</tr>
-						</table>
-					</div>
-					
-					<br /><br />
-					<p>
-					And for HE / SHE / IT: SUBJECT + DOES + NO (DOESN'T) + MAIN VERB + COMPLEMENT
-					</p>
-					<br />
-					<div style="display:block; width:85%; margin:auto;">
-						<table style="width:100%">
-							<tr>
-								<td>HE</td>
-								<td></td>
-								<td>WORK</td>
-								<td>IN SP.</td>
-							</tr>
-							<tr>
-								<td>SHE</td>
-								<td>DOESN'T</td>
-								<td>WATCH</td>
-								<td>TV EVERY NIGHT.</td>
-							</tr>
-							<tr>
-								<td>IT</td>
-								<td></td>
-								<td>STUDY</td>
-								<td>ENGLISH AT WELBE PRIVATE CLASS.</td>
-							</tr>
-						</table>
-					</div>
-					<br />
-					<p>
-					NOTICE: Pay attentation to the verb when the auxiliary DOES is used, because the verb <br />
-					needs to lose the S, ES or IES.
-					</p>
-                </div>
-                <div id="p4" class="pagina" style="display: none;">
-                    <span class="bold">2. AMERICAN AND BRITISH ENGLISH </span>
-                    <br />
-					<p>
-					American: favorive / color / program / to realize / favor.<br />
-					British: favourite / colour / programme / to realise / favour.
-					</p>
-					<br />
-					<br />
-					<span class="bold">3. COMPOSITION </span>
-					<p style="font-weight:strong;">
-					Describe your daily routine using the Simple Present form.
-					</p>
                 </div>
             </div>
         </div>
