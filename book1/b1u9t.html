@@ -7,84 +7,119 @@
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 <script src="http://file.urin.take-uma.net/jquery.balloon.min.js"></script>
 
-<script type="text/javascript">
-$(document).ready(function () {
-	$('.balloon').balloon({
-		tipSize: 24,
-		css: {
-			opacity: '1'
-		}
-  });
-	$('strong').balloon();
-
-    var musicSrc = 'b1u9t';
-    var showLanguage = false;
-    var backgroundImage = 'url("images/qback9.jpg")';
+    <script type="text/javascript">
+        $(document).ready(function () {
+            // Ballons
+            $('.balloon').balloon({
+                tipSize: 24,
+                css: {
+                    opacity: '1'
+                }
+            });
+            $('strong').balloon();
 
 
-    // Initialize background
-    $("#myDiv").css('background-image', backgroundImage);
+            var musicSrc = 'b1u9t';
+            var langDefault = 'pt';
+            var showLanguage = false;
+            var backgroundImage = 'url("images/qback9.jpg")';
+            var totalPages = 2;
+            var pageId = "#p";
 
-    // Initialize Sound
-    $("#mmm").attr('src',musicSrc + '1.mp3');
+            // Initialize background
+            $("#myDiv").css('background-image', backgroundImage);
 
-    // Initialize Languages
-    if(!showLanguage){
-        $("#enus").hide();
-        $("#ptbr").hide();
-    }
+            // Initialize Sound
+            $("#mmm").attr('src',musicSrc + '1.mp3');
 
-    // Language clicks
-    $("#ptbr").click(function() {
-        document.getElementById('mmm').pause();
-        var a = $("#mmm").attr('src');
-        a = a.substring(0, a.length-6);
-        a += "pt.mp3";
-        $("#mmm").attr('src',a);
-        document.getElementById('mmm').play();
-    });
-    $("#enus").click(function() {
-        document.getElementById('mmm').pause();
-        var a = $("#mmm").attr('src');
-        a = a.substring(0, a.length-6);
-        a += "en.mp3";
-        $("#mmm").attr('src',a);
-        document.getElementById('mmm').play();
-    });
+            // Initialize Languages
+            if(!showLanguage){
+                $("#enus").hide();
+                $("#ptbr").hide();
+            }
 
-    // Next pages clicks
-    $("#next").click(function() {
-        $("#previous").show();
-        var testar = true;
 
-        if(testar && $("#p1").css('display') == 'block'){
-            $("#p1").hide();
-            document.getElementById('mmm').pause();
-            $("#mmm").attr('src',musicSrc+ '2' + '.mp3');
-            document.getElementById('mmm').play();
-            $("#p2").show();
-            $("#next").hide();
-            testar = false;
-        }
-    });
 
-    $("#previous").click(function() {
-        $("#next").show();
-        var testar = true;
 
-        if(testar && $("#p2").css('display') == 'block'){
-            $("#p2").hide();
-            document.getElementById('mmm').pause();
-            $("#mmm").attr('src',musicSrc+ '1' +'.mp3');
-            document.getElementById('mmm').play();
-            $("#p1").show();
-            $("#previous").hide();
-            testar = false;
-        }
-    });
+            $("#ptbr").click(function() {
+                document.getElementById('mmm').pause();
+                var a = $("#mmm").attr('src');
+                a = a.substring(0, 6);
+                a += "pt.mp3";
+                $("#mmm").attr('src',a);
+                document.getElementById('mmm').play();
+            });
+            $("#enus").click(function() {
+                document.getElementById('mmm').pause();
+                var a = $("#mmm").attr('src');
+                a = a.substring(0, 6);
+                a += "en.mp3";
+                $("#mmm").attr('src',a);
+                document.getElementById('mmm').play();
+            });
 
-});
-</script>
+
+            // Play Sound
+            if(showLanguage){
+                $("#enus").trigger('click');
+            }else {
+                document.getElementById('mmm').play();
+            }
+
+
+            $("#next").click(function() {
+                $("#previous").show();
+                var testar = true;
+
+                for (var i = 1; i <= totalPages; i++) {
+                    if(testar && $(pageId + i).css('display') == 'block'){
+                        $(pageId + i).hide();
+                        document.getElementById('mmm').pause();
+                        var sourceMusic = musicSrc + (i+1);
+                        if(showLanguage){
+                            sourceMusic += 'en';
+                        }
+                        sourceMusic += '.mp3';
+
+                        $("#mmm").attr('src',sourceMusic);
+                        document.getElementById('mmm').play();
+                        $(pageId + (i + 1)).show();
+                        testar = false;
+
+                        if((i+1) == totalPages) {
+                            $("#next").hide();
+                        }
+                    }
+                }
+            });
+
+            $("#previous").click(function() {
+                $("#next").show();
+                var testar = true;
+
+                for (var i = totalPages; i >= 1; i--) {
+                    if(testar && $(pageId + i).css('display') == 'block'){
+                        $(pageId + i).hide();
+                        document.getElementById('mmm').pause();
+                        var sourceMusic = musicSrc + (i-1);
+                        if(showLanguage){
+                            sourceMusic += 'en';
+                        }
+                        sourceMusic += '.mp3';
+
+                        $("#mmm").attr('src',sourceMusic);
+                        document.getElementById('mmm').play();
+                        $(pageId + (i - 1)).show();
+                        testar = false;
+
+                        if((i-1) == 1) {
+                            $("#previous").hide();
+                        }
+                    }
+                }
+            });
+        });
+    </script>
 
 <style type="text/css">
 	table
@@ -136,34 +171,39 @@ $(document).ready(function () {
 		</div>
         <div style="padding: 25px;">
             <div style="height: 500px;">
-                <div id="p1" class="pagina" style="display: block;">
+                <div id="p1" class="pagina" style="display: block; font-size: 18px;">
 					<strong>Croocks</strong><br />
 
+                    <img src="b1u9t1.png" alt="" style="float: left; margin-right: 5px;"/>
+                    <br />
                     A <span title="trapaceiros" class="balloon">crook</span> is a person who <span title="engana" class="balloon">deceives</span> others <span title="a fim de tirar vantagem" class="balloon">in order to take advantage</span> of something.
                     <br />
                     I think the world is <span title="cheio" class="balloon">full</span> of crooks, however when I think about the word crook, there is a class which represents it bette; the <span title="políticos" class="balloon">politicians</span>. They are the best example of croocks I know.
-                    <br />
+                    <br /> <br />
                     Before the elections they come to you and say exactly what you want to listen to and what needs to be changed, but when they are elected they simply disappear.
                     <br />
                     Of course there are honest politicians, but they are going into extinction.
-                    <br />
+                    <br /> <br />
                     You cannot let a nation behind, <span title="devido ao seu própro interesse" class="balloon">due to your own interests</span>.
                     <br />
                     <span title="suponho" class="balloon">I assume</span> you know other group of croocks, don't you? Unfortunately, we can add to this group a lot og professionals as some <span title="vendedores" class="balloon">salesmen</span>, <span title="empresários" class="balloon">businessmen</span>, doctors, policemen, lawyers, teachers, <span title="pastores" class="balloon">preachers</span> or <span title="engana" class="balloon">priestes</span> and <span title="e por aí vai" class="balloon">so on</span>.
-                    <br />
+                    <br /> <br />
                     What could we do <span title="para estarmos a salvo" class="balloon">to be safe</span> oh these kings of people? Definitely, the best way is to avoid the contact, <span title="contado" class="balloon">though</span> I know we don't have a crystal ball which shows us who is a crook or who isn't.
                     <br />
                 </div>
-                <div id="p2" class="pagina" style="display: none;">
-                    Anyway, try <span title="prestar atenção" class="balloon">to pay attention</span> to some <span title="detalhes" class="balloon">details</span>. When a person shows he or she is a very nice person and need to tell you all the time that does many good things to others, <span title="tenha cuidado" class="balloon">be carefull</span>, this person <span title="pode ser" class="balloon">may be</span> a crook. Certainly, there are good people in the word, but attention is always the best <span title="remédio" class="balloon">medicine</span> <span title="para evitar" class="balloon">to prevent</span> crooks.
-                    <br />
-                    Don't talk about your life to people who you do not know. This <span title="conselho" class="balloon">advice</span> <span title="parece" class="balloon">seems</span> to be stupid, but go to a <span title="fila do banco" class="balloon">bank line</span> and stay there more than ten minutes. You are going to see many people talking about their lives to people they do not know.
-                    <br />
-                    Make your part and we will certainly have a better world to live
-                    <br />
+                <div id="p2" class="pagina" style="display: none; font-size: 18px;">
 
-                    <span title="suco de manga" class="balloon">mango juice</span>, which is Mr. Stewart's favorite one, <span title="suco de mamão" class="balloon">papaya juice</span> for the boys and <span title="suco de abacaxi" class="balloon">pineapple juice</span> for Mrs. Stewart and Jane. And of course, much water. When <span title="tudo está pronto" class="balloon">everything is ready</span> to the picnic, Mrs. Stewart <span title="chama" class="balloon">calls</span> her <span title="marido" class="balloon">husband</span> and her <span title="filhos" class="balloon">kids</span> to ear, <span title="mas antes" class="balloon">but before</span>, they need <span title="lavar" class="balloon">to wash</span> their hands.<br>
-                    There are many things to do in the park in a <span title="dia ensolarado" class="balloon">sunny day</span>. <span title="então, da próxima vez" class="balloon">So, next time</span> you have a beautiful day and it is your <span title="folga" class="balloon">day off</span>, go to the park to <span title="para se divertir" class="balloon">have fun</span>.
+                    <img src="b1u9t2.png" alt="" style="float: left; margin-right: 5px;"/>
+                    <br />  <br /><br />
+                    Anyway, try <span title="prestar atenção" class="balloon">to pay attention</span> to some <span title="detalhes" class="balloon">details</span>.
+                    <br />  <br />
+                    When a person shows he or she is a very nice person and need to tell you all the time that does many good things to others, <span title="tenha cuidado" class="balloon">be carefull</span>, this person <span title="pode ser" class="balloon">may be</span> a crook.
+                    <br /> <br />
+                    Certainly, there are good people in the word, but attention is always the best <span title="remédio" class="balloon">medicine</span> <span title="para evitar" class="balloon">to prevent</span> crooks.
+                    <br />  <br />
+                    Don't talk about your life to people who you do not know. This <span title="conselho" class="balloon">advice</span> <span title="parece" class="balloon">seems</span> to be stupid, but go to a <span title="fila do banco" class="balloon">bank line</span> and stay there more than ten minutes. You are going to see many people talking about their lives to people they do not know.
+                    <br /> <br />
+                    Make your part and we will certainly have a better world to live.
                 </div>
             </div>
         </div>
