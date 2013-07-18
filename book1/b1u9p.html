@@ -5,116 +5,113 @@
 
 <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Josefin+Sans+Std+Light">
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-<script type="text/javascript">
-$(document).ready(function () {
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var musicSrc = 'b1u9p';
+            var langDefault = 'pt';
+            var showLanguage = false;
+            var backgroundImage = 'url("images/qback9.jpg")';
+            var totalPages = 4;
+            var pageId = "#p";
 
-    var musicSrc = 'b1u9p';
-    var langDefault = 'pt';
-    var showLanguage = false;
-    var backgroundImage = 'url("images/qback9.jpg")';
+            // Initialize background
+            $("#myDiv").css('background-image', backgroundImage);
+
+            // Initialize Sound
+            $("#mmm").attr('src',musicSrc + '1.mp3');
+
+            // Initialize Languages
+            if(!showLanguage){
+                $("#enus").hide();
+                $("#ptbr").hide();
+            }
 
 
-    // Initialize background
-    $("#myDiv").css('background-image', backgroundImage);
+            $("#ptbr").click(function() {
+                document.getElementById('mmm').pause();
+                var a = $("#mmm").attr('src');
+                a = a.substring(0, 6);
+                a += "pt.mp3";
+                $("#mmm").attr('src',a);
+                document.getElementById('mmm').play();
+            });
+            $("#enus").click(function() {
+                document.getElementById('mmm').pause();
+                var a = $("#mmm").attr('src');
+                a = a.substring(0, 6);
+                a += "en.mp3";
+                $("#mmm").attr('src',a);
+                document.getElementById('mmm').play();
+            });
 
-    // Initialize Sound
-    $("#mmm").attr('src',musicSrc + '1.mp3');
 
-    // Initialize Languages
-    if(!showLanguage){
-        $("#enus").hide();
-        $("#ptbr").hide();
-    }
+            // Play Sound
+            if(showLanguage){
+                $("#enus").trigger('click');
+            }else {
+                document.getElementById('mmm').play();
+            }
 
-    $("#ptbr").click(function() {
-        document.getElementById('mmm').pause();
-        var a = $("#mmm").attr('src');
-        a = a.substring(0, 6);
-        a += "pt.mp3";
-        $("#mmm").attr('src',a);
-        document.getElementById('mmm').play();
-    });
-    $("#enus").click(function() {
-        document.getElementById('mmm').pause();
-        var a = $("#mmm").attr('src');
-        a = a.substring(0, 6);
-        a += "en.mp3";
-        $("#mmm").attr('src',a);
-        document.getElementById('mmm').play();
-    });
 
-    $("#next").click(function() {
-        $("#previous").show();
-        var testar = true;
+            $("#next").click(function() {
+                $("#previous").show();
+                var testar = true;
 
-        if(testar && $("#p1").css('display') == 'block'){
-            $("#p1").hide();
-            document.getElementById('mmm').pause();
-            $("#mmm").attr('src',musicSrc+ '2' +'.mp3');
-            document.getElementById('mmm').play();
-            $("#p2").show();
-            testar = false;
-        }
+                for (var i = 1; i <= totalPages; i++) {
+                    if(testar && $(pageId + i).css('display') == 'block'){
+                        $(pageId + i).hide();
+                        document.getElementById('mmm').pause();
+                        var sourceMusic = musicSrc + (i+1);
+                        if(showLanguage){
+                            sourceMusic += 'en';
+                        }
+                        sourceMusic += '.mp3';
 
-        if(testar && $("#p2").css('display') == 'block'){
-            $("#p2").hide();
-            document.getElementById('mmm').pause();
-            $("#mmm").attr('src',musicSrc+'3' +'.mp3');
-            document.getElementById('mmm').play();
-            $("#p3").show();
-            testar = false;
-        }
-        if(testar && $("#p3").css('display') == 'block'){
-            $("#p3").hide();
-            document.getElementById('mmm').pause();
-            $("#mmm").attr('src',musicSrc+'4' +'.mp3');
-            document.getElementById('mmm').play();
-            $("#p4").show();
-            testar = false;
-            $("#next").hide();
-        }
-    });
+                        $("#mmm").attr('src',sourceMusic);
+                        document.getElementById('mmm').play();
+                        $(pageId + (i + 1)).show();
+                        testar = false;
 
-    $("#previous").click(function() {
-        $("#next").show();
-        var testar = true;
+                        if((i+1) == totalPages) {
+                            $("#next").hide();
+                        }
+                    }
+                }
+            });
 
-        if(testar && $("#p2").css('display') == 'block'){
-            $("#p2").hide();
-            document.getElementById('mmm').pause();
-            $("#mmm").attr('src',musicSrc+ '1' +'.mp3');
-            document.getElementById('mmm').play();
-            $("#p1").show();
-            $("#previous").hide();
-            testar = false;
-        }
+            $("#previous").click(function() {
+                $("#next").show();
+                var testar = true;
 
-        if(testar && $("#p3").css('display') == 'block'){
-            $("#p3").hide();
-            document.getElementById('mmm').pause();
-            $("#mmm").attr('src',musicSrc+ '2' +'.mp3');
-            document.getElementById('mmm').play();
-            $("#p2").show();
-            testar = false;
-        }
+                for (var i = totalPages; i >= 1; i--) {
+                    if(testar && $(pageId + i).css('display') == 'block'){
+                        $(pageId + i).hide();
+                        document.getElementById('mmm').pause();
+                        var sourceMusic = musicSrc + (i-1);
+                        if(showLanguage){
+                            sourceMusic += 'en';
+                        }
+                        sourceMusic += '.mp3';
 
-        if(testar && $("#p4").css('display') == 'block'){
-            $("#p4").hide();
-            document.getElementById('mmm').pause();
-            $("#mmm").attr('src',musicSrc+ '3' +'.mp3');
-            document.getElementById('mmm').play();
-            $("#p3").show();
-            testar = false;
-        }
-    });
+                        $("#mmm").attr('src',sourceMusic);
+                        document.getElementById('mmm').play();
+                        $(pageId + (i - 1)).show();
+                        testar = false;
 
-    <!-- SHOW ANSWERS -->
-    $(".p_question").click(function() {
-        $(this).next().show();
-    });
+                        if((i-1) == 1) {
+                            $("#previous").hide();
+                        }
+                    }
+                }
+            });
 
-});
-</script>
+            <!-- SHOW ANSWERS -->
+            $(".p_question").click(function() {
+                $(this).next().show();
+            });
+
+        });
+    </script>
 
 <style type="text/css">
 	table
@@ -165,25 +162,25 @@ $(document).ready(function () {
         <div style="padding: 30px;">
             <div style="height: 500px;">
                 <div id="p1" class="pagina" style="display: block;">
-                    <strong>PRACTICE - A NEW BOYFRIEND</strong><br />
+                    <strong>PRACTICE - A NEW BOYFRIEND</strong><br /><br />
 
                     <strong>1. Make like the example</strong><br />
 
                     <strong>Example:</strong>Maria / intelligent / talkative.<br />
-                    What is Maria like? SHe is intelligent and talkative.,
+                    What is Maria like? SHe is intelligent and talkative.<br /><br />
 
 
                     <span class="p_question">A) Daniel / dumb / quiet.</span>
-                    <span class="p_answer">What is Daniel like? He is dumb and quiet.</span>
+                    <span class="p_answer">What is Daniel like? He is dumb and quiet.</span>  <br />
 
                     <span class="p_question">B) Paul / strong / calm.</span>
-                    <span class="p_answer">What is Paul like? He is strong and calm.</span>
+                    <span class="p_answer">What is Paul like? He is strong and calm.</span>  <br />
 
                     <span class="p_question">C) Michelle  / weak / nervous</span>
-                    <span class="p_answer">What is Michelle like? She is weak and nervous.</span>
+                    <span class="p_answer">What is Michelle like? She is weak and nervous.</span>  <br />
 
                     <span class="p_question">D) Daniel / teach / the lesson.</span>
-                    <span class="p_answer">What is Lucy like? She is polite and nice.</span>
+                    <span class="p_answer">What is Lucy like? She is polite and nice.</span>  <br />
 
                     <span class="p_question">E) Dianne / drive / a car.</span>
                     <span class="p_answer">What is Johnny like? He is shy and quiet.</span>
@@ -191,29 +188,29 @@ $(document).ready(function () {
                 </div>
 
                 <div id="p2" class="pagina" style="display: none;">
-                    <strong>2. Follow the example</strong><br />
+                    <strong>2. Follow the example</strong><br /> <br />
 
                     <strong>Example:</strong> Sunny and warm<br />
-                    What is the weather like? It is sunny and warm.
+                    What is the weather like? It is sunny and warm.<br /><br />
 
                     <span class="p_question">A) Cloudy and cold</span>
-                    <span class="p_answer">What is the weather like? It is cloudy and cold.</span>
+                    <span class="p_answer">What is the weather like? It is cloudy and cold.</span>  <br />
 
                     <span class="p_question">B) Windy but warm</span>
-                    <span class="p_answer">What is the weather like? It is windy but wearm.</span>
+                    <span class="p_answer">What is the weather like? It is windy but wearm.</span>  <br />
 
                     <span class="p_question">C) Snowy and cold</span>
-                    <span class="p_answer">What is the weather like? It is snowy and cold.</span>
+                    <span class="p_answer">What is the weather like? It is snowy and cold.</span>  <br />
 
                     <span class="p_question">D) Rainy but warm</span>
-                    <span class="p_answer">What is the weather like? It is rainy but warm.</span>
+                    <span class="p_answer">What is the weather like? It is rainy but warm.</span> <br />
 
                     <span class="p_question">E) Warm but cloudy</span>
                     <span class="p_answer">What is the weather like? It is warm but cloudy.</span>
 
                 </div>
                 <div id="p3" class="pagina" style="display: none;">
-                    <strong>3.Complete the sentences with the verbs in brackets.</strong><br />
+                    <strong>3.Complete the sentences with the verbs in brackets.</strong><br /><br />
 
                     <div style="display:block; width:100%; margin:auto;">
                         <table style="width:100%;  font-size: 14px;">
@@ -323,19 +320,19 @@ $(document).ready(function () {
 
 
                     <span class="p_question">A) What is your favorite color?</span>
-                    <span class="p_answer"> Why is Elizabeth at the club? Because she wants to have fun.</span>
+                    <span class="p_answer"> Why is Elizabeth at the club? Because she wants to have fun.</span>   <br />
 
                     <span class="p_question">B) Mary would like to call Dennis. She needs to talk to him.</span>
-                    <span class="p_answer">Why would Mary like to call Dennis? Because she needs to talk to him.</span>
+                    <span class="p_answer">Why would Mary like to call Dennis? Because she needs to talk to him.</span> <br />
 
                     <span class="p_question">C)  Peter can help you. He is a good guy.</span>
-                    <span class="p_answer">    Why can Peter help you? Because he is a good guy.</span>
+                    <span class="p_answer">    Why can Peter help you? Because he is a good guy.</span>  <br />
 
                     <span class="p_question">D) Ted is going to travel to Europe. He has some money.</span>
-                    <span class="p_answer"> Why is Ted going to travel to Europe? Because he has some money.</span>
+                    <span class="p_answer"> Why is Ted going to travel to Europe? Because he has some money.</span> <br />
 
                     <span class="p_question">E) Tina speaks English fluently. She has studied a lot.</span>
-                    <span class="p_answer">Why does Tina speak English fluently? Because she studied a lot.</span>
+                    <span class="p_answer">Why does Tina speak English fluently? Because she studied a lot.</span> <br />
 
                     <span class="p_question">F) Patrick and Bob study hard. They are going to do an exam.</span>
                     <span class="p_answer"> Why does Patrick and Bob study hard? Because they are going to do an exam.</span>
