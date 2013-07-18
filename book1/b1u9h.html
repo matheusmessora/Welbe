@@ -12,7 +12,8 @@
             var langDefault = 'pt';
             var showLanguage = false;
             var backgroundImage = 'url("images/qback9.jpg")';
-
+            var totalPages = 3;
+            var pageId = "#p";
 
             // Initialize background
             $("#myDiv").css('background-image', backgroundImage);
@@ -27,27 +28,55 @@
             }
 
 
+            $("#ptbr").click(function() {
+                document.getElementById('mmm').pause();
+                var a = $("#mmm").attr('src');
+                a = a.substring(0, 6);
+                a += "pt.mp3";
+                $("#mmm").attr('src',a);
+                document.getElementById('mmm').play();
+            });
+            $("#enus").click(function() {
+                document.getElementById('mmm').pause();
+                var a = $("#mmm").attr('src');
+                a = a.substring(0, 6);
+                a += "en.mp3";
+                $("#mmm").attr('src',a);
+                document.getElementById('mmm').play();
+            });
+
+
+            // Play Sound
+            if(showLanguage){
+                $("#enus").trigger('click');
+            }else {
+                document.getElementById('mmm').play();
+            }
+
+
             $("#next").click(function() {
                 $("#previous").show();
                 var testar = true;
 
-                if(testar && $("#p1").css('display') == 'block'){
-                    $("#p1").hide();
-                    document.getElementById('mmm').pause();
-                    $("#mmm").attr('src',musicSrc+ '2.mp3');
-                    document.getElementById('mmm').play();
-                    $("#p2").show();
-                    testar = false;
-                }
+                for (var i = 1; i <= totalPages; i++) {
+                    if(testar && $(pageId + i).css('display') == 'block'){
+                        $(pageId + i).hide();
+                        document.getElementById('mmm').pause();
+                        var sourceMusic = musicSrc + (i+1);
+                        if(showLanguage){
+                            sourceMusic += 'en';
+                        }
+                        sourceMusic += '.mp3';
 
-                if(testar && $("#p2").css('display') == 'block'){
-                    $("#p2").hide();
-                    document.getElementById('mmm').pause();
-                    $("#mmm").attr('src',musicSrc+ '3.mp3');
-                    document.getElementById('mmm').play();
-                    $("#p3").show();
-                    testar = false;
-                    $("#next").hide();
+                        $("#mmm").attr('src',sourceMusic);
+                        document.getElementById('mmm').play();
+                        $(pageId + (i + 1)).show();
+                        testar = false;
+
+                        if((i+1) == totalPages) {
+                            $("#next").hide();
+                        }
+                    }
                 }
             });
 
@@ -55,25 +84,28 @@
                 $("#next").show();
                 var testar = true;
 
-                if(testar && $("#p2").css('display') == 'block'){
-                    $("#p2").hide();
-                    document.getElementById('mmm').pause();
-                    $("#mmm").attr('src','b2u11h1.mp3');
-                    document.getElementById('mmm').play();
-                    $("#p1").show();
-                    $("#previous").hide();
-                    testar = false;
-                }
+                for (var i = totalPages; i >= 1; i--) {
+                    if(testar && $(pageId + i).css('display') == 'block'){
+                        $(pageId + i).hide();
+                        document.getElementById('mmm').pause();
+                        var sourceMusic = musicSrc + (i-1);
+                        if(showLanguage){
+                            sourceMusic += 'en';
+                        }
+                        sourceMusic += '.mp3';
 
-                if(testar && $("#p3").css('display') == 'block'){
-                    $("#p3").hide();
-                    document.getElementById('mmm').pause();
-                    $("#mmm").attr('src','b2u11h2.mp3');
-                    document.getElementById('mmm').play();
-                    $("#p2").show();
-                    testar = false;
+                        $("#mmm").attr('src',sourceMusic);
+                        document.getElementById('mmm').play();
+                        $(pageId + (i - 1)).show();
+                        testar = false;
+
+                        if((i-1) == 1) {
+                            $("#previous").hide();
+                        }
+                    }
                 }
             });
+
 
             $(".red").click(function() {
                 var campos = $(this).next().find('input');
@@ -96,7 +128,7 @@
                     if ($(this).attr("rel").indexOf("|") == -1) {
                         rel = $(this).attr("rel")
                     }else {
-                        rel = $(this).attr("rel").split("|")[0];
+                        rel = $(this).attr("rel").toLowerCase().split("|")[0];
                     }
 
                     $(this).val(rel);
@@ -196,29 +228,29 @@
                     <p class="bold">
                         1. Answer the questions below.
                     </p>
-                    <div class="theLabel"></div><div class="green" title="p1"></div><div class="yellow"></div><div class="red"></div>
+                    <div class="theLabel"></div><div class="green" title="1pA"></div><div class="yellow"></div><div class="red"></div>
                     <p class="exercicio">
                         A) What is your dad like? <br/>
                         <input onblur="teste(this);" type="text" rel="He is (any adjective).">
                     </p>
 
-                    <div class="theLabel"></div><div class="green" title="p2"></div><div class="yellow"></div><div class="red"></div>
+                    <div class="theLabel"></div><div class="green" title="1pB"></div><div class="yellow"></div><div class="red"></div>
                     <p  class="exercicio">
                         B) Why are you studying English? <br/>
                         <input onblur="teste(this);" type="text" rel="Because English is very important.">
                     </p>
 
-                    <div class="theLabel"></div><div class="green" title="p3"></div><div class="yellow"></div><div class="red"></div>
+                    <div class="theLabel"></div><div class="green" title="1pC"></div><div class="yellow"></div><div class="red"></div>
                     <p  class="exercicio">
                         C) What does your dad like? <br/>
                         <input onblur="teste(this);" type="text" rel="He likes (anything).">
 
-                    <div class="theLabel"></div><div class="green" title="p4"></div><div class="yellow"></div><div class="red"></div>
+                    <div class="theLabel"></div><div class="green" title="1pD"></div><div class="yellow"></div><div class="red"></div>
                     <p  class="exercicio">
                         D) Where do inted to be within 5 years? <br/>
                         <input onblur="teste(this);" type="text" rel="I inted to be (any place)">
 
-                    <div class="theLabel"></div><div class="green" title="p4"></div><div class="yellow"></div><div class="red"></div>
+                    <div class="theLabel"></div><div class="green" title="1pE"></div><div class="yellow"></div><div class="red"></div>
                     <p  class="exercicio">
                         E) What time do you usually leave your house in the morning? <br/>
                         <input onblur="teste(this);" type="text" rel="I usually leave my house at (any time).">
@@ -234,27 +266,27 @@
                     <br /><br />
 
 
-                    <div class="theLabel"></div><div class="green" title="p4"></div><div class="yellow"></div><div class="red"></div>
+                    <div class="theLabel"></div><div class="green" title="2pA"></div><div class="yellow"></div><div class="red"></div>
                     <p  class="exercicio">
                         A) They are going to the club. It's holiday. <br />
                         <input onblur="teste(this);" type="text" rel="Why are they going to the club?">
                         <input onblur="teste(this);" type="text" rel="Because it is holiday.">
 
-                    <div class="theLabel"></div><div class="green" title="p4"></div><div class="yellow"></div><div class="red"></div>
+                    <div class="theLabel"></div><div class="green" title="2pB"></div><div class="yellow"></div><div class="red"></div>
                     <p  class="exercicio">
                         B) Joe is going to buy a new house. He has saved some money. <br />
                         <input onblur="teste(this);" type="text" rel="Why is Joe going to buy a new house?">
                         <input onblur="teste(this);" type="text" rel="Because he has saved some money.">
 
 
-                    <div class="theLabel"></div><div class="green" title="p4"></div><div class="yellow"></div><div class="red"></div>
+                    <div class="theLabel"></div><div class="green" title="2pC"></div><div class="yellow"></div><div class="red"></div>
                     <p  class="exercicio">
                         C) We don't like to dance. We don't know how to dance. <br />
                         <input onblur="teste(this);" type="text" rel="Why don't you like to dance?">
                         <input onblur="teste(this);" type="text" rel="Because we don't know how to dance.">
 
 
-                    <div class="theLabel"></div><div class="green" title="p4"></div><div class="yellow"></div><div class="red"></div>
+                    <div class="theLabel"></div><div class="green" title="2pD"></div><div class="yellow"></div><div class="red"></div>
                     <p  class="exercicio">
                         D) The Prince wants to visit India. It's a beautiful country.<br />
                         <input onblur="teste(this);" type="text" rel="Why does the Prince want to visit India?">
@@ -266,31 +298,31 @@
                         3. Fill out with adjectives or pronouns
                     </p>
 
-                    <div class="theLabel"></div><div class="green" title="p15"></div><div class="yellow"></div><div class="red"></div>
+                    <div class="theLabel"></div><div class="green" title="3pA"></div><div class="yellow"></div><div class="red"></div>
                     <p class="exercicio">
                        A)  <input onblur="teste(this);" type="text" rel="I|You|They">	have very 	<input onblur="teste(this);" type="text" rel="beautiful|nice" style="width:100px">	sisters.
 
-                    <div class="theLabel"></div><div class="green" title="p16"></div><div class="yellow"></div><div class="red"></div>
+                    <div class="theLabel"></div><div class="green" title="3pB"></div><div class="yellow"></div><div class="red"></div>
                     <p class="exercicio">
                         B) There aren't	 <input onblur="teste(this);" type="text" rel="BAD|GOOD">	teachers in the school.
 
-                    <div class="theLabel"></div><div class="green" title="p17"></div><div class="yellow"></div><div class="red"></div>
+                    <div class="theLabel"></div><div class="green" title="3pC"></div><div class="yellow"></div><div class="red"></div>
                     <p class="exercicio">
                         C) <input onblur="teste(this);" type="text" rel="I"> don't know <input onblur="teste(this);" type="text" rel="you">, but <input onblur="teste(this);" type="text" rel="I">, don't like <input onblur="teste(this);" type="text" rel="those"> peolple.
 
-                    <div class="theLabel"></div><div class="green" title="p18"></div><div class="yellow"></div><div class="red"></div>
+                    <div class="theLabel"></div><div class="green" title="3pD"></div><div class="yellow"></div><div class="red"></div>
                     <p class="exercicio">
                         D) When  <input onblur="teste(this);" type="text" rel="I">  buy my <input onblur="teste(this);" type="text" rel="new"> car, we can go to the beach together.
 
-                    <div class="theLabel"></div><div class="green" title="p19"></div><div class="yellow"></div><div class="red"></div>
+                    <div class="theLabel"></div><div class="green" title="3pE"></div><div class="yellow"></div><div class="red"></div>
                     <p class="exercicio">
                         E) Shirley wants <input onblur="teste(this);" type="text" rel="her"> old book again.
 
-                    <div class="theLabel"></div><div class="green" title="p20"></div><div class="yellow"></div><div class="red"></div>
+                    <div class="theLabel"></div><div class="green" title="3pF"></div><div class="yellow"></div><div class="red"></div>
                     <p class="exercicio">
                         F) These are many <input onblur="teste(this);" type="text" rel="beautiful"> places to visit in the world.
 
-                    <div class="theLabel"></div><div class="green" title="p21"></div><div class="yellow"></div><div class="red"></div>
+                    <div class="theLabel"></div><div class="green" title="3pG"></div><div class="yellow"></div><div class="red"></div>
                     <p class="exercicio">
                        G) <input onblur="teste(this);" type="text" rel="My"> sister is <input onblur="teste(this);" type="text" rel="tall"> and <input onblur="teste(this);" type="text" rel="thin">. She is a model.
 
@@ -299,17 +331,17 @@
                         4. What are you like?
                     </p>
 
-                    <div class="theLabel"></div><div class="green" title="p21"></div><div class="yellow"></div><div class="red"></div>
+                    <div class="theLabel"></div><div class="green" title="3pH"></div><div class="yellow"></div><div class="red"></div>
                     <p class="exercicio">
                         <input style="width:400px;" onblur="teste(this);" type="text" rel="I am very outgoing and confident.">
 
 
-                    <div class="theLabel"></div><div class="green" title="p21"></div><div class="yellow"></div><div class="red"></div>
+                    <div class="theLabel"></div><div class="none"></div><div class="yellow"></div><div class="red"></div>
                     <p class="exercicio">
                         <input style="width:400px;"  onblur="teste(this);" type="text" rel="I am also talkative and calm.">
 
 
-                    <div class="theLabel"></div><div class="green" title="p21"></div><div class="yellow"></div><div class="red"></div>
+                    <div class="theLabel"></div><div class="none"></div><div class="yellow"></div><div class="red"></div>
                     <p class="exercicio">
                         <input style="width:400px;"  onblur="teste(this);" type="text" rel="I am smart and little stubborn.">
 
