@@ -3,6 +3,7 @@
 <title>11</title>
 <link href="book2.css" rel="stylesheet" type="text/css">
 
+<script src="popcorn.js"  type="text/javascript"></script>
 <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Josefin+Sans+Std+Light">
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 <script type="text/javascript">
@@ -27,6 +28,93 @@ $(document).ready(function () {
     }
 
 
+    // Popup texts
+    var popcorn = Popcorn("#mmm");
+
+    popcorn.exec(11, function () {
+        $(".letter").eq(0).show('slow');
+    });
+    popcorn.exec(12, function () {
+        $(".letter").eq(1).show('slow');
+    });
+    popcorn.exec(13.3, function () {
+        $(".letter").eq(2).show('slow');
+    });
+    popcorn.exec(14.3, function () {
+        $(".letter").eq(3).show('slow');
+    });
+    popcorn.exec(15.6, function () {
+        $(".letter").eq(4).show('slow');
+    });
+    popcorn.exec(17, function () {
+        $(".letter").eq(5).show('slow');
+    });
+    popcorn.exec(18.3, function () {
+        $(".letter").eq(6).show('slow');
+    });
+    popcorn.exec(19.6, function () {
+        $(".letter").eq(7).show('slow');
+    });
+    popcorn.exec(20.9, function () {
+        $(".letter").eq(8).show('slow');
+    });
+    popcorn.exec(22.1, function () {
+        $(".letter").eq(9).show('slow');
+    });
+    popcorn.exec(23.5, function () {
+        $(".letter").eq(10).show('slow');
+    });
+    popcorn.exec(24.8, function () {
+        $(".letter").eq(11).show('slow');
+    });
+    // M...
+    popcorn.exec(26, function () {
+        $(".letter").eq(12).show('slow');
+    });
+    popcorn.exec(27.3, function () {
+        $(".letter").eq(13).show('slow');
+    });
+    popcorn.exec(28.6, function () {
+        $(".letter").eq(14).show('slow');
+    });
+    popcorn.exec(30, function () {
+        $(".letter").eq(15).show('slow');
+    });
+    popcorn.exec(31.3, function () {
+        $(".letter").eq(16).show('slow');
+    });
+    popcorn.exec(32.6, function () {
+        $(".letter").eq(17).show('slow');
+    });
+    popcorn.exec(34, function () {
+        $(".letter").eq(18).show('slow');
+    });
+    popcorn.exec(35.3, function () {
+        $(".letter").eq(19).show('slow');
+    });
+    popcorn.exec(36.6, function () {
+        $(".letter").eq(20).show('slow');
+    });
+    popcorn.exec(38, function () {
+        $(".letter").eq(21).show('slow');
+    });
+    popcorn.exec(39.3, function () {
+        $(".letter").eq(22).show('slow');
+    });
+    popcorn.exec(40.6, function () {
+        $(".letter").eq(23).show('slow');
+    });
+    popcorn.exec(42, function () {
+        $(".letter").eq(24).show('slow');
+    });
+    popcorn.exec(43.3, function () {
+        $(".letter").eq(25).show('slow');
+    });
+    // Zed
+    popcorn.exec(46, function () {
+        $(".letter").eq(26).show('slow');
+    });
+
     $("#ptbr").click(function() {
         document.getElementById('mmm').pause();
         var a = $("#mmm").attr('src');
@@ -34,6 +122,8 @@ $(document).ready(function () {
         a += "pt.mp3";
         $("#mmm").attr('src',a);
         document.getElementById('mmm').play();
+
+        $(".letter").hide();
     });
     $("#enus").click(function() {
         document.getElementById('mmm').pause();
@@ -42,6 +132,8 @@ $(document).ready(function () {
         a += "en.mp3";
         $("#mmm").attr('src',a);
         document.getElementById('mmm').play();
+
+        $(".letter").hide();
     });
 
 
@@ -149,7 +241,7 @@ $(document).ready(function () {
         <div id="paginaAtual">
 			<img id="enus" src="http://www.webrazuca.com/v4/images/dc_icon_usa.png" width="30" height="30">
 			
-				<audio id="mmm" controls src="b1u1g1pt.mp3">
+				<audio id="mmm" controls src="b1u1g1pt.mp3" style="width: 100%;">
 					Your browser does not support the audio element.
 				</audio>
 			
@@ -163,11 +255,14 @@ $(document).ready(function () {
                     <p class="bold">
                         1. ALPHABET
                     </p><br />
-                    <p>
-                        A___,B___,C___,D___,E___,F___,G___,H___,I___,J___,K___,L___,<br />
-						M___,N___,O___,P___,Q___,R___,S___,T___,U___,V___,W___,X___,<br />
-						Y___,Z___,___.
-                    </p><br />
+                    <div style="float:left">
+
+                        A <span class="letter" style="">ei</span> ,B <span class="letter" style="">bi</span> ,C <span class="letter" style="">ci</span> ,D <span class="letter" style="">di</span> ,E <span class="letter" style="">i</span> ,F <span class="letter" style="">éf</span> ,G <span class="letter" style="">dji</span> ,H <span class="letter" style="">êitch</span> ,I <span class="letter" style="">ai</span> ,J <span class="letter" style="">djêi</span> ,K <span class="letter" style="">quei</span> ,L <span class="letter" style="">él</span> ,<br />
+						M <span class="letter" style="">êm</span> ,N <span class="letter" style="">ên</span> ,O <span class="letter" style="">ou</span> ,P <span class="letter" style="">pi</span> ,Q <span class="letter" style="">quil</span> ,R <span class="letter" style="">ar</span> ,S <span class="letter" style="">éss</span> ,T <span class="letter" style="">ti</span> ,U <span class="letter" style="">iu</span> ,V <span class="letter" style="">vi</span> ,W <span class="letter" style="">doboiu</span> ,X <span class="letter" style="">ecs</span> ,<br />
+						Y <span class="letter" style="">uai</span> ,Z <span class="letter" style="">zi</span> , <span class="letter" style="">zed</span> .
+                    </div><br />
+
+                    <div style="clear: both;"/>
 					
 					<p class="bold">
 						2. NUMBERS

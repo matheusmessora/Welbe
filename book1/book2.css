@@ -357,7 +357,7 @@ span.e7
 	font-weight:bold;
 }
 
-.p_answer {
+.p_answer, .letter {
     color: red;
     display: none;
 }
