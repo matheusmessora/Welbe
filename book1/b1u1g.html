@@ -29,91 +29,27 @@ $(document).ready(function () {
 
 
     // Popup texts
-    var popcorn = Popcorn("#mmm");
+    var popCornInstance = Popcorn("#mmm");
+    var loadPopcron = function(isPtBr) {
+        var timeStart = 10.3;
+        if(isPtBr){
+            timeStart = 14.3;
+        }
 
-    popcorn.exec(11, function () {
-        $(".letter").eq(0).show('slow');
-    });
-    popcorn.exec(12, function () {
-        $(".letter").eq(1).show('slow');
-    });
-    popcorn.exec(13.3, function () {
-        $(".letter").eq(2).show('slow');
-    });
-    popcorn.exec(14.3, function () {
-        $(".letter").eq(3).show('slow');
-    });
-    popcorn.exec(15.6, function () {
-        $(".letter").eq(4).show('slow');
-    });
-    popcorn.exec(17, function () {
-        $(".letter").eq(5).show('slow');
-    });
-    popcorn.exec(18.3, function () {
-        $(".letter").eq(6).show('slow');
-    });
-    popcorn.exec(19.6, function () {
-        $(".letter").eq(7).show('slow');
-    });
-    popcorn.exec(20.9, function () {
-        $(".letter").eq(8).show('slow');
-    });
-    popcorn.exec(22.1, function () {
-        $(".letter").eq(9).show('slow');
-    });
-    popcorn.exec(23.5, function () {
-        $(".letter").eq(10).show('slow');
-    });
-    popcorn.exec(24.8, function () {
-        $(".letter").eq(11).show('slow');
-    });
-    // M...
-    popcorn.exec(26, function () {
-        $(".letter").eq(12).show('slow');
-    });
-    popcorn.exec(27.3, function () {
-        $(".letter").eq(13).show('slow');
-    });
-    popcorn.exec(28.6, function () {
-        $(".letter").eq(14).show('slow');
-    });
-    popcorn.exec(30, function () {
-        $(".letter").eq(15).show('slow');
-    });
-    popcorn.exec(31.3, function () {
-        $(".letter").eq(16).show('slow');
-    });
-    popcorn.exec(32.6, function () {
-        $(".letter").eq(17).show('slow');
-    });
-    popcorn.exec(34, function () {
-        $(".letter").eq(18).show('slow');
-    });
-    popcorn.exec(35.3, function () {
-        $(".letter").eq(19).show('slow');
-    });
-    popcorn.exec(36.6, function () {
-        $(".letter").eq(20).show('slow');
-    });
-    popcorn.exec(38, function () {
-        $(".letter").eq(21).show('slow');
-    });
-    popcorn.exec(39.3, function () {
-        $(".letter").eq(22).show('slow');
-    });
-    popcorn.exec(40.6, function () {
-        $(".letter").eq(23).show('slow');
-    });
-    popcorn.exec(42, function () {
-        $(".letter").eq(24).show('slow');
-    });
-    popcorn.exec(43.3, function () {
-        $(".letter").eq(25).show('slow');
-    });
-    // Zed
-    popcorn.exec(46, function () {
-        $(".letter").eq(26).show('slow');
-    });
+        $(".letter").each(function (key, value){
+            popCornInstance.exec((timeStart), function () {
+                $(".letter").eq(key).show('slow');
+            });
+
+            if(isPtBr){
+                timeStart += 1.49;
+            }else {
+                timeStart += 1.33;
+            }
+        });
+    }
+
+    loadPopcron(false);
 
     $("#ptbr").click(function() {
         document.getElementById('mmm').pause();
@@ -121,8 +57,11 @@ $(document).ready(function () {
         a = a.substring(0, 6);
         a += "pt.mp3";
         $("#mmm").attr('src',a);
-        document.getElementById('mmm').play();
 
+        Popcorn.destroy(popCornInstance);
+        popCornInstance = Popcorn("#mmm");
+        loadPopcron(true);
+        document.getElementById('mmm').play();
         $(".letter").hide();
     });
     $("#enus").click(function() {
@@ -134,6 +73,9 @@ $(document).ready(function () {
         document.getElementById('mmm').play();
 
         $(".letter").hide();
+        Popcorn.destroy(popCornInstance);
+        popCornInstance = Popcorn("#mmm");
+        loadPopcron(false);
     });
 
 
@@ -241,7 +183,7 @@ $(document).ready(function () {
         <div id="paginaAtual">
 			<img id="enus" src="http://www.webrazuca.com/v4/images/dc_icon_usa.png" width="30" height="30">
 			
-				<audio id="mmm" controls src="b1u1g1pt.mp3" style="width: 100%;">
+				<audio id="mmm" controls src="b1u1g1pt.mp3">
 					Your browser does not support the audio element.
 				</audio>
 			
