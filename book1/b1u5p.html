@@ -10,7 +10,7 @@
         function eitchaLele(myUnit, myLesson){
             $.ajax({
                 type: "POST",
-                url: "http://www.welbe.com.br/class/Book1Grammar1.aspx/Unlock",
+                url: "http://www.ingleson.com.br/class/Book1Grammar1.aspx/Unlock",
                 data: "{ _unit: '" + myUnit + "', _lesson:'" + myLesson + "'}",
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
@@ -71,6 +71,7 @@
 
 
             $("#next").click(function() {
+                eitchaLele(5,'practice');
                 $("#previous").show();
                 var testar = true;
 
