@@ -362,9 +362,18 @@ span.e7
     display: none;
 }
 
+.p_answer_mini {
+    color: red;
+}
+
 .p_question {
     margin-top: 3px;
     display: block;
+    cursor: pointer;
+}
+
+.p_question_2 {
+    margin-top: 1px;
     cursor: pointer;
 }
 

@@ -175,6 +175,7 @@ function teste(campo){
         for (i = 0; i < ar.length; i++) {
             if (ar[i] == $(campo).val().toLowerCase()) {
                 $(campo).css('color', 'green');
+                retorno = true;
                 break;
             } else {
                 $(campo).css('color', 'red');
@@ -320,7 +321,7 @@ function teste(campo){
 
 					<div class="theLabel"></div><div class="green" title="2pF"></div><div class="yellow"></div><div class="red"></div>
                     <p class="exercicio">
-                        F) There's a car in the garage. What <input onblur="teste(this);" type="text" rel="is there in the garage? / is in the garage"> ?
+                        F) There's a car in the garage. What <input onblur="teste(this);" type="text" rel="is there in the garage|is in the garage"> ?
                     
 					<div class="theLabel"></div><div class="green" title="2pG"></div><div class="yellow"></div><div class="red"></div>
                     <p class="exercicio">
@@ -350,7 +351,7 @@ function teste(campo){
 
                     <div class="theLabel"></div><div class="green" title="3pC"></div><div class="yellow"></div><div class="red"></div>
                     <p class="exercicio">
-                        C) Patty likes to sit down <input style="width: 200px;" onblur="teste(this);" type="text" rel="beside / near / with / behind"> Pete.
+                        C) Patty likes to sit down <input style="width: 230px;" onblur="teste(this);" type="text" rel="beside|near|with|behind"> Pete.
 
                     <div class="theLabel"></div><div class="green" title="3pD"></div><div class="yellow"></div><div class="red"></div>
                     <p class="exercicio">
@@ -400,32 +401,32 @@ function teste(campo){
                     <div class="theLabel"></div><div class="green" title="4pA"></div><div class="yellow"></div><div class="red"></div>
                     <p class="exercicio">
                         A) Clock / wall<br />
-                        <input onblur="teste(this);" type="text" rel="Is there a clock on the wall?"><input onblur="teste(this);" type="text" rel="No, there isn't a clock on the wall.">
+                        <input onblur="teste(this);" type="text" rel="Is there a clock on the wall">?<input onblur="teste(this);" type="text" rel="No, there isn't a clock on the wall|No, there is not a clock on the wall">.
 
                     <div class="theLabel"></div><div class="green" title="4pB"></div><div class="yellow"></div><div class="red"></div>
                     <p class="exercicio">
                         B) People / house<br />
-                        <input onblur="teste(this);" type="text" rel="Are there people in the house?"><input onblur="teste(this);" type="text" rel="No, there aren't people in the house.">
+                        <input onblur="teste(this);" type="text" rel="Are there people in the house">?<input onblur="teste(this);" type="text" rel="No, there aren't people in the house|No, there are not people in the house">.
 
                     <div class="theLabel"></div><div class="green" title="4pC"></div><div class="yellow"></div><div class="red"></div>
                     <p class="exercicio">
                         C) Mountain / two rivers<br />
-                        <input onblur="teste(this);" type="text" rel="Is there a mountain between / beside two rivers?"><input onblur="teste(this);" type="text" rel="No, there isn't a mountain between / beside two rivers.">
+                        <input onblur="teste(this);" type="text" rel="Is there a mountain between two rivers|Is there a mountain beside two rivers">?<input onblur="teste(this);" type="text" rel="No, there isn't a mountain between two rivers|No, there isn't a mountain beside two rivers">.
 
                     <div class="theLabel"></div><div class="green" title="4pD"></div><div class="yellow"></div><div class="red"></div>
                     <p class="exercicio">
                         D) People / supermarket<br />
-                        <input onblur="teste(this);" type="text" rel="Are there people in / near the supermarket?"><input onblur="teste(this);" type="text" rel="No, there are not people in / near the supermarket.">
+                        <input onblur="teste(this);" type="text" rel="Are there people in the supermarket|Are there people near the supermarket">?<input onblur="teste(this);" type="text" rel="No, there are not people in the supermarket|No, there are not people near the supermarket">.
 
                     <div class="theLabel"></div><div class="green" title="4pE"></div><div class="yellow"></div><div class="red"></div>
                     <p class="exercicio">
                         E) Pen / drawer <br />
-                        <input onblur="teste(this);" type="text" rel="Is there a pen inside / in the drawer?"><input onblur="teste(this);" type="text" rel="No, there is not a pen inside / in the drawer">
+                        <input onblur="teste(this);" type="text" rel="Is there a pen inside the drawer|Is there a pen in the drawer">?<input onblur="teste(this);" type="text" rel="No, there is not a pen inside the drawer|No, there is not a pen in the drawer">.
 
                     <div class="theLabel"></div><div class="green" title="4pF"></div><div class="yellow"></div><div class="red"></div>
                     <p class="exercicio">
                         F) Dog / table  <br />
-                        <input onblur="teste(this);" type="text" rel="Is there a dog on / under the table?"><input onblur="teste(this);" type="text" rel="No, there is not a dog on / under the table.">
+                        <input onblur="teste(this);" type="text" rel="Is there a dog on the table|Is there a dog under the table">?<input onblur="teste(this);" type="text" rel="No, there is not a dog on the table|No, there is not a dog under the table">.
 
                 </div>
             </div>

@@ -112,6 +112,14 @@
                 $(this).next().show();
             });
 
+            <!-- SHOW ANSWERS -->
+            $(".p_question_2").click(function() {
+                var a = $(this).find(".p_answer_mini");
+                $.each(a, function(key, value){
+                    a.eq(key).html(a.eq(key).attr('data-answer'));
+                });
+            });
+
         });
     </script>
 <style type="text/css">
@@ -228,16 +236,15 @@
                 <div id="p3" class="pagina" style="display: none;">
                     <strong>3. Complete with the verb THERE TO BE and the prepositions</strong><br />
 
-                    <span class="p_question">A) Is there a black dog in the house?</span>
-                    <span class="p_question">B) THere are many people at Paul's restaurant.</span>
-                    <span class="p_question">C) There are two cats under / on / near / beside the table.</span>
-                    <span class="p_question">D) What is there in / inside the drawer?</span>
-                    <span class="p_question">E) There are not jeans inside / in the closed.</span>
+                    <div class="p_question_2">A) <span class="p_answer_mini" data-answer="Is there">_____</span> a black dog in the house?</div><br>
+                    <div class="p_question_2">B) <span class="p_answer_mini" data-answer="There are">_____</span> many people <span class="p_answer_mini" data-answer="at">_____</span> Paul's restaurant.</div><br>
+                    <div class="p_question_2">C) <span class="p_answer_mini" data-answer="There are">_____</span> two cats <span class="p_answer_mini" data-answer="under / on / near / beside">_____</span> the table.</div><br>
+                    <div class="p_question_2">D) What <span class="p_answer_mini" data-answer="is there">_____</span> <span class="p_answer_mini" data-answer="in / inside">_____</span>  the drawer?</div><br>
+                    <div class="p_question_2">E) <span class="p_answer_mini" data-answer="There are">_____</span> not jeans <span class="p_answer_mini" data-answer="inside / in">_____</span> the closet.</div><br>
 
-                    <br />
                     <strong>4. Make like the example:</strong><br />
                     <strong>Example:</strong> Marc / Englang / Canada<br>
-                    Is Marc from England? No, he is not. He is from Canada.
+                    Is Marc from England? No, he is not. He is from Canada.<br><br>
 
 
                     <span class="p_question">A) Henry / Germany / Australia</span>
@@ -273,43 +280,43 @@
                     <br />
                     <span class="p_question" style="float: left;">A) 11</span>
                     <span class="p_answer" style="float: left;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Eleven</span>
-                    <br />
+                    <br /><br />
 
-                    <span class="p_question">B) 32nd</span>
-                    <span class="p_answer">Thirty second</span>
-                    <br />
+                    <span class="p_question" style="float:left;">B) 32nd</span>
+                    <span class="p_answer" style="float:left;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Thirty second</span>
+                    <br /><br />
 
-                    <span class="p_question">C) 4940</span>
-                    <span class="p_answer">Four thousand nine hundred and forty</span>
-                    <br />
+                    <span class="p_question" style="float:left;">C) 4940</span>
+                    <span class="p_answer" style="float:left;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Four thousand nine hundred and forty</span>
+                    <br /><br />
 
-                    <span class="p_question">D) 98</span>
-                    <span class="p_answer">Ninety-eight</span>
-                    <br />
+                    <span class="p_question" style="float:left;">D) 98</span>
+                    <span class="p_answer" style="float:left;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Ninety-eight</span>
+                    <br /><br />
 
-                    <span class="p_question">E) 168</span>
-                    <span class="p_answer">One hundred and sixty-eight</span>
-                    <br />
+                    <span class="p_question" style="float:left;">E) 168</span>
+                    <span class="p_answer" style="float:left;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;One hundred and sixty-eight</span>
+                    <br /><br />
 
-                    <span class="p_question">F) 271st</span>
-                    <span class="p_answer">Two hundred seventy first</span>
-                    <br />
+                    <span class="p_question" style="float:left;">F) 271st</span>
+                    <span class="p_answer" style="float:left;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Two hundred seventy first</span>
+                    <br /><br />
 
 
-                    <span class="p_question">G) 1256</span>
-                    <span class="p_answer">One thousand two hundred and fifty-six</span>
-                    <br />
+                    <span class="p_question" style="float:left;">G) 1256</span>
+                    <span class="p_answer" style="float:left;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;One thousand two hundred and fifty-six</span>
+                    <br /><br />
 
-                    <span class="p_question">H) 53rd</span>
-                    <span class="p_answer">Fifty third</span>
-                    <br />
+                    <span class="p_question" style="float:left;">H) 53rd</span>
+                    <span class="p_answer" style="float:left;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Fifty third</span>
+                    <br /><br />
 
-                    <span class="p_question">I) 230.000</span>
-                    <span class="p_answer">Two hundred thirty thousand</span>
-                    <br />
+                    <span class="p_question" style="float:left;">I) 230.000</span>
+                    <span class="p_answer" style="float:left;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Two hundred thirty thousand</span>
+                    <br /><br />
 
                     <span class="p_question" style="float: left;">J) 100.000</span>
-                    <span class="p_answer">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;One hundred thousand</span>
+                    <span class="p_answer" style="float:left;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;One hundred thousand</span>
 
                 </div>
             </div>
