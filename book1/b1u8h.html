@@ -175,6 +175,7 @@
                 for (i = 0; i < ar.length; i++) {
                     if (ar[i] == $(campo).val().toLowerCase()) {
                         $(campo).css('color', 'green');
+                        retorno = true;
                         break;
                     } else {
                         $(campo).css('color', 'red');
@@ -240,33 +241,34 @@
                     <p class="bold">
                         1. Answer the questions below.
                     </p>
-                    <div class="theLabel"></div><div class="green" title="p1"></div><div class="yellow"></div><div class="red"></div>
+
+                    <div class="theLabel"></div><div class="green" title="1pA" style="display: block;"></div><div class="yellow" style="display: block;"></div><div class="red" style="display: none;"></div>
                     <p class="exercicio">
                         A) How often do you have your hair cut? <br />
-                        <input onblur="teste(this);" type="text" rel="I (any Frequency Adverb) have my hair cut.">
+                        <input onblur="teste(this);" type="text" rel="I (any Frequency Adverb) have my hair cut">.
                     </p>
 
-                    <div class="theLabel"></div><div class="green" title="p2"></div><div class="yellow"></div><div class="red"></div>
+                    <div class="theLabel"></div><div class="green" title="1pB" style="display: block;"></div><div class="yellow" style="display: block;"></div><div class="red" style="display: none;"></div>
                     <p  class="exercicio">
                         B) How old are you? <br />
-                      <input onblur="teste(this);" type="text" rel="I am (any number) years old.">
+                      <input onblur="teste(this);" type="text" rel="I am (any number) years old">.
                     </p>
 
-                    <div class="theLabel"></div><div class="green" title="p3"></div><div class="yellow"></div><div class="red"></div>
+                    <div class="theLabel"></div><div class="green" title="1pC" style="display: block;"></div><div class="yellow" style="display: block;"></div><div class="red" style="display: none;"></div>
                     <p  class="exercicio">
                         C) How often can you help your mother when she needs? <br />
-                        <input onblur="teste(this);" type="text" rel="I can (any Frequency Adverb) help my mother when she needs.">
+                        <input onblur="teste(this);" type="text" rel="I can (any Frequency Adverb) help my mother when she needs">.
 
-                    <div class="theLabel"></div><div class="green" title="p4"></div><div class="yellow"></div><div class="red"></div>
+                    <div class="theLabel"></div><div class="green" title="1pD" style="display: block;"></div><div class="yellow" style="display: block;"></div><div class="red" style="display: none;"></div>
                     <p  class="exercicio">
                        D) How far is your home from your work? <br />
-                        <input onblur="teste(this);" type="text" rel="It is (any number) kilometers far from my work.">
+                        <input onblur="teste(this);" type="text" rel="It is (any number) kilometers far from my work">.
 
 
-                    <div class="theLabel"></div><div class="green" title="p4"></div><div class="yellow"></div><div class="red"></div>
+                    <div class="theLabel"></div><div class="green" title="1pE" style="display: block;"></div><div class="yellow" style="display: block;"></div><div class="red" style="display: none;"></div>
                     <p  class="exercicio">
                        E) How much do you like to watch TV? <br />
-                        <input onblur="teste(this);" type="text" rel="I don't like it very much. / or I like it a lot.">
+                        <input onblur="teste(this);" type="text" rel="I don't like it very much / or I like it a lot">.
      
                 </div>
 
@@ -276,57 +278,57 @@
                         2. Ask questions for the underlined words
                     </p>
 
-                    <div class="theLabel"></div><div class="green" title="p7"></div><div class="yellow"></div><div class="red"></div>
+                    <div class="theLabel"></div><div class="green" title="2pA"></div><div class="yellow"></div><div class="red"></div>
                     <p class="exercicio">
                         A) Sally <span style="text-decoration:underline">rarely</span> plays volley.
-                        <input onblur="teste(this);" type="text" rel="How often does Sally play volley?">
+                        <input onblur="teste(this);" type="text" rel="How often does Sally play volley">?
 
 
-                    <div class="theLabel"></div><div class="green" title="p7"></div><div class="yellow"></div><div class="red"></div>
+                    <div class="theLabel"></div><div class="green" title="2pB"></div><div class="yellow"></div><div class="red"></div>
                     <p class="exercicio">
                         B) Joe is <span style="text-decoration:underline">always</span> buying a new pen.
-                        <input onblur="teste(this);" type="text" rel="How often is Joe buying a new pen?">
+                        <input onblur="teste(this);" type="text" rel="How often is Joe buying a new pen">?
 
 
-                    <div class="theLabel"></div><div class="green" title="p7"></div><div class="yellow"></div><div class="red"></div>
+                    <div class="theLabel"></div><div class="green" title="2pC"></div><div class="yellow"></div><div class="red"></div>
                     <p class="exercicio">
                         C) Jerry <span style="text-decoration:underline">never</span> studies for the tests.
-                        <input onblur="teste(this);" type="text" rel="How often does Jerry study for the test?">
+                        <input onblur="teste(this);" type="text" rel="How often does Jerry study for the tests">?
 
 
-                    <div class="theLabel"></div><div class="green" title="p7"></div><div class="yellow"></div><div class="red"></div>
+                    <div class="theLabel"></div><div class="green" title="2pD"></div><div class="yellow"></div><div class="red"></div>
                     <p class="exercicio">
                         D) Louise can <span style="text-decoration:underline">sometimes</span> go by car.
-                        <input onblur="teste(this);" type="text" rel="How often can Louise go by car?">
+                        <input onblur="teste(this);" type="text" rel="How often can Louise go by car">?
 
-                                <div class="theLabel"></div><div class="green" title="p7"></div><div class="yellow"></div><div class="red"></div>
+                    <div class="theLabel"></div><div class="green" title="2pE"></div><div class="yellow"></div><div class="red"></div>
                     <p class="exercicio">
                         E) David <span style="text-decoration:underline">usually</span> does his lesson.
-                        <input onblur="teste(this);" type="text" rel="How often does David do his lesson?">
+                        <input onblur="teste(this);" type="text" rel="How often does David do his lesson">?
 
-                                <div class="theLabel"></div><div class="green" title="p7"></div><div class="yellow"></div><div class="red"></div>
+                    <div class="theLabel"></div><div class="green" title="2pF"></div><div class="yellow"></div><div class="red"></div>
                     <p class="exercicio">
                         F) We <span style="text-decoration:underline">often</span> eat 3 times a day.
-                        <input onblur="teste(this);" type="text" rel="How often do we/you eat 3 times a day?">
+                        <input onblur="teste(this);" type="text" rel="How often do we eat 3 times a day|How often do you eat 3 times a day">?
 
 
                   <p class="bold">
                         3. Fill out with the suitable preposition
                     </p>
 
-                    <div class="theLabel"></div><div class="green" title="p7"></div><div class="yellow"></div><div class="red"></div>
+                    <div class="theLabel"></div><div class="green" title="2pG"></div><div class="yellow"></div><div class="red"></div>
                     <p class="exercicio">
                         A) The boy is <input onblur="teste(this);" style="width: 60px;" type="text" rel="in|from"> the USA and is <input onblur="teste(this);" style="width: 60px;" type="text" rel="in|from"> Brazil
 
-                        <div class="theLabel"></div><div class="green" title="p7"></div><div class="yellow"></div><div class="red"></div>
+                        <div class="theLabel"></div><div class="green" title="2pH"></div><div class="yellow"></div><div class="red"></div>
                     <p class="exercicio">
                         B) His test is <input onblur="teste(this);" style="width: 60px;" type="text" rel="on"> March 2nd.
 
-                        <div class="theLabel"></div><div class="green" title="p7"></div><div class="yellow"></div><div class="red"></div>
+                        <div class="theLabel"></div><div class="green" title="2pI"></div><div class="yellow"></div><div class="red"></div>
                     <p class="exercicio">
                         C) Sit down <input onblur="teste(this);" style="width: 60px;" type="text" rel="near|beside"> John?
 
-                        <div class="theLabel"></div><div class="green" title="p7"></div><div class="yellow"></div><div class="red"></div>
+                        <div class="theLabel"></div><div class="green" title="2pJ"></div><div class="yellow"></div><div class="red"></div>
                     <p class="exercicio">
                         D) <input onblur="teste(this);" style="width: 60px;" type="text" rel="in|within"> 2012 I'm going to be 38 years old.
 
@@ -341,31 +343,31 @@
                     <strong>Example:</strong> Steve / to study / night. (10%) How often does Steve study at night? <br /> He rarely studies at night.
                     <br /><br />
 
-                    <div class="theLabel"></div><div class="green" title="p14"></div><div class="yellow"></div><div class="red"></div>
+                    <div class="theLabel"></div><div class="green" title="3pA"></div><div class="yellow"></div><div class="red"></div>
                     <p  class="exercicio">
-                        A) Thomas / to palay / dog. (100%)<br />
+                        A) Thomas / to play / dog. (100%)<br />
                         <input onblur="teste(this);" type="text" rel="How often does Thomas play with the dog">?<br />
                         <input onblur="teste(this);" type="text" rel="He always play with the dog">.
 
-                    <div class="theLabel"></div><div class="green" title="p14"></div><div class="yellow"></div><div class="red"></div>
+                    <div class="theLabel"></div><div class="green" title="3pB"></div><div class="yellow"></div><div class="red"></div>
                     <p  class="exercicio">
                         B) Tom / Jerry / to be / home. (80%).<br />
                         <input onblur="teste(this);" type="text" rel="How often are Tom and Jerry at home">?<br />
                         <input onblur="teste(this);" type="text" rel="They are usually at home">.
 
-                    <div class="theLabel"></div><div class="green" title="p14"></div><div class="yellow"></div><div class="red"></div>
+                    <div class="theLabel"></div><div class="green" title="3pC"></div><div class="yellow"></div><div class="red"></div>
                     <p  class="exercicio">
                         C) Tatty / can / to watch / favorite program. (50%)<br />
                         <input onblur="teste(this);" type="text" rel="How often can Tatty watch her favorite program">?<br />
-                        <input onblur="teste(this);" type="text" rel="She can sometims watch her favorite program.">.
+                        <input onblur="teste(this);" type="text" rel="She can sometimes watch her favorite program.">.
 
-                    <div class="theLabel"></div><div class="green" title="p14"></div><div class="yellow"></div><div class="red"></div>
+                    <div class="theLabel"></div><div class="green" title="3pD"></div><div class="yellow"></div><div class="red"></div>
                     <p  class="exercicio">
                         D) Philips / Robert / to go out / friends. (10%)<br />
-                        <input onblur="teste(this);" type="text" rel="How often do Philips and Robert go out with their friends">?<br />
-                        <input onblur="teste(this);" type="text" rel="They rarely go out with the friends">.
+                        <input onblur="teste(this);" type="text" rel="How often do Philips and Robert go out with their friends|How often do Philips and Robert go out with the friends">?<br />
+                        <input onblur="teste(this);" type="text" rel="They rarely go out with their friends|They rarely go out with the friends">.
 
-                        <div class="theLabel"></div><div class="green" title="p14"></div><div class="yellow"></div><div class="red"></div>
+                        <div class="theLabel"></div><div class="green" title="3pE"></div><div class="yellow"></div><div class="red"></div>
                     <p  class="exercicio">
                         E) Jennifer / Rachel / study / Saturdays. (0%) <br />
                         <input onblur="teste(this);" type="text" rel="How often do Jennifer and Rachel study on saturdays">?<br />

@@ -175,6 +175,7 @@
                 for (i = 0; i < ar.length; i++) {
                     if (ar[i] == $(campo).val().toLowerCase()) {
                         $(campo).css('color', 'green');
+                        retorno = true;
                         break;
                     } else {
                         $(campo).css('color', 'red');
@@ -237,26 +238,26 @@
                     <p class="bold">
                         1. Answer the questions below.
                     </p>
-                    <div class="theLabel"></div><div class="green" title="1pA"></div><div class="yellow"></div><div class="red"></div>
+                    <div class="theLabel"></div><div class="green" title="1pA" style="display: block;"></div><div class="yellow" style="display: block;"></div><div class="red" style="display: none;"></div>
                     <p class="exercicio">
                         A) What are you going to do next holiday?
                         <input onblur="teste(this);" type="text" rel="I am going to (any verb).">
                     </p>
 
-                    <div class="theLabel"></div><div class="green" title="1pB"></div><div class="yellow"></div><div class="red"></div>
+                    <div class="theLabel"></div><div class="green" title="1pA" style="display: block;"></div><div class="yellow" style="display: block;"></div><div class="red" style="display: none;"></div>
                     <p  class="exercicio">
                         B) When are you going to have some vacation?
                         <input onblur="teste(this);" type="text" rel="I am going to have some vacation in (any month).">
                     </p>
 
-                    <div class="theLabel"></div><div class="green" title="1pC"></div><div class="yellow"></div><div class="red"></div>
+                    <div class="theLabel"></div><div class="green" title="1pA" style="display: block;"></div><div class="yellow" style="display: block;"></div><div class="red" style="display: none;"></div>
                     <p  class="exercicio">
                         C) Where would you like to go if you had much money and time?
                         <input onblur="teste(this);" type="text" rel="I would like to go to (any place).">
 
-                    <div class="theLabel"></div><div class="green" title="1pD"></div><div class="yellow"></div><div class="red"></div>
+                    <div class="theLabel"></div><div class="green" title="1pA" style="display: block;"></div><div class="yellow" style="display: block;"></div><div class="red" style="display: none;"></div>
                     <p  class="exercicio">
-                        D) Which car would oyu like to have, a BMW or a Ferrari?
+                        D) Which car would you like to have, a BMW or a Ferrari?
                         <input style="width: 250px;" onblur="teste(this);" type="text" rel="I would like to have a BMW / Ferrari.">
 
 
@@ -266,26 +267,23 @@
 
                     <div class="theLabel"></div><div class="green" title="1pE"></div><div class="yellow"></div><div class="red"></div>
                     <p class="exercicio">
-                        A) They are coming now.
-                        <input onblur="teste(this);" type="text" rel="Who is coming now?">
-
+                        A) They are coming now. (who)
+                        <input onblur="teste(this);" type="text" rel="Who is coming now">?
 
                     <div class="theLabel"></div><div class="green" title="1pF"></div><div class="yellow"></div><div class="red"></div>
                     <p class="exercicio">
-                        B) Joe is going to buy a new house.
-                        <input onblur="teste(this);" style="width:300px; font-size:15px;" type="text" rel="What is Joe going to buy / what is Joe going to?">
-
+                        B) Joe is going to buy a new house. (what)
+                        <input onblur="teste(this);" style="width:200px; font-size:15px;" type="text" rel="What is Joe going to buy|What is Joe going to">?
 
                     <div class="theLabel"></div><div class="green" title="1pG"></div><div class="yellow"></div><div class="red"></div>
                     <p class="exercicio">
-                        C) We don't like to dance.
-                        <input onblur="teste(this);" type="text" rel="Who doesn't like to dance?">
-
+                        C) We don't like to dance. (who)
+                        <input onblur="teste(this);" type="text" rel="Who doesn't like to dance">?
 
                     <div class="theLabel"></div><div class="green" title="1pH"></div><div class="yellow"></div><div class="red"></div>
                     <p class="exercicio">
-                        D) The Prince wants to visit India.
-                        <input onblur="teste(this);" type="text" rel="Who wants to visit India?">
+                        D) The Prince wants to visit India. (who)
+                        <input onblur="teste(this);" style="width:220px; font-size:15px;" type="text" rel="Who wants to visit India">?
 
 
 
@@ -299,7 +297,7 @@
 
                     <div class="theLabel"></div><div class="green" title="2pA"></div><div class="yellow"></div><div class="red"></div>
                     <p class="exercicio">
-                        A) I <input onblur="teste(this);" style="width:90px;" type="text" rel="don't play">soccer very well, but would like  <input onblur="teste(this);" style="width:70px;" type="text" rel="to learn">.(not to play/ to learn)
+                        A) I <input onblur="teste(this);" style="width:90px;" type="text" rel="don't play|do not play">soccer very well, but would like  <input onblur="teste(this);" style="width:70px;" type="text" rel="to learn">.(not to play/ to learn)
 
                     <div class="theLabel"></div><div class="green" title="2pB"></div><div class="yellow"></div><div class="red"></div>
                     <p class="exercicio">
@@ -307,7 +305,7 @@
 
                     <div class="theLabel"></div><div class="green" title="2pC"></div><div class="yellow"></div><div class="red"></div>
                     <p class="exercicio">
-                        C) We <input onblur="teste(this);" style="width:50px;" type="text" rel="don't have"> a car, but Tom <input onblur="teste(this);" style="width:50px;"  type="text" rel="has">. (not to have/to have)
+                        C) We <input onblur="teste(this);" style="width:50px;" type="text" rel="don't have|do not have"> a car, but Tom <input onblur="teste(this);" style="width:50px;"  type="text" rel="has">. (not to have/to have)
 
                     <div class="theLabel"></div><div class="green" title="2pD"></div><div class="yellow"></div><div class="red"></div>
                     <p class="exercicio">
@@ -320,22 +318,22 @@
                     <div class="theLabel"></div><div class="green" title="2pE"></div><div class="yellow"></div><div class="red"></div>
                     <p  class="exercicio">
                         A) Mr. Peterson travels to California once a year. <br />
-                        <input onblur="teste(this);" type="text" rel="Mr. Peterson is going to travel to California once a year.">
+                        <input onblur="teste(this);" type="text" rel="Mr. Peterson is going to travel to California once a year">.
 
                     <div class="theLabel"></div><div class="green" title="2pF"></div><div class="yellow"></div><div class="red"></div>
                     <p  class="exercicio">
                         B) I need your help. <br />
-                        <input onblur="teste(this);" type="text" rel="I'm going to need your help.">
+                        <input onblur="teste(this);" type="text" rel="I'm going to need your help|I am going to need your help">.
 
                     <div class="theLabel"></div><div class="green" title="2pG"></div><div class="yellow"></div><div class="red"></div>
                     <p  class="exercicio">
                         C) Brandon is not finishing his test. <br />
-                        <input onblur="teste(this);" type="text" rel="Brandon is not going to finish his test.">
+                        <input onblur="teste(this);" type="text" rel="Brandon is not going to finish his test">.
 
                     <div class="theLabel"></div><div class="green" title="2pH"></div><div class="yellow"></div><div class="red"></div>
                     <p  class="exercicio">
                         D) Australia is a good option to study English. <br />
-                        <input onblur="teste(this);" type="text" rel="Australia is going to be a good option to study English.">
+                        <input onblur="teste(this);" type="text" rel="Australia is going to be a good option to study English">.
 
                 </div>
                 <div id="p3" class="pagina" style="display: none;">
@@ -347,31 +345,31 @@
 
                     <div class="theLabel"></div><div class="green" title="3pA"></div><div class="yellow"></div><div class="red"></div>
                     <p class="exercicio">
-                        A) The toy is his. <input onblur="teste(this);" type="text" rel="He has a toy.">
+                        A) The toy is his. <input onblur="teste(this);" type="text" rel="He has a toy">.
 
                   <div class="theLabel"></div><div class="green" title="3pB"></div><div class="yellow"></div><div class="red"></div>
                     <p class="exercicio">
-                        B) The CD is Stevie's. <input onblur="teste(this);" type="text" rel="Stevie's has a CD.">
+                        B) The CD is Stevie's. <input onblur="teste(this);" type="text" rel="Stevie has a CD">.
 
                     <div class="theLabel"></div><div class="green" title="3pC"></div><div class="yellow"></div><div class="red"></div>
                     <p class="exercicio">
-                        C) The computer is Ann's. <input onblur="teste(this);" type="text" rel="Ann has a computer.">
+                        C) The computer is Ann's. <input onblur="teste(this);" type="text" rel="Ann has a computer">.
 
                     <div class="theLabel"></div><div class="green" title="3pD"></div><div class="yellow"></div><div class="red"></div>
                     <p class="exercicio">
-                        D) The pet is theirs. <input onblur="teste(this);" type="text" rel="They have a pet.">
+                        D) The pet is theirs. <input onblur="teste(this);" type="text" rel="They have a pet">.
 
                     <div class="theLabel"></div><div class="green" title="3pE"></div><div class="yellow"></div><div class="red"></div>
                     <p class="exercicio">
-                        E) The car is ours. <input onblur="teste(this);" type="text" rel="We have a car.">
+                        E) The car is ours. <input onblur="teste(this);" type="text" rel="We have a car">.
 
                     <div class="theLabel"></div><div class="green" title="3pF"></div><div class="yellow"></div><div class="red"></div>
                     <p class="exercicio">
-                        F) The bike is the boy's. <input onblur="teste(this);" type="text" rel="The boy has a bike.">
+                        F) The bike is the boy's. <input onblur="teste(this);" type="text" rel="The boy has a bike">.
 
                     <div class="theLabel"></div><div class="green" title="3pG"></div><div class="yellow"></div><div class="red"></div>
                     <p class="exercicio">
-                        G) The house is yours. <input onblur="teste(this);" type="text" rel="You have a house.">
+                        G) The house is yours. <input onblur="teste(this);" type="text" rel="You have a house">.
                 </div>
             </div>
         </div>
