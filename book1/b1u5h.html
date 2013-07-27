@@ -175,6 +175,7 @@
             for (i = 0; i < ar.length; i++) {
                 if (ar[i] == $(campo).val().toLowerCase()) {
                     $(campo).css('color', 'green');
+                    retorno = true;
                     break;
                 } else {
                     $(campo).css('color', 'red');
@@ -253,42 +254,42 @@
 
                     <span class="titulo">HOMEWORK - I DON'T KNOW</span>
                     <p class="bold">1. Answer the questions below</p>
-					<div class="theLabel"></div><div class="green" title="1pA"></div><div class="yellow"></div><div class="red"></div>
+					<div class="theLabel"></div><div class="green" title="1pA" style="display: block;"></div><div class="yellow" style="display: block;"></div><div class="red" style="display: none;"></div>
                     <p  class="exercicio">
                         A) When is your birthday? <input onblur="teste(this);" type="text" rel="My birthday is in (any month)"><br />
-                        
-					<div class="theLabel"></div><div class="green" title="1pB"></div><div class="yellow"></div><div class="red"></div>
+
+                    <div class="theLabel"></div><div class="green" title="1pA" style="display: block;"></div><div class="yellow" style="display: block;"></div><div class="red" style="display: none;"></div>
                     <p  class="exercicio">
                         B) Where does your mom live? <input onblur="teste(this);" type="text" rel="She lives in (any city)">
-					
-					<div class="theLabel"></div><div class="green" title="1pC"></div><div class="yellow"></div><div class="red"></div>
+
+                    <div class="theLabel"></div><div class="green" title="1pA" style="display: block;"></div><div class="yellow" style="display: block;"></div><div class="red" style="display: none;"></div>
                     <p  class="exercicio">
                         C) Who do you always help? <input onblur="teste(this);" type="text" rel="I always help my family or any other person">
 
-					<div class="theLabel"></div><div class="green" title="1pD"></div><div class="yellow"></div><div class="red"></div>
+                    <div class="theLabel"></div><div class="green" title="1pA" style="display: block;"></div><div class="yellow" style="display: block;"></div><div class="red" style="display: none;"></div>
                     <p  class="exercicio">
                         D) What time do you normally sleep? <input onblur="teste(this);" type="text" rel="I normally sleep at (any time)">
 
 				<p class="bold">2. Ask question for the underlined words</p>
 					<div class="theLabel"></div><div class="green" title="1p2A"></div><div class="yellow"></div><div class="red"></div>
                     <p  class="exercicio">
-                        A) Jack likes to study. <input onblur="teste(this);" type="text" rel="What does Jack like? | What does Jacky like to do"><br />
+                        A) Jack likes <span style="text-decoration: underline;">to study</span>. <input onblur="teste(this);" type="text" rel="What does Jack like|What does Jack like to do">?<br />
                         
 					<div class="theLabel"></div><div class="green" title="1p2B"></div><div class="yellow"></div><div class="red"></div>
                     <p  class="exercicio">
-                        B) Jacky likes to study? <input onblur="teste(this);" type="text" rel="Who likes to study">
+                        B) <span style="text-decoration: underline;">Jacky</span> likes to study? <input onblur="teste(this);" type="text" rel="Who likes to study">?
 					
 					<div class="theLabel"></div><div class="green" title="1p2C"></div><div class="yellow"></div><div class="red"></div>
                     <p  class="exercicio">
-                        C) No, I don' speak English. <input onblur="teste(this);" type="text" rel="Do you speak English?">
+                        C) <span style="text-decoration: underline;">No</span>, I don' speak English. <input onblur="teste(this);" type="text" rel="Do you speak English">?
 
 					<div class="theLabel"></div><div class="green" title="1p2D"></div><div class="yellow"></div><div class="red"></div>
                     <p  class="exercicio">
-                        D) Linda is at home. <input onblur="teste(this);" type="text" rel="Where is Linda">
+                        D) Linda is <span style="text-decoration: underline;">at home</span>. <input onblur="teste(this);" type="text" rel="Where is Linda">?
 
 					<div class="theLabel"></div><div class="green" title="1p2E"></div><div class="yellow"></div><div class="red"></div>
                     <p  class="exercicio">
-                        E) They are dancing <input onblur="teste(this);" type="text" rel="What are they doing">
+                        E) They are <span style="text-decoration: underline;">dancing</span> <input onblur="teste(this);" type="text" rel="What are they doing">?
 
 				
                 </div>
@@ -315,7 +316,7 @@
                     
 					<div class="theLabel"></div><div class="green" title="2pE"></div><div class="yellow"></div><div class="red"></div>
                     <p class="exercicio">
-                        E) I really <input onblur="teste(this);" style="width:95px;" type="text" rel="do not know"> what I <input onblur="teste(this);" type="text" rel="do | am doing">. (to not know/to do)
+                        E) I really <input onblur="teste(this);" style="width:95px;" type="text" rel="do not know|don't know"> what I <input onblur="teste(this);" type="text" rel="do|am doing|">. (to not know/to do)
 
 					<div class="theLabel"></div><div class="green" title="2pF"></div><div class="yellow"></div><div class="red"></div>
                     <p class="exercicio">
@@ -345,7 +346,7 @@
                     <p class="exercicio">
                         B) Marilyn, her boyfriend and a friend of theirs are watching TV <br />
                         <input onblur="teste(this);" type="text" rel="Are Marilyn, her boyfriend and a friend of theirs watching TV">?<br />
-                        <input onblur="teste(this);" type="text" rel="Are they Marco's socks? No, they are Thoma's socks">.
+                        <input onblur="teste(this);" type="text" rel="Marilyn, her boyfriend and a friend of theirs are not watching TV">.
 
                     <div class="theLabel"></div><div class="green" title="3pC"></div><div class="yellow"></div><div class="red"></div>
                     <p class="exercicio">
@@ -360,31 +361,31 @@
                         <input onblur="teste(this);" type="text" rel="She does not like to study at Welbe Private Class">.
                 </div>
                 <div id="p4" class="pagina" style="display: none;">
-                    <p><strong>5. Write the interrogative and the negative forms:</strong><br />
+                    <p><strong>5. Write sentences with the words given like the example:</strong><br />
 
                     <strong>Examples:</strong> They / to study / friends / morning. <br /> They study with their friends in the morning. <br />
 
-                    <div class="theLabel"></div><div class="green" title="1pA"></div><div class="yellow"></div><div class="red"></div>
+                    <div class="theLabel"></div><div class="green" title="4pA"></div><div class="yellow"></div><div class="red"></div>
                     <p class="exercicio">
                         A) She / to go / cinema / once a month. <br />
-                        <input onblur="teste(this);" type="text" rel="She goes to the cinema once month">.<br />
+                        <input onblur="teste(this);" type="text" rel="She goes to the cinema once a month">.<br />
 
-                    <div class="theLabel"></div><div class="green" title="1pA"></div><div class="yellow"></div><div class="red"></div>
+                    <div class="theLabel"></div><div class="green" title="4pB"></div><div class="yellow"></div><div class="red"></div>
                     <p class="exercicio">
                         B) Oxford / to be / good / unniversity. <br />
                         <input onblur="teste(this);" type="text" rel="Oxford is a good university">.<br />
 
-                    <div class="theLabel"></div><div class="green" title="1pA"></div><div class="yellow"></div><div class="red"></div>
+                    <div class="theLabel"></div><div class="green" title="4pC"></div><div class="yellow"></div><div class="red"></div>
                     <p class="exercicio">
                         C) My friend / to live / Canada <br />
                         <input onblur="teste(this);" type="text" rel="My friend lives in Canada">.<br />
 
-                        <div class="theLabel"></div><div class="green" title="1pA"></div><div class="yellow"></div><div class="red"></div>
+                    <div class="theLabel"></div><div class="green" title="4pD"></div><div class="yellow"></div><div class="red"></div>
                     <p class="exercicio">
                         D) I / to need / to study / more / my free time.<br />
                         <input onblur="teste(this);" type="text" rel="I need to study more in my free time">.<br />
 
-                            <div class="theLabel"></div><div class="green" title="1pA"></div><div class="yellow"></div><div class="red"></div>
+                    <div class="theLabel"></div><div class="green" title="4pE"></div><div class="yellow"></div><div class="red"></div>
                     <p class="exercicio">
                         E) Olivia / to want / to travel / Nicholas?<br />
                         <input onblur="teste(this);" type="text" rel="Does Olivia want to travel with Nicholas">?<br />

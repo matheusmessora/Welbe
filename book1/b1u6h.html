@@ -175,6 +175,7 @@ function teste(campo){
         for (i = 0; i < ar.length; i++) {
             if (ar[i] == $(campo).val().toLowerCase()) {
                 $(campo).css('color', 'green');
+                retorno = true;
                 break;
             } else {
                 $(campo).css('color', 'red');
@@ -218,12 +219,12 @@ function teste(campo){
     width: 450px;
     font-size: 18px;
 }
-    #p5 input {
-        width: 300px;
-    }
-    #p5 p {
-        line-height: 20px;
-    }
+#p5 input {
+    width: 450px;
+}
+#p5 p {
+    /*line-height: 20px;*/
+}
 
 
 </style>
@@ -252,23 +253,23 @@ function teste(campo){
 
                     <span class="titulo">HOMEWORK - UNIT SIX - A JOB INTERVIEW</span>
                     <p class="bold">1. Answer the questions below</p>
-					<div class="theLabel"></div><div class="green" title="1pA"></div><div class="yellow"></div><div class="red"></div>
+                    <div class="theLabel"></div><div class="green" title="1pA" style="display: block;"></div><div class="yellow" style="display: block;"></div><div class="red" style="display: none;"></div>
                     <p  class="exercicio">
                         A) What would you like to do? <input onblur="teste(this);" type="text" rel="I would like to (any verb).">
-                        
-					<div class="theLabel"></div><div class="green" title="1pB" title="1pA"></div><div class="yellow"></div><div class="red"></div>
+
+                    <div class="theLabel"></div><div class="green" title="1pA" style="display: block;"></div><div class="yellow" style="display: block;"></div><div class="red" style="display: none;"></div>
                     <p  class="exercicio">
-                        B) Can you play the guitar? <input onblur="teste(this);" type="text" rel="Yes, I can play. | No, I can't play.">
-					
-					<div class="theLabel"></div><div class="green" title="1pC" rel="b2u11h1c"></div><div class="yellow"></div><div class="red"></div>
+                        B) Can you play the guitar? <input onblur="teste(this);" type="text" rel="Yes, I can play|No, I can't play">.
+
+                    <div class="theLabel"></div><div class="green" title="1pA" style="display: block;"></div><div class="yellow" style="display: block;"></div><div class="red" style="display: none;"></div>
                     <p  class="exercicio">
                         C) Who would you like to help? <input style="width: 300px; " onblur="teste(this);" type="text" rel="I would like to help (any person).">
 
-					<div class="theLabel"></div><div class="green" title="1pD" rel="b2u11h1d"></div><div class="yellow"></div><div class="red"></div>
+                    <div class="theLabel"></div><div class="green" title="1pA" style="display: block;"></div><div class="yellow" style="display: block;"></div><div class="red" style="display: none;"></div>
                     <p  class="exercicio">
                         D) What's your mom's favorite color? <input style="width: 250px; font-size:18px;" onblur="teste(this);" type="text" rel="Her favorite color is (any color).">
 
-				<p class="bold">2. Ask question for the underlined words</p>
+				<p class="bold">2. Ask question</p>
 					<div class="theLabel"></div><div class="green" title="1pE"></div><div class="yellow"></div><div class="red"></div>
                     <p  class="exercicio">
                         A) They would like to stay here. Where <input onblur="teste(this);" type="text" rel="would they like to stay">?<br />
@@ -316,7 +317,7 @@ function teste(campo){
                     <p class="exercicio">
                         E) Bred doesn't play soccer <input onblur="teste(this);" type="text" rel="in"> the afternoon.
 
-					<div class="theLabel"></div><div class="green" title="2pF" rel="b2u11h1g"></div><div class="yellow"></div><div class="red"></div>
+                    <div class="theLabel"></div><div class="green" title="1pA" style="display: block;"></div><div class="yellow" style="display: block;"></div><div class="red" style="display: none;"></div>
                     <p class="exercicio">
                         F) Marie and <input onblur="teste(this);" type="text" rel="I|you|he"> would like to see <input onblur="teste(this);" type="text" rel="her|him|them">
                     
@@ -361,12 +362,12 @@ function teste(campo){
                 <div id="p4" class="pagina" style="display: none;">
                     <p><strong>5. Rewrite the sentences with the new subject using TOO like the example:</strong><br />
 
-                    <strong>Examples:</strong> They are very tired. (he) <br /> He is very tired, too.<br />
+                    <strong>Example:</strong> They are very tired. (he) <br /> He is very tired, too.<br />
 
                     <div class="theLabel"></div><div class="green" title="4pA" rel="b2u1h1g"></div><div class="yellow"></div><div class="red"></div>
                     <p class="exercicio">
                         A) She studies English twice a week. (I) <br />
-                        <input onblur="teste(this);" type="text" rel="I study English twice a week, too."><br />
+                        <input onblur="teste(this);" type="text" rel="I study English twice a week, too">.<br />
 
                     <div class="theLabel"></div><div class="green" title="4pB" rel="b2u1h1g"></div><div class="yellow"></div><div class="red"></div>
                     <p class="exercicio">
@@ -376,7 +377,7 @@ function teste(campo){
                     <div class="theLabel"></div><div class="green" title="4pC" rel="b2u1h1g"></div><div class="yellow"></div><div class="red"></div>
                     <p class="exercicio">
                         C) My friend has a pretty wife. (you) <br />
-                        <input onblur="teste(this);" type="text" rel="You have a pretty wife, too"><br />
+                        <input onblur="teste(this);" type="text" rel="You have a pretty wife, too">.<br />
 
                         <div class="theLabel"></div><div class="green" title="4pD" rel="b2u1h1g"></div><div class="yellow"></div><div class="red"></div>
                     <p class="exercicio">
@@ -386,37 +387,37 @@ function teste(campo){
                             <div class="theLabel"></div><div class="green" title="4pE" rel="b2u1h1g"></div><div class="yellow"></div><div class="red"></div>
                     <p class="exercicio">
                         E) To surf is very exciting. (to dance)<br />
-                        <input onblur="teste(this);" type="text" rel="To dance is very exciting, too."><br />
+                        <input onblur="teste(this);" type="text" rel="To dance is very exciting, too">.<br />
                 </div>
                 <div id="p5" class="pagina" style="display: none;">
-                    <p><strong>5. Rewrite the sentences with the new subject using EITHER like the example:</strong><br />
+                    <p><strong>6. Rewrite the sentences with the new subject using EITHER like the example:</strong><br />
 
                     <strong>Examples:</strong> They are not very tired. (he)<br /> He is not very tired, either.
 
                     <div class="theLabel"></div><div class="green" title="5pA" rel="b2u1h1g"></div><div class="yellow"></div><div class="red"></div>
                     <p class="exercicio">
-                        A) She studies English twice a week. (I) <br />
-                        <input onblur="teste(this);" type="text" rel="I do not study English twice a week, either."><br />
+                        A) She doesn't study English twice a week. (I) <br />
+                        <input onblur="teste(this);" type="text" rel="I do not study English twice a week, either|I don't study English twice a week, either">.<br />
 
                     <div class="theLabel"></div><div class="green" title="5pB" rel="b2u1h1g"></div><div class="yellow"></div><div class="red"></div>
                     <p class="exercicio">
                         B) My mother isn't a teacher. (Richard)<br />
-                        <input onblur="teste(this);" type="text" rel="Richard isn't a teacher, either."><br />
+                        <input onblur="teste(this);" type="text" rel="Richard isn't a teacher, either|Richard is not a teacher, either.">.<br />
 
                         <div class="theLabel"></div><div class="green" title="5pC" rel="b2u1h1g"></div><div class="yellow"></div><div class="red"></div>
                     <p class="exercicio">
                         C) My friend doesn't have a pretty wife. (you)<br />
-                        <input onblur="teste(this);" type="text" rel="You don't have a pretty wife, either."><br />
+                        <input onblur="teste(this);" type="text" rel="You don't have a pretty wife, either|You do not have a pretty wife, either">.<br />
 
                         <div class="theLabel"></div><div class="green" title="5pD" rel="b2u1h1g"></div><div class="yellow"></div><div class="red"></div>
                     <p class="exercicio">
                         D) I don't study at night. (Paul's brother)<br />
-                        <input onblur="teste(this);" type="text" rel="Paul's brother doesn't study at night, either."><br />
+                        <input onblur="teste(this);" type="text" rel="Paul's brother doesn't study at night, either|Paul's brother does not study at night, either">.<br />
 
                         <div class="theLabel"></div><div class="green" title="5pE" rel="b2u1h1g"></div><div class="yellow"></div><div class="red"></div>
                     <p class="exercicio">
                         E) To surf isn't very exciting. (to dance)<br />
-                        <input onblur="teste(this);" type="text" rel="To dance isn't very exciting, either."><br />
+                        <input onblur="teste(this);" type="text" rel="To dance isn't very exciting, either|To dance is not very exciting, either">.<br />
 
                 </div>
             </div>

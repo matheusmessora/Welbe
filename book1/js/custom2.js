@@ -89,7 +89,6 @@ $(document).ready(function () {
 
         $("#paginaAtual").text(currentPagina);
         practice(currentPagina);
-Uncaught ReferenceError: practice is not defined
 
     });
 
@@ -115,7 +114,6 @@ Uncaught ReferenceError: practice is not defined
 
         $("#paginaAtual").text(currentPagina);
         practice(currentPagina);
-Uncaught ReferenceError: practice is not defined
 
     });
 
