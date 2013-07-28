@@ -1,120 +1,117 @@
 <!DOCTYPE html>
 <head>
-<title>11</title>
-<link href="book2.css" rel="stylesheet" type="text/css">
+    <title>11</title>
+    <link href="book2.css" rel="stylesheet" type="text/css">
 
-<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Josefin+Sans+Std+Light">
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-<script type="text/javascript">
-$(document).ready(function () {
+    <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Josefin+Sans+Std+Light">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var musicSrc = 'b1u10p';
+            var langDefault = 'pt';
+            var showLanguage = false;
+            var backgroundImage = 'url("images/qback10.jpg")';
+            var totalPages = 4;
+            var pageId = "#p";
 
-    var musicSrc = 'b1u10p';
-    var langDefault = 'pt';
-    var showLanguage = false;
-    var backgroundImage = 'url("images/qback10.jpg")';
+            // Initialize background
+            $("#myDiv").css('background-image', backgroundImage);
+
+            // Initialize Sound
+            $("#mmm").attr('src',musicSrc + '1.mp3');
+
+            // Initialize Languages
+            if(!showLanguage){
+                $("#enus").hide();
+                $("#ptbr").hide();
+            }
 
 
-    // Initialize background
-    $("#myDiv").css('background-image', backgroundImage);
+            $("#ptbr").click(function() {
+                document.getElementById('mmm').pause();
+                var a = $("#mmm").attr('src');
+                a = a.substring(0, 6);
+                a += "pt.mp3";
+                $("#mmm").attr('src',a);
+                document.getElementById('mmm').play();
+            });
+            $("#enus").click(function() {
+                document.getElementById('mmm').pause();
+                var a = $("#mmm").attr('src');
+                a = a.substring(0, 6);
+                a += "en.mp3";
+                $("#mmm").attr('src',a);
+                document.getElementById('mmm').play();
+            });
 
-    // Initialize Sound
-    $("#mmm").attr('src',musicSrc + '1.mp3');
 
-    // Initialize Languages
-    if(!showLanguage){
-        $("#enus").hide();
-        $("#ptbr").hide();
-    }
+            // Play Sound
+            if(showLanguage){
+                $("#enus").trigger('click');
+            }else {
+                document.getElementById('mmm').play();
+            }
 
-    $("#ptbr").click(function() {
-        document.getElementById('mmm').pause();
-        var a = $("#mmm").attr('src');
-        a = a.substring(0, 6);
-        a += "pt.mp3";
-        $("#mmm").attr('src',a);
-        document.getElementById('mmm').play();
-    });
-    $("#enus").click(function() {
-        document.getElementById('mmm').pause();
-        var a = $("#mmm").attr('src');
-        a = a.substring(0, 6);
-        a += "en.mp3";
-        $("#mmm").attr('src',a);
-        document.getElementById('mmm').play();
-    });
 
-    $("#next").click(function() {
-        $("#previous").show();
-        var testar = true;
+            $("#next").click(function() {
+                $("#previous").show();
+                var testar = true;
 
-        if(testar && $("#p1").css('display') == 'block'){
-            $("#p1").hide();
-            document.getElementById('mmm').pause();
-            $("#mmm").attr('src',musicSrc+ '2' +'.mp3');
-            document.getElementById('mmm').play();
-            $("#p2").show();
-            testar = false;
-        }
+                for (var i = 1; i <= totalPages; i++) {
+                    if(testar && $(pageId + i).css('display') == 'block'){
+                        $(pageId + i).hide();
+                        document.getElementById('mmm').pause();
+                        var sourceMusic = musicSrc + (i+1);
+                        if(showLanguage){
+                            sourceMusic += 'en';
+                        }
+                        sourceMusic += '.mp3';
 
-        if(testar && $("#p2").css('display') == 'block'){
-            $("#p2").hide();
-            document.getElementById('mmm').pause();
-            $("#mmm").attr('src',musicSrc+'3' +'.mp3');
-            document.getElementById('mmm').play();
-            $("#p3").show();
-            testar = false;
-        }
-        if(testar && $("#p3").css('display') == 'block'){
-            $("#p3").hide();
-            document.getElementById('mmm').pause();
-            $("#mmm").attr('src',musicSrc+'4' +'.mp3');
-            document.getElementById('mmm').play();
-            $("#p4").show();
-            testar = false;
-            $("#next").hide();
-        }
-    });
+                        $("#mmm").attr('src',sourceMusic);
+                        document.getElementById('mmm').play();
+                        $(pageId + (i + 1)).show();
+                        testar = false;
 
-    $("#previous").click(function() {
-        $("#next").show();
-        var testar = true;
+                        if((i+1) == totalPages) {
+                            $("#next").hide();
+                        }
+                    }
+                }
+            });
 
-        if(testar && $("#p2").css('display') == 'block'){
-            $("#p2").hide();
-            document.getElementById('mmm').pause();
-            $("#mmm").attr('src',musicSrc+ '1' +'.mp3');
-            document.getElementById('mmm').play();
-            $("#p1").show();
-            $("#previous").hide();
-            testar = false;
-        }
+            $("#previous").click(function() {
+                $("#next").show();
+                var testar = true;
 
-        if(testar && $("#p3").css('display') == 'block'){
-            $("#p3").hide();
-            document.getElementById('mmm').pause();
-            $("#mmm").attr('src',musicSrc+ '2' +'.mp3');
-            document.getElementById('mmm').play();
-            $("#p2").show();
-            testar = false;
-        }
+                for (var i = totalPages; i >= 1; i--) {
+                    if(testar && $(pageId + i).css('display') == 'block'){
+                        $(pageId + i).hide();
+                        document.getElementById('mmm').pause();
+                        var sourceMusic = musicSrc + (i-1);
+                        if(showLanguage){
+                            sourceMusic += 'en';
+                        }
+                        sourceMusic += '.mp3';
 
-        if(testar && $("#p4").css('display') == 'block'){
-            $("#p4").hide();
-            document.getElementById('mmm').pause();
-            $("#mmm").attr('src',musicSrc+ '3' +'.mp3');
-            document.getElementById('mmm').play();
-            $("#p3").show();
-            testar = false;
-        }
-    });
+                        $("#mmm").attr('src',sourceMusic);
+                        document.getElementById('mmm').play();
+                        $(pageId + (i - 1)).show();
+                        testar = false;
 
-    <!-- SHOW ANSWERS -->
-    $(".p_question").click(function() {
-        $(this).next().show();
-    });
+                        if((i-1) == 1) {
+                            $("#previous").hide();
+                        }
+                    }
+                }
+            });
 
-});
-</script>
+            <!-- SHOW ANSWERS -->
+            $(".p_question").click(function() {
+                $(this).next().show();
+            });
+
+        });
+    </script>
 
 <style type="text/css">
 	table
@@ -167,19 +164,19 @@ $(document).ready(function () {
                 <div id="p1" class="pagina" style="display: block;">
                     <strong>PRACTICE - THE BASIC IS OVER</strong><br />
 
-                    <strong>1. Put the sentences below into interrogative and negative.</strong><br />
+                    <strong>1. Put the sentences below into interrogative and negative.</strong><br /><br />
 
                     <span class="p_question">A) Glenn speaks English and French.</span>
-                    <span class="p_answer">Does Glenn speak English and French? Glenn doesn't speak English and Frech.</span>
+                    <span class="p_answer">Does Glenn speak English and French? Glenn doesn't speak English and Frech.</span><br />
 
                     <span class="p_question">B) Mr. and Mrs. Peterson have two kids.</span>
-                    <span class="p_answer">Do Mr.  and Mrs. Peterson have two kids? Mr. and Mrs. Peterson don't have two kids.</span>
+                    <span class="p_answer">Do Mr.  and Mrs. Peterson have two kids? Mr. and Mrs. Peterson don't have two kids.</span><br />
 
                     <span class="p_question">C) We would do it differently.</span>
-                    <span class="p_answer">Would we do it differently?		? We wouldn't do it differently.</span>
+                    <span class="p_answer">Would we do it differently?		? We wouldn't do it differently.</span><br />
 
                     <span class="p_question">D) I need to take more water during the day.</span>
-                    <span class="p_answer">Do I need to take more water during the day	? I don't need to take more water during the day.</span>
+                    <span class="p_answer">Do I need to take more water during the day	? I don't need to take more water during the day.</span><br />
 
                     <span class="p_question">E) She thinks that they are her friends.</span>
                     <span class="p_answer">Does she think that they are her friends ? She doesn't think that they are her friends.</span>
@@ -191,19 +188,19 @@ $(document).ready(function () {
 
                     <strong>Example:</strong> Brendon / Go theater. (Always)<br />
                     How often does Brandon go to the theater? <br />
-                    He always goes to the theater.
+                    He always goes to the theater.<br /><br />
 
                     <span class="p_question">A) Cindy and boyfriend / Travel night. (Sometimes)</span>
-                    <span class="p_answer">How often do Cindy and her boyfriend travel at night? They sometimes travel at night.</span>
+                    <span class="p_answer">How often do Cindy and her boyfriend travel at night? They sometimes travel at night.</span><br />
 
                     <span class="p_question">B) Charlene / Walk Park. (Usually)</span>
-                    <span class="p_answer">How often does Charlene walk in the park? She usually walks in the Park.</span>
+                    <span class="p_answer">How often does Charlene walk in the park? She usually walks in the Park.</span><br />
 
                     <span class="p_question">C) Arthur / to be happy. (always)</span>
-                    <span class="p_answer">How often is Arthur happy? He is always happy.</span>
+                    <span class="p_answer">How often is Arthur happy? He is always happy.</span><br />
 
                     <span class="p_question">D) The kids / to sleep early. (never)</span>
-                    <span class="p_answer">How often do the kids sleep early? They never sleep early.</span>
+                    <span class="p_answer">How often do the kids sleep early? They never sleep early.</span><br />
 
                     <span class="p_question">E) Warm but cloudy</span>
                     <span class="p_answer">How often does Marie drive the car? She rarely drives the car.</span>
@@ -220,19 +217,19 @@ $(document).ready(function () {
 
 
                     <span class="p_question">A) Mr. Tompson / Jimmy.</span>
-                    <span class="p_answer">Mr. Tompson would like to talk to Jimmy.</span>
+                    <span class="p_answer">Mr. Tompson would like to talk to Jimmy.</span><br />
 
                     <span class="p_question">B) George / me</span>
-                    <span class="p_answer">George would like to talk to me.</span>
+                    <span class="p_answer">George would like to talk to me.</span><br />
 
                     <span class="p_question">C) William / us.</span>
-                    <span class="p_answer">William would like to talk to us.</span>
+                    <span class="p_answer">William would like to talk to us.</span><br />
 
                     <span class="p_question">D) I / him.</span>
-                    <span class="p_answer">I would like to talk to him.</span>
+                    <span class="p_answer">I would like to talk to him.</span><br />
 
                     <span class="p_question">E) She / you</span>
-                    <span class="p_answer">She would like to talk to you.</span>
+                    <span class="p_answer">She would like to talk to you.</span><br />
 
                     <span class="p_question">F) We / them.</span>
                     <span class="p_answer">We would like to talk to them.</span>
@@ -251,19 +248,19 @@ $(document).ready(function () {
 
 
                     <span class="p_question">A) Pete / her.</span>
-                    <span class="p_answer">Would Pete like to go with her?</span>
+                    <span class="p_answer">Would Pete like to go with her?</span><br />
 
                     <span class="p_question">B) Doug / them.</span>
-                    <span class="p_answer">Would Doug like to go with them?</span>
+                    <span class="p_answer">Would Doug like to go with them?</span><br />
 
                     <span class="p_question">C) He / us.</span>
-                    <span class="p_answer">Would he like to go with us?</span>
+                    <span class="p_answer">Would he like to go with us?</span><br />
 
                     <span class="p_question">D) Gabi / Henry.</span>
-                    <span class="p_answer">Would Gabi like to go with Henry?</span>
+                    <span class="p_answer">Would Gabi like to go with Henry?</span><br />
 
                     <span class="p_question">E) She / you.</span>
-                    <span class="p_answer">Would she like to go  with you?</span>
+                    <span class="p_answer">Would she like to go  with you?</span><br />
 
                     <span class="p_question">F) You / Marie and I.</span>
                     <span class="p_answer">Would you like to go with Marie and I?</span>
