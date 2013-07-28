@@ -124,7 +124,7 @@ input
     border: none;
     border-bottom: 1px solid #CCC;
     background: transparent;
-    text-transform: lowercase;
+    /*text-transform: lowercase;*/
     margin-left: 7px;
     margin-right: 7px;
     text-align: center;
@@ -141,7 +141,7 @@ input.frase
     border: none;
     border-bottom: 1px solid #CCC;
     background: transparent;
-    text-transform: lowercase;
+    /*text-transform: lowercase;*/
     margin-left: 7px;
     margin-right: 7px;
     text-align: center;
