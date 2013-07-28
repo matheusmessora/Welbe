@@ -128,7 +128,7 @@ $(document).ready(function () {
             if ($(this).attr("rel").indexOf("|") == -1) {
                 rel = $(this).attr("rel")
             }else {
-                rel = $(this).attr("rel").toLowerCase().split("|")[0];
+                rel = $(this).attr("rel").split("|")[0];
             }
 
             $(this).val(rel);
