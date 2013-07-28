@@ -1,106 +1,126 @@
 <!DOCTYPE html>
 <head>
-<title>11</title>
-<link href="book2.css" rel="stylesheet" type="text/css">
+    <title>11</title>
+    <link href="book2.css" rel="stylesheet" type="text/css">
 
-<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Josefin+Sans+Std+Light">
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-<script type="text/javascript">
-$(document).ready(function () {
+    <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Josefin+Sans+Std+Light">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var musicSrc = 'b1u10g';
+            var langDefault = 'pt';
+            var showLanguage = true;
+            var backgroundImage = 'url("images/qback10.jpg")';
+            var totalPages = 3;
+            var pageId = "#p";
 
-    var musicSrc = 'b1u10g';
-    var langDefault = 'pt';
-    var showLanguage = true;
-    var totalPages = 2;
-    var backgroundImage = 'url("images/qback10.jpg")';
+            // Initialize background
+            $("#myDiv").css('background-image', backgroundImage);
 
+            // Initialize Sound
+            $("#mmm").attr('src',musicSrc + '1.mp3');
 
-    // Initialize background
-    $("#myDiv").css('background-image', backgroundImage);
-
-    // Initialize Sound
-    $("#mmm").attr('src',musicSrc + '1.mp3');
-
-    // Initialize Languages
-    if(!showLanguage){
-        $("#enus").hide();
-        $("#ptbr").hide();
-    }
-
-    $("#ptbr").click(function() {
-        document.getElementById('mmm').pause();
-        var a = $("#mmm").attr('src');
-        a = a.substring(0, 6);
-        a += "pt.mp3";
-        $("#mmm").attr('src',a);
-        document.getElementById('mmm').play();
-    });
-    $("#enus").click(function() {
-        document.getElementById('mmm').pause();
-        var a = $("#mmm").attr('src');
-        a = a.substring(0, 6);
-        a += "en.mp3";
-        $("#mmm").attr('src',a);
-        document.getElementById('mmm').play();
-    });
-
-    $("#next").click(function() {
-        $("#previous").show();
-        var testar = true;
-
-        for (var i = 1; i <= totalPages; i++) {
-            if(testar && $(pageId + i).css('display') == 'block'){
-                $(pageId + i).hide();
-                document.getElementById('mmm').pause();
-                // TODO: Correct sound link
-                $("#mmm").attr('src','b2u11h2.mp3');
-//                document.getElementById('mmm').play();
-                $(pageId + (i + 1)).show();
-                testar = false;
-
-                if((i+1) == totalPages) {
-                    $("#next").hide();
-                }
+            // Initialize Languages
+            if(!showLanguage){
+                $("#enus").hide();
+                $("#ptbr").hide();
             }
-        }
-    });
 
-    $("#previous").click(function() {
-        $("#next").show();
-        var testar = true;
 
-        for (var i = totalPages; i >= 1; i--) {
-            if(testar && $(pageId + i).css('display') == 'block'){
-                $(pageId + i).hide();
+            $("#ptbr").click(function() {
                 document.getElementById('mmm').pause();
-                $("#mmm").attr('src','b2u11h2.mp3');
-//                document.getElementById('mmm').play();
-                $(pageId + (i - 1)).show();
-                testar = false;
+                var a = $("#mmm").attr('src');
+                a = a.substring(0, 6);
+                a += "pt.mp3";
+                $("#mmm").attr('src',a);
+                document.getElementById('mmm').play();
+            });
+            $("#enus").click(function() {
+                document.getElementById('mmm').pause();
+                var a = $("#mmm").attr('src');
+                a = a.substring(0, 6);
+                a += "en.mp3";
+                $("#mmm").attr('src',a);
+                document.getElementById('mmm').play();
+            });
 
-                if((i-1) == 1) {
-                    $("#previous").hide();
-                }
+
+            // Play Sound
+            if(showLanguage){
+                $("#enus").trigger('click');
+            }else {
+                document.getElementById('mmm').play();
             }
-        }
-    });
 
 
-});
-</script>
+            $("#next").click(function() {
+                $("#previous").show();
+                var testar = true;
+
+                for (var i = 1; i <= totalPages; i++) {
+                    if(testar && $(pageId + i).css('display') == 'block'){
+                        $(pageId + i).hide();
+                        document.getElementById('mmm').pause();
+                        var sourceMusic = musicSrc + (i+1);
+                        if(showLanguage){
+                            sourceMusic += 'en';
+                        }
+                        sourceMusic += '.mp3';
+
+                        $("#mmm").attr('src',sourceMusic);
+                        document.getElementById('mmm').play();
+                        $(pageId + (i + 1)).show();
+                        testar = false;
+
+                        if((i+1) == totalPages) {
+                            $("#next").hide();
+                        }
+                    }
+                }
+            });
+
+            $("#previous").click(function() {
+                $("#next").show();
+                var testar = true;
+
+                for (var i = totalPages; i >= 1; i--) {
+                    if(testar && $(pageId + i).css('display') == 'block'){
+                        $(pageId + i).hide();
+                        document.getElementById('mmm').pause();
+                        var sourceMusic = musicSrc + (i-1);
+                        if(showLanguage){
+                            sourceMusic += 'en';
+                        }
+                        sourceMusic += '.mp3';
+
+                        $("#mmm").attr('src',sourceMusic);
+                        document.getElementById('mmm').play();
+                        $(pageId + (i - 1)).show();
+                        testar = false;
+
+                        if((i-1) == 1) {
+                            $("#previous").hide();
+                        }
+                    }
+                }
+            });
+        });
+    </script>
 
 <style type="text/css">
 	table
 	{
+        line-height: 22px;
 		border-width: 0 0 1px 1px;
 		border-spacing: 0;
 		border-collapse: collapse;
 		border-style: solid;
-		font-size: 20px;
+		font-size: 18px;
 	}
 
 	td, th
 	{
+        line-height: 22px;
 		margin: 0;
 		padding: 4px;
 		border-width: 1px 1px 0 0;
@@ -110,6 +130,10 @@ $(document).ready(function () {
 	p {
 		margin:0px;
 	}
+
+    #p2 {
+        font-size: 18px;
+    }
 </style>
 <body>
 
@@ -142,15 +166,15 @@ $(document).ready(function () {
                     <span class="titulo">GRAMMAR - THE BASIC IS OVER</span><br /><br />
                     <p class="bold">
                         1. Review - Verb Tenses
-                    </p>
+                    </p><br />
 
                     <strong>Present Continuous or Present Progressive (action now).<br /></strong>
                     Subject + to be + main verb + ing<br />
-                    <br /><br />
+                    <br />
 
 
-                    <div style="display:block; width:75%; margin:auto;">
-                        <table border="1" style="width:100%;">
+                    <div style="display:block; width:75%;">
+                        <table border="1" style="width:100%;" class="noBorder">
                           <tr>
                               <td><strong>Examples:</strong></td>
                               <td>I am speaking with you. <br />
@@ -161,10 +185,12 @@ $(document).ready(function () {
                         </table>
                     </div>
 
+
+                    <br /><br />
                     <strong>Simple present (routines - habits)</strong>
 
-                    <div style="display:block; width:75%; margin:auto;">
-                        <table border="1" style="width:100%;">
+                    <div style="display:block; width:90%; margin:auto;">
+                        <table border="1" style="width:100%;" class="noBorder">
                             <tr>
                                 <td><strong>I - you - we - you - they</strong></td>
                                 <td><strong>he - she it</strong></td>
@@ -176,11 +202,9 @@ $(document).ready(function () {
                         </table>
                     </div>
 
-
-
-
+                    <br />
                     <div style="display:block; width:75%; margin:auto;">
-                        <table border="1" style="width:100%;">
+                        <table border="1" style="width:100%;" class="noBorder">
                             <tr>
                                 <td><strong>Examples:</strong></td>
                                 <td>I wake up early everyday.   <br />
@@ -192,47 +216,49 @@ $(document).ready(function () {
                     </div>
                 </div>
                 <div id="p2" class="pagina" style="display: none;">
+                    <br />
                     <p class="bold">
                         In Interrogative and Negative use the auxiliaries:
                     </p>
 
 
-                    <div style="display:block; width:75%; margin:auto;">
-                        <table border="1" style="width:100%;">
+                    <div style="display:block; width:100%; margin:auto;">
+                        <table border="1" style="width:100%;" class="noBorder">
                             <tr>
                                 <td><strong>I - you - we - you - they</strong></td>
-                                <td><strong>Do and Don't</strong></td>
+                                <td><strong>he - she - it</strong></td>
                             </tr>
                             <tr>
-                                <td>he - she - it</td>
-                                <td>Does and Doesn't</td>
+                                <td><strong>Do</strong> and <strong>Don't</strong></td>
+                                <td><strong>Does</strong> and <strong>Doesn't</strong></td>
                             </tr>
                         </table>
                     </div>
 
-
-                    <div style="display:block; width:75%; margin:auto;">
-                        <table border="1" style="width:100%;">
+                    <br />
+                    <div style="display:block; width:100%; margin:auto;">
+                        <table border="1" style="width:100%;" class="noBorder">
                             <tr>
-                                <td><strong>Examples:</strong></td>
-                                <td>Do you wake up early everyday?	Does he wake up early everyday? <br />
-                                    I don't wake up early everyday.	He doesn't wake up early everyday.
+                                <td><strong>Examples:</strong><br /><br /></td>
+                                <td>Do you wake up early everyday?	<br />
+                                    I don't wake up early everyday.
+                                </td>
+                                <td>Does he wake up early everyday? <br />
+                                    He doesn't wake up early everyday.
                                 </td>
                             </tr>
                         </table>
                     </div>
                     <br /><br />
-                    <p class="bold">
-                        Planned Future (action in the future)<br />
+                    <strong>Planned Future (action in the future)</strong><br />
                         Subject + to be + going to + main verb+ complement
 
-                    </p>
 
-
-                    <div style="display:block; width:75%; margin:auto;">
-                        <table border="1" style="width:100%;">
+                    <br /><br />
+                    <div style="display:block; width:90%; margin:auto;">
+                        <table border="1" style="width:100%;" class="noBorder">
                             <tr>
-                                <td><strong>Examples:</strong></td>
+                                <td><strong>Examples: &nbsp;&nbsp;&nbsp;<br /><br /><br /><br /><br /><br /><br /><br /></strong></td>
                                 <td>
                                     I am going to travel to Las Vegas next year.  <br />
                                     I am going to buy a new house next year.       <br />
@@ -247,7 +273,9 @@ $(document).ready(function () {
                         </table>
                     </div>
 
-                    <br /><br />
+                </div>
+
+                <div id="p3" class="pagina" style="display: none;">
                     <p class="bold">
                         2- COMPOSITION
                     </p>
