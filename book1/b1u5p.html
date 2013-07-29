@@ -2,27 +2,13 @@
 <head>
 <title>11</title>
 <link href="book2.css" rel="stylesheet" type="text/css">
+<script src="pandox.js"></script>
 
 <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Josefin+Sans+Std+Light">
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 
+
     <script type="text/javascript">
-        function eitchaLele(myUnit, myLesson){
-            $.ajax({
-                type: "POST",
-                url: "http://www.ingleson.com.br/class/Book1Grammar1.aspx/Unlock",
-                data: "{ _unit: '" + myUnit + "', _lesson:'" + myLesson + "'}",
-                contentType: "application/json; charset=utf-8",
-                dataType: "json",
-                success: function (msg) {
-
-                    var ar = msg.d.toString().split("|");
-                    parent.liberar('Unit ' + ar[1], ar[0], ar[2]);
-                }
-            });
-
-        }
-
         $(document).ready(function () {
             var musicSrc = 'b1u5p';
             var langDefault = 'pt';
