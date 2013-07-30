@@ -3,6 +3,7 @@
 <title>11</title>
 <link href="book2.css" rel="stylesheet" type="text/css">
 <script src="pandox.js"></script>
+<script src="popcorn.js"  type="text/javascript"></script>
 
 <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Josefin+Sans+Std+Light">
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
@@ -57,6 +58,29 @@
             }
 
 
+
+            // Popup texts
+            var popCornInstance = Popcorn("#mmm");
+            var loadPopcron = function(divId) {
+                var times = [];
+                if(divId == 1){
+                    times = [44,69,99,122,146,171,195,220];
+                }
+                if(divId == 2){
+                    times = [32,53,78,103,126,149,172,193];
+                }
+                if(divId == 3){
+                    times = [23,46,74,100,129,158,185,213];
+                }
+                if(divId == 4){
+                    times = [25,50,73,94,121];
+                }
+                loadPops(popCornInstance, times, divId);
+            }
+
+            loadPopcron(1);
+
+
             $("#next").click(function() {
                 eitchaLele(4,'practice');
                 $("#previous").show();
@@ -77,7 +101,13 @@
                         $(pageId + (i + 1)).show();
                         testar = false;
 
-                        if((i+1) == totalPages) {
+                        Popcorn.destroy(popCornInstance);
+                    popCornInstance = Popcorn("#mmm");
+                    loadPopcron(i + 1);
+                    document.getElementById('mmm').play();
+                    $(".p_answer").hide();
+
+                    if((i+1) == totalPages) {
                             $("#next").hide();
                         }
                     }
@@ -254,25 +284,25 @@
                     <span class="p_answer"> She is not at home.</span>    <br />
 
                     <span class="p_question">B) My next class is ______ monday _____ afternoon.</span>
-                    <span class="p_answer">B) My next class is on monday in afternoon.</span>    <br />
+                    <span class="p_answer">My next class is on monday in afternoon.</span>    <br />
 
                     <span class="p_question">C) Where is your house? It is _____ 1000 Jane Avenue.</span>
-                    <span class="p_answer">C) Where is your house? It is at 1000 Jane Avenue.</span>    <br />
+                    <span class="p_answer">Where is your house? It is at 1000 Jane Avenue.</span>    <br />
 
                     <span class="p_question">D) Look _____ those girls! Which ones? Those ones, ______ the car.</span>
-                    <span class="p_answer">D) Look at those girls! Which ones? Those ones, in/inside the car.</span>    <br />
+                    <span class="p_answer">Look at those girls! Which ones? Those ones, in/inside the car.</span>    <br />
 
                     <span class="p_question">E) My friend _____ Australia is _____ Toronto.</span>
-                    <span class="p_answer">E) My friend from/in Australia is in/from Toronto.</span>    <br />
+                    <span class="p_answer">My friend from/in Australia is in/from Toronto.</span>    <br />
 
                     <span class="p_question">F) I am studying _____ the morning and my brother _____ night.</span>
-                    <span class="p_answer">F) I am studying in the morning and my brother at night.</span>    <br />
+                    <span class="p_answer">I am studying in the morning and my brother at night.</span>    <br />
 
                     <span class="p_question">G) My father's birthday is ______ May and my mom's birthday is _____ September 11th.</span>
-                    <span class="p_answer">G) My father's birthday is in May and my mom's birthday is on September 11th.</span>    <br />
+                    <span class="p_answer">My father's birthday is in May and my mom's birthday is on September 11th.</span>    <br />
 
                     <span class="p_question">H) There's girl _____ Pete watching TV _____ the living room. </span>
-                    <span class="p_answer">H) There's girl with Pete watching TV in the living room. </span>    <br />
+                    <span class="p_answer">There's girl with Pete watching TV in the living room. </span>    <br />
 
                 </div>
                 <div id="p4" class="pagina" style="display: none;">

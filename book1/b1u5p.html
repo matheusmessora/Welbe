@@ -3,6 +3,7 @@
 <title>11</title>
 <link href="book2.css" rel="stylesheet" type="text/css">
 <script src="pandox.js"></script>
+<script src="popcorn.js"  type="text/javascript"></script>
 
 <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Josefin+Sans+Std+Light">
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
@@ -56,6 +57,27 @@
             }
 
 
+
+            // Popup texts
+            var popCornInstance = Popcorn("#mmm");
+            var loadPopcron = function(divId) {
+                var times = [];
+                if(divId == 1){
+                    times = [57,80,105,129,152,177,203,222];
+                }
+                if(divId == 2){
+                    times = [39,64,88,109,135,161,188];
+                }
+                if(divId == 3){
+                    times = [19,42,62,88,107,127,143,166];
+                }
+                if(divId == 4){
+                    times = [14,33,48,65,86,97];
+                }
+                loadPops(popCornInstance, times, divId);
+            }
+
+            loadPopcron(1);
             $("#next").click(function() {
                 eitchaLele(5,'practice');
                 $("#previous").show();
@@ -76,7 +98,13 @@
                         $(pageId + (i + 1)).show();
                         testar = false;
 
-                        if((i+1) == totalPages) {
+                        Popcorn.destroy(popCornInstance);
+                    popCornInstance = Popcorn("#mmm");
+                    loadPopcron(i + 1);
+                    document.getElementById('mmm').play();
+                    $(".p_answer").hide();
+
+                    if((i+1) == totalPages) {
                             $("#next").hide();
                         }
                     }

@@ -3,6 +3,7 @@
 <title>11</title>
 <link href="book2.css" rel="stylesheet" type="text/css">
 <script src="pandox.js"></script>
+<script src="popcorn.js"  type="text/javascript"></script>
 
 <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Josefin+Sans+Std+Light">
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
@@ -77,7 +78,13 @@
                         $(pageId + (i + 1)).show();
                         testar = false;
 
-                        if((i+1) == totalPages) {
+                        Popcorn.destroy(popCornInstance);
+                    popCornInstance = Popcorn("#mmm");
+                    loadPopcron(i + 1);
+                    document.getElementById('mmm').play();
+                    $(".p_answer").hide();
+
+                    if((i+1) == totalPages) {
                             $("#next").hide();
                         }
                     }

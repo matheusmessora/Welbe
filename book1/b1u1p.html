@@ -3,9 +3,11 @@
 <title>11</title>
 <link href="book2.css" rel="stylesheet" type="text/css">
 <script src="pandox.js"></script>
+<script src="popcorn.js"  type="text/javascript"></script>
+<script src="popcorn.js"  type="text/javascript"></script>
+<script src="popcorn.js"  type="text/javascript"></script>
 
     <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Josefin+Sans+Std+Light">
-    <script src="popcorn.js"  type="text/javascript"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js" type="text/javascript"></script>
     <script src="http://file.urin.take-uma.net/jquery.balloon.min.js" type="text/javascript"></script>
 
@@ -58,19 +60,25 @@
 
 
         // Popup texts
-        var popcorn = Popcorn("#mmm");
+        var popCornInstance = Popcorn("#mmm");
+        var loadPopcron = function(divId) {
+            var times = [];
+            if(divId == 1){
+                times = [48, 69, 90, 112, 132, 153];
+            }
+            if(divId == 2){
+                times = [30, 50,73,93,112,132];
+            }
+            if(divId == 3){
+                times = [20,40,59,80,103,124,148,167];
+            }
+            if(divId == 4){
+                times = [29,48,68,89,110,130,150];
+            }
+            loadPops(popCornInstance, times, divId);
+        }
 
-        popcorn.exec(2, function () {
-            $(".p_answer").eq(0).show('slow');
-        });
-        popcorn.exec(3, function () {
-            $(".p_answer").eq(1).show('slow');
-        });
-
-        popcorn.exec(5, function () {
-            $(".p_answer").eq(2).show('slow');
-        });
-
+        loadPopcron(1);
 
         $("#next").click(function() {
             eitchaLele(1,'practice');
@@ -91,6 +99,13 @@
                     document.getElementById('mmm').play();
                     $(pageId + (i + 1)).show();
                     testar = false;
+
+
+                    Popcorn.destroy(popCornInstance);
+                    popCornInstance = Popcorn("#mmm");
+                    loadPopcron(i + 1);
+                    document.getElementById('mmm').play();
+                    $(".p_answer").hide();
 
                     if((i+1) == totalPages) {
                         $("#next").hide();
@@ -117,6 +132,13 @@
                     document.getElementById('mmm').play();
                     $(pageId + (i - 1)).show();
                     testar = false;
+
+
+                    Popcorn.destroy(popCornInstance);
+                    popCornInstance = Popcorn("#mmm");
+                    loadPopcron(i - 1);
+                    document.getElementById('mmm').play();
+                    $(".p_answer").hide();
 
                     if((i-1) == 1) {
                         $("#previous").hide();
