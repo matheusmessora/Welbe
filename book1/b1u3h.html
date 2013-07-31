@@ -13,7 +13,7 @@ $(document).ready(function () {
     var langDefault = 'pt';
     var showLanguage = false;
     var backgroundImage = 'url("images/qback3.jpg")';
-    var totalPages = 5;
+    var totalPages = 4;
     var pageId = "#p";
 
     // Initialize background
@@ -208,26 +208,26 @@ function teste(campo){
 
     #p3 p {
         font-size: 18px;
-        line-height: 12px;
-        /*margin:0;*/
-        /*padding:0;*/
+        line-height: 21px;
+        margin:5px;
+        padding:0;
     }
+    /*#p4 input {*/
+        /*width: 300px;*/
+        /*font-size: 16px;*/
+    /*}*/
     #p4 input {
         width: 300px;
-        font-size: 16px;
     }
-    #p5 input {
-        width: 300px;
-    }
-    #p5 p {
+    #p4 p {
         font-size: 18px;
         line-height: 20px;
     }
-    #p5 .exercicio {
+    #p4 .exercicio {
         font-size: 16px;
         line-height: 15px;
     }
-    #p5 input {
+    #p4 input {
         font-size: 15px;
         line-height: 15px;
     }
@@ -358,42 +358,40 @@ function teste(campo){
                     <div class="theLabel"></div><div class="green" title="3pD"></div><div class="yellow"></div><div class="red"></div>
                     <p class="exercicio">
                         D) Marie's birthday is <input onblur="teste(this);" type="text" rel="on"> August 13 and Henry's is <input onblur="teste(this);" type="text" rel="in"> February.
-                    </p>
+                    </p><br />
+
+                    <p><strong>4. Make like the example:</strong></p>
+                    <p><strong>Example 1:</strong> This book is mine. (she) That one is hers. </p>
+                    <p><strong>Example 2:</strong> These socks are Marcos'. (you) Those ones are yours. </p>
+
+                    <div class="theLabel"></div><div class="green" title="3p4A"></div><div class="yellow"></div><div class="red"></div>
+                    <p class="exercicio">
+                        A) These slippers are hers. (he) <input onblur="teste(this);" type="text" rel="Those ones are his" style="font-size: 16px; width:340px;">.
+
+                    <div class="theLabel"></div><div class="green" title="3p4B"></div><div class="yellow"></div><div class="red"></div>
+                    <p class="exercicio">
+                        B) This coat is Mike's. (Brenda's) <input onblur="teste(this);" type="text" rel="That one is Brenda's" style="font-size: 16px; width:340px;">.
+
+                    <div class="theLabel"></div><div class="green" title="3p4C"></div><div class="yellow"></div><div class="red"></div>
+                    <p class="exercicio">
+                        C) This overcoat is his. (John's) <input onblur="teste(this);" type="text" rel="That one is John's" style="font-size: 16px; width:340px;">.
+
+                    <div class="theLabel"></div><div class="green" title="3p4D"></div><div class="yellow"></div><div class="red"></div>
+                    <p class="exercicio">
+                        D) These pants are theirs. (I) <input onblur="teste(this);" type="text" rel="Those ones are mine" style="font-size: 16px; width:340px;">.
+
+                    <div class="theLabel"></div><div class="green" title="3p4E"></div><div class="yellow"></div><div class="red"></div>
+                    <p class="exercicio">
+                        E) These cars are Julie's. (We) <input onblur="teste(this);" type="text" rel="Those ones are ours" style="font-size: 16px; width:340px;">.
+
+                    <div class="theLabel"></div><div class="green" title="3p4F"></div><div class="yellow"></div><div class="red"></div>
+                    <p class="exercicio">
+                        F) This house is mine. (they) <input onblur="teste(this);" type="text" rel="That one is theirs" style="font-size: 16px; width:340px;">.
+
 
                 </div>
 
                 <div id="p4" class="pagina" style="display: none;">
-                    <p><strong>4. Make like the example:</strong><br />
-                        <strong>Example 1:</strong> This book is mine. (she) That one is hers. <br />
-                        <strong>Example 2:</strong> These socks are Marcos'. (you) Those ones are yours. </p>
-
-                    <div class="theLabel"></div><div class="green" title="3p4A"></div><div class="yellow"></div><div class="red"></div>
-                    <p class="exercicio">
-                        A) These slippers are hers. (he) <input onblur="teste(this);" type="text" rel="Those ones are his">.
-
-                    <div class="theLabel"></div><div class="green" title="3p4B"></div><div class="yellow"></div><div class="red"></div>
-                    <p class="exercicio">
-                        B) This coat is Mike's. (Brenda's) <input onblur="teste(this);" type="text" rel="That one is Brenda's">.
-
-                    <div class="theLabel"></div><div class="green" title="3p4C"></div><div class="yellow"></div><div class="red"></div>
-                    <p class="exercicio">
-                        C) This overcoat is his. (John's) <input onblur="teste(this);" type="text" rel="That one is John's">.
-
-                    <div class="theLabel"></div><div class="green" title="3p4D"></div><div class="yellow"></div><div class="red"></div>
-                    <p class="exercicio">
-                        D) These pants are theirs. (I) <input onblur="teste(this);" type="text" rel="Those ones are mine">.
-
-                    <div class="theLabel"></div><div class="green" title="3p4E"></div><div class="yellow"></div><div class="red"></div>
-                    <p class="exercicio">
-                        E) These cars are Julie's. (We) <input onblur="teste(this);" type="text" rel="Those ones are ours">.
-
-                    <div class="theLabel"></div><div class="green" title="3p4F"></div><div class="yellow"></div><div class="red"></div>
-                    <p class="exercicio">
-                        F) This house is mine. (they) <input onblur="teste(this);" type="text" rel="That one is theirs">.
-
-                </div>
-
-                <div id="p5" class="pagina" style="display: none;">
                     <p class="bold">
                         5. Ask questions and give the answers in the negative form using the verb THERE TO BE and the PREPOSITIONS like the example.
                     </p>

@@ -1,5 +1,5 @@
 ﻿Imports System.Data.Odbc
-Imports Conexoes
+Imports poz.Conexoes
 Imports Funcoes
 Imports System.Web.Services
 
@@ -113,10 +113,13 @@ Partial Class _Default
 
             dr.Close()
 
-            LitItems.Text = s.ToString()
+
+
+            LitItems.Text = s.toString
+	LitItems.Visible = True
 
             If Now.Date > IIf(Session("DEMO1") = True, Convert.ToDateTime(Session("BOOK" & book & "_DATE")).AddDays(7), Convert.ToDateTime(Session("BOOK" & book & "_DATE")).AddMonths(6)) Then
-                LitItems.Visible = False
+                LitItems.Visible = True
                 pnlAcabou.Visible = True
                 pnlFraseTopo.Visible = False
             End If
