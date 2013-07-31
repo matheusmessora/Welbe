@@ -58,6 +58,28 @@
             }
 
 
+            // Popup texts
+            var popCornInstance = Popcorn("#mmm");
+            var loadPopcron = function(divId) {
+                var times = [];
+                if(divId == 1){
+                    times = [48,73,100,129,155,187];
+                }
+                if(divId == 2){
+                    times = [18,47,70,98,122,150];
+                }
+                if(divId == 3){
+                    times = [65,87,107,129,160];
+                }
+                if(divId == 4){
+                    times = [19,44,67,92,118,140,160];
+                }
+                loadPops(popCornInstance, times, divId);
+            }
+
+            loadPopcron(1);
+
+
             $("#next").click(function() {
                 eitchaLele(8,'practice');
                 $("#previous").show();
@@ -235,13 +257,13 @@
                     A) <span style="text-decoration:underline">She </span>can <span style="text-decoration:underline">always go </span><span style="text-decoration:underline">to the beach </span><span style="text-decoration:underline">on Friday</span>.
                     <br />
                     <span class="p_question">1.Who - Who can always go to the beach on Friday?</span>
-                    <span class="p_answer">She</span>
-                    <span class="p_question"> 2.How often - How often can she go to the beach?</span>
-                    <span class="p_answer">Always</span>
+                    <span class="p_answer">She</span><br />
+                    <span class="p_question"> 2. How often - How often can she go to the beach?</span>
+                    <span class="p_answer">Always</span><br />
                     <span class="p_question">3. What - What can she always do on Friday?</span>
-                    <span class="p_answer">Go to the beach</span>
+                    <span class="p_answer">Go to the beach</span><br />
                     <span class="p_question">4. Where - Where can she alwyas go on Friday?</span>
-                    <span class="p_answer">To the beach</span>
+                    <span class="p_answer">To the beach</span><br />
                     <span class="p_question">5. When - When can she always go to the beach?</span>
                     <span class="p_answer">On Friday</span>
                 </div>
@@ -249,11 +271,11 @@
                     B) <span style="text-decoration:underline">They</span> like <span style="text-decoration:underline">to watch</span> <span style="text-decoration:underline">the game</span> <span style="text-decoration:underline">on Sunday</span> <span style="text-decoration:underline">at 4pm</span>.
                     <br />
                     <span class="p_question">1. What do they like to do on Sunday at 4pm?</span>
-                    <span class="p_answer">To watch the game</span>
+                    <span class="p_answer">To watch the game</span><br />
                     <span class="p_question"> 2. What do they like to watch on Sunday at 4pm?</span>
-                    <span class="p_answer">The game</span>
+                    <span class="p_answer">The game</span><br />
                     <span class="p_question">3. When do they like to watch the game at 4pm?</span>
-                    <span class="p_answer">On Sunday</span>
+                    <span class="p_answer">On Sunday</span><br />
                     <span class="p_question">4. What time do they like to watch the game on Sunday?</span>
                     <span class="p_answer">At 4 pm.</span>
 
@@ -261,9 +283,9 @@
                     C) <span style="text-decoration:underline">She</span> is <span style="text-decoration:underline">sleeping</span> <span style="text-decoration:underline">in the living room</span>.
                     <br />
                     <span class="p_question">1. Who is sleeping in the living room?</span>
-                    <span class="p_answer">She</span>
+                    <span class="p_answer">She</span><br />
                     <span class="p_question"> 2. What is she doing in the living room?</span>
-                    <span class="p_answer">Sleeping</span>
+                    <span class="p_answer">Sleeping</span><br />
                     <span class="p_question">3. Where is she sleeping?</span>
                     <span class="p_answer">In the living room</span>
                 </div>

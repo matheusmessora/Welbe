@@ -32,7 +32,7 @@
         $("#ptbr").click(function() {
             document.getElementById('mmm').pause();
             var a = $("#mmm").attr('src');
-            a = a.substring(0, 6);
+            a = a.substring(0, 7);
             a += "pt.mp3";
             $("#mmm").attr('src',a);
             document.getElementById('mmm').play();
@@ -40,7 +40,7 @@
         $("#enus").click(function() {
             document.getElementById('mmm').pause();
             var a = $("#mmm").attr('src');
-            a = a.substring(0, 6);
+            a = a.substring(0, 7);
             a += "en.mp3";
             $("#mmm").attr('src',a);
             document.getElementById('mmm').play();
@@ -240,30 +240,35 @@
                     <p class="bold">
                         1. Answer the questions below.
                     </p>
-                    <div class="theLabel"></div><div class="green" title="p1" style="display: block;"></div><div class="yellow" style="display: block;"></div><div class="red" style="display: none;"></div>
+                    <div class="theLabel"></div><div class="green" title="1pA" style="display: block;"></div><div class="yellow" style="display: block;"></div><div class="red" style="display: none;"></div>
                     <p class="exercicio">
                         A) What are you going to do next weekend?<br/>
                         <input onblur="teste(this);" type="text" rel="I'm going to (any verb) next weekend">.
                     </p>
 
-                    <div class="theLabel"></div><div class="green" title="p2" style="display: block;"></div><div class="yellow" style="display: block;"></div><div class="red" style="display: none;"></div>
+                    <div class="theLabel"></div><div class="green" title="1pB" style="display: block;"></div><div class="yellow" style="display: block;"></div><div class="red" style="display: none;"></div>
                     <p  class="exercicio">
                         B) What's the weather like today? <br/>
                         <input onblur="teste(this);" type="text" rel="It's warm|It's cold">.
                     </p>
 
-                    <div class="theLabel"></div><div class="green" title="p3" style="display: block;"></div><div class="yellow" style="display: block;"></div><div class="red" style="display: none;"></div>
+                    <div class="theLabel"></div><div class="green" title="1pC" style="display: block;"></div><div class="yellow" style="display: block;"></div><div class="red" style="display: none;"></div>
                     <p  class="exercicio">
                         C) Do you think that English is a very hard language to learn?
                         <br/>
                         <input onblur="teste(this);" type="text" rel="Yes, I think|No, I don't think">.
 
-                    <div class="theLabel"></div><div class="green" title="p4" style="display: block;"></div><div class="yellow" style="display: block;"></div><div class="red" style="display: none;"></div>
+                    <div class="theLabel"></div><div class="green" title="1pD" style="display: block;"></div><div class="yellow" style="display: block;"></div><div class="red" style="display: none;"></div>
                     <p  class="exercicio">
                         D) What are you doing now? <br/>
                         <input onblur="teste(this);" type="text" rel="I'm studying English">.
 
-                    <div class="theLabel"></div><div class="green" title="p4" style="display: block;"></div><div class="yellow" style="display: block;"></div><div class="red" style="display: none;"></div>
+                    <div class="theLabel"></div><div class="green" title="1pE" style="display: block;"></div><div class="yellow" style="display: block;"></div><div class="red" style="display: none;"></div>
+                    <p  class="exercicio">
+                        E) Is there any dog in your house? <br/>
+                        <input onblur="teste(this);" type="text" rel="Yes, there is|No, there isn't|No, there is not">.
+
+                    <div class="theLabel"></div><div class="green" title="1pF" style="display: block;"></div><div class="yellow" style="display: block;"></div><div class="red" style="display: none;"></div>
                     <p  class="exercicio">
                         F) When are you going to do a test at WELBE private class? <br/>
                         <input onblur="teste(this);" type="text" rel="I'm going to do a test at Welbe Private Class on (any week day)">.
@@ -274,34 +279,34 @@
                         2. Ask questions with the interrogative pronoun given.
                     </p>
 
-                    <div class="theLabel"></div><div class="green" title="p4"></div><div class="yellow"></div><div class="red"></div>
+                    <div class="theLabel"></div><div class="green" title="2pA"></div><div class="yellow"></div><div class="red"></div>
                     <p  class="exercicio">
                         A) My Mom is here. (Where) <br />
                         <input onblur="teste(this);" type="text" rel="Where is your Mom">?
 
-                    <div class="theLabel"></div><div class="green" title="p4"></div><div class="yellow"></div><div class="red"></div>
+                    <div class="theLabel"></div><div class="green" title="2pB"></div><div class="yellow"></div><div class="red"></div>
                     <p  class="exercicio">
                         B) Angelina studies everyday. (Who) <br />
                         <input onblur="teste(this);" type="text" rel="Who studies everyday">?
 
 
-                    <div class="theLabel"></div><div class="green" title="p4"></div><div class="yellow"></div><div class="red"></div>
+                    <div class="theLabel"></div><div class="green" title="2pC"></div><div class="yellow"></div><div class="red"></div>
                     <p  class="exercicio">
                         C) It' nine o'clock. (What time) <br />
                         <input onblur="teste(this);" type="text" rel="What time is it">?
 
 
-                    <div class="theLabel"></div><div class="green" title="p4"></div><div class="yellow"></div><div class="red"></div>
+                    <div class="theLabel"></div><div class="green" title="2pD"></div><div class="yellow"></div><div class="red"></div>
                     <p  class="exercicio">
                         D) She is shy and calm. (What)<br />
                         <input onblur="teste(this);" type="text" rel="What is she like">?
 
-                    <div class="theLabel"></div><div class="green" title="p4"></div><div class="yellow"></div><div class="red"></div>
+                    <div class="theLabel"></div><div class="green" title="2pE"></div><div class="yellow"></div><div class="red"></div>
                     <p  class="exercicio">
                         E) I'm going to see it tomorrow. (When)<br />
                         <input onblur="teste(this);" type="text" rel="When are you going to see it">?
 
-                    <div class="theLabel"></div><div class="green" title="p4"></div><div class="yellow"></div><div class="red"></div>
+                    <div class="theLabel"></div><div class="green" title="2pF"></div><div class="yellow"></div><div class="red"></div>
                     <p  class="exercicio">
                         F) His class is at 6 o'clock. (What time)<br />
                         <input onblur="teste(this);" type="text" rel="What time is his class">?
@@ -316,32 +321,32 @@
                     <br /><br />
 
 
-                    <div class="theLabel"></div><div class="green" title="p15"></div><div class="yellow"></div><div class="red"></div>
+                    <div class="theLabel"></div><div class="green" title="3pA"></div><div class="yellow"></div><div class="red"></div>
                     <p class="exercicio">
                         A) Dennis and <input onblur="teste(this);" type="text" rel="I"> want to go    <input onblur="teste(this);" type="text" rel="his">    parents house on the beach. Judd wants to go with    <input onblur="teste(this);" type="text" rel="us">. (I/us/his)
                         <br /><br />
 
 
-                    <div class="theLabel"></div><div class="green" title="p16"></div><div class="yellow"></div><div class="red"></div>
+                    <div class="theLabel"></div><div class="green" title="3pB"></div><div class="yellow"></div><div class="red"></div>
                     <p class="exercicio">
                         B) Vera and  <input onblur="teste(this);" type="text" rel="her">    husband Pedro are thinking about a trip around Brazil.
                         This is   <input onblur="teste(this);" type="text" rel="their"> dream and   <input onblur="teste(this);" type="text" rel="they"> are going to do it soon. (their/they/her)
                         <br /><br />
 
 
-                    <div class="theLabel"></div><div class="green" title="p17"></div><div class="yellow"></div><div class="red"></div>
+                    <div class="theLabel"></div><div class="green" title="3pC"></div><div class="yellow"></div><div class="red"></div>
                     <p class="exercicio">
                         C) <input onblur="teste(this);" type="text" rel="I"> need to talk to <input onblur="teste(this);" type="text" rel="him"> about    <input onblur="teste(this);" type="text" rel="his"> sister, because   <input onblur="teste(this);" type="text" rel="she"> is involed in bad things. (she/him/I/his)
                         <br /><br />
 
 
-                    <div class="theLabel"></div><div class="green" title="p18"></div><div class="yellow"></div><div class="red"></div>
+                    <div class="theLabel"></div><div class="green" title="3pD"></div><div class="yellow"></div><div class="red"></div>
                     <p class="exercicio">
                         D) <input onblur="teste(this);" type="text" rel="she"> always goes to the bank with a friend of   <input onblur="teste(this);" type="text" rel="hers">. <input onblur="teste(this);" type="text" rel="I">think that <input onblur="teste(this);" type="text" rel="they"> are dating. (I/she/they/hers)
                         <br /><br />
 
 
-                    <div class="theLabel"></div><div class="green" title="p19"></div><div class="yellow"></div><div class="red"></div>
+                    <div class="theLabel"></div><div class="green" title="3pE"></div><div class="yellow"></div><div class="red"></div>
                     <p class="exercicio">
                         E) Robert and <input onblur="teste(this);" type="text" rel="his"> uncle wants to tell <input onblur="teste(this);" type="text" rel="you"> that <input onblur="teste(this);" type="text" rel="they">have a new motocycle. (you/his/they)
 
@@ -353,30 +358,30 @@
                         4. Complete the sentences with prepositions, articles or pronouns.
                     </p>
 
-                    <div class="theLabel"></div><div class="green" title="p15"></div><div class="yellow"></div><div class="red"></div>
+                    <div class="theLabel"></div><div class="green" title="4pA"></div><div class="yellow"></div><div class="red"></div>
                     <p class="exercicio">
                         A) <input onblur="teste(this);" type="text" rel="She">   doesn't know that boy very well to say that he    <input onblur="teste(this);" type="text" rel="is"> <input onblur="teste(this);" type="text" rel="a">  stupid person.
                         <br /><br />
 
-                    <div class="theLabel"></div><div class="green" title="p16"></div><div class="yellow"></div><div class="red"></div>
+                    <div class="theLabel"></div><div class="green" title="4pB"></div><div class="yellow"></div><div class="red"></div>
                     <p class="exercicio">
                         B) I am going to tell all <input onblur="teste(this);" type="text" rel="my">    friends that <input onblur="teste(this);" type="text" rel="the">  frist book is over and I speak English <input onblur="teste(this);" type="text" rel="a"> little.
                         <br /><br />
 
 
-                    <div class="theLabel"></div><div class="green" title="p17"></div><div class="yellow"></div><div class="red"></div>
+                    <div class="theLabel"></div><div class="green" title="4pC"></div><div class="yellow"></div><div class="red"></div>
                     <p class="exercicio">
                         C) There is <input onblur="teste(this);" type="text" rel="an"> important thing to consider; <input onblur="teste(this);" type="text" rel="she"> is pregnant and <input onblur="teste(this);" type="text" rel="the"> baby is going to be born <input onblur="teste(this);" type="text" rel="in"> April.
                         <br /><br />
 
 
-                    <div class="theLabel"></div><div class="green" title="p18"></div><div class="yellow"></div><div class="red"></div>
+                    <div class="theLabel"></div><div class="green" title="4pD"></div><div class="yellow"></div><div class="red"></div>
                     <p class="exercicio">
                         D) <input onblur="teste(this);" type="text" rel="On"> April 7th, <input onblur="teste(this);" type="text" rel="my"> 4th Kid is going to be born.
                         <br /><br />
 
 
-                    <div class="theLabel"></div><div class="green" title="p19"></div><div class="yellow"></div><div class="red"></div>
+                    <div class="theLabel"></div><div class="green" title="4pE"></div><div class="yellow"></div><div class="red"></div>
                     <p class="exercicio">
                         E) Can <input onblur="teste(this);" type="text" rel="you"> imagine how happy <input onblur="teste(this);" type="text" rel="I"> am because of <input onblur="teste(this);" type="text" rel="my"> good results in English?
 

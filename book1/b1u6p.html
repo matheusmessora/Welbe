@@ -56,6 +56,27 @@
             document.getElementById('mmm').play();
         }
 
+        // Popup texts
+        var popCornInstance = Popcorn("#mmm");
+        var loadPopcron = function(divId) {
+            var times = [];
+            if(divId == 1){
+                times = [51,80,105,126,153,180,210];
+            }
+            if(divId == 2){
+                times = [40,62,84,108,130,154,177];
+            }
+            if(divId == 3){
+                times = [40,61,84,104,124,144,166];
+            }
+            if(divId == 4){
+                times = [19,40,61,84,102,124];
+            }
+            loadPops(popCornInstance, times, divId);
+        }
+
+        loadPopcron(1);
+
 
         $("#next").click(function() {
             eitchaLele(6,'practice');

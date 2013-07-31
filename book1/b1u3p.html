@@ -62,18 +62,47 @@
             var loadPopcron = function(divId) {
                 var times = [];
                 if(divId == 1){
-                    times = [44,72,97,124,150,177,205];
+                    times = [43,61,77,96,114,134,152];
+                    loadPops(popCornInstance, times, divId);
                 }
                 if(divId == 2){
-                    times = [40,65,91,117,143,171,198];
+                    times = [21,39,59,79,100,118];
+                    loadPops(popCornInstance, times, divId);
                 }
                 if(divId == 3){
-                    times = [53,79,107,135,159,185,215];
+                    popCornInstance.exec(20, function () {
+                        $("#p3").find(".p_question_2").eq(0).trigger('click');
+                    });
+                    popCornInstance.exec(41, function () {
+                        $("#p3").find(".p_question_2").eq(1).trigger('click');
+                    });
+                    popCornInstance.exec(61, function () {
+                        $("#p3").find(".p_question_2").eq(2).trigger('click');
+                    });
+                    popCornInstance.exec(82, function () {
+                        $("#p3").find(".p_question_2").eq(3).trigger('click');
+                    });
+                    popCornInstance.exec(103, function () {
+                        $("#p3").find(".p_question_2").eq(4).trigger('click');
+                    });
+                    popCornInstance.exec(140, function () {
+                        $("#p" + divId).find(".p_answer").eq(0).show('slow');
+                    });
+                    popCornInstance.exec(162, function () {
+                        $("#p" + divId).find(".p_answer").eq(1).show('slow');
+                    });
+                    popCornInstance.exec(185, function () {
+                        $("#p" + divId).find(".p_answer").eq(2).show('slow');
+                    });
                 }
                 if(divId == 4){
-                    times = [38,59,144,110,134,160];
+                    times = [14,37,58,81,104];
+                    loadPops(popCornInstance, times, divId);
                 }
-                loadPops(popCornInstance, times, divId);
+                if(divId == 5){
+                    times = [12,21,31,42,51,61,72,83,94,104];
+                    loadPops(popCornInstance, times, divId);
+                }
             }
 
             loadPopcron(1);
@@ -262,10 +291,10 @@
                 <div id="p3" class="pagina" style="display: none;">
                     <strong>3. Complete with the verb THERE TO BE and the prepositions</strong><br />
 
-                    <div class="p_question_2">A) <span class="p_answer_mini" data-answer="Is there">_____</span> a black dog in the house?</div><br>
-                    <div class="p_question_2">B) <span class="p_answer_mini" data-answer="There are">_____</span> many people <span class="p_answer_mini" data-answer="at">_____</span> Paul's restaurant.</div><br>
-                    <div class="p_question_2">C) <span class="p_answer_mini" data-answer="There are">_____</span> two cats <span class="p_answer_mini" data-answer="under / on / near / beside">_____</span> the table.</div><br>
-                    <div class="p_question_2">D) What <span class="p_answer_mini" data-answer="is there">_____</span> <span class="p_answer_mini" data-answer="in / inside">_____</span>  the drawer?</div><br>
+                    <div class="p_question_2">A) <span class="p_answer_mini" data-answer="Is there">_____</span> a black dog in the house?</div>
+                    <div class="p_question_2">B) <span class="p_answer_mini" data-answer="There are">_____</span> many people <span class="p_answer_mini" data-answer="at">_____</span> Paul's restaurant.</div>
+                    <div class="p_question_2">C) <span class="p_answer_mini" data-answer="There are">_____</span> two cats <span class="p_answer_mini" data-answer="under / on / near / beside">_____</span> the table.</div>
+                    <div class="p_question_2">D) What <span class="p_answer_mini" data-answer="is there">_____</span> <span class="p_answer_mini" data-answer="in / inside">_____</span>  the drawer?</div>
                     <div class="p_question_2">E) <span class="p_answer_mini" data-answer="There are">_____</span> not jeans <span class="p_answer_mini" data-answer="inside / in">_____</span> the closet.</div><br>
 
                     <strong>4. Make like the example:</strong><br />
@@ -280,7 +309,7 @@
                     <span class="p_answer">Are Marcos and Charles from New Zealand? No, they are not. They are from Brazil.</span>  <br />
 
                     <span class="p_question">C) Julie / USA / France</span>
-                    <span class="p_answer">Is Julie from the USA? NO, she is not. She is from France.</span>
+                    <span class="p_answer">Is Julie from the USA? No, she is not. She is from France.</span>
 
                 </div>
                 <div id="p4" class="pagina" style="display: none;">
